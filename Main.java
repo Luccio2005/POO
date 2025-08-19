@@ -3,10 +3,12 @@ public class Main {
         // Creamos una persona
         Persona persona1 = new Persona("Luis");
 
-        // Creamos el saludo
+        // Creamos objetos de Saludo y Despedida
         Saludo saludo = new Saludo();
+        Despedida despedida = new Despedida();
 
-        // Usamos el método de la clase Saludo
+        // Usamos los métodos
         saludo.decirHola(persona1);
+        despedida.decirAdios(persona1);
     }
 }
