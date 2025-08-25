@@ -12,6 +12,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     final int altoPantalla = tileSize * tamanoFila;
 
     Thread gameThread;
+    int FPS = 60;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
@@ -28,4 +29,22 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void run() {
 
     }
+    public int getFPS() {
+        return FPS;
+    }
+
+    public void setFPS(int FPS) {
+        this.FPS = FPS;
+    }
+
+    public int getAnchoPantalla() {
+        return anchoPantalla;
+    }
+
+    public int getAltoPantalla() {
+        return altoPantalla;
+    }
+
+    public int getTileSize() {
+        return tileSize;
 }
