@@ -47,4 +47,4 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     public int getTileSize() {
         return tileSize;
-}
+}}
