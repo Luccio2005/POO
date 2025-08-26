@@ -11,13 +11,20 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     final int anchoPantalla = tileSize * tamanoColumna;
     final int altoPantalla = tileSize * tamanoFila;
 
+    Teclado keyH = new Teclado();
     Thread gameThread;
     int FPS = 60;
+
+    int jugadorX =100;
+    int jugadorY =100;
+    int velocidadJugador= 4;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyH);
+        this.setFocusable(true);
     }
     public void startGameThread(){
         gameThread = new Thread(this);
@@ -34,13 +41,25 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
     }
     public void actualizar(){
+        if(keyH.arribap == true){
+            jugadorY -= velocidadJugador;
+        }
+        else if(keyH.abajop == true){
+            jugadorY += velocidadJugador;
+        }
+        else if(keyH.izquierdap == true){
+            jugadorX -= velocidadJugador;
+        }
+        else if(keyH.derechap == true){
+            jugadorX += velocidadJugador;
+        }
 
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         g2.setColor(Color.white);
-        g2.fillRect(100,100,tileSize,tileSize);
+        g2.fillRect(jugadorX, jugadorY, tileSize, tileSize);
         g2.dispose();
     }
     public int getFPS() {
