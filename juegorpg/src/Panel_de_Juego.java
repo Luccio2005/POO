@@ -11,9 +11,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     final int anchoPantalla = tileSize * tamanoColumna;
     final int altoPantalla = tileSize * tamanoFila;
 
+    int FPS = 60;
+
     Teclado keyH = new Teclado();
     Thread gameThread;
-    int FPS = 60;
+
 
     int jugadorX =100;
     int jugadorY =100;
@@ -34,10 +36,30 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     @Override
     public void run() {
+        double dibujarIntervalo = 1000000000/FPS;
+        double nextDrawTime = System.nanoTime() + dibujarIntervalo;
+
         while(gameThread != null){
+
             actualizar();
 
             repaint();
+
+            try{
+                double tiempoRestante = nextDrawTime - System.nanoTime();
+                tiempoRestante = tiempoRestante/1000000;
+
+                if(tiempoRestante <0){
+                    tiempoRestante = 0;
+                }
+                Thread.sleep((long) tiempoRestante);
+
+                nextDrawTime += dibujarIntervalo;
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+
+
         }
     }
     public void actualizar(){
@@ -62,13 +84,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         g2.fillRect(jugadorX, jugadorY, tileSize, tileSize);
         g2.dispose();
     }
-    public int getFPS() {
-        return FPS;
-    }
 
-    public void setFPS(int FPS) {
-        this.FPS = FPS;
-    }
 
     public int getAnchoPantalla() {
         return anchoPantalla;
