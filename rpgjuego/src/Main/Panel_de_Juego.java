@@ -1,5 +1,7 @@
 package Main;
 
+import entidad.jugador;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,7 +9,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     final int originalTileSize = 16;
     final int escala = 3;
 
-    final int tileSize = originalTileSize * escala;
+    public final int tileSize = originalTileSize * escala;
     final int tamanoColumna = 16;
     final int tamanoFila = 12;
     final int anchoPantalla = tileSize * tamanoColumna;
@@ -17,6 +19,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     Teclado keyH = new Teclado();
     Thread gameThread;
+    jugador jugador= new jugador(this,keyH);
 
 
     int jugadorX =100;
@@ -65,25 +68,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
     }
     public void actualizar(){
-        if(keyH.arribap == true){
-            jugadorY -= velocidadJugador;
-        }
-        else if(keyH.abajop == true){
-            jugadorY += velocidadJugador;
-        }
-        else if(keyH.izquierdap == true){
-            jugadorX -= velocidadJugador;
-        }
-        else if(keyH.derechap == true){
-            jugadorX += velocidadJugador;
-        }
-
+        jugador.actualizar();
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.white);
-        g2.fillRect(jugadorX, jugadorY, tileSize, tileSize);
+        jugador.dibujar(g2);
         g2.dispose();
     }
 
