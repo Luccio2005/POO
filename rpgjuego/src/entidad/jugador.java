@@ -75,5 +75,6 @@ public class jugador extends entidad{
             case "right":
                 imagen = right1; break;
         }
+        g2.drawImage(imagen,x,y,gp.tileSize, gp.tileSize, null);
     }
 }
