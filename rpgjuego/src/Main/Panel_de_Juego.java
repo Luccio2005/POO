@@ -1,6 +1,7 @@
 package Main;
 
 import entidad.jugador;
+import suelo.administradordesuelo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,14 +18,10 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     int FPS = 60;
 
+    administradordesuelo sueloM = new administradordesuelo(this);
     Teclado keyH = new Teclado();
     Thread gameThread;
     jugador jugador= new jugador(this,keyH);
-
-
-    int jugadorX =100;
-    int jugadorY =100;
-    int velocidadJugador= 4;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
@@ -73,6 +70,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
+        sueloM.dibujar(g2);
         jugador.dibujar(g2);
         g2.dispose();
     }
