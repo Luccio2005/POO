@@ -17,9 +17,9 @@ public class administradordesuelo {
         this.gp = gp;
 
         suelo = new suelo[10];
-        mapaNum = new int[gp.tamanoColumna][gp.tamanoFila];
+        mapaNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        cargarMapa("/mapas/mapa01.txt");
+        cargarMapa("/mapas/world01.txt");
 
     }
     public void getTileImage(){
@@ -53,15 +53,15 @@ public class administradordesuelo {
 
             int columna=0;
             int fila=0;
-            while (columna< gp.tamanoColumna && fila < gp.tamanoFila){
+            while (columna< gp.maxWorldCol && fila < gp.maxWorldRow){
                 String linea = br.readLine();
-                while (columna < gp.tamanoColumna){
+                while (columna < gp.maxWorldCol){
                     String numeros[] = linea.split(" ");
                     int num = Integer.parseInt(numeros[columna]);
                     mapaNum[columna][fila]=num;
                     columna++;
                 }
-                if(columna == gp.tamanoColumna){
+                if(columna == gp.maxWorldCol){
                     columna=0;
                     fila++;
                 }
