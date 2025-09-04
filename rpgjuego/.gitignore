@@ -2,6 +2,8 @@
 !out/artifacts/**/*.jar
 # === Permitir JARs de artifacts ===
 !out/artifacts/**/*.jar
+# === Permitir JARs de artifacts ===
+!out/artifacts/**/*.jar
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
