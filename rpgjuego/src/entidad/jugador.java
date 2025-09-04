@@ -12,17 +12,23 @@ public class jugador extends entidad{
     Panel_de_Juego gp;
     Teclado keyH;
 
+    public final int pantallax;
+    public final int pantallay;
+
     public jugador(Panel_de_Juego gp, Teclado keyH){
         this.gp =gp;
         this.keyH = keyH;
+
+        pantallax = gp.anchoPantalla/2 - (gp.tileSize/2);
+        pantallay = gp.altoPantalla/2 - (gp.tileSize/2);
 
         valorespredeterminados();
         getPlayerImage();
 
     }
     public void valorespredeterminados(){
-        x= 100;
-        y=100;
+        mundox= gp.tileSize * 23;
+        mundoy= gp.tileSize * 21;
         velocidad= 4;
         direccion= "down";
     }
@@ -48,19 +54,19 @@ public class jugador extends entidad{
                 || keyH.izquierdap == true || keyH.derechap == true){
             if(keyH.arribap == true){
                 direccion= "up";
-                y -= velocidad;
+                mundoy -= velocidad;
             }
             else if(keyH.abajop == true){
                 direccion="down";
-                y += velocidad;
+                mundoy += velocidad;
             }
             else if(keyH.izquierdap == true){
                 direccion="left";
-                x -= velocidad;
+                mundox -= velocidad;
             }
             else if(keyH.derechap == true){
                 direccion="right";
-                x += velocidad;
+                mundox += velocidad;
             }
             contadorSprite++;
             if(contadorSprite>12){
@@ -104,6 +110,6 @@ public class jugador extends entidad{
                     imagen = right2;
             } break;
         }
-        g2.drawImage(imagen,x,y,gp.tileSize, gp.tileSize, null);
+        g2.drawImage(imagen,pantallax,pantallay,gp.tileSize, gp.tileSize, null);
     }
 }
