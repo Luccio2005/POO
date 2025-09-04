@@ -4,15 +4,20 @@ import Main.Panel_de_Juego;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class administradordesuelo {
     Panel_de_Juego gp;
     suelo[] suelo;
+    int mapaNum[][];
 
     public administradordesuelo(Panel_de_Juego gp){
         this.gp = gp;
 
         suelo = new suelo[10];
+        mapaNum = new int[gp.tamanoColumna][gp.tamanoFila];
         getTileImage();
 
     }
@@ -29,6 +34,31 @@ public class administradordesuelo {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    public void cargarMapa(){
+        try{
+            InputStream is = getClass().getResourceAsStream("/mapas/mapa01.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int columna=0;
+            int fila=0;
+            while (columna< gp.tamanoColumna && fila < gp.tamanoFila){
+                String linea = br.readLine();
+                while (columna < gp.tamanoColumna){
+                    String numeros[] = linea.split("");
+                    int num = Integer.parseInt(numeros[columna]);
+                    mapaNum[columna][fila]=num;
+                    columna++;
+                }
+                if(columna == gp.tamanoColumna){
+                    columna=0;
+                    fila++;
+                }
+            }
+            br.close();;
+        }catch (Exception e){
+
         }
     }
     public void dibujar(Graphics2D g2){
