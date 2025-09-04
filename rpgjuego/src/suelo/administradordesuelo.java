@@ -19,6 +19,7 @@ public class administradordesuelo {
         suelo = new suelo[10];
         mapaNum = new int[gp.tamanoColumna][gp.tamanoFila];
         getTileImage();
+        cargarMapa("/mapas/mapa01.txt");
 
     }
     public void getTileImage(){
@@ -36,9 +37,9 @@ public class administradordesuelo {
             e.printStackTrace();
         }
     }
-    public void cargarMapa(){
+    public void cargarMapa(String filePath){
         try{
-            InputStream is = getClass().getResourceAsStream("/mapas/mapa01.txt");
+            InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int columna=0;
@@ -46,7 +47,7 @@ public class administradordesuelo {
             while (columna< gp.tamanoColumna && fila < gp.tamanoFila){
                 String linea = br.readLine();
                 while (columna < gp.tamanoColumna){
-                    String numeros[] = linea.split("");
+                    String numeros[] = linea.split(" ");
                     int num = Integer.parseInt(numeros[columna]);
                     mapaNum[columna][fila]=num;
                     columna++;
@@ -67,7 +68,9 @@ public class administradordesuelo {
         int x=0;
         int y=0;
         while(columna < gp.tamanoColumna  && fila < gp.tamanoFila){
-            g2.drawImage(suelo[0].imagen, x, y, gp.tileSize, gp.tileSize,null);
+
+            int tileNum = mapaNum[columna][fila];
+            g2.drawImage(suelo[tileNum].imagen, x, y, gp.tileSize, gp.tileSize,null);
             columna++;
             x+= gp.tileSize;
             if(columna == gp.tamanoColumna){
