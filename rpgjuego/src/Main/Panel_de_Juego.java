@@ -11,10 +11,10 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     final int escala = 3;
 
     public final int tileSize = originalTileSize * escala;
-    final int tamanoColumna = 16;
-    final int tamanoFila = 12;
-    final int anchoPantalla = tileSize * tamanoColumna;
-    final int altoPantalla = tileSize * tamanoFila;
+    public final int tamanoColumna = 16;
+    public final int tamanoFila = 12;
+    public final int anchoPantalla = tileSize * tamanoColumna;
+    public final int altoPantalla = tileSize * tamanoFila;
 
     int FPS = 60;
 

@@ -32,9 +32,22 @@ public class administradordesuelo {
         }
     }
     public void dibujar(Graphics2D g2){
-        g2.drawImage(suelo[0].imagen,0,0,gp.tileSize,gp.tileSize,null);
-        g2.drawImage(suelo[1].imagen,48,0,gp.tileSize,gp.tileSize,null);
-        g2.drawImage(suelo[2].imagen,96,0,gp.tileSize,gp.tileSize,null);
+        int columna=0;
+        int fila=0;
+        int x=0;
+        int y=0;
+        while(columna < gp.tamanoColumna  && fila < gp.tamanoFila){
+            g2.drawImage(suelo[0].imagen, x, y, gp.tileSize, gp.tileSize,null);
+            columna++;
+            x+= gp.tileSize;
+            if(columna == gp.tamanoColumna){
+                columna=0;
+                x=0;
+                fila++;
+                y+= gp.tileSize;
+            }
+        }
+
 
     }
 
