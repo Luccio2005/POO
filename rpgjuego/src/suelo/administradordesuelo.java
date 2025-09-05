@@ -72,21 +72,23 @@ public class administradordesuelo {
         }
     }
     public void dibujar(Graphics2D g2){
-        int columna=0;
-        int fila=0;
-        int x=0;
-        int y=0;
-        while(columna < gp.tamanoColumna  && fila < gp.tamanoFila){
+        int columnammundo=0;
+        int filamundo=0;
 
-            int tileNum = mapaNum[columna][fila];
-            g2.drawImage(suelo[tileNum].imagen, x, y, gp.tileSize, gp.tileSize,null);
-            columna++;
-            x+= gp.tileSize;
-            if(columna == gp.tamanoColumna){
-                columna=0;
-                x=0;
-                fila++;
-                y+= gp.tileSize;
+        while(columnammundo < gp.maxWorldCol  && filamundo < gp.maxWorldRow){
+            int tileNum = mapaNum[columnammundo][filamundo];
+
+            int mundox = columnammundo * gp.tileSize;
+            int mundoy = filamundo * gp.tileSize;
+            int pantallax= mundox - gp.jugador.mundox + gp.jugador.pantallax;
+            int pantallay= mundoy - gp.jugador.mundoy + gp.jugador.pantallay;
+
+            g2.drawImage(suelo[tileNum].imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+            columnammundo++;
+
+            if(columnammundo == gp.maxWorldCol){
+                columnammundo=0;
+                filamundo++;
             }
         }
 

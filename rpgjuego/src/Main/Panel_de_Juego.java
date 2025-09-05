@@ -26,7 +26,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     administradordesuelo sueloM = new administradordesuelo(this);
     Teclado keyH = new Teclado();
     Thread gameThread;
-    jugador jugador= new jugador(this,keyH);
+    public jugador jugador= new jugador(this,keyH);
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
