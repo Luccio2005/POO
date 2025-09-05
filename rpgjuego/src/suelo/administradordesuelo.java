@@ -83,7 +83,13 @@ public class administradordesuelo {
             int pantallax= mundox - gp.jugador.mundox + gp.jugador.pantallax;
             int pantallay= mundoy - gp.jugador.mundoy + gp.jugador.pantallay;
 
-            g2.drawImage(suelo[tileNum].imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+            if(mundox + gp.tileSize > gp.jugador.mundox - gp.jugador.pantallax &&
+               mundox - gp.tileSize < gp.jugador.mundox + gp.jugador.pantallax &&
+               mundoy + gp.tileSize > gp.jugador.mundoy - gp.jugador.pantallay &&
+               mundoy - gp.tileSize < gp.jugador.mundoy + gp.jugador.pantallay){
+                g2.drawImage(suelo[tileNum].imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+            }
+
             columnammundo++;
 
             if(columnammundo == gp.maxWorldCol){
