@@ -29,15 +29,18 @@ public class administradordesuelo {
 
             suelo[1] = new suelo();
             suelo[1].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/wall.png"));
+            suelo[1].colision = true;
 
             suelo[2] = new suelo();
             suelo[2].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/water01.png"));
+            suelo[2].colision = true;
 
             suelo[3] = new suelo();
             suelo[3].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/earth.png"));
 
             suelo[4] = new suelo();
             suelo[4].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/tree.png"));
+            suelo[4].colision = true;
 
             suelo[5] = new suelo();
             suelo[5].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/road00.png"));

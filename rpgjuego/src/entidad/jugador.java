@@ -22,6 +22,12 @@ public class jugador extends entidad{
         pantallax = gp.anchoPantalla/2 - (gp.tileSize/2);
         pantallay = gp.altoPantalla/2 - (gp.tileSize/2);
 
+        areadecolision = new Rectangle();
+        areadecolision.x = 5;
+        areadecolision.y = 10;
+        areadecolision.width=22;
+        areadecolision.height=22;
+
         valorespredeterminados();
         getPlayerImage();
 
