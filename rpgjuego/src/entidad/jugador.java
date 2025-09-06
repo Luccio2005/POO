@@ -74,6 +74,8 @@ public class jugador extends entidad{
                 direccion="right";
                 mundox += velocidad;
             }
+            colision = false;
+            gp.comprobar.comprobarsuelo(this);
             contadorSprite++;
             if(contadorSprite>12){
                 if(numeroSprite ==1){

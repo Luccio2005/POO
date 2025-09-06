@@ -26,6 +26,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     administradordesuelo sueloM = new administradordesuelo(this);
     Teclado keyH = new Teclado();
     Thread gameThread;
+    public comprobar_colisiones comprobar = new comprobar_colisiones(this);
     public jugador jugador= new jugador(this,keyH);
 
     public Panel_de_Juego(){
