@@ -23,10 +23,10 @@ public class jugador extends entidad{
         pantallay = gp.altoPantalla/2 - (gp.tileSize/2);
 
         areadecolision = new Rectangle();
-        areadecolision.x = 5;
-        areadecolision.y = 10;
-        areadecolision.width=22;
-        areadecolision.height=22;
+        areadecolision.x = 20;
+        areadecolision.y = 20;
+        areadecolision.width=8;
+        areadecolision.height=8;
 
         valorespredeterminados();
         getPlayerImage();
@@ -60,22 +60,35 @@ public class jugador extends entidad{
                 || keyH.izquierdap == true || keyH.derechap == true){
             if(keyH.arribap == true){
                 direccion= "up";
-                mundoy -= velocidad;
             }
             else if(keyH.abajop == true){
                 direccion="down";
-                mundoy += velocidad;
             }
             else if(keyH.izquierdap == true){
                 direccion="left";
-                mundox -= velocidad;
             }
             else if(keyH.derechap == true){
                 direccion="right";
-                mundox += velocidad;
             }
             colision = false;
             gp.comprobar.comprobarsuelo(this);
+
+            if(colision == false){
+                switch (direccion){
+                    case "up":
+                        mundoy -= velocidad;
+                        break;
+                    case "down":
+                        mundoy += velocidad;
+                        break;
+                    case "left":
+                        mundox -= velocidad;
+                        break;
+                    case "right":
+                        mundox += velocidad;
+                        break;
+                }
+            }
             contadorSprite++;
             if(contadorSprite>12){
                 if(numeroSprite ==1){

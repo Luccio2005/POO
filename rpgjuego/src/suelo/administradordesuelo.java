@@ -10,8 +10,8 @@ import java.io.InputStreamReader;
 
 public class administradordesuelo {
     Panel_de_Juego gp;
-    suelo[] suelo;
-    int mapaNum[][];
+    public suelo[] suelo;
+    public int mapaNum[][];
 
     public administradordesuelo(Panel_de_Juego gp){
         this.gp = gp;
