@@ -81,12 +81,21 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
     }
     public void actualizar(){
+
         jugador.actualizar();
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
+
         sueloM.dibujar(g2);
+
+        for(int i=0;i< obj.length;i++){
+            if(obj[i] !=null){
+                obj[i].dibujar(g2,this);
+            }
+        }
+
         jugador.dibujar(g2);
         g2.dispose();
     }
