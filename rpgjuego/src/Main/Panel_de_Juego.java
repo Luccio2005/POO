@@ -28,8 +28,10 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     Teclado keyH = new Teclado();
     Thread gameThread;
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);
+    public Activos aSetter = new Activos(this);
     public jugador jugador= new jugador(this,keyH);
     public Superobjeto obj[]=new Superobjeto[10];
+
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
@@ -37,6 +39,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setObject();
+
+
     }
     public void startGameThread(){
         gameThread = new Thread(this);
