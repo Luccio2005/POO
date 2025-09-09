@@ -1,6 +1,7 @@
 package Main;
 
 import entidad.jugador;
+import objeto.Superobjeto;
 import suelo.administradordesuelo;
 
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     Thread gameThread;
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);
     public jugador jugador= new jugador(this,keyH);
+    public Superobjeto obj[]=new Superobjeto[10];
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
