@@ -52,4 +52,32 @@ public class comprobar_colisiones {
         }
 
     }
+    public int comprobarobjeto(entidad entidad, boolean jugador){
+        int indice = 999;
+        for(int i =0;i<gp.obj.length;i++){
+            if(gp.obj[i] !=null){
+                entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
+                entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
+
+                gp.obj[i].areadecolision.x =  gp.obj[i].mundox + gp.obj[i].areadecolision.x;
+                gp.obj[i].areadecolision.y =  gp.obj[i].mundoy + gp.obj[i].areadecolision.y;
+
+                switch (entidad.direccion){
+                    case "up":
+                        entidad.areadecolision.y -= entidad.velocidad;
+                        break;
+                    case "down":
+                        entidad.areadecolision.y += entidad.velocidad;
+                        break;
+                    case "left":
+                        entidad.areadecolision.x -= entidad.velocidad;
+                        break;
+                    case "right":
+                        entidad.areadecolision.x += entidad.velocidad;
+                        break;
+                }
+            }
+        }
+        return indice;
+    }
 }
