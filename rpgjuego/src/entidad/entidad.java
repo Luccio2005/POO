@@ -12,5 +12,6 @@ public class entidad {
     public int numeroSprite=1;
 
     public Rectangle areadecolision;
+    public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
 }

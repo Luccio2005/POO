@@ -25,6 +25,8 @@ public class jugador extends entidad{
         areadecolision = new Rectangle();
         areadecolision.x = 20;
         areadecolision.y = 20;
+        areadecolisionx = areadecolision.x;
+        areadecolisiony = areadecolision.y;
         areadecolision.width=8;
         areadecolision.height=8;
 

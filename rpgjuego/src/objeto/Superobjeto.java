@@ -10,6 +10,9 @@ public class Superobjeto {
     public String nombre;
     public boolean colision = false;
     public int mundox, mundoy;
+    public Rectangle areadecolision = new Rectangle(0,0,48,48);
+    public int areadecolisionx = 0;
+    public int areadecolisiony = 0;
 
     public void dibujar(Graphics2D g2, Panel_de_Juego gp){
         int pantallax= mundox - gp.jugador.mundox + gp.jugador.pantallax;
