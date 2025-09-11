@@ -65,17 +65,33 @@ public class comprobar_colisiones {
                 switch (entidad.direccion){
                     case "up":
                         entidad.areadecolision.y -= entidad.velocidad;
+                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
+                            System.out.println("up colision");
+                        }
                         break;
                     case "down":
                         entidad.areadecolision.y += entidad.velocidad;
+                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
+                            System.out.println("down colision");
+                        }
                         break;
                     case "left":
                         entidad.areadecolision.x -= entidad.velocidad;
+                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
+                            System.out.println("left colision");
+                        }
                         break;
                     case "right":
                         entidad.areadecolision.x += entidad.velocidad;
+                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
+                            System.out.println("right colision");
+                        }
                         break;
                 }
+                entidad.areadecolision.x = entidad.areadecolisionx;
+                entidad.areadecolision.y = entidad.areadecolisiony;
+                gp.obj[i].areadecolision.x = gp.obj[i].areadecolisionx;
+                gp.obj[i].areadecolision.y = gp.obj[i].areadecolisiony;
             }
         }
         return indice;
