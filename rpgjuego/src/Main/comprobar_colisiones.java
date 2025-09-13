@@ -66,25 +66,45 @@ public class comprobar_colisiones {
                     case "up":
                         entidad.areadecolision.y -= entidad.velocidad;
                         if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            System.out.println("up colision");
+                            if(gp.obj[i].colision == true){
+                                entidad.colision = true;
+                            }
+                            if(jugador == true){
+                                indice=i;
+                            }
                         }
                         break;
                     case "down":
                         entidad.areadecolision.y += entidad.velocidad;
                         if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            System.out.println("down colision");
+                            if(gp.obj[i].colision == true){
+                                entidad.colision = true;
+                            }
+                            if(jugador == true){
+                                indice=i;
+                            }
                         }
                         break;
                     case "left":
                         entidad.areadecolision.x -= entidad.velocidad;
                         if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            System.out.println("left colision");
+                            if(gp.obj[i].colision == true){
+                                entidad.colision = true;
+                            }
+                            if(jugador == true){
+                                indice=i;
+                            }
                         }
                         break;
                     case "right":
                         entidad.areadecolision.x += entidad.velocidad;
                         if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            System.out.println("right colision");
+                            if(gp.obj[i].colision == true){
+                                entidad.colision = true;
+                            }
+                            if(jugador == true){
+                                indice=i;
+                            }
                         }
                         break;
                 }
