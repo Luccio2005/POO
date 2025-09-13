@@ -75,6 +75,8 @@ public class jugador extends entidad{
             colision = false;
             gp.comprobar.comprobarsuelo(this);
 
+            int objindice= gp.comprobar.comprobarobjeto(this,true);
+
             if(colision == false){
                 switch (direccion){
                     case "up":
