@@ -1,6 +1,7 @@
 package Main;
 
 import objeto.Obj_Door;
+import objeto.Obj_boots;
 import objeto.Obj_chest;
 import objeto.Obj_key;
 
@@ -37,6 +38,10 @@ public class Activos {
         gp.obj[6] = new Obj_chest();
         gp.obj[6].mundox=10* gp.tileSize;
         gp.obj[6].mundoy=7* gp.tileSize;
+
+        gp.obj[7] = new Obj_boots();
+        gp.obj[7].mundox=37* gp.tileSize;
+        gp.obj[7].mundoy=42* gp.tileSize;
 
 
     }

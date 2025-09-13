@@ -122,6 +122,10 @@ public class jugador extends entidad{
                     }
                     System.out.println("llaves: "+tenerllave);
                     break;
+                case "botas":
+                    velocidad +=3;
+                    gp.obj[i]= null;
+                    break;
             }
         }
 
