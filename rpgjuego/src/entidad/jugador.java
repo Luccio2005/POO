@@ -14,6 +14,7 @@ public class jugador extends entidad{
 
     public final int pantallax;
     public final int pantallay;
+    int tenerllave =0;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         this.gp =gp;
@@ -76,6 +77,7 @@ public class jugador extends entidad{
             gp.comprobar.comprobarsuelo(this);
 
             int objindice= gp.comprobar.comprobarobjeto(this,true);
+            recogerobjeto(objindice);
 
             if(colision == false){
                 switch (direccion){
@@ -103,6 +105,27 @@ public class jugador extends entidad{
                 contadorSprite=0;
         }
         }
+    }
+    public void recogerobjeto (int i){
+        if(i != 999){
+            String nombreobj = gp.obj[i].nombre;
+            switch (nombreobj){
+                case "llave":
+                    tenerllave++;
+                    gp.obj[i]=null;
+                    System.out.println("llaves: "+tenerllave);
+                    break;
+                case "puerta":
+                    if(tenerllave>0){
+                        gp.obj[i]=null;
+                        tenerllave--;
+                    }
+                    System.out.println("llaves: "+tenerllave);
+                    break;
+            }
+        }
+
+
     }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);
