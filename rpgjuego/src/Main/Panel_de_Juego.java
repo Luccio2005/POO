@@ -19,16 +19,16 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
-    public final int anchoMundo = tileSize * maxWorldCol;
-    public final int altoMundo = tileSize * maxWorldRow;
 
     int FPS = 60;
 
     administradordesuelo sueloM = new administradordesuelo(this);
     Teclado keyH = new Teclado();
-    Thread gameThread;
+    sonido sonido= new sonido();
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);
     public Activos aSetter = new Activos(this);
+    Thread gameThread;
+
     public jugador jugador= new jugador(this,keyH);
     public Superobjeto obj[]=new Superobjeto[10];
 
@@ -43,6 +43,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     public void setupGame(){
         aSetter.setObject();
+        playMusic(0);
 
 
     }
@@ -99,16 +100,18 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         jugador.dibujar(g2);
         g2.dispose();
     }
-
-
-    public int getAnchoPantalla() {
-        return anchoPantalla;
+    public void playMusic(int i){
+        sonido.setFile(i);
+        sonido.play();
+        sonido.loop();
+    }
+    public void stopMusic(){
+        sonido.stop();
+    }
+    public void playSE(int i){
+        sonido.setFile(i);
+        sonido.play();
     }
 
-    public int getAltoPantalla() {
-        return altoPantalla;
-    }
 
-    public int getTileSize() {
-        return tileSize;
-    }}
+    }

@@ -9,8 +9,7 @@ public class Main {
         window.setTitle("JUEGO RPG");
 
         Panel_de_Juego paneldejuego = new Panel_de_Juego();
-        System.out.println("Tamaño de pantalla: " + paneldejuego.getAnchoPantalla() + "x" + paneldejuego.getAltoPantalla());
-
+        
 
         window.add(paneldejuego);
 
