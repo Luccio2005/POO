@@ -9,7 +9,7 @@ public class Main {
         window.setTitle("JUEGO RPG");
 
         Panel_de_Juego paneldejuego = new Panel_de_Juego();
-        
+
 
         window.add(paneldejuego);
 
