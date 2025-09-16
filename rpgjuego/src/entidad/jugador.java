@@ -14,7 +14,7 @@ public class jugador extends entidad{
 
     public final int pantallax;
     public final int pantallay;
-    int tenerllave =0;
+    public int tenerllave =0;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         this.gp =gp;
