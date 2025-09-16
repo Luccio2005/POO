@@ -114,20 +114,23 @@ public class jugador extends entidad{
                     gp.playSE(1);
                     tenerllave++;
                     gp.obj[i]=null;
-                    System.out.println("llaves: "+tenerllave);
+                    gp.ui.mostrarmensaje("conseguiste una llave");
                     break;
                 case "puerta":
                     gp.playSE(3);
                     if(tenerllave>0){
                         gp.obj[i]=null;
                         tenerllave--;
+                        gp.ui.mostrarmensaje("has abierto la puerta");
+                    }else{
+                        gp.ui.mostrarmensaje("no tienes ninguna llave");
                     }
-                    System.out.println("llaves: "+tenerllave);
                     break;
                 case "botas":
                     gp.playSE(2);
                     velocidad +=3;
                     gp.obj[i]= null;
+                    gp.ui.mostrarmensaje("acelera");
                     break;
             }
         }
