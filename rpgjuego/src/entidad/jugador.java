@@ -132,6 +132,11 @@ public class jugador extends entidad{
                     gp.obj[i]= null;
                     gp.ui.mostrarmensaje("acelera");
                     break;
+                case "cofre":
+                    gp.ui.juegoterminado = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
+                    break;
             }
         }
 
