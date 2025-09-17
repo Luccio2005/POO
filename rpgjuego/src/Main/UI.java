@@ -4,6 +4,7 @@ import objeto.Obj_key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 public class UI {
     Panel_de_Juego gp;
@@ -13,6 +14,9 @@ public class UI {
     public String mensaje = "";
     int mensajeContador = 0;
     public boolean juegoterminado = false;
+
+    double tiempodeJuego;
+    DecimalFormat dformato = new DecimalFormat("#0.00");
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
@@ -39,6 +43,12 @@ public class UI {
             y = gp.altoPantalla/2 - (gp.tileSize*3);
             g2.drawString(texto,x,y);
 
+            texto= "Tiempo: "+dformato.format(tiempodeJuego)+"!";
+            textolength = (int)g2.getFontMetrics().getStringBounds(texto,g2).getWidth();
+            x = gp.anchoPantalla/2 - textolength/2;
+            y = gp.altoPantalla/2 + (gp.tileSize*4);
+            g2.drawString(texto,x,y);
+
             g2.setFont(arial_80B);
             g2.setColor(Color.yellow);
             texto= "Felicidades!!";
@@ -55,6 +65,9 @@ public class UI {
             g2.setColor(Color.white);
             g2.drawImage(imagenllave,gp.tileSize/2,gp.tileSize/2, gp.tileSize, gp.tileSize, null);
             g2.drawString("x "+gp.jugador.tenerllave,74,65);
+
+            tiempodeJuego += (double)1/60;
+            g2.drawString("Time:"+dformato.format(tiempodeJuego),gp.tileSize*11,65);
 
             if(mensajeOn == true){
                 g2.setFont(g2.getFont().deriveFont(30F));
