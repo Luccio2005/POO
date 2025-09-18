@@ -174,5 +174,7 @@ public class jugador extends entidad{
             } break;
         }
         g2.drawImage(imagen,pantallax,pantallay,gp.tileSize, gp.tileSize, null);
+        //g2.setColor(Color.red);
+        //g2.drawRect(pantallax+ areadecolision.x, pantallay+areadecolision.y, areadecolision.width,areadecolision.height);
     }
 }
