@@ -1,5 +1,6 @@
 package suelo;
 
+import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 
 import javax.imageio.ImageIO;
@@ -23,31 +24,25 @@ public class administradordesuelo {
 
     }
     public void getTileImage(){
+            setup(0,"grass",false);
+            setup(1,"wall",true);
+            setup(2,"water01",true);
+            setup(3,"earth",false);
+            setup(4,"tree",true);
+            setup(5,"road00",false);
+    }
+    public void setup(int indice, String nombreimagen, boolean colision){
+        Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
+
         try{
-            suelo[0] = new suelo();
-            suelo[0].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/grass00.png"));
-
-            suelo[1] = new suelo();
-            suelo[1].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/wall.png"));
-            suelo[1].colision = true;
-
-            suelo[2] = new suelo();
-            suelo[2].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/water01.png"));
-            suelo[2].colision = true;
-
-            suelo[3] = new suelo();
-            suelo[3].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/earth.png"));
-
-            suelo[4] = new suelo();
-            suelo[4].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/tree.png"));
-            suelo[4].colision = true;
-
-            suelo[5] = new suelo();
-            suelo[5].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/road00.png"));
-
+            suelo[indice] = new suelo();
+            suelo[indice].imagen = ImageIO.read(getClass().getResourceAsStream("/suelo/"+nombreimagen+".png"));
+            suelo[indice].imagen = Herramienta.Imagenescala(suelo[indice].imagen,gp.tileSize, gp.tileSize);
+            suelo[indice].colision = colision;
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     public void cargarMapa(String filePath){
         try{
@@ -90,7 +85,7 @@ public class administradordesuelo {
                mundox - gp.tileSize < gp.jugador.mundox + gp.jugador.pantallax &&
                mundoy + gp.tileSize > gp.jugador.mundoy - gp.jugador.pantallay &&
                mundoy - gp.tileSize < gp.jugador.mundoy + gp.jugador.pantallay){
-                g2.drawImage(suelo[tileNum].imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+                g2.drawImage(suelo[tileNum].imagen, pantallax, pantallay,null);
             }
 
             columnammundo++;
