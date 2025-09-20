@@ -1,5 +1,6 @@
 package objeto;
 
+import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class Superobjeto {
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public int areadecolisionx = 0;
     public int areadecolisiony = 0;
+    Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
 
     public void dibujar(Graphics2D g2, Panel_de_Juego gp){
         int pantallax= mundox - gp.jugador.mundox + gp.jugador.pantallax;

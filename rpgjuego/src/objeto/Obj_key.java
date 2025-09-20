@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class Obj_key extends Superobjeto{
+    
     public Obj_key() {
         nombre="llave";
         try{

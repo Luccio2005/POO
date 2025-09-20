@@ -1,4 +1,5 @@
 package entidad;
+import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 import Main.Teclado;
 
@@ -42,21 +43,26 @@ public class jugador extends entidad{
         direccion= "down";
     }
     public void getPlayerImage(){
+
+        up1= setup("Arriba1-1");
+        up2= setup("Arriba1-2");
+        down1= setup("Abajo1-1");
+        down2= setup("Abajo1-2");
+        left1= setup("Izquierda1-1");
+        left2= setup("Izquierda1-2");
+        right1= setup("Derecha1-1");
+        right2= setup("Derecha1-2");
+    }
+    public BufferedImage setup(String nombreimagen){
+        Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
+        BufferedImage imagen = null;
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/jugador/Arriba1-1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/jugador/Arriba1-2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/jugador/Abajo1-1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/jugador/Abajo1-2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/jugador/Izquierda1-1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/jugador/Izquierda1-2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/jugador/Derecha1-1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/jugador/Derecha1-2.png"));
-
-
-        }catch(IOException e){
+            imagen = ImageIO.read(getClass().getResourceAsStream("/jugador/"+nombreimagen+".png"));
+            imagen = Herramienta.Imagenescala(imagen, gp.tileSize, gp.tileSize);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return imagen;
     }
     public void actualizar(){
         if(keyH.arribap == true || keyH.abajop ==true
@@ -173,7 +179,7 @@ public class jugador extends entidad{
                     imagen = right2;
             } break;
         }
-        g2.drawImage(imagen,pantallax,pantallay,gp.tileSize, gp.tileSize, null);
+        g2.drawImage(imagen,pantallax,pantallay, null);
         //g2.setColor(Color.red);
         //g2.drawRect(pantallax+ areadecolision.x, pantallay+areadecolision.y, areadecolision.width,areadecolision.height);
     }
