@@ -15,7 +15,7 @@ public class jugador extends entidad{
 
     public final int pantallax;
     public final int pantallay;
-    public int tenerllave =0;
+    //public int tenerllave =0;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         this.gp =gp;
@@ -114,36 +114,7 @@ public class jugador extends entidad{
     }
     public void recogerobjeto (int i){
         if(i != 999){
-            String nombreobj = gp.obj[i].nombre;
-            switch (nombreobj){
-                case "llave":
-                    gp.playSE(1);
-                    tenerllave++;
-                    gp.obj[i]=null;
-                    gp.ui.mostrarmensaje("conseguiste una llave");
-                    break;
-                case "puerta":
-                    gp.playSE(3);
-                    if(tenerllave>0){
-                        gp.obj[i]=null;
-                        tenerllave--;
-                        gp.ui.mostrarmensaje("has abierto la puerta");
-                    }else{
-                        gp.ui.mostrarmensaje("no tienes ninguna llave");
-                    }
-                    break;
-                case "botas":
-                    gp.playSE(2);
-                    velocidad +=3;
-                    gp.obj[i]= null;
-                    gp.ui.mostrarmensaje("acelera");
-                    break;
-                case "cofre":
-                    gp.ui.juegoterminado = true;
-                    gp.stopMusic();
-                    gp.playSE(4);
-                    break;
-            }
+
         }
 
 

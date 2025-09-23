@@ -23,7 +23,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     int FPS = 60;
 
     administradordesuelo sueloM = new administradordesuelo(this);
-    Teclado keyH = new Teclado();
+    Teclado keyH = new Teclado(this);
     sonido se= new sonido();
     sonido musica = new sonido();
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);
@@ -34,7 +34,9 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public jugador jugador= new jugador(this,keyH);
     public Superobjeto obj[]=new Superobjeto[10];
 
-
+    public int estadodeljuego;
+    public final int reanudar = 1;
+    public final int pausar =2;
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
         this.setBackground(Color.black);
@@ -46,6 +48,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void setupGame(){
         aSetter.setObject();
         playMusic(0);
+        stopMusic();
+        estadodeljuego = reanudar;
 
 
     }
@@ -84,8 +88,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
     }
     public void actualizar(){
+        if(estadodeljuego == reanudar){
+            jugador.actualizar();
+        }
+        if(estadodeljuego == pausar){
 
-        jugador.actualizar();
+        }
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
