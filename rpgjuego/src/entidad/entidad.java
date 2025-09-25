@@ -32,6 +32,8 @@ public class entidad {
         setaction();
         colision = false;
         gp.comprobar.comprobarsuelo(this);
+        gp.comprobar.comprobarobjeto(this, false);
+        gp.comprobar.comprobarjugador(this);
 
         if(colision == false){
             switch (direccion){

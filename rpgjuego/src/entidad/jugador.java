@@ -74,6 +74,9 @@ public class jugador extends entidad{
             int objindice= gp.comprobar.comprobarobjeto(this,true);
             recogerobjeto(objindice);
 
+            // comprobar la colision del npc
+            int indicenpc = gp.comprobar.comprobarentidad(this, gp.npc);
+            interactuarnpc(indicenpc);
             if(colision == false){
                 switch (direccion){
                     case "up":
@@ -103,10 +106,12 @@ public class jugador extends entidad{
     }
     public void recogerobjeto (int i){
         if(i != 999){
-
         }
-
-
+    }
+    public void interactuarnpc(int i){
+        if(i != 999){
+            System.out.println("chocas con npc");
+        }
     }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);

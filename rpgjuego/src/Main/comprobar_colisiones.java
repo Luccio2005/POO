@@ -116,4 +116,92 @@ public class comprobar_colisiones {
         }
         return indice;
     }
+    // npc o monstruo colision
+    public int comprobarentidad(entidad entidad, entidad[] target){
+        int indice = 999;
+        for(int i =0;i< target.length;i++){
+            if(target[i] !=null){
+                entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
+                entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
+
+                target[i].areadecolision.x =  target[i].mundox + target[i].areadecolision.x;
+                target[i].areadecolision.y =  target[i].mundoy + target[i].areadecolision.y;
+
+                switch (entidad.direccion){
+                    case "up":
+                        entidad.areadecolision.y -= entidad.velocidad;
+                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
+                                entidad.colision = true;
+                                indice=i;
+                        }
+                        break;
+                    case "down":
+                        entidad.areadecolision.y += entidad.velocidad;
+                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
+                                entidad.colision = true;
+                                indice=i;
+                        }
+                        break;
+                    case "left":
+                        entidad.areadecolision.x -= entidad.velocidad;
+                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
+                                entidad.colision = true;
+                                indice=i;
+                        }
+                        break;
+                    case "right":
+                        entidad.areadecolision.x += entidad.velocidad;
+                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
+                                entidad.colision = true;
+                                indice=i;
+                        }
+                        break;
+                }
+                entidad.areadecolision.x = entidad.areadecolisionx;
+                entidad.areadecolision.y = entidad.areadecolisiony;
+                target[i].areadecolision.x = target[i].areadecolisionx;
+                target[i].areadecolision.y = target[i].areadecolisiony;
+            }
+        }
+        return indice;
+    }
+    public void comprobarjugador(entidad entidad){
+        entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
+        entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
+
+        gp.jugador.areadecolision.x =  gp.jugador.mundox + gp.jugador.areadecolision.x;
+        gp.jugador.areadecolision.y =  gp.jugador.mundoy + gp.jugador.areadecolision.y;
+
+        switch (entidad.direccion){
+            case "up":
+                entidad.areadecolision.y -= entidad.velocidad;
+                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
+                    entidad.colision = true;
+                }
+                break;
+            case "down":
+                entidad.areadecolision.y += entidad.velocidad;
+                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
+                    entidad.colision = true;
+                }
+                break;
+            case "left":
+                entidad.areadecolision.x -= entidad.velocidad;
+                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
+                    entidad.colision = true;
+                }
+                break;
+            case "right":
+                entidad.areadecolision.x += entidad.velocidad;
+                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
+                    entidad.colision = true;
+                }
+                break;
+        }
+        entidad.areadecolision.x = entidad.areadecolisionx;
+        entidad.areadecolision.y = entidad.areadecolisiony;
+        gp.jugador.areadecolision.x = gp.jugador.areadecolisionx;
+        gp.jugador.areadecolision.y = gp.jugador.areadecolisiony;
+
+    }
 }
