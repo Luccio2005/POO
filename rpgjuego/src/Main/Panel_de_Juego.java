@@ -1,5 +1,6 @@
 package Main;
 
+import entidad.entidad;
 import entidad.jugador;
 import objeto.Superobjeto;
 import suelo.administradordesuelo;
@@ -33,6 +34,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     public jugador jugador= new jugador(this,keyH);
     public Superobjeto obj[]=new Superobjeto[10];
+    public entidad npc[] = new entidad[10];
 
     public int estadodeljuego;
     public final int reanudar = 1;
@@ -47,6 +49,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     public void setupGame(){
         aSetter.setObject();
+        aSetter.setnpc();
         playMusic(0);
         stopMusic();
         estadodeljuego = reanudar;
@@ -104,6 +107,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         for(int i=0;i< obj.length;i++){
             if(obj[i] !=null){
                 obj[i].dibujar(g2,this);
+            }
+        }
+        for(int i=0;i< npc.length;i++){
+            if(npc[i] !=null){
+                npc[i].dibujar(g2);
             }
         }
 

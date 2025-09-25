@@ -24,6 +24,51 @@ public class entidad {
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
     }
+    public void setaction(){
+
+    }
+    public void actualizar(){
+
+    }
+    public void dibujar(Graphics2D g2){
+        BufferedImage imagen=null;
+        int pantallax= mundox - gp.jugador.mundox + gp.jugador.pantallax;
+        int pantallay= mundoy - gp.jugador.mundoy + gp.jugador.pantallay;
+
+        if(mundox + gp.tileSize > gp.jugador.mundox - gp.jugador.pantallax &&
+                mundox - gp.tileSize < gp.jugador.mundox + gp.jugador.pantallax &&
+                mundoy + gp.tileSize > gp.jugador.mundoy - gp.jugador.pantallay &&
+                mundoy - gp.tileSize < gp.jugador.mundoy + gp.jugador.pantallay){
+            switch (direccion){
+                case "up":
+                    if(numeroSprite ==1){
+                        imagen = up1;
+                    }if(numeroSprite ==2){
+                    imagen = up2;
+                }
+                    break;
+                case "down":
+                    if(numeroSprite ==1){
+                        imagen = down1;
+                    }if(numeroSprite ==2){
+                    imagen = down2;
+                } break;
+                case "left":
+                    if(numeroSprite ==1){
+                        imagen = left1;
+                    }if(numeroSprite ==2){
+                    imagen = left2;
+                } break;
+                case "right":
+                    if(numeroSprite ==1){
+                        imagen = right1;
+                    }if(numeroSprite ==2){
+                    imagen = right2;
+                } break;
+            }
+            g2.drawImage(imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+        }
+    }
 
     public BufferedImage setup(String nombreimagen){
         Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();

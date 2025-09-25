@@ -1,5 +1,6 @@
 package Main;
 
+import entidad.npc_oldman;
 import objeto.Obj_Door;
 import objeto.Obj_boots;
 import objeto.Obj_chest;
@@ -11,8 +12,11 @@ public class Activos {
         this.gp = gp;
     }
     public void setObject(){
-
-
-
+    }
+    public void setnpc(){
+        gp.npc[0]= new npc_oldman(gp);
+        gp.npc[0].mundox = gp.tileSize*21;
+        gp.npc[0].mundoy = gp.tileSize*21;
     }
 }
+
