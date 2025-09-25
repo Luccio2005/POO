@@ -27,16 +27,21 @@ public class npc_oldman extends entidad{
         right2= setup("/npc/oldman_right_2");
     }
     public void setaction(){
-        Random random = new Random();
-        int i = random.nextInt(100)+1;
-        if(i<=25){
-            direccion = "up";
-        } if(i>25 && i<=50){
-            direccion = "down";
-        } if(i>50 && i <=75){
-            direccion = "left";
-        } if(i>75 && i<=100){
-            direccion = "right";
+        bloqueodeaccion ++;
+        if(bloqueodeaccion ==120){
+            Random random = new Random();
+            int i = random.nextInt(100)+1;
+            if(i<=25){
+                direccion = "up";
+            } if(i>25 && i<=50){
+                direccion = "down";
+            } if(i>50 && i <=75){
+                direccion = "left";
+            } if(i>75 && i<=100){
+                direccion = "right";
+            }
+            bloqueodeaccion = 0;
         }
+
     }
 }

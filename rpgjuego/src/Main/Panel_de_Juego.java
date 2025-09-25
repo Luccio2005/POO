@@ -93,6 +93,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void actualizar(){
         if(estadodeljuego == reanudar){
             jugador.actualizar();
+
+            for(int i =0; i< npc.length; i++){
+                if(npc[i] !=null){
+                    npc[i].actualizar();
+                }
+            }
         }
         if(estadodeljuego == pausar){
 

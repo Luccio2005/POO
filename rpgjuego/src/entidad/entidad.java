@@ -20,6 +20,7 @@ public class entidad {
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
+    public  int bloqueodeaccion =0;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
@@ -28,7 +29,35 @@ public class entidad {
 
     }
     public void actualizar(){
+        setaction();
+        colision = false;
+        gp.comprobar.comprobarsuelo(this);
 
+        if(colision == false){
+            switch (direccion){
+                case "up":
+                    mundoy -= velocidad;
+                    break;
+                case "down":
+                    mundoy += velocidad;
+                    break;
+                case "left":
+                    mundox -= velocidad;
+                    break;
+                case "right":
+                    mundox += velocidad;
+                    break;
+            }
+        }
+        contadorSprite++;
+        if(contadorSprite>12){
+            if(numeroSprite ==1){
+                numeroSprite = 2;}
+            else if(numeroSprite ==2){
+                numeroSprite=1;
+            }
+            contadorSprite=0;
+        }
     }
     public void dibujar(Graphics2D g2){
         BufferedImage imagen=null;
