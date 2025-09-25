@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class jugador extends entidad{
-    Panel_de_Juego gp;
     Teclado keyH;
 
     public final int pantallax;
@@ -18,7 +17,7 @@ public class jugador extends entidad{
     //public int tenerllave =0;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
-        this.gp =gp;
+        super(gp);
         this.keyH = keyH;
 
         pantallax = gp.anchoPantalla/2 - (gp.tileSize/2);
@@ -44,26 +43,16 @@ public class jugador extends entidad{
     }
     public void getPlayerImage(){
 
-        up1= setup("Arriba1-1");
-        up2= setup("Arriba1-2");
-        down1= setup("Abajo1-1");
-        down2= setup("Abajo1-2");
-        left1= setup("Izquierda1-1");
-        left2= setup("Izquierda1-2");
-        right1= setup("Derecha1-1");
-        right2= setup("Derecha1-2");
+        up1= setup("/jugador/Arriba1-1");
+        up2= setup("/jugador/Arriba1-2");
+        down1= setup("/jugador/Abajo1-1");
+        down2= setup("/jugador/Abajo1-2");
+        left1= setup("/jugador/Izquierda1-1");
+        left2= setup("/jugador/Izquierda1-2");
+        right1= setup("/jugador/Derecha1-1");
+        right2= setup("/jugador/Derecha1-2");
     }
-    public BufferedImage setup(String nombreimagen){
-        Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
-        BufferedImage imagen = null;
-        try{
-            imagen = ImageIO.read(getClass().getResourceAsStream("/jugador/"+nombreimagen+".png"));
-            imagen = Herramienta.Imagenescala(imagen, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return imagen;
-    }
+
     public void actualizar(){
         if(keyH.arribap == true || keyH.abajop ==true
                 || keyH.izquierdap == true || keyH.derechap == true){
