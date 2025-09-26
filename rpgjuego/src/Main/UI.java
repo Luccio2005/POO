@@ -59,6 +59,10 @@ public class UI {
         Color c = new Color(0,0,0);
         g2.setColor(c);
         g2.fillRoundRect(x,y,ancho,alto,35,35);
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5,y+5,ancho-10,alto-10,25,25);
     }
     public int getxforcenteredtext(String texto){
         int length = (int)g2.getFontMetrics().getStringBounds(texto,g2).getWidth();
