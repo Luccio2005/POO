@@ -29,6 +29,9 @@ public class npc_oldman extends entidad{
     }
     public void setdialogo(){
         dialogos[0]= "Holaaaaaaaaa";
+        dialogos[1]= "asi q viniste a esta isla a encontrar el tesoro";
+        dialogos[2]= "yo solia ser un gran hechicero, pero ahora.... digamos q estoy muy viejo para estas cosas";
+        dialogos[3]= "asi q buena suerte ";
     }
     public void setaction(){
         bloqueodeaccion ++;
@@ -48,6 +51,7 @@ public class npc_oldman extends entidad{
         }
     }
     public void hablar(){
-        gp.ui.dialogoactual = dialogos[0];
+        gp.ui.dialogoactual = dialogos[indicededialogos];
+        indicededialogos++;
     }
 }

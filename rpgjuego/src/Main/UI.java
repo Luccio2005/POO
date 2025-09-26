@@ -55,6 +55,7 @@ public class UI {
         int ancho = gp.anchoPantalla - (gp.tileSize*4);
         int alto = gp.tileSize*4;
         dibujarpestana(x,y,ancho,alto);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
         x += gp.tileSize;
         y += gp.tileSize;
         g2.drawString(dialogoactual,x,y);

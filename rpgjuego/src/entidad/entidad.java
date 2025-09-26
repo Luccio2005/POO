@@ -21,6 +21,7 @@ public class entidad {
     public boolean colision = false;
     public  int bloqueodeaccion =0;
     String dialogos[]= new String[20];
+    int indicededialogos = 0;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
