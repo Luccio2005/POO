@@ -111,6 +111,7 @@ public class jugador extends entidad{
     public void interactuarnpc(int i){
         if(i != 999){
             gp.estadodeljuego = gp.dialogo;
+            gp.npc[i].hablar();
         }
     }
     public void dibujar(Graphics2D g2){

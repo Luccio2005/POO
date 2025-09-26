@@ -15,6 +15,7 @@ public class UI {
     public String mensaje = "";
     int mensajeContador = 0;
     public boolean juegoterminado = false;
+    public String dialogoactual = "";
 
 
     public UI(Panel_de_Juego gp){
@@ -54,6 +55,9 @@ public class UI {
         int ancho = gp.anchoPantalla - (gp.tileSize*4);
         int alto = gp.tileSize*4;
         dibujarpestana(x,y,ancho,alto);
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString(dialogoactual,x,y);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);

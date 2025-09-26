@@ -16,17 +16,18 @@ public class entidad {
     public String direccion;
     public int contadorSprite=0;
     public int numeroSprite=1;
-
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
     public  int bloqueodeaccion =0;
+    String dialogos[]= new String[20];
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
     }
     public void setaction(){
-
+    }
+    public void hablar(){
     }
     public void actualizar(){
         setaction();

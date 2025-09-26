@@ -14,6 +14,7 @@ public class npc_oldman extends entidad{
         direccion = "down";
         velocidad=1;
         getImage();
+        setdialogo();
     }
     public void getImage(){
 
@@ -25,6 +26,9 @@ public class npc_oldman extends entidad{
         left2= setup("/npc/oldman_left_2");
         right1= setup("/npc/oldman_right_1");
         right2= setup("/npc/oldman_right_2");
+    }
+    public void setdialogo(){
+        dialogos[0]= "Holaaaaaaaaa";
     }
     public void setaction(){
         bloqueodeaccion ++;
@@ -42,6 +46,8 @@ public class npc_oldman extends entidad{
             }
             bloqueodeaccion = 0;
         }
-
+    }
+    public void hablar(){
+        gp.ui.dialogoactual = dialogos[0];
     }
 }
