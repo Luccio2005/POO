@@ -52,7 +52,7 @@ public class UI {
         int x = gp.tileSize*2;
         int y = gp.tileSize/2;
         int ancho = gp.anchoPantalla - (gp.tileSize*4);
-        int alto = gp.tileSize*5;
+        int alto = gp.tileSize*4;
         dibujarpestana(x,y,ancho,alto);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
