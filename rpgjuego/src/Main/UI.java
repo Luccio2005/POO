@@ -10,21 +10,18 @@ public class UI {
     Panel_de_Juego gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
-    //BufferedImage imagenllave;
+
     public boolean mensajeOn= false;
     public String mensaje = "";
     int mensajeContador = 0;
     public boolean juegoterminado = false;
 
-    double tiempodeJuego;
-    DecimalFormat dformato = new DecimalFormat("#0.00");
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
         arial_40= new Font("Arial",Font.PLAIN,40);
         arial_80B= new Font("Arial",Font.BOLD,80);
-        //Obj_key key = new Obj_key(gp);
-       // imagenllave = key.imagen;
+
     }
     public void mostrarmensaje(String texto){
         mensaje = texto;
@@ -39,6 +36,8 @@ public class UI {
 
         }if(gp.estadodeljuego == gp.pausar){
             dibujarpausa();
+        }if(gp.estadodeljuego == gp.dialogo){
+            dibujarpantalladedialogo();
         }
     }
     public void dibujarpausa(){
@@ -47,6 +46,19 @@ public class UI {
         int x=getxforcenteredtext(texto);
         int y = gp.altoPantalla/2;
         g2.drawString(texto, x, y);
+    }
+    public void dibujarpantalladedialogo(){
+        //pestana
+        int x = gp.tileSize*2;
+        int y = gp.tileSize/2;
+        int ancho = gp.anchoPantalla - (gp.tileSize*4);
+        int alto = gp.tileSize*5;
+        dibujarpestana(x,y,ancho,alto);
+    }
+    public void dibujarpestana(int x, int y, int ancho, int alto){
+        Color c = new Color(0,0,0);
+        g2.setColor(c);
+        g2.fillRoundRect(x,y,ancho,alto,35,35);
     }
     public int getxforcenteredtext(String texto){
         int length = (int)g2.getFontMetrics().getStringBounds(texto,g2).getWidth();

@@ -110,7 +110,7 @@ public class jugador extends entidad{
     }
     public void interactuarnpc(int i){
         if(i != 999){
-            System.out.println("chocas con npc");
+            gp.estadodeljuego = gp.dialogo;
         }
     }
     public void dibujar(Graphics2D g2){

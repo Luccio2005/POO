@@ -39,6 +39,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public int estadodeljuego;
     public final int reanudar = 1;
     public final int pausar =2;
+    public final int dialogo = 3;
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
         this.setBackground(Color.black);
