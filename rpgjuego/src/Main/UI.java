@@ -56,7 +56,7 @@ public class UI {
         dibujarpestana(x,y,ancho,alto);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
-        Color c = new Color(0,0,0);
+        Color c = new Color(0,0,0, 210);
         g2.setColor(c);
         g2.fillRoundRect(x,y,ancho,alto,35,35);
         c = new Color(255,255,255);
