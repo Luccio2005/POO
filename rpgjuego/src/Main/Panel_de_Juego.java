@@ -24,7 +24,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     int FPS = 60;
 
     administradordesuelo sueloM = new administradordesuelo(this);
-    Teclado keyH = new Teclado(this);
+    public Teclado keyH = new Teclado(this);
     sonido se= new sonido();
     sonido musica = new sonido();
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);

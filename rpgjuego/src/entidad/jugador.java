@@ -110,9 +110,12 @@ public class jugador extends entidad{
     }
     public void interactuarnpc(int i){
         if(i != 999){
-            gp.estadodeljuego = gp.dialogo;
-            gp.npc[i].hablar();
+            if(gp.keyH.enterp == true){
+                gp.estadodeljuego = gp.dialogo;
+                gp.npc[i].hablar();
+            }
         }
+        gp.keyH.enterp = false;
     }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);
