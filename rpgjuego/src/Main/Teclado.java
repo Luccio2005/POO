@@ -21,26 +21,38 @@ public class Teclado implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int codigo = e.getKeyCode();
-        if(codigo == KeyEvent.VK_W){
-            arribap = true;
-        }
-        if(codigo == KeyEvent.VK_S){
-            abajop = true;
-        }
-        if(codigo == KeyEvent.VK_A){
-            izquierdap = true;
-        }
-        if(codigo == KeyEvent.VK_D){
-            derechap = true;
-        }
-        if(codigo == KeyEvent.VK_P){
-            if(gp.estadodeljuego == gp.reanudar){
+        //reanudar
+        if(gp.estadodeljuego == gp.reanudar){
+            if(codigo == KeyEvent.VK_W){
+                arribap = true;
+            }
+            if(codigo == KeyEvent.VK_S){
+                abajop = true;
+            }
+            if(codigo == KeyEvent.VK_A){
+                izquierdap = true;
+            }
+            if(codigo == KeyEvent.VK_D){
+                derechap = true;
+            }
+            if(codigo == KeyEvent.VK_P){
                 gp.estadodeljuego = gp.pausar;
             }
-            else if(gp.estadodeljuego == gp.pausar){
+        }
+        //pausar
+        else if(gp.estadodeljuego == gp.pausar){
+            if(codigo == KeyEvent.VK_P){
                 gp.estadodeljuego = gp.reanudar;
             }
         }
+        //dialogo
+        else if(gp.estadodeljuego == gp.dialogo){
+            if(codigo == KeyEvent.VK_ENTER){
+                gp.estadodeljuego = gp.reanudar;
+            }
+
+        }
+
     }
 
     @Override
