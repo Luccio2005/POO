@@ -29,6 +29,21 @@ public class entidad {
     public void setaction(){
     }
     public void hablar(){
+        if(dialogos[indicededialogos] == null){
+            indicededialogos = 0;
+        }
+        gp.ui.dialogoactual = dialogos[indicededialogos];
+        indicededialogos++;
+        switch (gp.jugador.direccion){
+            case "up":
+                direccion = "down"; break;
+            case "down":
+                direccion = "up"; break;
+            case "left":
+                direccion = "right"; break;
+            case "right":
+                direccion = "left"; break;
+        }
     }
     public void actualizar(){
         setaction();

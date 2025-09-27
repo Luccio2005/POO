@@ -55,10 +55,13 @@ public class UI {
         int ancho = gp.anchoPantalla - (gp.tileSize*4);
         int alto = gp.tileSize*4;
         dibujarpestana(x,y,ancho,alto);
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(dialogoactual,x,y);
+        for(String line: dialogoactual.split("\n")){
+            g2.drawString(line,x,y);
+            y+= 40;
+        }
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
