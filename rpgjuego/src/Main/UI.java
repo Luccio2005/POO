@@ -1,7 +1,5 @@
 package Main;
 
-
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
@@ -20,7 +18,7 @@ public class UI {
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
-        arial_40= new Font("Arial",Font.PLAIN,40);
+        arial_40= new Font("Cambria",Font.PLAIN,40);
         arial_80B= new Font("Arial",Font.BOLD,80);
 
     }
