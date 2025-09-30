@@ -37,6 +37,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public entidad npc[] = new entidad[10];
 
     public int estadodeljuego;
+    public final int pantalladeinicio =0;
     public final int reanudar = 1;
     public final int pausar =2;
     public final int dialogo = 3;
@@ -52,8 +53,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         aSetter.setObject();
         aSetter.setnpc();
         playMusic(0);
-        stopMusic();
-        estadodeljuego = reanudar;
+        estadodeljuego = pantalladeinicio;
 
 
     }
@@ -109,22 +109,30 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        sueloM.dibujar(g2);
+        //pantalla de inicio
+        if(estadodeljuego == pantalladeinicio){
 
-        for(int i=0;i< obj.length;i++){
-            if(obj[i] !=null){
-                obj[i].dibujar(g2,this);
-            }
         }
-        for(int i=0;i< npc.length;i++){
-            if(npc[i] !=null){
-                npc[i].dibujar(g2);
+        else{
+            sueloM.dibujar(g2);
+
+            for(int i=0;i< obj.length;i++){
+                if(obj[i] !=null){
+                    obj[i].dibujar(g2,this);
+                }
             }
+            for(int i=0;i< npc.length;i++){
+                if(npc[i] !=null){
+                    npc[i].dibujar(g2);
+                }
+            }
+
+            jugador.dibujar(g2);
+            ui.dibujar(g2);
         }
 
-        jugador.dibujar(g2);
-        ui.dibujar(g2);
-        g2.dispose();
+
+
     }
     public void playMusic(int i){
         musica.setFile(i);
