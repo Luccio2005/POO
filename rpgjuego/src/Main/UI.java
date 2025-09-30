@@ -30,7 +30,11 @@ public class UI {
         this.g2 = g2;
         g2.setFont(arial_40);
         g2.setColor(Color.white);
+        //pantalla de inicio
+        if(gp.estadodeljuego == gp.pantalladeinicio){
+            dibujarpantalladeinicio();
 
+        }
         if(gp.estadodeljuego == gp.reanudar){
 
         }if(gp.estadodeljuego == gp.pausar){
@@ -38,6 +42,16 @@ public class UI {
         }if(gp.estadodeljuego == gp.dialogo){
             dibujarpantalladedialogo();
         }
+    }
+    public void dibujarpantalladeinicio(){
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String texto = "JUEGO RPG";
+        int x= getxforcenteredtext(texto);
+        int y= gp.tileSize*3;
+
+        g2.setColor(Color.white);
+        g2.drawString(texto,x,y);
+
     }
     public void dibujarpausa(){
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));

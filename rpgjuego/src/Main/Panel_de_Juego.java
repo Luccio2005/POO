@@ -111,6 +111,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
         //pantalla de inicio
         if(estadodeljuego == pantalladeinicio){
+            ui.dibujar(g2);
 
         }
         else{
