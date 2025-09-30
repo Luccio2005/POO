@@ -62,6 +62,24 @@ public class UI {
         y += gp.tileSize*2;
         g2.drawImage(gp.jugador.down1,x,y,gp.tileSize*2, gp.tileSize*2, null);
 
+        //menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+        texto="Nuevo Juego";
+        x= getxforcenteredtext(texto);
+        y+= gp.tileSize*3.5;
+        g2.drawString(texto, x, y);
+
+        texto="Continuar";
+        x= getxforcenteredtext(texto);
+        y+= gp.tileSize;
+        g2.drawString(texto, x, y);
+
+        texto="Salir";
+        x= getxforcenteredtext(texto);
+        y+= gp.tileSize;
+        g2.drawString(texto, x, y);
+
+
     }
     public void dibujarpausa(){
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
