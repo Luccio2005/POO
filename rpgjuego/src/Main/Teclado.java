@@ -21,6 +21,15 @@ public class Teclado implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int codigo = e.getKeyCode();
+        // pantalla de inicio
+        if(gp.estadodeljuego == gp.pantalladeinicio){
+            if(codigo == KeyEvent.VK_W){
+                gp.ui.numerodecomando--;
+            }
+            if(codigo == KeyEvent.VK_S){
+                gp.ui.numerodecomando++;
+            }
+        }
         //reanudar
         if(gp.estadodeljuego == gp.reanudar){
             if(codigo == KeyEvent.VK_W){

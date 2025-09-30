@@ -14,6 +14,7 @@ public class UI {
     int mensajeContador = 0;
     public boolean juegoterminado = false;
     public String dialogoactual = "";
+    public int numerodecomando =0;
 
 
     public UI(Panel_de_Juego gp){
@@ -68,18 +69,25 @@ public class UI {
         x= getxforcenteredtext(texto);
         y+= gp.tileSize*3.5;
         g2.drawString(texto, x, y);
+        if(numerodecomando == 0){
+            g2.drawString(">",x- gp.tileSize,y);
+        }
 
         texto="Continuar";
         x= getxforcenteredtext(texto);
         y+= gp.tileSize;
         g2.drawString(texto, x, y);
+        if(numerodecomando == 1){
+            g2.drawString(">",x- gp.tileSize,y);
+        }
 
         texto="Salir";
         x= getxforcenteredtext(texto);
         y+= gp.tileSize;
         g2.drawString(texto, x, y);
-
-
+        if(numerodecomando == 2){
+            g2.drawString(">",x- gp.tileSize,y);
+        }
     }
     public void dibujarpausa(){
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
