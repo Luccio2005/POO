@@ -57,6 +57,11 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(texto,x,y);
 
+        //imagen
+        x= gp.anchoPantalla/2 - (gp.tileSize*2)/2;
+        y += gp.tileSize*2;
+        g2.drawImage(gp.jugador.down1,x,y,gp.tileSize*2, gp.tileSize*2, null);
+
     }
     public void dibujarpausa(){
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
