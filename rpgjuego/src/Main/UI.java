@@ -44,10 +44,15 @@ public class UI {
         }
     }
     public void dibujarpantalladeinicio(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.anchoPantalla,gp.altoPantalla);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
         String texto = "JUEGO RPG";
         int x= getxforcenteredtext(texto);
         int y= gp.tileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(texto,x+5,y+5);
 
         g2.setColor(Color.white);
         g2.drawString(texto,x,y);
