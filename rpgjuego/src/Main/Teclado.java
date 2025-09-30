@@ -25,9 +25,27 @@ public class Teclado implements KeyListener {
         if(gp.estadodeljuego == gp.pantalladeinicio){
             if(codigo == KeyEvent.VK_W){
                 gp.ui.numerodecomando--;
+                if(gp.ui.numerodecomando <0){
+                    gp.ui.numerodecomando = 2;
+                }
             }
             if(codigo == KeyEvent.VK_S){
                 gp.ui.numerodecomando++;
+                if(gp.ui.numerodecomando >2){
+                    gp.ui.numerodecomando =0;
+                }
+            }
+            if(codigo == KeyEvent.VK_ENTER){
+                if(gp.ui.numerodecomando ==0){
+                    gp.estadodeljuego = gp.reanudar;
+                    gp.playMusic(0);
+                }
+                if(gp.ui.numerodecomando ==1){
+
+                }
+                if(gp.ui.numerodecomando ==2){
+                    System.exit(0);
+                }
             }
         }
         //reanudar

@@ -52,7 +52,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void setupGame(){
         aSetter.setObject();
         aSetter.setnpc();
-        playMusic(0);
+        //playMusic(0);
         estadodeljuego = pantalladeinicio;
 
 
