@@ -1,5 +1,8 @@
 package Main;
 
+import objeto.Obj_heart;
+import objeto.Superobjeto;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
@@ -8,7 +11,7 @@ public class UI {
     Panel_de_Juego gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
-
+    BufferedImage heart_full, heart_half, heart_blank;
     public boolean mensajeOn= false;
     public String mensaje = "";
     int mensajeContador = 0;
@@ -21,6 +24,12 @@ public class UI {
         this.gp= gp;
         arial_40= new Font("Cambria",Font.PLAIN,40);
         arial_80B= new Font("Arial",Font.BOLD,80);
+        //crear hud objeto
+        Superobjeto heart = new Obj_heart(gp);
+        heart_full= heart.imagen;
+        heart_half= heart.imagen2;
+        heart_blank= heart.imagen3;
+
 
     }
     public void mostrarmensaje(String texto){
@@ -37,11 +46,23 @@ public class UI {
 
         }
         if(gp.estadodeljuego == gp.reanudar){
-
+            dibujarvidajugador();
         }if(gp.estadodeljuego == gp.pausar){
+            dibujarvidajugador();
             dibujarpausa();
         }if(gp.estadodeljuego == gp.dialogo){
+            dibujarvidajugador();
             dibujarpantalladedialogo();
+        }
+    }
+    public void dibujarvidajugador(){
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+        int i = 0;
+        while(i< gp.jugador.vidamax/2){
+            g2.drawImage(heart_blank, x,y,null);
+            i++;
+            x+= gp.tileSize;
         }
     }
     public void dibujarpantalladeinicio(){

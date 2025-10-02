@@ -1,7 +1,6 @@
 package objeto;
 
 import Main.Panel_de_Juego;
-
 import javax.imageio.ImageIO;
 import java.io.IOException;
 

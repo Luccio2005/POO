@@ -43,7 +43,7 @@ public class comprobar_colisiones {
                     entidad.colision = true;
                 } break;
             case "right":
-                entidaddercolumna = (entidaddermundox - entidad.velocidad)/gp.tileSize;
+                entidaddercolumna = (entidaddermundox + entidad.velocidad)/gp.tileSize;
                 suelonum1= gp.sueloM.mapaNum[entidaddercolumna][entidadarrfila];
                 suelonum2= gp.sueloM.mapaNum[entidaddercolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){

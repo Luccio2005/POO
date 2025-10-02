@@ -22,6 +22,10 @@ public class entidad {
     public  int bloqueodeaccion =0;
     String dialogos[]= new String[20];
     int indicededialogos = 0;
+    // eestado del personaje
+    public int vidamax;
+    public int vida;
+
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;

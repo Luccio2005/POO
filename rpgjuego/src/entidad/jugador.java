@@ -40,6 +40,9 @@ public class jugador extends entidad{
         mundoy= gp.tileSize * 21;
         velocidad= 4;
         direccion= "down";
+        //estado jugador
+        vidamax =6;
+        vida = vidamax;
     }
     public void getPlayerImage(){
 
