@@ -80,6 +80,8 @@ public class jugador extends entidad{
             // comprobar la colision del npc
             int indicenpc = gp.comprobar.comprobarentidad(this, gp.npc);
             interactuarnpc(indicenpc);
+            //combrobar evento
+            gp.evento.comprobarevento();
             if(colision == false){
                 switch (direccion){
                     case "up":

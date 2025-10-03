@@ -30,6 +30,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public comprobar_colisiones comprobar = new comprobar_colisiones(this);
     public Activos aSetter = new Activos(this);
     public UI ui= new UI(this);
+    public Eventos evento = new Eventos(this);
     Thread gameThread;
 
     public jugador jugador= new jugador(this,keyH);
