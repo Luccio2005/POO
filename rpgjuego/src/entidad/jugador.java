@@ -82,6 +82,7 @@ public class jugador extends entidad{
             interactuarnpc(indicenpc);
             //combrobar evento
             gp.evento.comprobarevento();
+            gp.keyH.enterp = false;
             if(colision == false){
                 switch (direccion){
                     case "up":
@@ -120,7 +121,6 @@ public class jugador extends entidad{
                 gp.npc[i].hablar();
             }
         }
-        gp.keyH.enterp = false;
     }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);

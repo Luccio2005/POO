@@ -20,6 +20,9 @@ public class Eventos {
         if(hit(27,16,"right") == true){
             damagepit(gp.dialogo);
         }
+        if(hit(23,12,"up") == true){
+            healingpool((gp.dialogo));
+        }
     }
     public boolean hit(int eventocol, int eventofil, String reqDireccion){
         boolean hit = false;
@@ -42,5 +45,12 @@ public class Eventos {
         gp.estadodeljuego = estadodeljuego;
         gp.ui.dialogoactual = "Caiste en un pozo";
         gp.jugador.vida -=1;
+    }
+    public void healingpool(int estadodeljuego){
+        if(gp.keyH.enterp == true){
+            gp.estadodeljuego = estadodeljuego;
+            gp.ui.dialogoactual = "tu tomas agua del lago \ntu vida se esta recuperando";
+            gp.jugador.vida = gp.jugador.vidamax;
+        }
     }
 }
