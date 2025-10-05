@@ -4,17 +4,28 @@ import java.awt.*;
 
 public class Eventos {
     Panel_de_Juego gp;
-    Rectangle eventRect;
-    int eventRectDefaultX, eventRectDefaultY;
+    EventoRect eventoRect[][];
     public Eventos(Panel_de_Juego gp){
         this.gp = gp;
-        eventRect = new Rectangle();
-        eventRect.x = 23;
-        eventRect.y = 23;
-        eventRect.width = 2;
-        eventRect.height = 2;
-        eventRectDefaultX = eventRect.x;
-        eventRectDefaultY = eventRect.y;
+        eventoRect = new EventoRect[gp.maxWorldCol][gp.maxWorldRow];
+        int col = 0;
+        int fila = 0;
+        while(col < gp.maxWorldCol && fila < gp.maxWorldRow){
+            eventoRect[col][fila] = new EventoRect();
+            eventoRect[col][fila].x = 23;
+            eventoRect[col][fila].y = 23;
+            eventoRect[col][fila].width = 2;
+            eventoRect[col][fila].height = 2;
+            eventoRect[col][fila].eventRectDefaultX = eventoRect[col][fila].x;
+            eventoRect[col][fila].eventRectDefaultY = eventoRect[col][fila].y;
+            col++;
+            if(col == gp.maxWorldCol){
+                col=0;
+                fila++;
+            }
+        }
+
+
     }
     public void comprobarevento(){
         if(hit(27,16,"right") == true){
@@ -24,21 +35,21 @@ public class Eventos {
             healingpool((gp.dialogo));
         }
     }
-    public boolean hit(int eventocol, int eventofil, String reqDireccion){
+    public boolean hit(int col, int fila, String reqDireccion){
         boolean hit = false;
         gp.jugador.areadecolision.x = gp.jugador.mundox + gp.jugador.areadecolision.x;
         gp.jugador.areadecolision.y = gp.jugador.mundoy + gp.jugador.areadecolision.y;
-        eventRect.x = eventocol*gp.tileSize + eventRect.x;
-        eventRect.y = eventofil*gp.tileSize + eventRect.y;
-        if(gp.jugador.areadecolision.intersects(eventRect)){
+        eventoRect[col][fila].x = col*gp.tileSize + eventoRect[col][fila].x;
+        eventoRect[col][fila].y = fila*gp.tileSize + eventoRect[col][fila].y;
+        if(gp.jugador.areadecolision.intersects(eventoRect[col][fila])){
             if(gp.jugador.direccion.contentEquals(reqDireccion) || reqDireccion.contentEquals("any")){
                 hit= true;
             }
         }
         gp.jugador.areadecolision.x = gp.jugador.areadecolisionx;
         gp.jugador.areadecolision.y = gp.jugador.areadecolisiony;
-        eventRect.x = eventRectDefaultX;
-        eventRect.y = eventRectDefaultY;
+        eventoRect[col][fila].x = eventoRect[col][fila].eventRectDefaultX;
+        eventoRect[col][fila].y = eventoRect[col][fila].eventRectDefaultY;
         return hit;
     }
     public void damagepit(int estadodeljuego){
