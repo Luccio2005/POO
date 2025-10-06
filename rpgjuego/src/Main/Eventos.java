@@ -5,6 +5,8 @@ import java.awt.*;
 public class Eventos {
     Panel_de_Juego gp;
     EventoRect eventoRect[][];
+    int anterioreventox, anterioreventoy;
+    boolean cantouchevent = true;
     public Eventos(Panel_de_Juego gp){
         this.gp = gp;
         eventoRect = new EventoRect[gp.maxWorldCol][gp.maxWorldRow];
@@ -28,11 +30,23 @@ public class Eventos {
 
     }
     public void comprobarevento(){
-        if(hit(27,16,"right") == true){
-            damagepit(27,16, gp.dialogo);
+        //comprobar si el jugador se mueve un suelo mas q en el ultimo evento
+        int distanciax = Math.abs(gp.jugador.mundox - anterioreventox);
+        int distanciay = Math.abs(gp.jugador.mundoy - anterioreventoy);
+        int distancia = Math.max(distanciax, distanciay);
+        if(distancia > gp.tileSize){
+            cantouchevent = true;
         }
-        if(hit(23,12,"up") == true){
-            healingpool(23,12, gp.dialogo);
+        if(cantouchevent == true){
+            if(hit(27,16,"right") == true){
+                damagepit(27,16, gp.dialogo);
+            }
+            if(hit(27,19,"any") == true){
+                damagepit(27,16, gp.dialogo);
+            }
+            if(hit(23,12,"up") == true){
+                healingpool(23,12, gp.dialogo);
+            }
         }
     }
     public boolean hit(int col, int fila, String reqDireccion){
@@ -44,6 +58,8 @@ public class Eventos {
         if(gp.jugador.areadecolision.intersects(eventoRect[col][fila]) && eventoRect[col][fila].eventohecho == false){
             if(gp.jugador.direccion.contentEquals(reqDireccion) || reqDireccion.contentEquals("any")){
                 hit= true;
+                anterioreventox = gp.jugador.mundox;
+                anterioreventoy = gp.jugador.mundoy;
             }
         }
         gp.jugador.areadecolision.x = gp.jugador.areadecolisionx;
@@ -56,7 +72,8 @@ public class Eventos {
         gp.estadodeljuego = estadodeljuego;
         gp.ui.dialogoactual = "Caiste en un pozo";
         gp.jugador.vida -=1;
-        eventoRect[col][fila].eventohecho = true;
+        //eventoRect[col][fila].eventohecho = true;
+        cantouchevent = false;
     }
     public void healingpool(int col, int fila, int estadodeljuego){
         if(gp.keyH.enterp == true){
