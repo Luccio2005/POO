@@ -29,10 +29,10 @@ public class Eventos {
     }
     public void comprobarevento(){
         if(hit(27,16,"right") == true){
-            damagepit(gp.dialogo);
+            damagepit(27,16, gp.dialogo);
         }
         if(hit(23,12,"up") == true){
-            healingpool((gp.dialogo));
+            healingpool(23,12, gp.dialogo);
         }
     }
     public boolean hit(int col, int fila, String reqDireccion){
@@ -41,7 +41,7 @@ public class Eventos {
         gp.jugador.areadecolision.y = gp.jugador.mundoy + gp.jugador.areadecolision.y;
         eventoRect[col][fila].x = col*gp.tileSize + eventoRect[col][fila].x;
         eventoRect[col][fila].y = fila*gp.tileSize + eventoRect[col][fila].y;
-        if(gp.jugador.areadecolision.intersects(eventoRect[col][fila])){
+        if(gp.jugador.areadecolision.intersects(eventoRect[col][fila]) && eventoRect[col][fila].eventohecho == false){
             if(gp.jugador.direccion.contentEquals(reqDireccion) || reqDireccion.contentEquals("any")){
                 hit= true;
             }
@@ -52,12 +52,13 @@ public class Eventos {
         eventoRect[col][fila].y = eventoRect[col][fila].eventRectDefaultY;
         return hit;
     }
-    public void damagepit(int estadodeljuego){
+    public void damagepit(int col, int fila, int estadodeljuego){
         gp.estadodeljuego = estadodeljuego;
         gp.ui.dialogoactual = "Caiste en un pozo";
         gp.jugador.vida -=1;
+        eventoRect[col][fila].eventohecho = true;
     }
-    public void healingpool(int estadodeljuego){
+    public void healingpool(int col, int fila, int estadodeljuego){
         if(gp.keyH.enterp == true){
             gp.estadodeljuego = estadodeljuego;
             gp.ui.dialogoactual = "tu tomas agua del lago \ntu vida se esta recuperando";
