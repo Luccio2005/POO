@@ -13,7 +13,7 @@ public class entidad {
     public int mundox,mundoy;
     public int velocidad;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public String direccion;
+    public String direccion = "down";
     public int contadorSprite=0;
     public int numeroSprite=1;
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
@@ -22,6 +22,9 @@ public class entidad {
     public  int bloqueodeaccion =0;
     String dialogos[]= new String[20];
     int indicededialogos = 0;
+    public BufferedImage imagen, imagen2, imagen3;
+    public String nombre;
+
     // eestado del personaje
     public int vidamax;
     public int vida;

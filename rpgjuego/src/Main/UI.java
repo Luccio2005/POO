@@ -1,11 +1,10 @@
 package Main;
 
+import entidad.entidad;
 import objeto.Obj_heart;
-import objeto.Superobjeto;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.text.DecimalFormat;
 
 public class UI {
     Panel_de_Juego gp;
@@ -25,7 +24,7 @@ public class UI {
         arial_40= new Font("Cambria",Font.PLAIN,40);
         arial_80B= new Font("Arial",Font.BOLD,80);
         //crear hud objeto
-        Superobjeto heart = new Obj_heart(gp);
+        entidad heart = new Obj_heart(gp);
         heart_full= heart.imagen;
         heart_half= heart.imagen2;
         heart_blank= heart.imagen3;

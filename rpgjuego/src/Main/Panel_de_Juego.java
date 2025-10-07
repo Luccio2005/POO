@@ -2,11 +2,13 @@ package Main;
 
 import entidad.entidad;
 import entidad.jugador;
-import objeto.Superobjeto;
 import suelo.administradordesuelo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Panel_de_Juego extends JPanel implements Runnable{
     final int originalTileSize = 16;
@@ -34,8 +36,9 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     Thread gameThread;
 
     public jugador jugador= new jugador(this,keyH);
-    public Superobjeto obj[]=new Superobjeto[10];
+    public entidad obj[]=new entidad[10];
     public entidad npc[] = new entidad[10];
+    ArrayList<entidad> listaentidad = new ArrayList<>();
 
     public int estadodeljuego;
     public final int pantalladeinicio =0;
@@ -117,24 +120,37 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
         else{
             sueloM.dibujar(g2);
-
-            for(int i=0;i< obj.length;i++){
-                if(obj[i] !=null){
-                    obj[i].dibujar(g2,this);
+            // anadir entidades a la lista
+            listaentidad.add(jugador);
+            for(int i=0; i< npc.length;i++){
+                if(npc[i] != null){
+                    listaentidad.add(npc[i]);
                 }
             }
-            for(int i=0;i< npc.length;i++){
-                if(npc[i] !=null){
-                    npc[i].dibujar(g2);
+            for(int i=0; i< obj.length;i++){
+                if(obj[i] != null){
+                    listaentidad.add(obj[i]);
                 }
             }
+            // sort
+            Collections.sort(listaentidad, new Comparator<entidad>() {
 
-            jugador.dibujar(g2);
+                @Override
+                public int compare(entidad e1, entidad e2) {
+                    int result = Integer.compare(e1.mundoy, e2.mundoy);
+                    return result;
+                }
+            });
+            // dibujar entidades
+            for(int i = 0; i< listaentidad.size(); i++){
+                listaentidad.get(i).dibujar(g2);
+            }
+            // vaciar lista entidad
+            for(int i = 0; i< listaentidad.size(); i++){
+                listaentidad.remove(i);
+            }
             ui.dibujar(g2);
         }
-
-
-
     }
     public void playMusic(int i){
         musica.setFile(i);

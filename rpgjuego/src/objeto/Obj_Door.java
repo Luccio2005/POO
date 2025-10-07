@@ -1,21 +1,21 @@
 package objeto;
 
 import Main.Panel_de_Juego;
+import entidad.entidad;
 
-import javax.imageio.ImageIO;
-import java.io.IOException;
+public class Obj_Door extends entidad{
 
-public class Obj_Door extends Superobjeto{
-    Panel_de_Juego gp;
     public Obj_Door(Panel_de_Juego gp) {
-        this.gp = gp;
+        super(gp);
         nombre="puerta";
-        try{
-            imagen = ImageIO.read(getClass().getResourceAsStream("/objetos/door.png"));
-            Herramienta.Imagenescala(imagen, gp.tileSize, gp.tileSize);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        down1= setup("/objetos/door");
+
         colision = true;
+        areadecolision.x = 0;
+        areadecolision.y = 16;
+        areadecolision.width = 48;
+        areadecolision.height = 32;
+        areadecolisionx = areadecolision.x;
+        areadecolisiony = areadecolision.y;
     }
 }
