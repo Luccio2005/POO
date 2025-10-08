@@ -71,15 +71,20 @@ public class jugador extends entidad{
             else if(keyH.derechap == true){
                 direccion="right";
             }
+            // comprobar colosiion de suelos
             colision = false;
             gp.comprobar.comprobarsuelo(this);
 
+            // comprobar colision de objetos
             int objindice= gp.comprobar.comprobarobjeto(this,true);
             recogerobjeto(objindice);
 
             // comprobar la colision del npc
             int indicenpc = gp.comprobar.comprobarentidad(this, gp.npc);
             interactuarnpc(indicenpc);
+
+            //comprobar colision con enemigos
+            int indiceenemigos = gp.comprobar.comprobarentidad(this, gp.enemigos);
             //combrobar evento
             gp.evento.comprobarevento();
             gp.keyH.enterp = false;

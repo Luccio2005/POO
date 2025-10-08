@@ -65,48 +65,24 @@ public class comprobar_colisiones {
                 switch (entidad.direccion){
                     case "up":
                         entidad.areadecolision.y -= entidad.velocidad;
-                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            if(gp.obj[i].colision == true){
-                                entidad.colision = true;
-                            }
-                            if(jugador == true){
-                                indice=i;
-                            }
-                        }
                         break;
                     case "down":
                         entidad.areadecolision.y += entidad.velocidad;
-                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            if(gp.obj[i].colision == true){
-                                entidad.colision = true;
-                            }
-                            if(jugador == true){
-                                indice=i;
-                            }
-                        }
                         break;
                     case "left":
                         entidad.areadecolision.x -= entidad.velocidad;
-                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            if(gp.obj[i].colision == true){
-                                entidad.colision = true;
-                            }
-                            if(jugador == true){
-                                indice=i;
-                            }
-                        }
                         break;
                     case "right":
                         entidad.areadecolision.x += entidad.velocidad;
-                        if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                            if(gp.obj[i].colision == true){
-                                entidad.colision = true;
-                            }
-                            if(jugador == true){
-                                indice=i;
-                            }
-                        }
                         break;
+                }
+                if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
+                    if(gp.obj[i].colision == true){
+                        entidad.colision = true;
+                    }
+                    if(jugador == true){
+                        indice=i;
+                    }
                 }
                 entidad.areadecolision.x = entidad.areadecolisionx;
                 entidad.areadecolision.y = entidad.areadecolisiony;
@@ -130,32 +106,22 @@ public class comprobar_colisiones {
                 switch (entidad.direccion){
                     case "up":
                         entidad.areadecolision.y -= entidad.velocidad;
-                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
-                                entidad.colision = true;
-                                indice=i;
-                        }
                         break;
                     case "down":
                         entidad.areadecolision.y += entidad.velocidad;
-                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
-                                entidad.colision = true;
-                                indice=i;
-                        }
                         break;
                     case "left":
                         entidad.areadecolision.x -= entidad.velocidad;
-                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
-                                entidad.colision = true;
-                                indice=i;
-                        }
                         break;
                     case "right":
                         entidad.areadecolision.x += entidad.velocidad;
-                        if(entidad.areadecolision.intersects(target[i].areadecolision)){
-                                entidad.colision = true;
-                                indice=i;
-                        }
                         break;
+                }
+                if(entidad.areadecolision.intersects(target[i].areadecolision)){
+                    if(target[i] != entidad){
+                        entidad.colision = true;
+                        indice=i;
+                    }
                 }
                 entidad.areadecolision.x = entidad.areadecolisionx;
                 entidad.areadecolision.y = entidad.areadecolisiony;
