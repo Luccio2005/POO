@@ -38,6 +38,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public jugador jugador= new jugador(this,keyH);
     public entidad obj[]=new entidad[10];
     public entidad npc[] = new entidad[10];
+    public entidad enemigos[] = new entidad[20];
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
     public int estadodeljuego;
@@ -56,6 +57,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public void setupGame(){
         aSetter.setObject();
         aSetter.setnpc();
+        aSetter.setenemigos();
         //playMusic(0);
         estadodeljuego = pantalladeinicio;
 
@@ -97,11 +99,17 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     }
     public void actualizar(){
         if(estadodeljuego == reanudar){
+            //jugador
             jugador.actualizar();
-
+            //npc
             for(int i =0; i< npc.length; i++){
                 if(npc[i] !=null){
                     npc[i].actualizar();
+                }
+            }
+            for(int i=0; i<enemigos.length; i++){
+                if(enemigos[i] != null){
+                    enemigos[i].actualizar();
                 }
             }
         }
@@ -130,6 +138,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             for(int i=0; i< obj.length;i++){
                 if(obj[i] != null){
                     listaentidad.add(obj[i]);
+                }
+            }
+            for(int i=0; i< enemigos.length;i++){
+                if(enemigos[i] != null){
+                    listaentidad.add(enemigos[i]);
                 }
             }
             // sort
