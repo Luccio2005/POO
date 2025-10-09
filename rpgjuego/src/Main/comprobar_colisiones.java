@@ -131,7 +131,8 @@ public class comprobar_colisiones {
         }
         return indice;
     }
-    public void comprobarjugador(entidad entidad){
+    public boolean comprobarjugador(entidad entidad){
+        boolean contactojugador = false;
         entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
         entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
 
@@ -141,33 +142,25 @@ public class comprobar_colisiones {
         switch (entidad.direccion){
             case "up":
                 entidad.areadecolision.y -= entidad.velocidad;
-                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
-                    entidad.colision = true;
-                }
                 break;
             case "down":
                 entidad.areadecolision.y += entidad.velocidad;
-                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
-                    entidad.colision = true;
-                }
                 break;
             case "left":
                 entidad.areadecolision.x -= entidad.velocidad;
-                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
-                    entidad.colision = true;
-                }
                 break;
             case "right":
                 entidad.areadecolision.x += entidad.velocidad;
-                if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
-                    entidad.colision = true;
-                }
                 break;
+        }if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
+            entidad.colision = true;
+            contactojugador = true;
         }
         entidad.areadecolision.x = entidad.areadecolisionx;
         entidad.areadecolision.y = entidad.areadecolisiony;
         gp.jugador.areadecolision.x = gp.jugador.areadecolisionx;
         gp.jugador.areadecolision.y = gp.jugador.areadecolisiony;
+        return contactojugador;
 
     }
 }

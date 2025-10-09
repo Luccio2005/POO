@@ -26,6 +26,7 @@ public class entidad {
     int indicededialogos = 0;
     public BufferedImage imagen, imagen2, imagen3;
     public String nombre;
+    public int tipo;
 
     // eestado del personaje
     public int vidamax;
@@ -61,7 +62,14 @@ public class entidad {
         gp.comprobar.comprobarobjeto(this, false);
         gp.comprobar.comprobarentidad(this, gp.npc);
         gp.comprobar.comprobarentidad(this, gp.enemigos);
-        gp.comprobar.comprobarjugador(this);
+        boolean contactojugador = gp.comprobar.comprobarjugador(this);
+
+        if(this.tipo == 2 && contactojugador == true){
+            if(gp.jugador.invencible == false){
+                gp.jugador.vida -= 1;
+                gp.jugador.invencible = true;
+            }
+        }
 
 
         if(colision == false){

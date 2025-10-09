@@ -9,7 +9,7 @@ public class slime extends entidad{
 
     public slime(Panel_de_Juego gp) {
         super(gp);
-
+        tipo = 2;
         nombre = "slime";
         velocidad =1;
         vidamax = 4;
