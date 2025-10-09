@@ -113,7 +113,14 @@ public class jugador extends entidad{
                     numeroSprite=1;
                 }
                 contadorSprite=0;
+            }
         }
+        if(invencible == true){
+            contadorinvencible ++;
+            if(contadorinvencible > 60){
+                invencible = false;
+                contadorinvencible = 0;
+            }
         }
     }
     public void recogerobjeto (int i){
@@ -130,7 +137,10 @@ public class jugador extends entidad{
     }
     public void contactoenemigo(int i){
         if(i !=999){
-            vida -=1;
+            if(invencible == false){
+                vida -=1;
+                invencible = true;
+            }
         }
     }
     public void dibujar(Graphics2D g2){
@@ -165,6 +175,10 @@ public class jugador extends entidad{
             } break;
         }
         g2.drawImage(imagen,pantallax,pantallay, null);
+        //debug
+        g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        g2.setColor(Color.white);
+        g2.drawString("Invencible:"+contadorinvencible,10,400);
         //g2.setColor(Color.red);
         //g2.drawRect(pantallax+ areadecolision.x, pantallay+areadecolision.y, areadecolision.width,areadecolision.height);
     }

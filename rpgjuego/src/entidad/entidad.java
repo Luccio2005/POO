@@ -19,7 +19,9 @@ public class entidad {
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
-    public  int bloqueodeaccion =0;
+    public int bloqueodeaccion =0;
+    public boolean invencible = false;
+    public int contadorinvencible = 0;
     String dialogos[]= new String[20];
     int indicededialogos = 0;
     public BufferedImage imagen, imagen2, imagen3;
