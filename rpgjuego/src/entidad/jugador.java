@@ -174,11 +174,17 @@ public class jugador extends entidad{
                     imagen = right2;
             } break;
         }
+        if(invencible == true){
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
         g2.drawImage(imagen,pantallax,pantallay, null);
+
+        //reset alpha
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         //debug
-        g2.setFont(new Font("Arial", Font.PLAIN, 26));
-        g2.setColor(Color.white);
-        g2.drawString("Invencible:"+contadorinvencible,10,400);
+        //g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        //g2.setColor(Color.white);
+        //g2.drawString("Invencible:"+contadorinvencible,10,400);
         //g2.setColor(Color.red);
         //g2.drawRect(pantallax+ areadecolision.x, pantallay+areadecolision.y, areadecolision.width,areadecolision.height);
     }
