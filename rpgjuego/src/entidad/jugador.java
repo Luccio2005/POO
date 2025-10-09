@@ -85,6 +85,7 @@ public class jugador extends entidad{
 
             //comprobar colision con enemigos
             int indiceenemigos = gp.comprobar.comprobarentidad(this, gp.enemigos);
+            contactoenemigo(indiceenemigos);
             //combrobar evento
             gp.evento.comprobarevento();
             gp.keyH.enterp = false;
@@ -125,6 +126,11 @@ public class jugador extends entidad{
                 gp.estadodeljuego = gp.dialogo;
                 gp.npc[i].hablar();
             }
+        }
+    }
+    public void contactoenemigo(int i){
+        if(i !=999){
+            vida -=1;
         }
     }
     public void dibujar(Graphics2D g2){
