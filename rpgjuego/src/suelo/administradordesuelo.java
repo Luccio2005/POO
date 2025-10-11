@@ -21,6 +21,7 @@ public class administradordesuelo {
         mapaNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         cargarMapa("/mapas/worldV2.txt");
+        //cargarMapa("/mapas/cyclopolis.txt");
 
     }
     public void getTileImage(){
@@ -30,6 +31,10 @@ public class administradordesuelo {
             setup(3,"earth",false);
             setup(4,"tree",true);
             setup(5,"road00",false);
+            setup(6,"fueramundo",true);
+            setup(7,"wall05",false );
+            setup(8,"suelo05",false);
+            setup(9,"Lava",true);
 
             setup(10,"grass00",false);
             setup(11,"grass01",false);
