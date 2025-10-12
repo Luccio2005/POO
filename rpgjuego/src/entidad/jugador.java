@@ -58,7 +58,7 @@ public class jugador extends entidad{
 
     public void actualizar(){
         if(keyH.arribap == true || keyH.abajop ==true
-                || keyH.izquierdap == true || keyH.derechap == true){
+                || keyH.izquierdap == true || keyH.derechap == true ||keyH.enterp == true){
             if(keyH.arribap == true){
                 direccion= "up";
             }
@@ -88,8 +88,8 @@ public class jugador extends entidad{
             contactoenemigo(indiceenemigos);
             //combrobar evento
             gp.evento.comprobarevento();
-            gp.keyH.enterp = false;
-            if(colision == false){
+
+            if(colision == false && keyH.enterp == false){
                 switch (direccion){
                     case "up":
                         mundoy -= velocidad;
@@ -105,6 +105,7 @@ public class jugador extends entidad{
                         break;
                 }
             }
+            gp.keyH.enterp = false;
             contadorSprite++;
             if(contadorSprite>12){
                 if(numeroSprite ==1){

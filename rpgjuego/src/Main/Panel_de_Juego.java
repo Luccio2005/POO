@@ -20,8 +20,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public final int anchoPantalla = tileSize * tamanoColumna;
     public final int altoPantalla = tileSize * tamanoFila;
 
-    public final int maxWorldCol = 100;
-    public final int maxWorldRow = 100;
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
 
     int FPS = 60;
 
@@ -147,7 +147,6 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             }
             // sort
             Collections.sort(listaentidad, new Comparator<entidad>() {
-
                 @Override
                 public int compare(entidad e1, entidad e2) {
                     int result = Integer.compare(e1.mundoy, e2.mundoy);
@@ -159,9 +158,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                 listaentidad.get(i).dibujar(g2);
             }
             // vaciar lista entidad
-            for(int i = 0; i< listaentidad.size(); i++){
-                listaentidad.remove(i);
-            }
+            listaentidad.clear();
+
             ui.dibujar(g2);
         }
     }
