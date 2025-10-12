@@ -33,6 +33,7 @@ public class jugador extends entidad{
 
         valorespredeterminados();
         getPlayerImage();
+        getPlayerAttackImage();
 
     }
     public void valorespredeterminados(){
@@ -46,18 +47,31 @@ public class jugador extends entidad{
     }
     public void getPlayerImage(){
 
-        up1= setup("/jugador/Arriba1-1");
-        up2= setup("/jugador/Arriba1-2");
-        down1= setup("/jugador/Abajo1-1");
-        down2= setup("/jugador/Abajo1-2");
-        left1= setup("/jugador/Izquierda1-1");
-        left2= setup("/jugador/Izquierda1-2");
-        right1= setup("/jugador/Derecha1-1");
-        right2= setup("/jugador/Derecha1-2");
+        up1= setup("/jugador/Arriba1-1", gp.tileSize, gp.tileSize);
+        up2= setup("/jugador/Arriba1-2", gp.tileSize, gp.tileSize);
+        down1= setup("/jugador/Abajo1-1", gp.tileSize, gp.tileSize);
+        down2= setup("/jugador/Abajo1-2", gp.tileSize, gp.tileSize);
+        left1= setup("/jugador/Izquierda1-1", gp.tileSize, gp.tileSize);
+        left2= setup("/jugador/Izquierda1-2", gp.tileSize, gp.tileSize);
+        right1= setup("/jugador/Derecha1-1", gp.tileSize, gp.tileSize);
+        right2= setup("/jugador/Derecha1-2", gp.tileSize, gp.tileSize);
     }
+    public void getPlayerAttackImage(){
+        atqarriba1 = setup("/jugador/ataquearriba1", gp.tileSize, gp.tileSize);
+        atqarriba2 = setup("/jugador/ataquearriba2", gp.tileSize, gp.tileSize);
+        atqabajo1 = setup("/jugador/ataqueabajo1", gp.tileSize, gp.tileSize);
+        atqabajo2 = setup("/jugador/ataqueabajo2", gp.tileSize, gp.tileSize);
+        atqizq1 = setup("/jugador/ataqueizq1", gp.tileSize, gp.tileSize);
+        atqizq2 = setup("/jugador/ataqueizq2", gp.tileSize, gp.tileSize);
+        atqder1 = setup("/jugador/ataqueder1", gp.tileSize, gp.tileSize);
+        atqder2 = setup("/jugador/ataqueder2", gp.tileSize, gp.tileSize);
 
+    }
     public void actualizar(){
-        if(keyH.arribap == true || keyH.abajop ==true
+        if(atacando == true){
+            atacando();
+        }
+        else if(keyH.arribap == true || keyH.abajop ==true
                 || keyH.izquierdap == true || keyH.derechap == true ||keyH.enterp == true){
             if(keyH.arribap == true){
                 direccion= "up";
@@ -124,15 +138,29 @@ public class jugador extends entidad{
             }
         }
     }
+    public void atacando(){
+        contadorSprite++;
+        if(contadorSprite <=5){
+            numeroSprite = 1;
+        }if(contadorSprite >5 && contadorSprite <=25){
+            numeroSprite = 2;
+        }if(contadorSprite > 25){
+            numeroSprite =1;
+            contadorSprite = 0;
+            atacando = false;
+        }
+    }
     public void recogerobjeto (int i){
         if(i != 999){
         }
     }
-    public void interactuarnpc(int i){
-        if(i != 999){
-            if(gp.keyH.enterp == true){
+    public void interactuarnpc(int i) {
+        if (gp.keyH.enterp == true) {
+            if (i != 999) {
                 gp.estadodeljuego = gp.dialogo;
                 gp.npc[i].hablar();
+            } else {
+                atacando = true;
             }
         }
     }
@@ -150,30 +178,65 @@ public class jugador extends entidad{
         BufferedImage imagen=null;
         switch (direccion){
             case "up":
+                if(atacando == false){
+                    if(numeroSprite ==1){
+                        imagen = up1;
+                    }if(numeroSprite ==2){
+                        imagen = up2;
+                    }
+                }if(atacando == true){
                 if(numeroSprite ==1){
-                    imagen = up1;
+                    imagen = atqarriba1;
                 }if(numeroSprite ==2){
-                    imagen = up2;
+                    imagen = atqarriba2;
+                }
             }
                  break;
             case "down":
+                if(atacando == false){
+                    if(numeroSprite ==1){
+                        imagen = down1;
+                    }if(numeroSprite ==2){
+                        imagen = down2;
+                    }
+                }if(atacando == true){
                 if(numeroSprite ==1){
-                    imagen = down1;
+                    imagen = atqabajo1;
                 }if(numeroSprite ==2){
-                    imagen = down2;
-            } break;
+                    imagen = atqabajo2;
+                }
+            }
+                 break;
             case "left":
+                if(atacando == false){
+                    if(numeroSprite ==1){
+                        imagen = left1;
+                    }if(numeroSprite ==2){
+                        imagen = left2;
+                    }
+                }if(atacando == true){
                 if(numeroSprite ==1){
-                    imagen = left1;
+                    imagen = atqizq1;
                 }if(numeroSprite ==2){
-                    imagen = left2;
-            } break;
+                    imagen = atqizq2;
+                }
+            }
+                 break;
             case "right":
+                if(atacando == false){
+                    if(numeroSprite ==1){
+                        imagen = right1;
+                    }if(numeroSprite ==2){
+                        imagen = right2;
+                    }
+                }if(atacando == true){
                 if(numeroSprite ==1){
-                    imagen = right1;
+                    imagen = atqder1;
                 }if(numeroSprite ==2){
-                    imagen = right2;
-            } break;
+                    imagen = atqder2;
+                }
+            }
+                 break;
         }
         if(invencible == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));

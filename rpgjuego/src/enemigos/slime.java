@@ -6,9 +6,10 @@ import entidad.entidad;
 import java.util.Random;
 
 public class slime extends entidad{
-
+    Panel_de_Juego gp;
     public slime(Panel_de_Juego gp) {
         super(gp);
+        this.gp = gp;
         tipo = 2;
         nombre = "slime";
         velocidad =1;
@@ -24,14 +25,14 @@ public class slime extends entidad{
         getImage();
     }
     public  void getImage(){
-        up1 = setup("/enemigos/greenslime_down_1");
-        up2 = setup("/enemigos/greenslime_down_2");
-        down1 = setup("/enemigos/greenslime_down_1");
-        down2 = setup("/enemigos/greenslime_down_2");
-        left1 = setup("/enemigos/greenslime_down_1");
-        left2 = setup("/enemigos/greenslime_down_2");
-        right1 = setup("/enemigos/greenslime_down_1");
-        right2 = setup("/enemigos/greenslime_down_2");
+        up1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
     }
     public void  setaction(){
         bloqueodeaccion ++;

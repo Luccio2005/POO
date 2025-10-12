@@ -10,28 +10,31 @@ import java.io.IOException;
 
 public class entidad {
     Panel_de_Juego gp;
-    public int mundox,mundoy;
-    public int velocidad;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public String direccion = "down";
-    public int contadorSprite=0;
-    public int numeroSprite=1;
+    public BufferedImage atqarriba1, atqarriba2, atqabajo1, atqabajo2, atqizq1,atqizq2, atqder1, atqder2;
+    public BufferedImage imagen, imagen2, imagen3;
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
-    public int bloqueodeaccion =0;
-    public boolean invencible = false;
-    public int contadorinvencible = 0;
     String dialogos[]= new String[20];
+    //STATE
+    public int mundox,mundoy;
+    public String direccion = "down";
+    public int numeroSprite=1;
     int indicededialogos = 0;
-    public BufferedImage imagen, imagen2, imagen3;
-    public String nombre;
-    public int tipo;
 
-    // eestado del personaje
+    public boolean invencible = false;
+    boolean atacando = false;
+    //CONTADOR
+    public int contadorSprite=0;
+    public int bloqueodeaccion =0;
+    public int contadorinvencible = 0;
+    // ATRIBUTOS DE LOS PERSONAJES
+    public int tipo;
+    public String nombre;
+    public int velocidad;
     public int vidamax;
     public int vida;
-
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
@@ -138,12 +141,12 @@ public class entidad {
         }
     }
 
-    public BufferedImage setup(String nombreimagen){
+    public BufferedImage setup(String nombreimagen, int ancho, int alto){
         Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
         BufferedImage imagen = null;
         try{
             imagen = ImageIO.read(getClass().getResourceAsStream(nombreimagen+".png"));
-            imagen = Herramienta.Imagenescala(imagen, gp.tileSize, gp.tileSize);
+            imagen = Herramienta.Imagenescala(imagen, ancho, alto);
         } catch (IOException e) {
             e.printStackTrace();
         }

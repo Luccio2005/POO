@@ -8,6 +8,6 @@ public class Obj_chest extends entidad{
     public Obj_chest(Panel_de_Juego gp) {
         super(gp);
         nombre="cofre";
-        down1 = setup("/objetos/chest");
+        down1 = setup("/objetos/chest", gp.tileSize, gp.tileSize);
     }
 }

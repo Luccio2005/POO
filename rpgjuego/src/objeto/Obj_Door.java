@@ -8,7 +8,7 @@ public class Obj_Door extends entidad{
     public Obj_Door(Panel_de_Juego gp) {
         super(gp);
         nombre="puerta";
-        down1= setup("/objetos/door");
+        down1= setup("/objetos/door", gp.tileSize, gp.tileSize);
 
         colision = true;
         areadecolision.x = 0;

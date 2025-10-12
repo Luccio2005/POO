@@ -8,6 +8,6 @@ public class Obj_boots extends entidad{
     public Obj_boots(Panel_de_Juego gp) {
         super(gp);
         nombre="botas";
-        down1 = setup("/objetos/boots");
+        down1 = setup("/objetos/boots", gp.tileSize, gp.tileSize);
     }
 }
