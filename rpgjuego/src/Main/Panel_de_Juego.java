@@ -109,7 +109,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             }
             for(int i=0; i<enemigos.length; i++){
                 if(enemigos[i] != null){
-                    enemigos[i].actualizar();
+                    if(enemigos[i].vivo == true && enemigos[i].muriendo == false){
+                        enemigos[i].actualizar();
+                    }
+                    if(enemigos[i].vivo == false){
+                        enemigos[i] =null;
+                    }
                 }
             }
         }

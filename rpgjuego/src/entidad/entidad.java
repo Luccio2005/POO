@@ -26,10 +26,13 @@ public class entidad {
 
     public boolean invencible = false;
     boolean atacando = false;
+    public boolean vivo = true;
+    public boolean muriendo = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
     public int contadorinvencible = 0;
+    int contadormuerte = 0;
     // ATRIBUTOS DE LOS PERSONAJES
     public int tipo;
     public String nombre;
@@ -148,12 +151,49 @@ public class entidad {
             if(invencible == true){
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
             }
+            if(muriendo == true){
+                animacionmuerte(g2);
+            }
             g2.drawImage(imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
-
+    public void animacionmuerte(Graphics2D g2){
+        contadormuerte++;
+        int i =5;
+        if(contadormuerte <= i){
+            changealpha(g2, 0f);
+        }
+        if(contadormuerte > i && contadormuerte <= i*2){
+            changealpha(g2, 1f);
+        }
+        if(contadormuerte > i*2 && contadormuerte <= i*3){
+            changealpha(g2, 0f);
+        }
+        if(contadormuerte > i*3 && contadormuerte <= i*4){
+            changealpha(g2, 1f);
+        }
+        if(contadormuerte > i*4 && contadormuerte <= i*5){
+            changealpha(g2, 0f);
+        }
+        if(contadormuerte > i*5 && contadormuerte <= i*6){
+            changealpha(g2, 1f);
+        }
+        if(contadormuerte > i*6 && contadormuerte <= i*7){
+            changealpha(g2, 0f);
+        }
+        if(contadormuerte > i*7 && contadormuerte <= i*8){
+            changealpha(g2, 1f);
+        }
+        if(contadormuerte > i*8){
+            muriendo= false;
+            vivo= false;
+        }
+    }
+    public void changealpha(Graphics2D g2, float alphavalue){
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphavalue));
+    }
     public BufferedImage setup(String nombreimagen, int ancho, int alto){
         Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
         BufferedImage imagen = null;
