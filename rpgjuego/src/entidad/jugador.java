@@ -31,6 +31,10 @@ public class jugador extends entidad{
         areadecolision.width=8;
         areadecolision.height=8;
 
+        areadeataque.width = 20;
+        areadeataque.height = 20;
+
+
         valorespredeterminados();
         getPlayerImage();
         getPlayerAttackImage();
@@ -144,6 +148,28 @@ public class jugador extends entidad{
             numeroSprite = 1;
         }if(contadorSprite >5 && contadorSprite <=25){
             numeroSprite = 2;
+            int actualmundox = mundox;
+            int actualmundoy = mundoy;
+            int areadecolisionancho = areadecolision.width;
+            int areadecolisionalto = areadecolision.height;
+
+            switch (direccion){
+                case "up": mundoy -= areadeataque.height; break;
+                case "down": mundoy += areadeataque.height; break;
+                case "left": mundox -= areadeataque.width; break;
+                case "right": mundox += areadeataque.width; break;
+            }
+            areadecolision.width = areadeataque.width;
+            areadecolision.height = areadeataque.height;
+
+            int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
+            damageenemigo(indiceenemigo);
+
+            mundox = actualmundox;
+            mundoy = actualmundoy;
+            areadecolision.width = areadecolisionancho;
+            areadecolision.height = areadecolisionalto;
+
         }if(contadorSprite > 25){
             numeroSprite =1;
             contadorSprite = 0;
@@ -169,6 +195,17 @@ public class jugador extends entidad{
             if(invencible == false){
                 vida -=1;
                 invencible = true;
+            }
+        }
+    }
+    public void damageenemigo(int i){
+        if(i != 999){
+            if(gp.enemigos[i].invencible == false){
+                gp.enemigos[i].vida -= 1;
+                gp.enemigos[i].invencible = true;
+                if(gp.enemigos[i].vida <= 0){
+                    gp.enemigos[i] = null;
+                }
             }
         }
     }
@@ -239,7 +276,7 @@ public class jugador extends entidad{
                  break;
         }
         if(invencible == true){
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
         g2.drawImage(imagen,pantallax,pantallay, null);
 

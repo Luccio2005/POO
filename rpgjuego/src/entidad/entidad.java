@@ -14,6 +14,7 @@ public class entidad {
     public BufferedImage atqarriba1, atqarriba2, atqabajo1, atqabajo2, atqizq1,atqizq2, atqder1, atqder2;
     public BufferedImage imagen, imagen2, imagen3;
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
+    public Rectangle areadeataque = new Rectangle(0,0,0,0);
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
     String dialogos[]= new String[20];
@@ -100,6 +101,13 @@ public class entidad {
             }
             contadorSprite=0;
         }
+        if(invencible == true){
+            contadorinvencible ++;
+            if(contadorinvencible > 40){
+                invencible = false;
+                contadorinvencible = 0;
+            }
+        }
     }
     public void dibujar(Graphics2D g2){
         BufferedImage imagen=null;
@@ -137,7 +145,12 @@ public class entidad {
                     imagen = right2;
                 } break;
             }
+            if(invencible == true){
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+            }
             g2.drawImage(imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
 

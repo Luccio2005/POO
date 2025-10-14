@@ -10,7 +10,6 @@ public class Main {
 
         Panel_de_Juego paneldejuego = new Panel_de_Juego();
 
-
         window.add(paneldejuego);
 
         window.pack();

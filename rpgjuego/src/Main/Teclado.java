@@ -49,7 +49,7 @@ public class Teclado implements KeyListener {
             }
         }
         //reanudar
-        if(gp.estadodeljuego == gp.reanudar){
+        else if(gp.estadodeljuego == gp.reanudar){
             if(codigo == KeyEvent.VK_W){
                 arribap = true;
             }
