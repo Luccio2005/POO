@@ -73,12 +73,11 @@ public class entidad {
 
         if(this.tipo == 2 && contactojugador == true){
             if(gp.jugador.invencible == false){
+                gp.playSE(6);
                 gp.jugador.vida -= 1;
                 gp.jugador.invencible = true;
             }
         }
-
-
         if(colision == false){
             switch (direccion){
                 case "up":

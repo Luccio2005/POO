@@ -186,6 +186,7 @@ public class jugador extends entidad{
                 gp.estadodeljuego = gp.dialogo;
                 gp.npc[i].hablar();
             } else {
+                gp.playSE(7);
                 atacando = true;
             }
         }
@@ -193,6 +194,7 @@ public class jugador extends entidad{
     public void contactoenemigo(int i){
         if(i !=999){
             if(invencible == false){
+                gp.playSE(6);
                 vida -=1;
                 invencible = true;
             }
@@ -201,6 +203,7 @@ public class jugador extends entidad{
     public void damageenemigo(int i){
         if(i != 999){
             if(gp.enemigos[i].invencible == false){
+                gp.playSE(5);
                 gp.enemigos[i].vida -= 1;
                 gp.enemigos[i].invencible = true;
                 if(gp.enemigos[i].vida <= 0){

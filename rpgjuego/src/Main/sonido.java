@@ -15,6 +15,9 @@ public class sonido {
         Urlsonido[2]= getClass().getResource("/sonido/powerup.wav");
         Urlsonido[3]= getClass().getResource("/sonido/unlock.wav");
         Urlsonido[4]= getClass().getResource("/sonido/fanfare.wav");
+        Urlsonido[5]= getClass().getResource("/sonido/hitmonster.wav");
+        Urlsonido[6]= getClass().getResource("/sonido/receivedamage.wav");
+        Urlsonido[7]= getClass().getResource("/sonido/swingweapon.wav");
     }
     public void setFile(int i){
         try {
