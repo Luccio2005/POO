@@ -147,6 +147,11 @@ public class entidad {
                     imagen = right2;
                 } break;
             }
+            // barra de vida de enemigos
+            if(tipo == 2){
+                g2.setColor(new Color(255,0,30));
+                g2.fillRect(pantallax, pantallay -15, gp.tileSize, 10);
+            }
             if(invencible == true){
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
             }
