@@ -51,4 +51,8 @@ public class slime extends entidad{
             bloqueodeaccion = 0;
         }
     }
+    public void reaccionaldamage(){
+        bloqueodeaccion = 0;
+        direccion = gp.jugador.direccion;
+    }
 }

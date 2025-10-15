@@ -28,11 +28,13 @@ public class entidad {
     boolean atacando = false;
     public boolean vivo = true;
     public boolean muriendo = false;
+    boolean barrahpon = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
     public int contadorinvencible = 0;
     int contadormuerte = 0;
+    int contadorbarrahp = 0;
     // ATRIBUTOS DE LOS PERSONAJES
     public int tipo;
     public String nombre;
@@ -44,6 +46,9 @@ public class entidad {
         this.gp = gp;
     }
     public void setaction(){
+    }
+    public void reaccionaldamage(){
+
     }
     public void hablar(){
         if(dialogos[indicededialogos] == null){
@@ -148,23 +153,31 @@ public class entidad {
                 } break;
             }
             // barra de vida de enemigos
-            if(tipo == 2){
+            if(tipo == 2 && barrahpon == true){
                 double onescale = (double)gp.tileSize/vidamax;
                 double valorbarrahp = onescale*vida;
                 g2.setColor(new Color(35,35,35));
                 g2.fillRect(pantallax-1,pantallay-16, gp.tileSize+2, 12);
                 g2.setColor(new Color(255,0,30));
                 g2.fillRect(pantallax, pantallay -15, (int)valorbarrahp, 10);
+                contadorbarrahp++;
+
+                if(contadorbarrahp > 600){
+                    contadorbarrahp = 0;
+                    barrahpon = false;
+                }
             }
             if(invencible == true){
-                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+                barrahpon = true;
+                contadorbarrahp = 0;
+                changealpha(g2,0.4F);
             }
             if(muriendo == true){
                 animacionmuerte(g2);
             }
             g2.drawImage(imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
 
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            changealpha(g2,1F);
         }
     }
     public void animacionmuerte(Graphics2D g2){

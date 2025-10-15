@@ -206,6 +206,7 @@ public class jugador extends entidad{
                 gp.playSE(5);
                 gp.enemigos[i].vida -= 1;
                 gp.enemigos[i].invencible = true;
+                gp.enemigos[i].reaccionaldamage();
                 if(gp.enemigos[i].vida <= 0){
                     gp.enemigos[i].muriendo = true;
                 }
