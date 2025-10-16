@@ -35,17 +35,20 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public Eventos evento = new Eventos(this);
     Thread gameThread;
 
+    //entidad y objetos
     public jugador jugador= new jugador(this,keyH);
     public entidad obj[]=new entidad[10];
     public entidad npc[] = new entidad[10];
     public entidad enemigos[] = new entidad[20];
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
+    //estados del juego
     public int estadodeljuego;
     public final int pantalladeinicio =0;
     public final int reanudar = 1;
     public final int pausar =2;
     public final int dialogo = 3;
+    public final int estadodepersonaje = 4;
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
         this.setBackground(Color.black);

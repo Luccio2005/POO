@@ -2,6 +2,8 @@ package entidad;
 import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 import Main.Teclado;
+import objeto.Obj_shield_wood;
+import objeto.Obj_sword_normal;
 
 
 import javax.imageio.ImageIO;
@@ -47,8 +49,24 @@ public class jugador extends entidad{
         velocidad= 4;
         direccion= "down";
         //estado jugador
+        lvl = 1;
         vidamax =6;
         vida = vidamax;
+        str = 1; // mas str mas dano ocasiona
+        dex = 1; // mas dex menos dano recibe
+        exp = 0;
+        nextlvlexp = 5;
+        coin = 0;
+        actualarma = new Obj_sword_normal(gp);
+        actualescudo = new Obj_shield_wood(gp);
+        atq = getAttack(); // el valor de atq es decidido por str con elarma
+        def = getDefense(); // el valor de def es decidido por dex con el escudo
+    }
+    public int getAttack(){
+        return atq = str*actualarma.valordeatq;
+    }
+    public int getDefense(){
+        return def = dex*actualescudo.valordedef;
     }
     public void getPlayerImage(){
 

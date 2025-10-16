@@ -23,66 +23,88 @@ public class Teclado implements KeyListener {
         int codigo = e.getKeyCode();
         // pantalla de inicio
         if(gp.estadodeljuego == gp.pantalladeinicio){
-            if(codigo == KeyEvent.VK_W){
-                gp.ui.numerodecomando--;
-                if(gp.ui.numerodecomando <0){
-                    gp.ui.numerodecomando = 2;
-                }
-            }
-            if(codigo == KeyEvent.VK_S){
-                gp.ui.numerodecomando++;
-                if(gp.ui.numerodecomando >2){
-                    gp.ui.numerodecomando =0;
-                }
-            }
-            if(codigo == KeyEvent.VK_ENTER){
-                if(gp.ui.numerodecomando ==0){
-                    gp.estadodeljuego = gp.reanudar;
-                    gp.playMusic(0);
-                }
-                if(gp.ui.numerodecomando ==1){
-
-                }
-                if(gp.ui.numerodecomando ==2){
-                    System.exit(0);
-                }
-            }
+            pantalladeinicio(codigo);
         }
         //reanudar
         else if(gp.estadodeljuego == gp.reanudar){
-            if(codigo == KeyEvent.VK_W){
-                arribap = true;
-            }
-            if(codigo == KeyEvent.VK_S){
-                abajop = true;
-            }
-            if(codigo == KeyEvent.VK_A){
-                izquierdap = true;
-            }
-            if(codigo == KeyEvent.VK_D){
-                derechap = true;
-            }
-            if(codigo == KeyEvent.VK_P){
-                gp.estadodeljuego = gp.pausar;
-            }
-            if(codigo == KeyEvent.VK_ENTER){
-                enterp = true;
-            }
+            reanudar(codigo);
         }
         //pausar
         else if(gp.estadodeljuego == gp.pausar){
-            if(codigo == KeyEvent.VK_P){
-                gp.estadodeljuego = gp.reanudar;
-            }
+            pausar(codigo);
         }
         //dialogo
         else if(gp.estadodeljuego == gp.dialogo){
-            if(codigo == KeyEvent.VK_ENTER){
-                gp.estadodeljuego = gp.reanudar;
-            }
-
+            dialogo(codigo);
         }
+        // estado de personaje
+        else if(gp.estadodeljuego == gp.estadodepersonaje){
+            estadodepersonaje(codigo);
+        }
+    }
+    public void pantalladeinicio(int codigo){
+        if(codigo == KeyEvent.VK_W){
+            gp.ui.numerodecomando--;
+            if(gp.ui.numerodecomando <0){
+                gp.ui.numerodecomando = 2;
+            }
+        }
+        if(codigo == KeyEvent.VK_S){
+            gp.ui.numerodecomando++;
+            if(gp.ui.numerodecomando >2){
+                gp.ui.numerodecomando =0;
+            }
+        }
+        if(codigo == KeyEvent.VK_ENTER){
+            if(gp.ui.numerodecomando ==0){
+                gp.estadodeljuego = gp.reanudar;
+                gp.playMusic(0);
+            }
+            if(gp.ui.numerodecomando ==1){
 
+            }
+            if(gp.ui.numerodecomando ==2){
+                System.exit(0);
+            }
+        }
+    }
+    public void reanudar(int codigo){
+        if(codigo == KeyEvent.VK_W){
+            arribap = true;
+        }
+        if(codigo == KeyEvent.VK_S){
+            abajop = true;
+        }
+        if(codigo == KeyEvent.VK_A){
+            izquierdap = true;
+        }
+        if(codigo == KeyEvent.VK_D){
+            derechap = true;
+        }
+        if(codigo == KeyEvent.VK_P){
+            gp.estadodeljuego = gp.pausar;
+        }
+        if(codigo == KeyEvent.VK_C){
+            gp.estadodeljuego = gp.estadodepersonaje;
+        }
+        if(codigo == KeyEvent.VK_ENTER){
+            enterp = true;
+        }
+    }
+    public void pausar(int codigo){
+        if(codigo == KeyEvent.VK_P){
+            gp.estadodeljuego = gp.reanudar;
+        }
+    }
+    public void dialogo(int codigo){
+        if(codigo == KeyEvent.VK_ENTER){
+            gp.estadodeljuego = gp.reanudar;
+        }
+    }
+    public void estadodepersonaje(int codigo){
+        if(codigo == KeyEvent.VK_C){
+            gp.estadodeljuego = gp.reanudar;
+        }
     }
 
     @Override

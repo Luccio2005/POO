@@ -42,16 +42,24 @@ public class UI {
         //pantalla de inicio
         if(gp.estadodeljuego == gp.pantalladeinicio){
             dibujarpantalladeinicio();
-
         }
+        // reanudar
         if(gp.estadodeljuego == gp.reanudar){
             dibujarvidajugador();
-        }if(gp.estadodeljuego == gp.pausar){
+        }
+        // pausar
+        if(gp.estadodeljuego == gp.pausar){
             dibujarvidajugador();
             dibujarpausa();
-        }if(gp.estadodeljuego == gp.dialogo){
+        }
+        // dialogo
+        if(gp.estadodeljuego == gp.dialogo){
             dibujarvidajugador();
             dibujarpantalladedialogo();
+        }
+        // estado de personaje
+        if(gp.estadodeljuego == gp.estadodepersonaje){
+            dibujarpantalladepersonaje();
         }
     }
     public void dibujarvidajugador(){
@@ -145,6 +153,9 @@ public class UI {
             g2.drawString(line,x,y);
             y+= 40;
         }
+    }
+    public void dibujarpantalladepersonaje(){
+        
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);

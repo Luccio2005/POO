@@ -1,0 +1,13 @@
+package objeto;
+
+import Main.Panel_de_Juego;
+import entidad.entidad;
+
+public class Obj_sword_normal extends entidad{
+    public Obj_sword_normal(Panel_de_Juego gp){
+        super(gp);
+        nombre = "espada normal";
+        down1 = setup("/objetos/sword_normal", gp.tileSize, gp.tileSize);
+        valordeatq =1;
+    }
+}

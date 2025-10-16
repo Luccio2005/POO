@@ -41,6 +41,20 @@ public class entidad {
     public int velocidad;
     public int vidamax;
     public int vida;
+    public int lvl;
+    public int str;
+    public int dex;
+    public int atq;
+    public int def;
+    public int exp;
+    public int nextlvlexp;
+    public int coin;
+    public entidad actualarma;
+    public entidad actualescudo;
+
+    //atributos de los items
+    public int valordeatq;
+    public int valordedef;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
