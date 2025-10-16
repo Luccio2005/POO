@@ -15,6 +15,7 @@ public class jugador extends entidad{
     public final int pantallax;
     public final int pantallay;
     //public int tenerllave =0;
+    public boolean cancelaratq = false;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         super(gp);
@@ -123,6 +124,12 @@ public class jugador extends entidad{
                         break;
                 }
             }
+            if(keyH.enterp == true && cancelaratq == false){
+                gp.playSE(7);
+                atacando = true;
+                contadorSprite = 0;
+            }
+            cancelaratq = false;
             gp.keyH.enterp = false;
             contadorSprite++;
             if(contadorSprite>12){
@@ -183,11 +190,9 @@ public class jugador extends entidad{
     public void interactuarnpc(int i) {
         if (gp.keyH.enterp == true) {
             if (i != 999) {
+                cancelaratq = true;
                 gp.estadodeljuego = gp.dialogo;
                 gp.npc[i].hablar();
-            } else {
-                gp.playSE(7);
-                atacando = true;
             }
         }
     }

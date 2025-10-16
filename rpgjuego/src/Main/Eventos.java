@@ -78,6 +78,8 @@ public class Eventos {
     public void healingpool(int col, int fila, int estadodeljuego){
         if(gp.keyH.enterp == true){
             gp.estadodeljuego = estadodeljuego;
+            gp.jugador.cancelaratq = true;
+            gp.playSE(2);
             gp.ui.dialogoactual = "tu tomas agua del lago \ntu vida se esta recuperando";
             gp.jugador.vida = gp.jugador.vidamax;
         }
