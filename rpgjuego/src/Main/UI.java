@@ -155,7 +155,11 @@ public class UI {
         }
     }
     public void dibujarpantalladepersonaje(){
-        
+        final int framex = gp.tileSize*2;
+        final int framey = gp.tileSize;
+        final int frameancho = gp.tileSize*5;
+        final int framealto = gp.tileSize*10;
+        dibujarpestana(framex, framey, frameancho, framealto);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
