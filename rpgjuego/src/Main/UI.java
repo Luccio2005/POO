@@ -155,7 +155,7 @@ public class UI {
         }
     }
     public void dibujarpantalladepersonaje(){
-        final int framex = gp.tileSize*2;
+        final int framex = gp.tileSize;
         final int framey = gp.tileSize;
         final int frameancho = gp.tileSize*5;
         final int framealto = gp.tileSize*10;
@@ -182,9 +182,9 @@ public class UI {
         g2.drawString("Next Lvl",textox,textoy);
         textoy += lineaalto;
         g2.drawString("Coin",textox,textoy);
-        textoy += lineaalto;
+        textoy += lineaalto + 20;
         g2.drawString("Weapon",textox,textoy);
-        textoy += lineaalto;
+        textoy += lineaalto +15;
         g2.drawString("Shield",textox,textoy);
         textoy += lineaalto;
         //valores
@@ -236,6 +236,10 @@ public class UI {
         textox = getxforAligntorighttext(valor,tailx);
         g2.drawString(valor,textox,textoy);
         textoy += lineaalto;
+
+        g2.drawImage(gp.jugador.actualarma.down1, tailx - gp.tileSize, textoy-14,null);
+        textoy += gp.tileSize;
+        g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-14,null);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
