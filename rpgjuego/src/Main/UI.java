@@ -163,7 +163,7 @@ public class UI {
         //texto
         int textox = framex + 20;
         int textoy = framey + gp.tileSize;
-        final int lineaalto = 32;
+        final int lineaalto = 35;
         //nombres
         g2.drawString("Lvl",textox,textoy);
         textoy += lineaalto;
@@ -187,6 +187,14 @@ public class UI {
         textoy += lineaalto;
         g2.drawString("Shield",textox,textoy);
         textoy += lineaalto;
+        //valores
+        int tailx = (framex + frameancho) -30;
+        //reset texxto y
+        textoy = framey + gp.tileSize;
+        String valor;
+        valor = String.valueOf(gp.jugador.lvl);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
@@ -200,6 +208,11 @@ public class UI {
     public int getxforcenteredtext(String texto){
         int length = (int)g2.getFontMetrics().getStringBounds(texto,g2).getWidth();
         int x = gp.anchoPantalla/2 - length/2;
+        return x;
+    }
+    public int getxforAligntorighttext(String texto, int tailx){
+        int length = (int)g2.getFontMetrics().getStringBounds(texto,g2).getWidth();
+        int x = tailx - length;
         return x;
     }
 }
