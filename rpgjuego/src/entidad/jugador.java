@@ -218,7 +218,11 @@ public class jugador extends entidad{
         if(i !=999){
             if(invencible == false){
                 gp.playSE(6);
-                vida -=1;
+                int damage = gp.enemigos[i].atq - def;
+                if(damage<0){
+                    damage = 0;
+                }
+                vida -= damage;
                 invencible = true;
             }
         }
@@ -227,7 +231,11 @@ public class jugador extends entidad{
         if(i != 999){
             if(gp.enemigos[i].invencible == false){
                 gp.playSE(5);
-                gp.enemigos[i].vida -= 1;
+                int damage = atq - gp.enemigos[i].def;
+                if(damage<0){
+                    damage = 0;
+                }
+                gp.enemigos[i].vida -= damage;
                 gp.enemigos[i].invencible = true;
                 gp.enemigos[i].reaccionaldamage();
                 if(gp.enemigos[i].vida <= 0){

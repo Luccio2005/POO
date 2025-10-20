@@ -93,7 +93,11 @@ public class entidad {
         if(this.tipo == 2 && contactojugador == true){
             if(gp.jugador.invencible == false){
                 gp.playSE(6);
-                gp.jugador.vida -= 1;
+                int damage = atq - gp.jugador.def;
+                if(damage<0){
+                    damage = 0;
+                }
+                gp.jugador.vida -= damage;
                 gp.jugador.invencible = true;
             }
         }
