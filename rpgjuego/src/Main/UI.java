@@ -195,6 +195,47 @@ public class UI {
         valor = String.valueOf(gp.jugador.lvl);
         textox = getxforAligntorighttext(valor,tailx);
         g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.vida+"/"+gp.jugador.vidamax);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.str);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.dex);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.atq);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.def);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.exp);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.nextlvlexp);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.coin);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
