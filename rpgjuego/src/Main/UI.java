@@ -5,6 +5,7 @@ import objeto.Obj_heart;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class UI {
     Panel_de_Juego gp;
@@ -12,8 +13,10 @@ public class UI {
     Font arial_40, arial_80B;
     BufferedImage heart_full, heart_half, heart_blank;
     public boolean mensajeOn= false;
-    public String mensaje = "";
-    int mensajeContador = 0;
+    //public String mensaje = "";
+    //int mensajeContador = 0;
+    ArrayList<String> mensaje = new ArrayList<>();
+    ArrayList<Integer> contadormensaje = new ArrayList<>();
     public boolean juegoterminado = false;
     public String dialogoactual = "";
     public int numerodecomando =0;
@@ -31,9 +34,9 @@ public class UI {
 
 
     }
-    public void mostrarmensaje(String texto){
-        mensaje = texto;
-        mensajeOn = true;
+    public void anadirmensaje(String texto){
+        mensaje.add(texto);
+        contadormensaje.add(0);
     }
     public void dibujar(Graphics2D g2){
         this.g2 = g2;
@@ -46,6 +49,7 @@ public class UI {
         // reanudar
         if(gp.estadodeljuego == gp.reanudar){
             dibujarvidajugador();
+            dibujarmensaje();
         }
         // pausar
         if(gp.estadodeljuego == gp.pausar){
@@ -85,6 +89,26 @@ public class UI {
             }
             i++;
             x += gp.tileSize;
+        }
+    }
+    public void dibujarmensaje(){
+        int mensajex = gp.tileSize;
+        int mensajey = gp.tileSize*4;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
+        for(int i=0; i<mensaje.size(); i++){
+            if(mensaje.get(i) !=null){
+                g2.setColor(Color.black);
+                g2.drawString(mensaje.get(i), mensajex + 2, mensajey + 2);
+                g2.setColor(Color.white);
+                g2.drawString(mensaje.get(i), mensajex, mensajey);
+                int contador = contadormensaje.get(i) + 1;
+                contadormensaje.set(i, contador);
+                mensajey += 50;
+                if(contadormensaje.get(i) > 180){
+                    mensaje.remove(i);
+                    contadormensaje.remove(i);
+                }
+            }
         }
     }
     public void dibujarpantalladeinicio(){

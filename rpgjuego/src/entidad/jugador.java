@@ -236,10 +236,12 @@ public class jugador extends entidad{
                     damage = 0;
                 }
                 gp.enemigos[i].vida -= damage;
+                gp.ui.anadirmensaje(damage + " damage!");
                 gp.enemigos[i].invencible = true;
                 gp.enemigos[i].reaccionaldamage();
                 if(gp.enemigos[i].vida <= 0){
                     gp.enemigos[i].muriendo = true;
+                    gp.ui.anadirmensaje("mato al " + gp.enemigos[i].nombre + "!");
                 }
             }
         }
