@@ -160,6 +160,33 @@ public class UI {
         final int frameancho = gp.tileSize*5;
         final int framealto = gp.tileSize*10;
         dibujarpestana(framex, framey, frameancho, framealto);
+        //texto
+        int textox = framex + 20;
+        int textoy = framey + gp.tileSize;
+        final int lineaalto = 32;
+        //nombres
+        g2.drawString("Lvl",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Life",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Str",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Dex",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Atk",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Def",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Exp",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Next Lvl",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Coin",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Weapon",textox,textoy);
+        textoy += lineaalto;
+        g2.drawString("Shield",textox,textoy);
+        textoy += lineaalto;
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
