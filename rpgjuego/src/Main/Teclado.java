@@ -105,6 +105,22 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_C){
             gp.estadodeljuego = gp.reanudar;
         }
+        if(codigo == KeyEvent.VK_W){
+            gp.ui.ranurafila--;
+            gp.playSE(9);
+        }
+        if(codigo == KeyEvent.VK_A){
+            gp.ui.ranuracol--;
+            gp.playSE(9);
+        }
+        if(codigo == KeyEvent.VK_S){
+            gp.ui.ranurafila++;
+            gp.playSE(9);
+        }
+        if(codigo == KeyEvent.VK_D){
+            gp.ui.ranuracol++;
+            gp.playSE(9);
+        }
     }
 
     @Override

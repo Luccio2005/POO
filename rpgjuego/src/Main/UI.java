@@ -287,6 +287,7 @@ public class UI {
         int altocursor = gp.tileSize;
         //dibujar cursor
         g2.setColor(Color.white);
+        g2.setStroke(new BasicStroke(3));
         g2.drawRoundRect(cursorx, cursory, anchocursor, altocursor,10, 10);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
