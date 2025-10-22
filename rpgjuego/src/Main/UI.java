@@ -20,6 +20,8 @@ public class UI {
     public boolean juegoterminado = false;
     public String dialogoactual = "";
     public int numerodecomando =0;
+    public int ranuracol = 0;
+    public int ranurafila = 0;
 
 
     public UI(Panel_de_Juego gp){
@@ -267,11 +269,25 @@ public class UI {
         g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-14,null);
     }
     public void dibujarinventario(){
+        //frame
         int framex = gp.tileSize*9;
         int framey = gp.tileSize;
         int frameancho = gp.tileSize*6;
         int framealto = gp.tileSize*5;
         dibujarpestana(framex, framey, frameancho, framealto);
+        // slot
+        final int ranuraxstart = framex +20;
+        final int ranuraystart = framey +20;
+        int ranurax = ranuraxstart;
+        int ranuray = ranuraystart;
+        //cursor
+        int cursorx = ranuraxstart + (gp.tileSize * ranuracol);
+        int cursory = ranuraystart + (gp.tileSize * ranurafila);
+        int anchocursor = gp.tileSize;
+        int altocursor = gp.tileSize;
+        //dibujar cursor
+        g2.setColor(Color.white);
+        g2.drawRoundRect(cursorx, cursory, anchocursor, altocursor,10, 10);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
