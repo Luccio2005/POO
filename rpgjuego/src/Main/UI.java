@@ -64,6 +64,7 @@ public class UI {
         // estado de personaje
         if(gp.estadodeljuego == gp.estadodepersonaje){
             dibujarpantalladepersonaje();
+            dibujarinventario();
         }
     }
     public void dibujarvidajugador(){
@@ -264,6 +265,13 @@ public class UI {
         g2.drawImage(gp.jugador.actualarma.down1, tailx - gp.tileSize, textoy-14,null);
         textoy += gp.tileSize;
         g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-14,null);
+    }
+    public void dibujarinventario(){
+        int framex = gp.tileSize*9;
+        int framey = gp.tileSize;
+        int frameancho = gp.tileSize*6;
+        int framealto = gp.tileSize*5;
+        dibujarpestana(framex, framey, frameancho, framealto);
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
