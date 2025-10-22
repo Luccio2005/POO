@@ -2,6 +2,7 @@ package entidad;
 import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 import Main.Teclado;
+import objeto.Obj_key;
 import objeto.Obj_shield_wood;
 import objeto.Obj_sword_normal;
 
@@ -10,6 +11,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class jugador extends entidad{
     Teclado keyH;
@@ -18,6 +20,8 @@ public class jugador extends entidad{
     public final int pantallay;
     //public int tenerllave =0;
     public boolean cancelaratq = false;
+    public ArrayList<entidad> inventario = new ArrayList<>();
+    public final int tamanoinventario = 20;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         super(gp);
@@ -37,11 +41,10 @@ public class jugador extends entidad{
         areadeataque.width = 20;
         areadeataque.height = 20;
 
-
         valorespredeterminados();
         getPlayerImage();
         getPlayerAttackImage();
-
+        setItems();
     }
     public void valorespredeterminados(){
         mundox= gp.tileSize * 23;
@@ -61,6 +64,12 @@ public class jugador extends entidad{
         actualescudo = new Obj_shield_wood(gp);
         atq = getAttack(); // el valor de atq es decidido por str con elarma
         def = getDefense(); // el valor de def es decidido por dex con el escudo
+    }
+    public void setItems(){
+        inventario.add(actualarma);
+        inventario.add(actualescudo);
+        inventario.add(new Obj_key(gp));
+        inventario.add(new Obj_key(gp));
     }
     public int getAttack(){
         return atq = str*actualarma.valordeatq;
