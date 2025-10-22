@@ -20,13 +20,27 @@ public class Activos {
         gp.npc[0].mundoy = gp.tileSize*21;
     }
     public void setenemigos(){
-        gp.enemigos[0] = new slime(gp);
-        gp.enemigos[0].mundox = gp.tileSize*23;
-        gp.enemigos[0].mundoy = gp.tileSize*36;
-
-        gp.enemigos[1] = new slime(gp);
-        gp.enemigos[1].mundox = gp.tileSize*23;
-        gp.enemigos[1].mundoy = gp.tileSize*37;
+        int i =0;
+        gp.enemigos[i] = new slime(gp);
+        gp.enemigos[i].mundox = gp.tileSize*23;
+        gp.enemigos[i].mundoy = gp.tileSize*36;
+        i++;
+        gp.enemigos[i] = new slime(gp);
+        gp.enemigos[i].mundox = gp.tileSize*23;
+        gp.enemigos[i].mundoy = gp.tileSize*37;
+        i++;
+        gp.enemigos[i] = new slime(gp);
+        gp.enemigos[i].mundox = gp.tileSize*24;
+        gp.enemigos[i].mundoy = gp.tileSize*37;
+        i++;
+        gp.enemigos[i] = new slime(gp);
+        gp.enemigos[i].mundox = gp.tileSize*34;
+        gp.enemigos[i].mundoy = gp.tileSize*42;
+        i++;
+        gp.enemigos[i] = new slime(gp);
+        gp.enemigos[i].mundox = gp.tileSize*38;
+        gp.enemigos[i].mundoy = gp.tileSize*42;
+        i++;
     }
 }
 

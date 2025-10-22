@@ -82,6 +82,7 @@ public class Eventos {
             gp.playSE(2);
             gp.ui.dialogoactual = "tu tomas agua del lago \ntu vida se esta recuperando";
             gp.jugador.vida = gp.jugador.vidamax;
+            gp.aSetter.setenemigos();
         }
     }
 }

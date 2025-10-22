@@ -17,6 +17,7 @@ public class slime extends entidad{
         vida= vidamax;
         atq = 5;
         def = 0;
+        exp = 2;
 
         areadecolision.x = 3;
         areadecolision.y = 10;

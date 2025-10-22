@@ -242,8 +242,25 @@ public class jugador extends entidad{
                 if(gp.enemigos[i].vida <= 0){
                     gp.enemigos[i].muriendo = true;
                     gp.ui.anadirmensaje("mato al " + gp.enemigos[i].nombre + "!");
+                    gp.ui.anadirmensaje("exp + " + gp.enemigos[i].exp + "!");
+                    exp += gp.enemigos[i].exp;
+                    comprobarlvlup();
                 }
             }
+        }
+    }
+    public void comprobarlvlup(){
+        if(exp >= nextlvlexp){
+            lvl++;
+            nextlvlexp = nextlvlexp*2;
+            vidamax +=2;
+            str++;
+            dex++;
+            atq = getAttack();
+            def = getDefense();
+            gp.playSE(8);
+            gp.estadodeljuego = gp.dialogo;
+            gp.ui.dialogoactual = "eres nivel " + lvl + " ahora!";
         }
     }
     public void dibujar(Graphics2D g2){
