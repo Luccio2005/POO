@@ -5,6 +5,7 @@ import entidad.entidad;
 public class Obj_axe extends entidad{
     public Obj_axe(Panel_de_Juego gp){
         super(gp);
+        tipo= tipo_hacha;
         nombre = "hacha";
         down1 = setup("/objetos/axe",gp.tileSize, gp.tileSize);
         valordeatq = 2;

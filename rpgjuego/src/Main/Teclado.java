@@ -129,6 +129,9 @@ public class Teclado implements KeyListener {
                 gp.playSE(9);
             }
         }
+        if(codigo == KeyEvent.VK_ENTER){
+            gp.jugador.seleccionaritem();
+        }
     }
 
     @Override

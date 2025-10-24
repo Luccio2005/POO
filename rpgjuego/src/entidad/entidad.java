@@ -36,7 +36,6 @@ public class entidad {
     int contadormuerte = 0;
     int contadorbarrahp = 0;
     // ATRIBUTOS DE LOS PERSONAJES
-    public int tipo;
     public String nombre;
     public int velocidad;
     public int vidamax;
@@ -51,11 +50,19 @@ public class entidad {
     public int coin;
     public entidad actualarma;
     public entidad actualescudo;
-
     //atributos de los items
     public int valordeatq;
     public int valordedef;
     public String descripcion = "";
+    //tipo
+    public int tipo;
+    public final int tipo_jugador = 0;
+    public final int tipo_npc = 1;
+    public final int tipo_enemigos = 2;
+    public final int tipo_espada = 3;
+    public final int tipo_hacha = 4;
+    public final int tipo_escudo = 5;
+    public final int tipo_consumible = 6;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
@@ -91,7 +98,7 @@ public class entidad {
         gp.comprobar.comprobarentidad(this, gp.enemigos);
         boolean contactojugador = gp.comprobar.comprobarjugador(this);
 
-        if(this.tipo == 2 && contactojugador == true){
+        if(this.tipo == tipo_enemigos && contactojugador == true){
             if(gp.jugador.invencible == false){
                 gp.playSE(6);
                 int damage = atq - gp.jugador.def;

@@ -282,6 +282,23 @@ public class jugador extends entidad{
             gp.ui.dialogoactual = "eres nivel " + lvl + " ahora!";
         }
     }
+    public  void seleccionaritem(){
+        int indiceitem = gp.ui.getitemindexonslot();
+        if(indiceitem < inventario.size()){
+            entidad itemseleccionado = inventario.get(indiceitem);
+            if(itemseleccionado.tipo == tipo_espada || itemseleccionado.tipo == tipo_hacha){
+                actualarma = itemseleccionado;
+                atq = getAttack();
+            }
+            if(itemseleccionado.tipo == tipo_escudo){
+                actualescudo = itemseleccionado;
+                def = getDefense();
+            }
+            if(itemseleccionado.tipo == tipo_consumible){
+
+            }
+        }
+    }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
