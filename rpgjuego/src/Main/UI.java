@@ -283,6 +283,12 @@ public class UI {
         int tamanoranura = gp.tileSize+3;
         // dibujar items
         for(int i = 0; i< gp.jugador.inventario.size();i++){
+            //equipar cursos
+            if(gp.jugador.inventario.get(i) == gp.jugador.actualarma ||
+            gp.jugador.inventario.get(i) == gp.jugador.actualescudo){
+                g2.setColor(new Color(240,190,90));
+                g2.fillRoundRect(ranurax, ranuray, gp.tileSize, gp.tileSize, 10, 10);
+            }
             g2.drawImage(gp.jugador.inventario.get(i).down1,ranurax,ranuray,null);
             ranurax += tamanoranura;
             if(i==4 || i==9 || i==14){

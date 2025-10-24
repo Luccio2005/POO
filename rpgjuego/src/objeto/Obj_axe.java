@@ -9,6 +9,7 @@ public class Obj_axe extends entidad{
         down1 = setup("/objetos/axe",gp.tileSize, gp.tileSize);
         valordeatq = 2;
         areadeataque.width = 17;
-        areadeataque.height = 17;    }
-
+        areadeataque.height = 17;
+        descripcion = "[" +nombre+"]\noxidada pero mas\npotente";
+    }
 }
