@@ -9,6 +9,9 @@ public class Obj_sword_normal extends entidad{
         nombre = "espada normal";
         down1 = setup("/objetos/sword_normal", gp.tileSize, gp.tileSize);
         valordeatq =1;
+        areadeataque.width = 20;
+        areadeataque.height = 20;
         descripcion = "[" +nombre+"]\nuna vieja espada";
+
     }
 }

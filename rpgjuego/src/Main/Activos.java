@@ -2,10 +2,7 @@ package Main;
 
 import enemigos.slime;
 import entidad.npc_oldman;
-import objeto.Obj_Door;
-import objeto.Obj_boots;
-import objeto.Obj_chest;
-import objeto.Obj_key;
+import objeto.*;
 
 public class Activos {
     Panel_de_Juego gp;
@@ -24,6 +21,10 @@ public class Activos {
         i++;
         gp.obj[i] = new Obj_key(gp);
         gp.obj[i].mundox = gp.tileSize*26;
+        gp.obj[i].mundoy = gp.tileSize*21;
+        i++;
+        gp.obj[i] = new Obj_axe(gp);
+        gp.obj[i].mundox = gp.tileSize*33;
         gp.obj[i].mundoy = gp.tileSize*21;
         i++;
     }

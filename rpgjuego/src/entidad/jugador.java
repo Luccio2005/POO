@@ -38,8 +38,8 @@ public class jugador extends entidad{
         areadecolision.width=8;
         areadecolision.height=8;
 
-        areadeataque.width = 20;
-        areadeataque.height = 20;
+        //areadeataque.width = 20;
+        //areadeataque.height = 20;
 
         valorespredeterminados();
         getPlayerImage();
@@ -71,6 +71,7 @@ public class jugador extends entidad{
         inventario.add(new Obj_key(gp));
     }
     public int getAttack(){
+        areadeataque = actualarma.areadeataque;
         return atq = str*actualarma.valordeatq;
     }
     public int getDefense(){
