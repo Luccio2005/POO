@@ -304,13 +304,13 @@ public class UI {
         int dframey = framey + framealto;
         int dframeancho = frameancho;
         int dframealto = gp.tileSize*3;
-        dibujarpestana(dframex,dframey,dframeancho,dframealto);
         // dibujar texto de descripcion
         int textox = dframex +20;
         int textoy = dframey +gp.tileSize;
         g2.setFont(g2.getFont().deriveFont(28F));
         int indiceitem = getitemindexonslot();
         if(indiceitem < gp.jugador.inventario.size()){
+            dibujarpestana(dframex,dframey,dframeancho,dframealto);
             for(String linea: gp.jugador.inventario.get(indiceitem).descripcion.split("\n")){
                 g2.drawString(linea,textox,textoy);
                 textoy +=32;
