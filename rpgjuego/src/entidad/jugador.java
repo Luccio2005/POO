@@ -69,7 +69,6 @@ public class jugador extends entidad{
         inventario.add(actualarma);
         inventario.add(actualescudo);
         inventario.add(new Obj_key(gp));
-        inventario.add(new Obj_key(gp));
     }
     public int getAttack(){
         return atq = str*actualarma.valordeatq;

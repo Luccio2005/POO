@@ -55,6 +55,7 @@ public class entidad {
     //atributos de los items
     public int valordeatq;
     public int valordedef;
+    public String descripcion = "";
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;

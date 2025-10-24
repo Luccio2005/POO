@@ -280,24 +280,46 @@ public class UI {
         final int ranuraystart = framey +20;
         int ranurax = ranuraxstart;
         int ranuray = ranuraystart;
+        int tamanoranura = gp.tileSize+3;
         // dibujar items
         for(int i = 0; i< gp.jugador.inventario.size();i++){
             g2.drawImage(gp.jugador.inventario.get(i).down1,ranurax,ranuray,null);
-            ranurax += gp.tileSize;
+            ranurax += tamanoranura;
             if(i==4 || i==9 || i==14){
                 ranurax = ranuraxstart;
-                ranuray += gp.tileSize;
+                ranuray += tamanoranura;
             }
         }
         //cursor
-        int cursorx = ranuraxstart + (gp.tileSize * ranuracol);
-        int cursory = ranuraystart + (gp.tileSize * ranurafila);
+        int cursorx = ranuraxstart + (tamanoranura * ranuracol);
+        int cursory = ranuraystart + (tamanoranura * ranurafila);
         int anchocursor = gp.tileSize;
         int altocursor = gp.tileSize;
         //dibujar cursor
         g2.setColor(Color.white);
         g2.setStroke(new BasicStroke(3));
         g2.drawRoundRect(cursorx, cursory, anchocursor, altocursor,10, 10);
+        // descripcion ventana
+        int dframex = framex;
+        int dframey = framey + framealto;
+        int dframeancho = frameancho;
+        int dframealto = gp.tileSize*3;
+        dibujarpestana(dframex,dframey,dframeancho,dframealto);
+        // dibujar texto de descripcion
+        int textox = dframex +20;
+        int textoy = dframey +gp.tileSize;
+        g2.setFont(g2.getFont().deriveFont(28F));
+        int indiceitem = getitemindexonslot();
+        if(indiceitem < gp.jugador.inventario.size()){
+            for(String linea: gp.jugador.inventario.get(indiceitem).descripcion.split("\n")){
+                g2.drawString(linea,textox,textoy);
+                textoy +=32;
+            }
+        }
+        }
+    public int getitemindexonslot(){
+        int indiceitem = ranuracol + (ranurafila*5);
+        return indiceitem;
     }
     public void dibujarpestana(int x, int y, int ancho, int alto){
         Color c = new Color(0,0,0, 210);
