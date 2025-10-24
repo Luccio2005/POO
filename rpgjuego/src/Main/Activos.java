@@ -13,6 +13,19 @@ public class Activos {
         this.gp = gp;
     }
     public void setObject(){
+        int i=0;
+        gp.obj[i] = new Obj_key(gp);
+        gp.obj[i].mundox = gp.tileSize*25;
+        gp.obj[i].mundoy = gp.tileSize*23;
+        i++;
+        gp.obj[i] = new Obj_key(gp);
+        gp.obj[i].mundox = gp.tileSize*21;
+        gp.obj[i].mundoy = gp.tileSize*19;
+        i++;
+        gp.obj[i] = new Obj_key(gp);
+        gp.obj[i].mundox = gp.tileSize*26;
+        gp.obj[i].mundoy = gp.tileSize*21;
+        i++;
     }
     public void setnpc(){
         gp.npc[0]= new npc_oldman(gp);

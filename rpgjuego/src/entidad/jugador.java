@@ -211,6 +211,16 @@ public class jugador extends entidad{
     }
     public void recogerobjeto (int i){
         if(i != 999){
+            String texto;
+            if(inventario.size() != maxtamanoinventario){
+                inventario.add(gp.obj[i]);
+                gp.playSE(1);
+                texto = "Conseguiste una " + gp.obj[i].nombre + "!";
+            }else{
+                texto = "Inventario lleno";
+            }
+            gp.ui.anadirmensaje(texto);
+            gp.obj[i] = null;
         }
     }
     public void interactuarnpc(int i) {
