@@ -21,7 +21,7 @@ public class jugador extends entidad{
     //public int tenerllave =0;
     public boolean cancelaratq = false;
     public ArrayList<entidad> inventario = new ArrayList<>();
-    public final int tamanoinventario = 20;
+    public final int maxtamanoinventario = 20;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         super(gp);

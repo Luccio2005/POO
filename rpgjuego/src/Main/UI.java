@@ -280,6 +280,15 @@ public class UI {
         final int ranuraystart = framey +20;
         int ranurax = ranuraxstart;
         int ranuray = ranuraystart;
+        // dibujar items
+        for(int i = 0; i< gp.jugador.inventario.size();i++){
+            g2.drawImage(gp.jugador.inventario.get(i).down1,ranurax,ranuray,null);
+            ranurax += gp.tileSize;
+            if(i==4 || i==9 || i==14){
+                ranurax = ranuraxstart;
+                ranuray += gp.tileSize;
+            }
+        }
         //cursor
         int cursorx = ranuraxstart + (gp.tileSize * ranuracol);
         int cursory = ranuraystart + (gp.tileSize * ranurafila);
