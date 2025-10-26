@@ -89,14 +89,26 @@ public class jugador extends entidad{
         right2= setup("/jugador/Derecha1-2", gp.tileSize, gp.tileSize);
     }
     public void getPlayerAttackImage(){
-        atqarriba1 = setup("/jugador/ataquearriba1", gp.tileSize, gp.tileSize);
-        atqarriba2 = setup("/jugador/ataquearriba2", gp.tileSize, gp.tileSize);
-        atqabajo1 = setup("/jugador/ataqueabajo1", gp.tileSize, gp.tileSize);
-        atqabajo2 = setup("/jugador/ataqueabajo2", gp.tileSize, gp.tileSize);
-        atqizq1 = setup("/jugador/ataqueizq1", gp.tileSize, gp.tileSize);
-        atqizq2 = setup("/jugador/ataqueizq2", gp.tileSize, gp.tileSize);
-        atqder1 = setup("/jugador/ataqueder1", gp.tileSize, gp.tileSize);
-        atqder2 = setup("/jugador/ataqueder2", gp.tileSize, gp.tileSize);
+        if(actualarma.tipo == tipo_espada){
+            atqarriba1 = setup("/jugador/ataquearriba1", gp.tileSize, gp.tileSize);
+            atqarriba2 = setup("/jugador/ataquearriba2", gp.tileSize, gp.tileSize);
+            atqabajo1 = setup("/jugador/ataqueabajo1", gp.tileSize, gp.tileSize);
+            atqabajo2 = setup("/jugador/ataqueabajo2", gp.tileSize, gp.tileSize);
+            atqizq1 = setup("/jugador/ataqueizq1", gp.tileSize, gp.tileSize);
+            atqizq2 = setup("/jugador/ataqueizq2", gp.tileSize, gp.tileSize);
+            atqder1 = setup("/jugador/ataqueder1", gp.tileSize, gp.tileSize);
+            atqder2 = setup("/jugador/ataqueder2", gp.tileSize, gp.tileSize);
+        }if(actualarma.tipo == tipo_hacha){
+            atqarriba1 = setup("/jugador/hachaarriba-1", gp.tileSize, gp.tileSize);
+            atqarriba2 = setup("/jugador/hachaarriba-2", gp.tileSize, gp.tileSize);
+            atqabajo1 = setup("/jugador/hachaabajo-1", gp.tileSize, gp.tileSize);
+            atqabajo2 = setup("/jugador/hachaabajo-2", gp.tileSize, gp.tileSize);
+            atqizq1 = setup("/jugador/hachaizq-1", gp.tileSize, gp.tileSize);
+            atqizq2 = setup("/jugador/hachaizq-2", gp.tileSize, gp.tileSize);
+            atqder1 = setup("/jugador/hachader-1", gp.tileSize, gp.tileSize);
+            atqder2 = setup("/jugador/hachader-2", gp.tileSize, gp.tileSize);
+        }
+
 
     }
     public void actualizar(){
@@ -289,6 +301,7 @@ public class jugador extends entidad{
             if(itemseleccionado.tipo == tipo_espada || itemseleccionado.tipo == tipo_hacha){
                 actualarma = itemseleccionado;
                 atq = getAttack();
+                getPlayerAttackImage();
             }
             if(itemseleccionado.tipo == tipo_escudo){
                 actualescudo = itemseleccionado;

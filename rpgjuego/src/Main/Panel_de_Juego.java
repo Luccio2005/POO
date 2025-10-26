@@ -20,6 +20,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public final int anchoPantalla = tileSize * tamanoColumna;
     public final int altoPantalla = tileSize * tamanoFila;
 
+    //public final int maxWorldCol = 155;
+    //public final int maxWorldRow = 155;
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
 
