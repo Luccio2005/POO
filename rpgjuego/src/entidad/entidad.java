@@ -89,6 +89,9 @@ public class entidad {
                 direccion = "left"; break;
         }
     }
+    public void usar(entidad entidad){
+
+    }
     public void actualizar(){
         setaction();
         colision = false;
