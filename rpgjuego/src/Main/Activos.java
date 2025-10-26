@@ -27,6 +27,10 @@ public class Activos {
         gp.obj[i].mundox = gp.tileSize*33;
         gp.obj[i].mundoy = gp.tileSize*21;
         i++;
+        gp.obj[i] = new Obj_shield_blue(gp);
+        gp.obj[i].mundox = gp.tileSize*35;
+        gp.obj[i].mundoy = gp.tileSize*21;
+        i++;
     }
     public void setnpc(){
         gp.npc[0]= new npc_oldman(gp);
