@@ -40,6 +40,8 @@ public class entidad {
     public int velocidad;
     public int vidamax;
     public int vida;
+    public int manamaximo;
+    public int mana;
     public int lvl;
     public int str;
     public int dex;
@@ -50,10 +52,12 @@ public class entidad {
     public int coin;
     public entidad actualarma;
     public entidad actualescudo;
+    public proyectiles proyectiles;
     //atributos de los items
     public int valordeatq;
     public int valordedef;
     public String descripcion = "";
+    public int usecost;
     //tipo
     public int tipo;
     public final int tipo_jugador = 0;
@@ -237,7 +241,6 @@ public class entidad {
             changealpha(g2, 1f);
         }
         if(contadormuerte > i*8){
-            muriendo= false;
             vivo= false;
         }
     }

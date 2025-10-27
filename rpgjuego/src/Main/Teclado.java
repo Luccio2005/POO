@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Teclado implements KeyListener {
 
     Panel_de_Juego gp;
-    public boolean arribap, abajop, izquierdap, derechap, enterp;
+    public boolean arribap, abajop, izquierdap, derechap, enterp, disparop;
     boolean checkDrawTime = false;
 
     public Teclado(Panel_de_Juego gp){
@@ -90,6 +90,9 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_ENTER){
             enterp = true;
         }
+        if(codigo == KeyEvent.VK_F){
+            disparop = true;
+        }
     }
     public void pausar(int codigo){
         if(codigo == KeyEvent.VK_P){
@@ -148,6 +151,9 @@ public class Teclado implements KeyListener {
         }
         if(codigo == KeyEvent.VK_D){
             derechap = false;
+        }
+        if(codigo == KeyEvent.VK_F){
+            disparop = false;
         }
 
     }

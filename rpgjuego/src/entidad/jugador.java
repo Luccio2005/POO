@@ -247,7 +247,7 @@ public class jugador extends entidad{
     }
     public void contactoenemigo(int i){
         if(i !=999){
-            if(invencible == false){
+            if(invencible == false && gp.enemigos[i].muriendo == false){
                 gp.playSE(6);
                 int damage = gp.enemigos[i].atq - def;
                 if(damage<0){

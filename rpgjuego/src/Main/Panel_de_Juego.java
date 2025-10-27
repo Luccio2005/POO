@@ -42,6 +42,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public entidad obj[]=new entidad[10];
     public entidad npc[] = new entidad[10];
     public entidad enemigos[] = new entidad[20];
+    ArrayList<entidad> listaproyectil = new ArrayList<>();
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
     //estados del juego
