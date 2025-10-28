@@ -56,6 +56,8 @@ public class jugador extends entidad{
         lvl = 1;
         vidamax =6;
         vida = vidamax;
+        manamaximo = 4;
+        mana = manamaximo;
         str = 1; // mas str mas dano ocasiona
         dex = 1; // mas dex menos dano recibe
         exp = 0;
