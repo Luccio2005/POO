@@ -218,7 +218,7 @@ public class jugador extends entidad{
             areadecolision.height = areadeataque.height;
 
             int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
-            damageenemigo(indiceenemigo);
+            damageenemigo(indiceenemigo, atq);
 
             mundox = actualmundox;
             mundoy = actualmundoy;
@@ -267,7 +267,7 @@ public class jugador extends entidad{
             }
         }
     }
-    public void damageenemigo(int i){
+    public void damageenemigo(int i, int atq){
         if(i != 999){
             if(gp.enemigos[i].invencible == false){
                 gp.playSE(5);

@@ -16,6 +16,16 @@ public class proyectiles extends entidad{
         this.vida = this.vidamax;
     }
     public void actualizar(){
+        if(usuario == gp.jugador){
+            int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
+            if(indiceenemigo != 999){
+                gp.jugador.damageenemigo(indiceenemigo, atq);
+                vivo = false;
+            }
+        }
+        if(usuario != gp.jugador){
+
+        }
         switch (direccion){
             case "up": mundoy -= velocidad; break;
             case "down": mundoy += velocidad; break;
