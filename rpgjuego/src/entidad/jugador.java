@@ -2,6 +2,7 @@ package entidad;
 import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 import Main.Teclado;
+import objeto.Obj_fireball;
 import objeto.Obj_key;
 import objeto.Obj_shield_wood;
 import objeto.Obj_sword_normal;
@@ -62,6 +63,7 @@ public class jugador extends entidad{
         coin = 0;
         actualarma = new Obj_sword_normal(gp);
         actualescudo = new Obj_shield_wood(gp);
+        proyectiles = new Obj_fireball(gp);
         atq = getAttack(); // el valor de atq es decidido por str con elarma
         def = getDefense(); // el valor de def es decidido por dex con el escudo
     }
@@ -179,6 +181,13 @@ public class jugador extends entidad{
                 }
                 contadorSprite=0;
             }
+        }
+        if(gp.keyH.disparop == true && proyectiles.vivo == false){
+            //set default coordinates, direccion
+            proyectiles.set(mundox, mundoy, direccion, true, this);
+            // add it to the list
+            gp.listaproyectil.add(proyectiles);
+            gp.playSE(10);
         }
         if(invencible == true){
             contadorinvencible ++;

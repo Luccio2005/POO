@@ -42,7 +42,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public entidad obj[]=new entidad[10];
     public entidad npc[] = new entidad[10];
     public entidad enemigos[] = new entidad[20];
-    ArrayList<entidad> listaproyectil = new ArrayList<>();
+    public ArrayList<entidad> listaproyectil = new ArrayList<>();
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
     //estados del juego
@@ -123,6 +123,16 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
+            for(int i=0; i < listaproyectil.size(); i++){
+                if(listaproyectil.get(i) != null){
+                    if(listaproyectil.get(i).vivo == true){
+                        listaproyectil.get(i).actualizar();
+                    }
+                    if(listaproyectil.get(i).vivo == false){
+                        listaproyectil.remove(i);
+                    }
+                }
+            }
         }
         if(estadodeljuego == pausar){
 
@@ -154,6 +164,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             for(int i=0; i< enemigos.length;i++){
                 if(enemigos[i] != null){
                     listaentidad.add(enemigos[i]);
+                }
+            }
+            for(int i=0; i< listaproyectil.size(); i++){
+                if(listaproyectil.get(i) != null){
+                    listaentidad.add(listaproyectil.get(i));
                 }
             }
             // sort
