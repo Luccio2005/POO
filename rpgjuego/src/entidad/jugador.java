@@ -182,11 +182,12 @@ public class jugador extends entidad{
                 contadorSprite=0;
             }
         }
-        if(gp.keyH.disparop == true && proyectiles.vivo == false){
+        if(gp.keyH.disparop == true && proyectiles.vivo == false && contadordisparodisponible == 30){
             //set default coordinates, direccion
             proyectiles.set(mundox, mundoy, direccion, true, this);
             // add it to the list
             gp.listaproyectil.add(proyectiles);
+            contadordisparodisponible =0;
             gp.playSE(10);
         }
         if(invencible == true){
@@ -195,6 +196,9 @@ public class jugador extends entidad{
                 invencible = false;
                 contadorinvencible = 0;
             }
+        }
+        if(contadordisparodisponible < 30){
+            contadordisparodisponible++;
         }
     }
     public void atacando(){

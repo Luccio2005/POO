@@ -33,6 +33,7 @@ public class entidad {
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
     public int contadorinvencible = 0;
+    public int contadordisparodisponible = 0;
     int contadormuerte = 0;
     int contadorbarrahp = 0;
     // ATRIBUTOS DE LOS PERSONAJES
