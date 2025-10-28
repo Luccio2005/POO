@@ -2,6 +2,7 @@ package enemigos;
 
 import Main.Panel_de_Juego;
 import entidad.entidad;
+import objeto.Obj_rock;
 
 import java.util.Random;
 
@@ -18,6 +19,7 @@ public class slime extends entidad{
         atq = 5;
         def = 0;
         exp = 2;
+        proyectiles = new Obj_rock(gp);
 
         areadecolision.x = 3;
         areadecolision.y = 10;
@@ -52,6 +54,12 @@ public class slime extends entidad{
                 direccion = "right";
             }
             bloqueodeaccion = 0;
+        }
+        int i = new Random().nextInt(100)+1;
+        if(i > 99 && proyectiles.vivo == false && contadordisparodisponible == 30){
+            proyectiles.set(mundox, mundoy, direccion, true, this);
+            gp.listaproyectil.add(proyectiles);
+            contadordisparodisponible = 0;
         }
     }
     public void reaccionaldamage(){

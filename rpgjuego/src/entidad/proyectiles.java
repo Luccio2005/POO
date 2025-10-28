@@ -24,7 +24,11 @@ public class proyectiles extends entidad{
             }
         }
         if(usuario != gp.jugador){
-
+            boolean contactojugador = gp.comprobar.comprobarjugador(this);
+            if(gp.jugador.invencible == false && contactojugador == true){
+                damageplayer(atq);
+                vivo = false;
+            }
         }
         switch (direccion){
             case "up": mundoy -= velocidad; break;

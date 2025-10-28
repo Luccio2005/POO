@@ -107,15 +107,7 @@ public class entidad {
         boolean contactojugador = gp.comprobar.comprobarjugador(this);
 
         if(this.tipo == tipo_enemigos && contactojugador == true){
-            if(gp.jugador.invencible == false){
-                gp.playSE(6);
-                int damage = atq - gp.jugador.def;
-                if(damage<0){
-                    damage = 0;
-                }
-                gp.jugador.vida -= damage;
-                gp.jugador.invencible = true;
-            }
+            damageplayer(atq);
         }
         if(colision == false){
             switch (direccion){
@@ -148,6 +140,20 @@ public class entidad {
                 invencible = false;
                 contadorinvencible = 0;
             }
+        }
+        if(contadordisparodisponible < 30){
+            contadordisparodisponible++;
+        }
+    }
+    public void damageplayer(int atq){
+        if(gp.jugador.invencible == false){
+            gp.playSE(6);
+            int damage = atq - gp.jugador.def;
+            if(damage<0){
+                damage = 0;
+            }
+            gp.jugador.vida -= damage;
+            gp.jugador.invencible = true;
         }
     }
     public void dibujar(Graphics2D g2){
