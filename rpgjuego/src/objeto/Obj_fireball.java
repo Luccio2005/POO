@@ -1,6 +1,7 @@
 package objeto;
 
 import Main.Panel_de_Juego;
+import entidad.entidad;
 import entidad.proyectiles;
 
 public class Obj_fireball extends proyectiles {
@@ -26,5 +27,15 @@ public class Obj_fireball extends proyectiles {
         left2 = setup("/proyectiles/fireball_left_2",gp.tileSize,gp.tileSize);
         right1 = setup("/proyectiles/fireball_right_1",gp.tileSize,gp.tileSize);
         right2 = setup("/proyectiles/fireball_right_2",gp.tileSize,gp.tileSize);
+    }
+    public boolean haveresource(entidad usuario){
+        boolean haveresource = false;
+        if(usuario.mana >= usecost){
+            haveresource = true;
+        }
+        return haveresource;
+    }
+    public void subtractresource(entidad usuario){
+        usuario.mana -= usecost;
     }
 }

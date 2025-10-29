@@ -184,9 +184,12 @@ public class jugador extends entidad{
                 contadorSprite=0;
             }
         }
-        if(gp.keyH.disparop == true && proyectiles.vivo == false && contadordisparodisponible == 30){
+        if(gp.keyH.disparop == true && proyectiles.vivo == false
+                && contadordisparodisponible == 30 && proyectiles.haveresource(this) == true){
             //set default coordinates, direccion
             proyectiles.set(mundox, mundoy, direccion, true, this);
+            //subtract the cost(mana, ammo, etc)
+            proyectiles.subtractresource(this);
             // add it to the list
             gp.listaproyectil.add(proyectiles);
             contadordisparodisponible =0;

@@ -50,4 +50,10 @@ public class proyectiles extends entidad{
             contadorSprite = 0;
         }
     }
+    public boolean haveresource(entidad usuario){
+        boolean haveresource = false;
+        return haveresource;
+    }
+    public void subtractresource(entidad usuario){
+    }
 }
