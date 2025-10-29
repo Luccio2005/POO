@@ -216,6 +216,8 @@ public class UI {
         textoy += lineaalto;
         g2.drawString("Life",textox,textoy);
         textoy += lineaalto;
+        g2.drawString("Mana",textox,textoy);
+        textoy += lineaalto;
         g2.drawString("Str",textox,textoy);
         textoy += lineaalto;
         g2.drawString("Dex",textox,textoy);
@@ -229,7 +231,7 @@ public class UI {
         g2.drawString("Next Lvl",textox,textoy);
         textoy += lineaalto;
         g2.drawString("Coin",textox,textoy);
-        textoy += lineaalto + 20;
+        textoy += lineaalto + 10;
         g2.drawString("Weapon",textox,textoy);
         textoy += lineaalto +15;
         g2.drawString("Shield",textox,textoy);
@@ -245,6 +247,11 @@ public class UI {
         textoy += lineaalto;
 
         valor = String.valueOf(gp.jugador.vida+"/"+gp.jugador.vidamax);
+        textox = getxforAligntorighttext(valor,tailx);
+        g2.drawString(valor,textox,textoy);
+        textoy += lineaalto;
+
+        valor = String.valueOf(gp.jugador.mana+"/"+gp.jugador.manamaximo);
         textox = getxforAligntorighttext(valor,tailx);
         g2.drawString(valor,textox,textoy);
         textoy += lineaalto;
@@ -284,9 +291,9 @@ public class UI {
         g2.drawString(valor,textox,textoy);
         textoy += lineaalto;
 
-        g2.drawImage(gp.jugador.actualarma.down1, tailx - gp.tileSize, textoy-14,null);
+        g2.drawImage(gp.jugador.actualarma.down1, tailx - gp.tileSize, textoy-24,null);
         textoy += gp.tileSize;
-        g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-14,null);
+        g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-24,null);
     }
     public void dibujarinventario(){
         //frame
