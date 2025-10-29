@@ -1,4 +1,5 @@
 package objeto;
+import entidad.entidad;
 import entidad.proyectiles;
 import Main.Panel_de_Juego;
 
@@ -25,5 +26,15 @@ public class Obj_rock extends proyectiles {
         left2 = setup("/proyectiles/rock_down_1",gp.tileSize,gp.tileSize);
         right1 = setup("/proyectiles/rock_down_1",gp.tileSize,gp.tileSize);
         right2 = setup("/proyectiles/rock_down_1",gp.tileSize,gp.tileSize);
+    }
+    public boolean haveresource(entidad usuario){
+        boolean haveresource = false;
+        if(usuario.municion >= usecost){
+            haveresource = true;
+        }
+        return haveresource;
+    }
+    public void subtractresource(entidad usuario){
+        usuario.municion -= usecost;
     }
 }

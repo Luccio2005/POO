@@ -80,8 +80,9 @@ public class Eventos {
             gp.estadodeljuego = estadodeljuego;
             gp.jugador.cancelaratq = true;
             gp.playSE(2);
-            gp.ui.dialogoactual = "tu tomas agua del lago \ntu vida se esta recuperando";
+            gp.ui.dialogoactual = "tomas agua del lago \ntu vida y mana se lleno";
             gp.jugador.vida = gp.jugador.vidamax;
+            gp.jugador.mana = gp.jugador.manamaximo;
             gp.aSetter.setenemigos();
         }
     }

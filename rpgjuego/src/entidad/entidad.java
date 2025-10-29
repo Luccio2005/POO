@@ -43,6 +43,7 @@ public class entidad {
     public int vida;
     public int manamaximo;
     public int mana;
+    public int municion;
     public int lvl;
     public int str;
     public int dex;
