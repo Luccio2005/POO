@@ -98,7 +98,18 @@ public class entidad {
         }
     }
     public void usar(entidad entidad){
-
+    }
+    public void checkdrop(){
+    }
+    public void dropitem(entidad droppeditem){
+        for(int i = 0; i < gp.obj.length;i++){
+            if(gp.obj[i] == null){
+                gp.obj[i] = droppeditem;
+                gp.obj[i].mundox = mundox;
+                gp.obj[i].mundoy = mundoy;
+                break;
+            }
+        }
     }
     public void actualizar(){
         setaction();

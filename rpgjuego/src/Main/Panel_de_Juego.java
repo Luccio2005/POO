@@ -39,7 +39,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     //entidad y objetos
     public jugador jugador= new jugador(this,keyH);
-    public entidad obj[]=new entidad[10];
+    public entidad obj[]=new entidad[20];
     public entidad npc[] = new entidad[10];
     public entidad enemigos[] = new entidad[20];
     public ArrayList<entidad> listaproyectil = new ArrayList<>();
@@ -119,6 +119,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                         enemigos[i].actualizar();
                     }
                     if(enemigos[i].vivo == false){
+                        enemigos[i].checkdrop();
                         enemigos[i] =null;
                     }
                 }

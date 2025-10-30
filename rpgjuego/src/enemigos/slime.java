@@ -2,6 +2,9 @@ package enemigos;
 
 import Main.Panel_de_Juego;
 import entidad.entidad;
+import objeto.Obj_coin_bronce;
+import objeto.Obj_heart;
+import objeto.Obj_manacrystal;
 import objeto.Obj_rock;
 
 import java.util.Random;
@@ -65,5 +68,17 @@ public class slime extends entidad{
     public void reaccionaldamage(){
         bloqueodeaccion = 0;
         direccion = gp.jugador.direccion;
+    }
+    public void checkdrop(){
+        // cast a die
+        int i = new Random().nextInt(100)+1;
+        // set the monster drop
+        if(i<50){
+            dropitem(new Obj_coin_bronce(gp));
+        }if(i>=50 && i<75){
+            dropitem(new Obj_heart(gp));
+        }if(i>=75 && i<100){
+            dropitem(new Obj_manacrystal(gp));
+        }
     }
 }
