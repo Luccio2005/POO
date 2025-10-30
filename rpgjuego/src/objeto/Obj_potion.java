@@ -17,9 +17,6 @@ public class Obj_potion extends entidad{
         gp.estadodeljuego = gp.dialogo;
         gp.ui.dialogoactual = "Tomas la "+nombre+"!\n"+"tu vida es recuperada en "+valor+".";
         entidad.vida += valor;
-        if(gp.jugador.vida > gp.jugador.vidamax){
-            gp.jugador.vida = gp.jugador.vidamax;
-        }
         gp.playSE(2);
     }
 }

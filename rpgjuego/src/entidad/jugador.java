@@ -204,6 +204,12 @@ public class jugador extends entidad{
         if(contadordisparodisponible < 30){
             contadordisparodisponible++;
         }
+        if(vida > vidamax){
+            vida = vidamax;
+        }
+        if(mana > manamaximo){
+            mana = manamaximo;
+        }
     }
     public void atacando(){
         contadorSprite++;
