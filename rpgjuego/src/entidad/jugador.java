@@ -241,16 +241,22 @@ public class jugador extends entidad{
     }
     public void recogerobjeto (int i){
         if(i != 999){
-            String texto;
-            if(inventario.size() != maxtamanoinventario){
-                inventario.add(gp.obj[i]);
-                gp.playSE(1);
-                texto = "Conseguiste una " + gp.obj[i].nombre + "!";
+            // recoger solo items
+            if(gp.obj[i].tipo == tipo_agarrarsolo){
+                gp.obj[i].usar(this);
+                gp.obj[i] = null;
             }else{
-                texto = "Inventario lleno";
+                String texto;
+                if(inventario.size() != maxtamanoinventario){
+                    inventario.add(gp.obj[i]);
+                    gp.playSE(1);
+                    texto = "Conseguiste una " + gp.obj[i].nombre + "!";
+                }else{
+                    texto = "Inventario lleno";
+                }
+                gp.ui.anadirmensaje(texto);
+                gp.obj[i] = null;
             }
-            gp.ui.anadirmensaje(texto);
-            gp.obj[i] = null;
         }
     }
     public void interactuarnpc(int i) {

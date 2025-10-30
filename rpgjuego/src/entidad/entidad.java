@@ -56,6 +56,7 @@ public class entidad {
     public entidad actualescudo;
     public proyectiles proyectiles;
     //atributos de los items
+    public int valor;
     public int valordeatq;
     public int valordedef;
     public String descripcion = "";
@@ -69,6 +70,7 @@ public class entidad {
     public final int tipo_hacha = 4;
     public final int tipo_escudo = 5;
     public final int tipo_consumible = 6;
+    public final int tipo_agarrarsolo = 7;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
@@ -216,7 +218,7 @@ public class entidad {
             if(muriendo == true){
                 animacionmuerte(g2);
             }
-            g2.drawImage(imagen, pantallax, pantallay, gp.tileSize, gp.tileSize,null);
+            g2.drawImage(imagen, pantallax, pantallay,null);
 
             changealpha(g2,1F);
         }
