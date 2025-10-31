@@ -10,7 +10,10 @@ public class suelointeractivo extends entidad{
         super(gp);
         this.gp = gp;
     }
+    public boolean itemcorrecto(entidad entidad){
+        boolean itemcorrecto = false;
+        return itemcorrecto;
+    }
     public void actualizar(){
-
     }
 }

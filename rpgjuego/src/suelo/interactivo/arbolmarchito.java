@@ -1,6 +1,7 @@
 package suelo.interactivo;
 
 import Main.Panel_de_Juego;
+import entidad.entidad;
 
 public class arbolmarchito extends suelointeractivo{
     Panel_de_Juego gp;
@@ -14,5 +15,12 @@ public class arbolmarchito extends suelointeractivo{
 
         down1 = setup("/interactivo/drytree",gp.tileSize,gp.tileSize);
         destructible = true;
+    }
+    public boolean itemcorrecto(entidad entidad){
+        boolean itemcorrecto = false;
+        if(entidad.actualarma.tipo == tipo_hacha){
+            itemcorrecto = true;
+        }
+        return itemcorrecto;
     }
 }
