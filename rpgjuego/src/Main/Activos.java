@@ -3,6 +3,7 @@ package Main;
 import enemigos.slime;
 import entidad.npc_oldman;
 import objeto.*;
+import suelo.interactivo.arbolmarchito;
 
 public class Activos {
     Panel_de_Juego gp;
@@ -71,6 +72,16 @@ public class Activos {
         gp.enemigos[i].mundox = gp.tileSize*38;
         gp.enemigos[i].mundoy = gp.tileSize*42;
         i++;
+    }
+    public void setsuelointeractivo(){
+        int i = 0;
+        gp.itile[i]= new arbolmarchito(gp, 27, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 28, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 29, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 30, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 31, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 32, 12);i++;
+        gp.itile[i]= new arbolmarchito(gp, 33, 12);i++;
     }
 }
 

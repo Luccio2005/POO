@@ -3,6 +3,7 @@ package Main;
 import entidad.entidad;
 import entidad.jugador;
 import suelo.administradordesuelo;
+import suelo.interactivo.suelointeractivo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +43,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public entidad obj[]=new entidad[20];
     public entidad npc[] = new entidad[10];
     public entidad enemigos[] = new entidad[20];
+    public suelointeractivo itile[] = new suelointeractivo[50];
     public ArrayList<entidad> listaproyectil = new ArrayList<>();
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
@@ -64,16 +66,14 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         aSetter.setObject();
         aSetter.setnpc();
         aSetter.setenemigos();
+        aSetter.setsuelointeractivo();
         //playMusic(0);
         estadodeljuego = pantalladeinicio;
-
-
     }
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
     }
-
 
     @Override
     public void run() {
@@ -134,6 +134,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
+            for(int i=0; i< itile.length; i++){
+                if(itile[i] != null){
+                    itile[i].actualizar();
+                }
+            }
         }
         if(estadodeljuego == pausar){
 
@@ -150,6 +155,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         }
         else{
             sueloM.dibujar(g2);
+            // suelo interactivo
+            for(int i=0; i< itile.length; i++){
+                if(itile[i] != null){
+                    itile[i].dibujar(g2);
+                }
+            }
             // anadir entidades a la lista
             listaentidad.add(jugador);
             for(int i=0; i< npc.length;i++){

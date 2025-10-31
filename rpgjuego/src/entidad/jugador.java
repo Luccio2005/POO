@@ -147,6 +147,10 @@ public class jugador extends entidad{
             //comprobar colision con enemigos
             int indiceenemigos = gp.comprobar.comprobarentidad(this, gp.enemigos);
             contactoenemigo(indiceenemigos);
+
+            // comprobar colision suelo interactivo
+            int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
+
             //combrobar evento
             gp.evento.comprobarevento();
 
@@ -234,6 +238,9 @@ public class jugador extends entidad{
             int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
             damageenemigo(indiceenemigo, atq);
 
+            int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
+            damagesuelointeractivo(indiceitile);
+
             mundox = actualmundox;
             mundoy = actualmundoy;
             areadecolision.width = areadecolisionancho;
@@ -307,6 +314,11 @@ public class jugador extends entidad{
                     comprobarlvlup();
                 }
             }
+        }
+    }
+    public void damagesuelointeractivo(int i){
+        if(i != 999 && gp.itile[i].destructible == true){
+            gp.itile[i] = null;
         }
     }
     public void comprobarlvlup(){
