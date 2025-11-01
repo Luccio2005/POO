@@ -15,6 +15,7 @@ public class arbolmarchito extends suelointeractivo{
 
         down1 = setup("/interactivo/drytree",gp.tileSize,gp.tileSize);
         destructible = true;
+        vida = 2;
     }
     public boolean itemcorrecto(entidad entidad){
         boolean itemcorrecto = false;

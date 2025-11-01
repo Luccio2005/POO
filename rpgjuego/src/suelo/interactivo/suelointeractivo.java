@@ -21,5 +21,12 @@ public class suelointeractivo extends entidad{
         return suelo;
     }
     public void actualizar(){
+        if(invencible == true){
+            contadorinvencible++;
+            if(contadorinvencible > 20){
+                invencible = false;
+                contadorinvencible = 0;
+            }
+        }
     }
 }

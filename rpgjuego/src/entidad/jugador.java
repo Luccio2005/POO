@@ -317,9 +317,14 @@ public class jugador extends entidad{
         }
     }
     public void damagesuelointeractivo(int i){
-        if(i != 999 && gp.itile[i].destructible == true && gp.itile[i].itemcorrecto(this) == true){
+        if(i != 999 && gp.itile[i].destructible == true
+                && gp.itile[i].itemcorrecto(this) == true && gp.itile[i].invencible == false){
             gp.itile[i].playSE();
-            gp.itile[i] = gp.itile[i].getformadestruida();
+            gp.itile[i].vida--;
+            gp.itile[i].invencible = true;
+            if(gp.itile[i].vida == 0){
+                gp.itile[i] = gp.itile[i].getformadestruida();
+            }
         }
     }
     public void comprobarlvlup(){

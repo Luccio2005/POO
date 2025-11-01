@@ -118,6 +118,7 @@ public class entidad {
         gp.comprobar.comprobarobjeto(this, false);
         gp.comprobar.comprobarentidad(this, gp.npc);
         gp.comprobar.comprobarentidad(this, gp.enemigos);
+        gp.comprobar.comprobarentidad(this, gp.itile);
         boolean contactojugador = gp.comprobar.comprobarjugador(this);
 
         if(this.tipo == tipo_enemigos && contactojugador == true){
