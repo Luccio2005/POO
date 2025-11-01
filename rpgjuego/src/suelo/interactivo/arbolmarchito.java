@@ -23,4 +23,11 @@ public class arbolmarchito extends suelointeractivo{
         }
         return itemcorrecto;
     }
+    public void playSE(){
+        gp.playSE(11);
+    }
+    public suelointeractivo getformadestruida(){
+        suelointeractivo suelo = new tronco(gp, mundox/gp.tileSize, mundoy/gp.tileSize);
+        return suelo;
+    }
 }

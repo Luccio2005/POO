@@ -14,6 +14,12 @@ public class suelointeractivo extends entidad{
         boolean itemcorrecto = false;
         return itemcorrecto;
     }
+    public void playSE(){
+    }
+    public suelointeractivo getformadestruida(){
+        suelointeractivo suelo = null;
+        return suelo;
+    }
     public void actualizar(){
     }
 }
