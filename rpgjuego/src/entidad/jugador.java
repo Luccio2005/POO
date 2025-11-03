@@ -322,6 +322,8 @@ public class jugador extends entidad{
             gp.itile[i].playSE();
             gp.itile[i].vida--;
             gp.itile[i].invencible = true;
+            //generador particula
+            generadorparticula(gp.itile[i], gp.itile[i]);
             if(gp.itile[i].vida == 0){
                 gp.itile[i] = gp.itile[i].getformadestruida();
             }

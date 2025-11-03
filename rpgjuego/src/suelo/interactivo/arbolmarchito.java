@@ -3,6 +3,8 @@ package suelo.interactivo;
 import Main.Panel_de_Juego;
 import entidad.entidad;
 
+import java.awt.*;
+
 public class arbolmarchito extends suelointeractivo{
     Panel_de_Juego gp;
 
@@ -30,5 +32,21 @@ public class arbolmarchito extends suelointeractivo{
     public suelointeractivo getformadestruida(){
         suelointeractivo suelo = new tronco(gp, mundox/gp.tileSize, mundoy/gp.tileSize);
         return suelo;
+    }
+    public Color getparticulacolor(){
+        Color color = new Color(65, 50, 30);
+        return color;
+    }
+    public int getparticulatamano(){
+        int size = 6; //6pixeles
+        return size;
+    }
+    public int getpaticulavelocidad(){
+        int velocidad = 1;
+        return velocidad;
+    }
+    public int getparticulavidamax(){
+        int vidamax = 20;
+        return vidamax;
     }
 }

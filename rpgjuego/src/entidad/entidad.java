@@ -111,6 +111,31 @@ public class entidad {
             }
         }
     }
+    public Color getparticulacolor(){
+        Color color = null;
+        return color;
+    }
+    public int getparticulatamano(){
+        int size = 0; //6pixeles
+        return size;
+    }
+    public int getpaticulavelocidad(){
+        int velocidad = 0;
+        return velocidad;
+    }
+    public int getparticulavidamax(){
+        int vidamax = 0;
+        return vidamax;
+    }
+    public void generadorparticula(entidad generador, entidad target){
+        Color color = generador.getparticulacolor();
+        int size = generador.getparticulatamano();
+        int velocidad = generador.getpaticulavelocidad();
+        int vidamax = generador.getparticulavidamax();
+
+        particula p1 = new particula(gp, generador, color, size, velocidad, vidamax, -1, -1);
+        gp.listaparticula.add(p1);
+    }
     public void actualizar(){
         setaction();
         colision = false;
