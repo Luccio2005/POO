@@ -135,6 +135,16 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
+            for(int i=0; i < listaproyectil.size(); i++){
+                if(listaproyectil.get(i) != null){
+                    if(listaproyectil.get(i).vivo == true){
+                        listaproyectil.get(i).actualizar();
+                    }
+                    if(listaproyectil.get(i).vivo == false){
+                        listaproyectil.remove(i);
+                    }
+                }
+            }
             for(int i=0; i< itile.length; i++){
                 if(itile[i] != null){
                     itile[i].actualizar();
