@@ -22,12 +22,15 @@ public class particula extends entidad{
         this.yd = yd;
 
         vida = vidamax;
-        mundox = generador.mundox;
-        mundoy = generador.mundoy;
+        int offset = (gp.tileSize/2) - (size/2);
+        mundox = generador.mundox + offset;
+        mundoy = generador.mundoy + offset;
     }
     public void actualizar(){
         vida--;
-
+        if(vida < vidamax/3){
+            yd++;
+        }
         mundox += xd*velocidad;
         mundoy += yd*velocidad;
 
