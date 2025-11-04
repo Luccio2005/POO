@@ -4,6 +4,8 @@ import Main.Panel_de_Juego;
 import entidad.entidad;
 import entidad.proyectiles;
 
+import java.awt.*;
+
 public class Obj_fireball extends proyectiles {
     Panel_de_Juego gp;
     public Obj_fireball(Panel_de_Juego gp){
@@ -37,5 +39,21 @@ public class Obj_fireball extends proyectiles {
     }
     public void subtractresource(entidad usuario){
         usuario.mana -= usecost;
+    }
+    public Color getparticulacolor(){
+        Color color = new Color(240, 50, 0);
+        return color;
+    }
+    public int getparticulatamano(){
+        int size = 10; //6pixeles
+        return size;
+    }
+    public int getpaticulavelocidad(){
+        int velocidad = 1;
+        return velocidad;
+    }
+    public int getparticulavidamax(){
+        int vidamax = 20;
+        return vidamax;
     }
 }
