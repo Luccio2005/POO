@@ -133,10 +133,10 @@ public class entidad {
         int velocidad = generador.getpaticulavelocidad();
         int vidamax = generador.getparticulavidamax();
 
-        particula p1 = new particula(gp, generador, color, size, velocidad, vidamax, -2, -1);
-        particula p2 = new particula(gp, generador, color, size, velocidad, vidamax, 2, -1);
-        particula p3 = new particula(gp, generador, color, size, velocidad, vidamax, -2, 1);
-        particula p4 = new particula(gp, generador, color, size, velocidad, vidamax, 2, 1);
+        particula p1 = new particula(gp, target, color, size, velocidad, vidamax, -2, -1);
+        particula p2 = new particula(gp, target, color, size, velocidad, vidamax, 2, -1);
+        particula p3 = new particula(gp, target, color, size, velocidad, vidamax, -2, 1);
+        particula p4 = new particula(gp, target, color, size, velocidad, vidamax, 2, 1);
         gp.listaparticula.add(p1);
         gp.listaparticula.add(p2);
         gp.listaparticula.add(p3);
