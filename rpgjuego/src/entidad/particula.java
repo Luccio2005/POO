@@ -26,6 +26,14 @@ public class particula extends entidad{
         mundoy = generador.mundoy;
     }
     public void actualizar(){
+        vida--;
+
+        mundox += xd*velocidad;
+        mundoy += yd*velocidad;
+
+        if(vida == 0){
+            vivo = false;
+        }
     }
     public void dibujar(Graphics2D g2){
         int pantallax = mundox - gp.jugador.mundox + gp.jugador.pantallax;
