@@ -135,13 +135,13 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
-            for(int i=0; i < listaproyectil.size(); i++){
-                if(listaproyectil.get(i) != null){
-                    if(listaproyectil.get(i).vivo == true){
-                        listaproyectil.get(i).actualizar();
+            for(int i=0; i < listaparticula.size(); i++){
+                if(listaparticula.get(i) != null){
+                    if(listaparticula.get(i).vivo == true){
+                        listaparticula.get(i).actualizar();
                     }
-                    if(listaproyectil.get(i).vivo == false){
-                        listaproyectil.remove(i);
+                    if(listaparticula.get(i).vivo == false){
+                        listaparticula.remove(i);
                     }
                 }
             }
@@ -194,6 +194,11 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     listaentidad.add(listaproyectil.get(i));
                 }
             }
+            for(int i=0; i< listaparticula.size(); i++){
+                if(listaparticula.get(i) != null){
+                    listaentidad.add(listaparticula.get(i));
+                }
+            }
             // sort
             Collections.sort(listaentidad, new Comparator<entidad>() {
                 @Override
@@ -224,6 +229,4 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         se.setFile(i);
         se.play();
     }
-
-
     }

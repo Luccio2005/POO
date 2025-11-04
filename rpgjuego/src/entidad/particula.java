@@ -25,4 +25,13 @@ public class particula extends entidad{
         mundox = generador.mundox;
         mundoy = generador.mundoy;
     }
+    public void actualizar(){
+    }
+    public void dibujar(Graphics2D g2){
+        int pantallax = mundox - gp.jugador.mundox + gp.jugador.pantallax;
+        int pantallay = mundoy - gp.jugador.mundoy + gp.jugador.pantallay;
+
+        g2.setColor(color);
+        g2.fillRect(pantallax, pantallay, size, size);
+    }
 }
