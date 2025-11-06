@@ -365,9 +365,10 @@ public class UI {
         dibujarpestana(framex, framey, framewidth, frameheight);
         switch (substate){
             case 0: opciones_top(framex, framey);break;
-            case 1: break;
+            case 1: opciones_notificaciondepantallacompleta(framex, framey);break;
             case 2: break;
         }
+        gp.keyH.enterp = false;
     }
     public void opciones_top(int framex, int framey){
         int textox;
@@ -383,6 +384,14 @@ public class UI {
         g2.drawString("Full Screen", textox, textoy);
         if(numerodecomando == 0){
             g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                if(gp.pantallacompletaon == false){
+                    gp.pantallacompletaon = true;
+                } else if(gp.pantallacompletaon == true){
+                    gp.pantallacompletaon = false;
+                }
+                substate = 1;
+            }
         }
         // musica
         textoy += gp.tileSize;
@@ -419,12 +428,34 @@ public class UI {
         textoy = framey + gp.tileSize*2 +24;
         g2.setStroke(new BasicStroke(3));
         g2.drawRect(textox, textoy, 24, 24);
+        if(gp.pantallacompletaon == true){
+            g2.fillRect(textox, textoy, 24, 24);
+        }
         // music volumen
         textoy += gp.tileSize;
         g2.drawRect(textox, textoy, 120, 24);
         // se volumen
         textoy += gp.tileSize;
         g2.drawRect(textox, textoy, 120, 24);
+    }
+    public void opciones_notificaciondepantallacompleta(int framex, int framey){
+        int textox = framex + gp.tileSize;
+        int textoy = framey + gp.tileSize*3;
+
+        dialogoactual = "el cambio ha sido \ntomado efecto despues \nde reanudar el \njuego";
+        for(String linea: dialogoactual.split("\n")){
+            g2.drawString(linea, textox, textoy);
+            textoy += 40;
+        }
+        // atras
+        textoy = framey + gp.tileSize*9;
+        g2.drawString("Atras", textox, textoy);
+        if(numerodecomando == 0){
+            g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 0;
+            }
+        }
     }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);
