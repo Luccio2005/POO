@@ -23,7 +23,7 @@ public class UI {
     public int numerodecomando =0;
     public int ranuracol = 0;
     public int ranurafila = 0;
-
+    int substate = 0;
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
@@ -363,6 +363,39 @@ public class UI {
         int framewidth = gp.tileSize*8;
         int frameheight = gp.tileSize*10;
         dibujarpestana(framex, framey, framewidth, frameheight);
+        switch (substate){
+            case 0: opciones_top(framex, framey);break;
+            case 1: break;
+            case 2: break;
+        }
+    }
+    public void opciones_top(int framex, int framey){
+        int textox;
+        int textoy;
+        //titulo
+        String texto = "Opciones";
+        textox = getxforcenteredtext(texto);
+        textoy = framey + gp.tileSize;
+        g2.drawString(texto, textox, textoy);
+        // pantalla grande on/off
+        textox = framex + gp.tileSize;
+        textoy += gp.tileSize*2;
+        g2.drawString("Pantalla Completa", textox, textoy);
+        // musica
+        textoy += gp.tileSize;
+        g2.drawString("Musica", textox, textoy);
+        //SE
+        textoy += gp.tileSize;
+        g2.drawString("SE", textox, textoy);
+        // CONTROL
+        textoy += gp.tileSize;
+        g2.drawString("Control", textox, textoy);
+        // Fin de Juego
+        textoy += gp.tileSize;
+        g2.drawString("Fin del juego", textox, textoy);
+        // atras
+        textoy += gp.tileSize*2;
+        g2.drawString("Atras", textox, textoy);
     }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);
