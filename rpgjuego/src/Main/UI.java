@@ -380,7 +380,7 @@ public class UI {
         // pantalla grande on/off
         textox = framex + gp.tileSize;
         textoy += gp.tileSize*2;
-        g2.drawString("Pantalla Completa", textox, textoy);
+        g2.drawString("Full Screen", textox, textoy);
         if(numerodecomando == 0){
             g2.drawString(">", textox-25, textoy);
         }
@@ -414,6 +414,17 @@ public class UI {
         if(numerodecomando == 5){
             g2.drawString(">", textox-25, textoy);
         }
+        // pantalla completa hceck box
+        textox = framex + (int)(gp.tileSize*4.5);
+        textoy = framey + gp.tileSize*2 +24;
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRect(textox, textoy, 24, 24);
+        // music volumen
+        textoy += gp.tileSize;
+        g2.drawRect(textox, textoy, 120, 24);
+        // se volumen
+        textoy += gp.tileSize;
+        g2.drawRect(textox, textoy, 120, 24);
     }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);
