@@ -41,6 +41,10 @@ public class Teclado implements KeyListener {
         else if(gp.estadodeljuego == gp.estadodepersonaje){
             estadodepersonaje(codigo);
         }
+        // estado de opciones
+        else if(gp.estadodeljuego == gp.estadodeopciones){
+            estadodeopciones(codigo);
+        }
     }
     public void pantalladeinicio(int codigo){
         if(codigo == KeyEvent.VK_W){
@@ -93,6 +97,9 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_F){
             disparop = true;
         }
+        if(codigo == KeyEvent.VK_ESCAPE){
+            gp.estadodeljuego = gp.estadodeopciones;
+        }
     }
     public void pausar(int codigo){
         if(codigo == KeyEvent.VK_P){
@@ -134,6 +141,14 @@ public class Teclado implements KeyListener {
         }
         if(codigo == KeyEvent.VK_ENTER){
             gp.jugador.seleccionaritem();
+        }
+    }
+    public void estadodeopciones(int codigo){
+        if(codigo == KeyEvent.VK_ESCAPE){
+            gp.estadodeljuego = gp.reanudar;
+        }
+        if(codigo == KeyEvent.VK_ENTER){
+            enterp = true;
         }
     }
 

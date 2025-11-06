@@ -70,6 +70,10 @@ public class UI {
             dibujarpantalladepersonaje();
             dibujarinventario();
         }
+        // estado de opciones
+        if(gp.estadodeljuego == gp.estadodeopciones){
+            dibujarpantalladeopciones();
+        }
     }
     public void dibujarvidajugador(){
         int x = gp.tileSize/2;
@@ -349,7 +353,17 @@ public class UI {
                 textoy +=32;
             }
         }
-        }
+    }
+    public void dibujarpantalladeopciones(){
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(32F));
+        // PESTANA
+        int framex = gp.tileSize*6;
+        int framey = gp.tileSize;
+        int framewidth = gp.tileSize*8;
+        int frameheight = gp.tileSize*10;
+        dibujarpestana(framex, framey, framewidth, frameheight);
+    }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);
         return indiceitem;
