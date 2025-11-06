@@ -150,6 +150,24 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_ENTER){
             enterp = true;
         }
+        int numerodecomandomax = 0;
+        switch (gp.ui.substate){
+            case 0: numerodecomandomax = 5;
+        }
+        if(codigo == KeyEvent.VK_W){
+            gp.ui.numerodecomando--;
+            gp.playSE(9);
+            if(gp.ui.numerodecomando < 0){
+                gp.ui.numerodecomando = numerodecomandomax;
+            }
+        }
+        if(codigo == KeyEvent.VK_S){
+            gp.ui.numerodecomando++;
+            gp.playSE(9);
+            if(gp.ui.numerodecomando > numerodecomandomax){
+                gp.ui.numerodecomando = 0;
+            }
+        }
     }
 
     @Override

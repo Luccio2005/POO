@@ -20,7 +20,7 @@ public class UI {
     ArrayList<Integer> contadormensaje = new ArrayList<>();
     public boolean juegoterminado = false;
     public String dialogoactual = "";
-    public int numerodecomando =0;
+    public int numerodecomando = 0;
     public int ranuracol = 0;
     public int ranurafila = 0;
     int substate = 0;
@@ -381,21 +381,39 @@ public class UI {
         textox = framex + gp.tileSize;
         textoy += gp.tileSize*2;
         g2.drawString("Pantalla Completa", textox, textoy);
+        if(numerodecomando == 0){
+            g2.drawString(">", textox-25, textoy);
+        }
         // musica
         textoy += gp.tileSize;
         g2.drawString("Musica", textox, textoy);
+        if(numerodecomando == 1){
+            g2.drawString(">", textox-25, textoy);
+        }
         //SE
         textoy += gp.tileSize;
         g2.drawString("SE", textox, textoy);
+        if(numerodecomando == 2){
+            g2.drawString(">", textox-25, textoy);
+        }
         // CONTROL
         textoy += gp.tileSize;
         g2.drawString("Control", textox, textoy);
+        if(numerodecomando == 3){
+            g2.drawString(">", textox-25, textoy);
+        }
         // Fin de Juego
         textoy += gp.tileSize;
         g2.drawString("Fin del juego", textox, textoy);
+        if(numerodecomando == 4){
+            g2.drawString(">", textox-25, textoy);
+        }
         // atras
         textoy += gp.tileSize*2;
         g2.drawString("Atras", textox, textoy);
+        if(numerodecomando == 5){
+            g2.drawString(">", textox-25, textoy);
+        }
     }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);
