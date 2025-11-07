@@ -3,11 +3,15 @@ package Main;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public class sonido {
     Clip clip;
     URL Urlsonido[] = new URL[30];
+    FloatControl fc;
+    int escalavolumen = 3;
+    float volumen;
 
     public sonido(){
         Urlsonido[0]= getClass().getResource("/sonido/BlueBoyAdventure.wav");
@@ -28,7 +32,8 @@ public class sonido {
             AudioInputStream ais = AudioSystem.getAudioInputStream(Urlsonido[i]);
             clip= AudioSystem.getClip();
             clip.open(ais);
-
+            fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+            comprobarvolumen();
         } catch (Exception e) {
         }
     }
@@ -40,5 +45,16 @@ public class sonido {
     }
     public void stop(){
         clip.stop();
+    }
+    public void comprobarvolumen(){
+        switch (escalavolumen){
+            case 0: volumen = -80f; break;
+            case 1: volumen = -20f; break;
+            case 2: volumen = -12f; break;
+            case 3: volumen = -5f; break;
+            case 4: volumen = 1f; break;
+            case 5: volumen = 6f; break;
+        }
+        fc.setValue(volumen);
     }
 }

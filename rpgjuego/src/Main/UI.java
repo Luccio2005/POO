@@ -434,9 +434,13 @@ public class UI {
         // music volumen
         textoy += gp.tileSize;
         g2.drawRect(textox, textoy, 120, 24);
+        int anchovolumen = 24 * gp.musica.escalavolumen;
+        g2.fillRect(textox, textoy, anchovolumen, 24);
         // se volumen
         textoy += gp.tileSize;
         g2.drawRect(textox, textoy, 120, 24);
+        anchovolumen = 24 * gp.se.escalavolumen;
+        g2.fillRect(textox, textoy, anchovolumen, 24);
     }
     public void opciones_notificaciondepantallacompleta(int framex, int framey){
         int textox = framex + gp.tileSize;

@@ -168,7 +168,32 @@ public class Teclado implements KeyListener {
                 gp.ui.numerodecomando = 0;
             }
         }
-    }
+        if (codigo == KeyEvent.VK_A) {
+            if(gp.ui.substate == 0){
+                if(gp.ui.numerodecomando == 1 && gp.musica.escalavolumen > 0){
+                    gp.musica.escalavolumen--;
+                    gp.musica.comprobarvolumen();
+                    gp.playSE(9);
+                }
+                if(gp.ui.numerodecomando == 2 && gp.se.escalavolumen > 0){
+                    gp.se.escalavolumen--;
+                    gp.playSE(9);
+                }
+            }
+        }
+        if(codigo == KeyEvent.VK_D){
+            if(gp.ui.substate == 0){
+                if(gp.ui.numerodecomando == 1 && gp.musica.escalavolumen < 5){
+                    gp.musica.escalavolumen++;
+                    gp.musica.comprobarvolumen();
+                    gp.playSE(9);
+                }
+                if(gp.ui.numerodecomando == 2 && gp.se.escalavolumen < 5){
+                    gp.se.escalavolumen++;
+                    gp.playSE(9);
+            }
+        }
+    }}
 
     @Override
     public void keyReleased(KeyEvent e) {
