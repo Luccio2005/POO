@@ -366,7 +366,7 @@ public class UI {
         switch (substate){
             case 0: opciones_top(framex, framey);break;
             case 1: opciones_notificaciondepantallacompleta(framex, framey);break;
-            case 2: break;
+            case 2: opciones_control(framex, framey); break;
         }
         gp.keyH.enterp = false;
     }
@@ -410,6 +410,10 @@ public class UI {
         g2.drawString("Control", textox, textoy);
         if(numerodecomando == 3){
             g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 2;
+                numerodecomando = 0;
+            }
         }
         // Fin de Juego
         textoy += gp.tileSize;
@@ -452,6 +456,42 @@ public class UI {
             textoy += 40;
         }
         // atras
+        textoy = framey + gp.tileSize*9;
+        g2.drawString("Atras", textox, textoy);
+        if(numerodecomando == 0){
+            g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 0;
+            }
+        }
+    }
+    public void opciones_control(int framex, int framey){
+        int textox;
+        int textoy;
+        // titulo
+        String texto = "Control";
+        textox = getxforcenteredtext(texto);
+        textoy = framey + gp.tileSize;
+        g2.drawString(texto, textox, textoy);
+
+        textox = framex + gp.tileSize;
+        textoy += gp.tileSize;
+        g2.drawString("Mover", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("Conf/Atq", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("Disp/Cast", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("Estado", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("Pausa", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("Opciones", textox, textoy); textoy += gp.tileSize;
+        textox = framex + gp.tileSize*5;
+        textoy = framey + gp.tileSize*2;
+        g2.drawString("WASD", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("ENTER", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("F", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("C", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("P", textox, textoy); textoy += gp.tileSize;
+        g2.drawString("ESC", textox, textoy); textoy += gp.tileSize;
+        // ATRAS
+        textox = framex + gp.tileSize;
         textoy = framey + gp.tileSize*9;
         g2.drawString("Atras", textox, textoy);
         if(numerodecomando == 0){
