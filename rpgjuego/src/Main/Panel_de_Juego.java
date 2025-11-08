@@ -26,7 +26,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
     // panatalla completa
-    public boolean pantallacompletaon = false;
+    public static boolean pantallacompletaon = false;
 
     int FPS = 60;
 
@@ -38,6 +38,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public Activos aSetter = new Activos(this);
     public UI ui= new UI(this);
     public Eventos evento = new Eventos(this);
+    config config = new config(this);
     Thread gameThread;
 
     //entidad y objetos
@@ -74,6 +75,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         aSetter.setsuelointeractivo();
         //playMusic(0);
         estadodeljuego = pantalladeinicio;
+        if(pantallacompletaon == true){
+            setFullScreen();
+        }
+    }
+    public void setFullScreen(){
+
     }
     public void startGameThread(){
         gameThread = new Thread(this);

@@ -454,6 +454,7 @@ public class UI {
         g2.drawRect(textox, textoy, 120, 24);
         anchovolumen = 24 * gp.se.escalavolumen;
         g2.fillRect(textox, textoy, anchovolumen, 24);
+        gp.config.guardarconfig();
     }
     public void opciones_notificaciondepantallacompleta(int framex, int framey){
         int textox = framex + gp.tileSize;
