@@ -152,7 +152,8 @@ public class Teclado implements KeyListener {
         }
         int numerodecomandomax = 0;
         switch (gp.ui.substate){
-            case 0: numerodecomandomax = 5;
+            case 0: numerodecomandomax = 5; break;
+            case 3: numerodecomandomax = 1; break;
         }
         if(codigo == KeyEvent.VK_W){
             gp.ui.numerodecomando--;

@@ -367,6 +367,7 @@ public class UI {
             case 0: opciones_top(framex, framey);break;
             case 1: opciones_notificaciondepantallacompleta(framex, framey);break;
             case 2: opciones_control(framex, framey); break;
+            case 3: opciones_findeljuegoconfirmacion(framex, framey); break;
         }
         gp.keyH.enterp = false;
     }
@@ -420,12 +421,20 @@ public class UI {
         g2.drawString("Fin del juego", textox, textoy);
         if(numerodecomando == 4){
             g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 3;
+                numerodecomando = 0;
+            }
         }
         // atras
         textoy += gp.tileSize*2;
         g2.drawString("Atras", textox, textoy);
         if(numerodecomando == 5){
             g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                gp.estadodeljuego = gp.reanudar;
+                numerodecomando = 0;
+            }
         }
         // pantalla completa hceck box
         textox = framex + (int)(gp.tileSize*4.5);
@@ -498,6 +507,40 @@ public class UI {
             g2.drawString(">", textox-25, textoy);
             if(gp.keyH.enterp == true){
                 substate = 0;
+                numerodecomando = 3;
+            }
+        }
+    }
+    public void opciones_findeljuegoconfirmacion(int framex, int framey){
+        int textox = framex + gp.tileSize;
+        int textoy = framey + gp.tileSize*3;
+        dialogoactual = "Salir del juego \nretornar a pantalla \nde inicio?";
+        for(String linea: dialogoactual.split("\n")){
+            g2.drawString(linea, textox, textoy);
+            textoy += 40;
+        }
+        //yes
+        String texto = "Si";
+        textox = getxforcenteredtext(texto);
+        textoy += gp.tileSize*3;
+        g2.drawString(texto, textox, textoy);
+        if(numerodecomando == 0){
+            g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 0;
+                gp.estadodeljuego = gp.pantalladeinicio;
+            }
+        }
+        //no
+        texto = "No";
+        textox = getxforcenteredtext(texto);
+        textoy += gp.tileSize;
+        g2.drawString(texto, textox, textoy);
+        if(numerodecomando == 1){
+            g2.drawString(">", textox-25, textoy);
+            if(gp.keyH.enterp == true){
+                substate = 0;
+                numerodecomando = 4;
             }
         }
     }
