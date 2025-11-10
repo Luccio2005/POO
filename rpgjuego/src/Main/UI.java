@@ -374,6 +374,23 @@ public class UI {
         // main
         g2.setColor(Color.white);
         g2.drawString(texto, x-4, y-4);
+        // retry
+        g2.setFont(g2.getFont().deriveFont(50f));
+        texto = "Retry";
+        x = getxforcenteredtext(texto);
+        y += gp.tileSize*4;
+        g2.drawString(texto, x ,y);
+        if(numerodecomando == 0){
+            g2.drawString(">", x-40, y);
+        }
+        // volver a la pantalla de inicio
+        texto = "Quit";
+        x = getxforcenteredtext(texto);
+        y += 55;
+        g2.drawString(texto, x, y);
+        if(numerodecomando == 1){
+            g2.drawString(">", x-40, y);
+        }
     }
     public void dibujarpantalladeopciones(){
         g2.setColor(Color.white);

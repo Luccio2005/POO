@@ -45,6 +45,10 @@ public class Teclado implements KeyListener {
         else if(gp.estadodeljuego == gp.estadodeopciones){
             estadodeopciones(codigo);
         }
+        // estado game over
+        else if(gp.estadodeljuego == gp.estadogameover){
+            estadogameover(codigo);
+        }
     }
     public void pantalladeinicio(int codigo){
         if(codigo == KeyEvent.VK_W){
@@ -195,7 +199,22 @@ public class Teclado implements KeyListener {
             }
         }
     }}
-
+    public void estadogameover(int codigo){
+        if(codigo == KeyEvent.VK_W){
+            gp.ui.numerodecomando--;
+            if(gp.ui.numerodecomando < 0){
+                gp.ui.numerodecomando = 1;
+            }
+            gp.playSE(9);
+        }
+        if(codigo == KeyEvent.VK_S){
+            gp.ui.numerodecomando++;
+            if(gp.ui.numerodecomando > 1){
+                gp.ui.numerodecomando = 0;
+            }
+            gp.playSE(9);
+        }
+    }
     @Override
     public void keyReleased(KeyEvent e) {
         int codigo = e.getKeyCode();
