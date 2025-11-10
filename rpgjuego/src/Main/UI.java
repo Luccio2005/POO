@@ -206,7 +206,7 @@ public class UI {
         }
     }
     public void dibujarpantalladepersonaje(){
-        final int framex = gp.tileSize;
+        final int framex = gp.tileSize*2;
         final int framey = gp.tileSize;
         final int frameancho = gp.tileSize*5;
         final int framealto = gp.tileSize*10;
@@ -301,7 +301,7 @@ public class UI {
     }
     public void dibujarinventario(){
         //frame
-        int framex = gp.tileSize*9;
+        int framex = gp.tileSize*12;
         int framey = gp.tileSize;
         int frameancho = gp.tileSize*6;
         int framealto = gp.tileSize*5;
@@ -460,7 +460,7 @@ public class UI {
         int textox = framex + gp.tileSize;
         int textoy = framey + gp.tileSize*3;
 
-        dialogoactual = "el cambio ha sido \ntomado efecto despues \nde reanudar el \njuego";
+        dialogoactual = "el cambio ha sido \ntomado efecto despues \nde reiniciar el \njuego";
         for(String linea: dialogoactual.split("\n")){
             g2.drawString(linea, textox, textoy);
             textoy += 40;
