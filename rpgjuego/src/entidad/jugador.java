@@ -68,7 +68,18 @@ public class jugador extends entidad{
         atq = getAttack(); // el valor de atq es decidido por str con elarma
         def = getDefense(); // el valor de def es decidido por dex con el escudo
     }
+    public void setdefaultpositions(){
+        mundox= gp.tileSize * 23;
+        mundoy= gp.tileSize * 21;
+        direccion= "down";
+    }
+    public void restaurarvidaymana(){
+        vida = vidamax;
+        mana = manamaximo;
+        invencible = false;
+    }
     public void setItems(){
+        inventario.clear();
         inventario.add(actualarma);
         inventario.add(actualescudo);
         inventario.add(new Obj_key(gp));
@@ -216,6 +227,7 @@ public class jugador extends entidad{
         }
         if(vida <= 0){
             gp.estadodeljuego = gp.estadogameover;
+            gp.playSE(12);
         }
     }
     public void atacando(){

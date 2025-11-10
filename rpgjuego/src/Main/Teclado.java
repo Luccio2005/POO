@@ -214,6 +214,16 @@ public class Teclado implements KeyListener {
             }
             gp.playSE(9);
         }
+        if(codigo == KeyEvent.VK_ENTER){
+            if(gp.ui.numerodecomando == 0){
+                gp.estadodeljuego = gp.reanudar;
+                gp.retry();
+            }
+            else if(gp.ui.numerodecomando == 1){
+                gp.estadodeljuego = gp.pantalladeinicio;
+                gp.restart();
+            }
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {

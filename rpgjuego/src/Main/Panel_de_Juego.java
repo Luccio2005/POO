@@ -87,6 +87,22 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             setFullScreen();
         }
     }
+    public void retry(){
+        jugador.setdefaultpositions();
+        jugador.restaurarvidaymana();
+        aSetter.setnpc();
+        aSetter.setenemigos();
+    }
+    public void restart(){
+        jugador.valorespredeterminados();
+        jugador.setdefaultpositions();
+        jugador.restaurarvidaymana();
+        jugador.setItems();
+        aSetter.setObject();
+        aSetter.setnpc();
+        aSetter.setenemigos();
+        aSetter.setsuelointeractivo();
+    }
     public void setFullScreen(){
         // get local screen device
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
