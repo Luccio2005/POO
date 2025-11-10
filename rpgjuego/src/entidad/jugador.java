@@ -214,6 +214,9 @@ public class jugador extends entidad{
         if(mana > manamaximo){
             mana = manamaximo;
         }
+        if(vida <= 0){
+            gp.estadodeljuego = gp.estadogameover;
+        }
     }
     public void atacando(){
         contadorSprite++;

@@ -74,6 +74,10 @@ public class UI {
         if(gp.estadodeljuego == gp.estadodeopciones){
             dibujarpantalladeopciones();
         }
+        // estado de gameover
+        if(gp.estadodeljuego == gp.estadogameover){
+            dibujarpantallagameover();
+        }
     }
     public void dibujarvidajugador(){
         int x = gp.tileSize/2;
@@ -353,6 +357,23 @@ public class UI {
                 textoy +=32;
             }
         }
+    }
+    public void dibujarpantallagameover(){
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, gp.anchoPantalla, gp.altoPantalla);
+        int x;
+        int y;
+        String texto;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+        texto = "Game Over";
+        // sombra
+        g2.setColor(Color.black);
+        x = getxforcenteredtext(texto);
+        y = gp.tileSize*4;
+        g2.drawString(texto, x, y);
+        // main
+        g2.setColor(Color.white);
+        g2.drawString(texto, x-4, y-4);
     }
     public void dibujarpantalladeopciones(){
         g2.setColor(Color.white);
