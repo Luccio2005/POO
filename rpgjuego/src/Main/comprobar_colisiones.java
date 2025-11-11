@@ -54,13 +54,13 @@ public class comprobar_colisiones {
     }
     public int comprobarobjeto(entidad entidad, boolean jugador){
         int indice = 999;
-        for(int i =0;i<gp.obj.length;i++){
-            if(gp.obj[i] !=null){
+        for(int i =0;i<gp.obj[1].length;i++){
+            if(gp.obj[gp.actualmapa][i] !=null){
                 entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
                 entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
 
-                gp.obj[i].areadecolision.x =  gp.obj[i].mundox + gp.obj[i].areadecolision.x;
-                gp.obj[i].areadecolision.y =  gp.obj[i].mundoy + gp.obj[i].areadecolision.y;
+                gp.obj[gp.actualmapa][i].areadecolision.x =  gp.obj[gp.actualmapa][i].mundox + gp.obj[gp.actualmapa][i].areadecolision.x;
+                gp.obj[gp.actualmapa][i].areadecolision.y =  gp.obj[gp.actualmapa][i].mundoy + gp.obj[gp.actualmapa][i].areadecolision.y;
 
                 switch (entidad.direccion){
                     case "up":
@@ -76,8 +76,8 @@ public class comprobar_colisiones {
                         entidad.areadecolision.x += entidad.velocidad;
                         break;
                 }
-                if(entidad.areadecolision.intersects(gp.obj[i].areadecolision)){
-                    if(gp.obj[i].colision == true){
+                if(entidad.areadecolision.intersects(gp.obj[gp.actualmapa][i].areadecolision)){
+                    if(gp.obj[gp.actualmapa][i].colision == true){
                         entidad.colision = true;
                     }
                     if(jugador == true){
@@ -86,22 +86,22 @@ public class comprobar_colisiones {
                 }
                 entidad.areadecolision.x = entidad.areadecolisionx;
                 entidad.areadecolision.y = entidad.areadecolisiony;
-                gp.obj[i].areadecolision.x = gp.obj[i].areadecolisionx;
-                gp.obj[i].areadecolision.y = gp.obj[i].areadecolisiony;
+                gp.obj[gp.actualmapa][i].areadecolision.x = gp.obj[gp.actualmapa][i].areadecolisionx;
+                gp.obj[gp.actualmapa][i].areadecolision.y = gp.obj[gp.actualmapa][i].areadecolisiony;
             }
         }
         return indice;
     }
     // npc o monstruo colision
-    public int comprobarentidad(entidad entidad, entidad[] target){
+    public int comprobarentidad(entidad entidad, entidad[][] target){
         int indice = 999;
-        for(int i =0;i< target.length;i++){
-            if(target[i] !=null){
+        for(int i =0;i< target[1].length;i++){
+            if(target[gp.actualmapa][i] !=null){
                 entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
                 entidad.areadecolision.y = entidad.mundoy + entidad.areadecolision.y;
 
-                target[i].areadecolision.x =  target[i].mundox + target[i].areadecolision.x;
-                target[i].areadecolision.y =  target[i].mundoy + target[i].areadecolision.y;
+                target[gp.actualmapa][i].areadecolision.x =  target[gp.actualmapa][i].mundox + target[gp.actualmapa][i].areadecolision.x;
+                target[gp.actualmapa][i].areadecolision.y =  target[gp.actualmapa][i].mundoy + target[gp.actualmapa][i].areadecolision.y;
 
                 switch (entidad.direccion){
                     case "up":
@@ -117,16 +117,16 @@ public class comprobar_colisiones {
                         entidad.areadecolision.x += entidad.velocidad;
                         break;
                 }
-                if(entidad.areadecolision.intersects(target[i].areadecolision)){
-                    if(target[i] != entidad){
+                if(entidad.areadecolision.intersects(target[gp.actualmapa][i].areadecolision)){
+                    if(target[gp.actualmapa][i] != entidad){
                         entidad.colision = true;
                         indice=i;
                     }
                 }
                 entidad.areadecolision.x = entidad.areadecolisionx;
                 entidad.areadecolision.y = entidad.areadecolisiony;
-                target[i].areadecolision.x = target[i].areadecolisionx;
-                target[i].areadecolision.y = target[i].areadecolisiony;
+                target[gp.actualmapa][i].areadecolision.x = target[gp.actualmapa][i].areadecolisionx;
+                target[gp.actualmapa][i].areadecolision.y = target[gp.actualmapa][i].areadecolisiony;
             }
         }
         return indice;

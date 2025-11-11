@@ -102,11 +102,11 @@ public class entidad {
     public void checkdrop(){
     }
     public void dropitem(entidad droppeditem){
-        for(int i = 0; i < gp.obj.length;i++){
-            if(gp.obj[i] == null){
-                gp.obj[i] = droppeditem;
-                gp.obj[i].mundox = mundox;
-                gp.obj[i].mundoy = mundoy;
+        for(int i = 0; i < gp.obj[1].length;i++){
+            if(gp.obj[gp.actualmapa][i] == null){
+                gp.obj[gp.actualmapa][i] = droppeditem;
+                gp.obj[gp.actualmapa][i].mundox = mundox;
+                gp.obj[gp.actualmapa][i].mundoy = mundoy;
                 break;
             }
         }

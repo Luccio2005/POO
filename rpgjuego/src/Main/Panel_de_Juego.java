@@ -50,10 +50,10 @@ public class Panel_de_Juego extends JPanel implements Runnable{
 
     //entidad y objetos
     public jugador jugador= new jugador(this,keyH);
-    public entidad obj[]=new entidad[20];
-    public entidad npc[] = new entidad[10];
-    public entidad enemigos[] = new entidad[20];
-    public suelointeractivo itile[] = new suelointeractivo[50];
+    public entidad obj[][]=new entidad[maxmap][20];
+    public entidad npc[][] = new entidad[maxmap][10];
+    public entidad enemigos[][] = new entidad[maxmap][20];
+    public suelointeractivo itile[][] = new suelointeractivo[maxmap][50];
     public ArrayList<entidad> listaproyectil = new ArrayList<>();
     public ArrayList<entidad> listaparticula = new ArrayList<>();
     ArrayList<entidad> listaentidad = new ArrayList<>();
@@ -153,19 +153,19 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             //jugador
             jugador.actualizar();
             //npc
-            for(int i =0; i< npc.length; i++){
-                if(npc[i] !=null){
-                    npc[i].actualizar();
+            for(int i =0; i< npc[1].length; i++){
+                if(npc[actualmapa][i] !=null){
+                    npc[actualmapa][i].actualizar();
                 }
             }
-            for(int i=0; i<enemigos.length; i++){
-                if(enemigos[i] != null){
-                    if(enemigos[i].vivo == true && enemigos[i].muriendo == false){
-                        enemigos[i].actualizar();
+            for(int i=0; i<enemigos[1].length; i++){
+                if(enemigos[actualmapa][i] != null){
+                    if(enemigos[actualmapa][i].vivo == true && enemigos[actualmapa][i].muriendo == false){
+                        enemigos[actualmapa][i].actualizar();
                     }
-                    if(enemigos[i].vivo == false){
-                        enemigos[i].checkdrop();
-                        enemigos[i] =null;
+                    if(enemigos[actualmapa][i].vivo == false){
+                        enemigos[actualmapa][i].checkdrop();
+                        enemigos[actualmapa][i] =null;
                     }
                 }
             }
@@ -189,9 +189,9 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
-            for(int i=0; i< itile.length; i++){
-                if(itile[i] != null){
-                    itile[i].actualizar();
+            for(int i=0; i< itile[1].length; i++){
+                if(itile[actualmapa][i] != null){
+                    itile[actualmapa][i].actualizar();
                 }
             }
         }
@@ -208,26 +208,26 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         else{
             sueloM.dibujar(g2);
             // suelo interactivo
-            for(int i=0; i< itile.length; i++){
-                if(itile[i] != null){
-                    itile[i].dibujar(g2);
+            for(int i=0; i< itile[1].length; i++){
+                if(itile[actualmapa][i] != null){
+                    itile[actualmapa][i].dibujar(g2);
                 }
             }
             // anadir entidades a la lista
             listaentidad.add(jugador);
-            for(int i=0; i< npc.length;i++){
-                if(npc[i] != null){
-                    listaentidad.add(npc[i]);
+            for(int i=0; i< npc[1].length;i++){
+                if(npc[actualmapa][i] != null){
+                    listaentidad.add(npc[actualmapa][i]);
                 }
             }
-            for(int i=0; i< obj.length;i++){
-                if(obj[i] != null){
-                    listaentidad.add(obj[i]);
+            for(int i=0; i< obj[1].length;i++){
+                if(obj[actualmapa][i] != null){
+                    listaentidad.add(obj[actualmapa][i]);
                 }
             }
-            for(int i=0; i< enemigos.length;i++){
-                if(enemigos[i] != null){
-                    listaentidad.add(enemigos[i]);
+            for(int i=0; i< enemigos[1].length;i++){
+                if(enemigos[actualmapa][i] != null){
+                    listaentidad.add(enemigos[actualmapa][i]);
                 }
             }
             for(int i=0; i< listaproyectil.size(); i++){

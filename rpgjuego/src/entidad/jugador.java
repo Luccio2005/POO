@@ -272,20 +272,20 @@ public class jugador extends entidad{
     public void recogerobjeto (int i){
         if(i != 999){
             // recoger solo items
-            if(gp.obj[i].tipo == tipo_agarrarsolo){
-                gp.obj[i].usar(this);
-                gp.obj[i] = null;
+            if(gp.obj[gp.actualmapa][i].tipo == tipo_agarrarsolo){
+                gp.obj[gp.actualmapa][i].usar(this);
+                gp.obj[gp.actualmapa][i] = null;
             }else{
                 String texto;
                 if(inventario.size() != maxtamanoinventario){
-                    inventario.add(gp.obj[i]);
+                    inventario.add(gp.obj[gp.actualmapa][i]);
                     gp.playSE(1);
-                    texto = "Conseguiste una " + gp.obj[i].nombre + "!";
+                    texto = "Conseguiste una " + gp.obj[gp.actualmapa][i].nombre + "!";
                 }else{
                     texto = "Inventario lleno";
                 }
                 gp.ui.anadirmensaje(texto);
-                gp.obj[i] = null;
+                gp.obj[gp.actualmapa][i] = null;
             }
         }
     }
@@ -294,15 +294,15 @@ public class jugador extends entidad{
             if (i != 999) {
                 cancelaratq = true;
                 gp.estadodeljuego = gp.dialogo;
-                gp.npc[i].hablar();
+                gp.npc[gp.actualmapa][i].hablar();
             }
         }
     }
     public void contactoenemigo(int i){
         if(i !=999){
-            if(invencible == false && gp.enemigos[i].muriendo == false){
+            if(invencible == false && gp.enemigos[gp.actualmapa][i].muriendo == false){
                 gp.playSE(6);
-                int damage = gp.enemigos[i].atq - def;
+                int damage = gp.enemigos[gp.actualmapa][i].atq - def;
                 if(damage<0){
                     damage = 0;
                 }
@@ -313,36 +313,36 @@ public class jugador extends entidad{
     }
     public void damageenemigo(int i, int atq){
         if(i != 999){
-            if(gp.enemigos[i].invencible == false){
+            if(gp.enemigos[gp.actualmapa][i].invencible == false){
                 gp.playSE(5);
-                int damage = atq - gp.enemigos[i].def;
+                int damage = atq - gp.enemigos[gp.actualmapa][i].def;
                 if(damage<0){
                     damage = 0;
                 }
-                gp.enemigos[i].vida -= damage;
+                gp.enemigos[gp.actualmapa][i].vida -= damage;
                 gp.ui.anadirmensaje(damage + " damage!");
-                gp.enemigos[i].invencible = true;
-                gp.enemigos[i].reaccionaldamage();
-                if(gp.enemigos[i].vida <= 0){
-                    gp.enemigos[i].muriendo = true;
-                    gp.ui.anadirmensaje("mato al " + gp.enemigos[i].nombre + "!");
-                    gp.ui.anadirmensaje("exp + " + gp.enemigos[i].exp + "!");
-                    exp += gp.enemigos[i].exp;
+                gp.enemigos[gp.actualmapa][i].invencible = true;
+                gp.enemigos[gp.actualmapa][i].reaccionaldamage();
+                if(gp.enemigos[gp.actualmapa][i].vida <= 0){
+                    gp.enemigos[gp.actualmapa][i].muriendo = true;
+                    gp.ui.anadirmensaje("mato al " + gp.enemigos[gp.actualmapa][i].nombre + "!");
+                    gp.ui.anadirmensaje("exp + " + gp.enemigos[gp.actualmapa][i].exp + "!");
+                    exp += gp.enemigos[gp.actualmapa][i].exp;
                     comprobarlvlup();
                 }
             }
         }
     }
     public void damagesuelointeractivo(int i){
-        if(i != 999 && gp.itile[i].destructible == true
-                && gp.itile[i].itemcorrecto(this) == true && gp.itile[i].invencible == false){
-            gp.itile[i].playSE();
-            gp.itile[i].vida--;
-            gp.itile[i].invencible = true;
+        if(i != 999 && gp.itile[gp.actualmapa][i].destructible == true
+                && gp.itile[gp.actualmapa][i].itemcorrecto(this) == true && gp.itile[gp.actualmapa][i].invencible == false){
+            gp.itile[gp.actualmapa][i].playSE();
+            gp.itile[gp.actualmapa][i].vida--;
+            gp.itile[gp.actualmapa][i].invencible = true;
             //generador particula
-            generadorparticula(gp.itile[i], gp.itile[i]);
-            if(gp.itile[i].vida == 0){
-                gp.itile[i] = gp.itile[i].getformadestruida();
+            generadorparticula(gp.itile[gp.actualmapa][i], gp.itile[gp.actualmapa][i]);
+            if(gp.itile[gp.actualmapa][i].vida == 0){
+                gp.itile[gp.actualmapa][i] = gp.itile[gp.actualmapa][i].getformadestruida();
             }
         }
     }

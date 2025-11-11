@@ -20,7 +20,7 @@ public class proyectiles extends entidad{
             int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
             if(indiceenemigo != 999){
                 gp.jugador.damageenemigo(indiceenemigo, atq);
-                generadorparticula(usuario.proyectiles,gp.enemigos[indiceenemigo]);
+                generadorparticula(usuario.proyectiles,gp.enemigos[gp.actualmapa][indiceenemigo]);
                 vivo = false;
             }
         }
