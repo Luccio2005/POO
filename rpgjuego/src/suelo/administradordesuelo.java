@@ -12,16 +12,18 @@ import java.io.InputStreamReader;
 public class administradordesuelo {
     Panel_de_Juego gp;
     public suelo[] suelo;
-    public int mapaNum[][];
+    public int mapaNum[][][];
 
     public administradordesuelo(Panel_de_Juego gp){
         this.gp = gp;
 
         suelo = new suelo[50];
-        mapaNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+        mapaNum = new int[gp.maxmap][gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        cargarMapa("/mapas/worldV2.txt");
-        //cargarMapa("/mapas/cyclopolis.txt");
+        cargarMapa("/mapas/worldV3.txt",0);
+        cargarMapa("/mapas/interior01.txt",1);
+        cargarMapa("/mapas/cyclopolis.txt",2);
+        cargarMapa("/mapas/worldV2.txt",3);
 
     }
     public void getTileImage(){
@@ -68,6 +70,9 @@ public class administradordesuelo {
             setup(39,"earth",false);
             setup(40,"wall",true);
             setup(41,"tree",true);
+            setup(42,"hut",false);
+            setup(43,"floor01",false);
+            setup(44,"table01",true);
     }
     public void setup(int indice, String nombreimagen, boolean colision){
         Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
@@ -82,7 +87,7 @@ public class administradordesuelo {
         }
 
     }
-    public void cargarMapa(String filePath){
+    public void cargarMapa(String filePath, int map){
         try{
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -94,7 +99,7 @@ public class administradordesuelo {
                 while (columna < gp.maxWorldCol){
                     String numeros[] = linea.split(" ");
                     int num = Integer.parseInt(numeros[columna]);
-                    mapaNum[columna][fila]=num;
+                    mapaNum[map][columna][fila]=num;
                     columna++;
                 }
                 if(columna == gp.maxWorldCol){
@@ -112,7 +117,7 @@ public class administradordesuelo {
         int filamundo=0;
 
         while(columnammundo < gp.maxWorldCol  && filamundo < gp.maxWorldRow){
-            int tileNum = mapaNum[columnammundo][filamundo];
+            int tileNum = mapaNum[gp.actualmapa][columnammundo][filamundo];
 
             int mundox = columnammundo * gp.tileSize;
             int mundoy = filamundo * gp.tileSize;

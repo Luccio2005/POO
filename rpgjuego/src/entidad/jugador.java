@@ -227,6 +227,8 @@ public class jugador extends entidad{
         }
         if(vida <= 0){
             gp.estadodeljuego = gp.estadogameover;
+            gp.ui.numerodecomando = -1;
+            gp.stopMusic();;
             gp.playSE(12);
         }
     }

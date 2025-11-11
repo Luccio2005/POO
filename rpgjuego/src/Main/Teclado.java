@@ -104,6 +104,12 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_ESCAPE){
             gp.estadodeljuego = gp.estadodeopciones;
         }
+        if(codigo == KeyEvent.VK_R){
+            switch (gp.actualmapa){
+                case 0: gp.sueloM.cargarMapa("/mapas/worldV2.txt", 0); break;
+                case 1: gp.sueloM.cargarMapa("/mapas/interior01.txt", 1); break;
+            }
+        }
     }
     public void pausar(int codigo){
         if(codigo == KeyEvent.VK_P){
@@ -218,6 +224,7 @@ public class Teclado implements KeyListener {
             if(gp.ui.numerodecomando == 0){
                 gp.estadodeljuego = gp.reanudar;
                 gp.retry();
+                gp.playMusic(0);
             }
             else if(gp.ui.numerodecomando == 1){
                 gp.estadodeljuego = gp.pantalladeinicio;

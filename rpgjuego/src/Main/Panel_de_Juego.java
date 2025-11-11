@@ -26,6 +26,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     //public final int maxWorldRow = 155;
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
+    public final int maxmap = 10;
+    public int actualmapa = 0;
     // panatalla completa
     int anchopantalla2 = anchoPantalla;
     int altopantalla2 = altoPantalla;

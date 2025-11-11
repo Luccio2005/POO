@@ -23,29 +23,29 @@ public class comprobar_colisiones {
         switch (entidad.direccion){
             case "up":
                 entidadarrfila = (entidadarrmundoy - entidad.velocidad)/gp.tileSize;
-                suelonum1= gp.sueloM.mapaNum[entidadizqcolumna][entidadarrfila];
-                suelonum2= gp.sueloM.mapaNum[entidaddercolumna][entidadarrfila];
+                suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadarrfila];
+                suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadarrfila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
                     entidad.colision = true;
                 } break;
             case "down":
                 entidadabafila = (entidadabamundoy + entidad.velocidad)/gp.tileSize;
-                suelonum1= gp.sueloM.mapaNum[entidadizqcolumna][entidadabafila];
-                suelonum2= gp.sueloM.mapaNum[entidaddercolumna][entidadabafila];
+                suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadabafila];
+                suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
                     entidad.colision = true;
                 } break;
             case "left":
                 entidadizqcolumna = (entidadizqmundox - entidad.velocidad)/gp.tileSize;
-                suelonum1= gp.sueloM.mapaNum[entidadizqcolumna][entidadarrfila];
-                suelonum2= gp.sueloM.mapaNum[entidadizqcolumna][entidadabafila];
+                suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadarrfila];
+                suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
                     entidad.colision = true;
                 } break;
             case "right":
                 entidaddercolumna = (entidaddermundox + entidad.velocidad)/gp.tileSize;
-                suelonum1= gp.sueloM.mapaNum[entidaddercolumna][entidadarrfila];
-                suelonum2= gp.sueloM.mapaNum[entidaddercolumna][entidadabafila];
+                suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadarrfila];
+                suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
                     entidad.colision = true;
                 } break;
