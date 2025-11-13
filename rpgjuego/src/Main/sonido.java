@@ -27,6 +27,7 @@ public class sonido {
         Urlsonido[10]= getClass().getResource("/sonido/burning.wav");
         Urlsonido[11]= getClass().getResource("/sonido/cuttree.wav");
         Urlsonido[12]= getClass().getResource("/sonido/gameover.wav");
+        Urlsonido[13]= getClass().getResource("/sonido/stairs.wav");
     }
     public void setFile(int i){
         try {
