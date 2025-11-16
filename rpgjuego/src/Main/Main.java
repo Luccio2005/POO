@@ -16,7 +16,6 @@ public class Main {
         if(Panel_de_Juego.pantallacompletaon == true){
             window.setUndecorated(true);
         }
-        
 
         window.pack();
         window.setLocationRelativeTo(null);
