@@ -48,9 +48,17 @@ public class Activos {
     }
     public void setnpc(){
         int mapNum = 0;
-        gp.npc[mapNum][0]= new npc_oldman(gp);
-        gp.npc[mapNum][0].mundox = gp.tileSize*21;
-        gp.npc[mapNum][0].mundoy = gp.tileSize*21;
+        int i = 0;
+        gp.npc[mapNum][i]= new npc_oldman(gp);
+        gp.npc[mapNum][i].mundox = gp.tileSize*21;
+        gp.npc[mapNum][i].mundoy = gp.tileSize*21;
+        i++;
+        //mapa1
+        mapNum = 1;
+        gp.npc[mapNum][i]= new npc_oldman(gp);
+        gp.npc[mapNum][i].mundox = gp.tileSize*12;
+        gp.npc[mapNum][i].mundoy = gp.tileSize*7;
+        i++;
     }
     public void setenemigos(){
         int mapNum = 0;
