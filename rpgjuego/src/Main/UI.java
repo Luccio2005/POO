@@ -69,7 +69,6 @@ public class UI {
         }
         // dialogo
         if(gp.estadodeljuego == gp.dialogo){
-            dibujarvidajugador();
             dibujarpantalladedialogo();
         }
         // estado de personaje
@@ -731,7 +730,54 @@ public class UI {
         }
     }
     public void vender_intercambio(){
+        // dibujar inventario jugador
+        dibujarinventario(gp.jugador, true);
 
+        int x;
+        int y;
+        int width;
+        int height;
+        // dibujar ventana hint
+        x = gp.tileSize * 2;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        dibujarpestana(x, y, width, height);
+        g2.drawString("[ESC] Atras", x+24, y+60);
+        // dibujar pestana de monedas
+        x = gp.tileSize * 12;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        dibujarpestana(x, y, width, height);
+        g2.drawString("Tus monedas: "+ gp.jugador.coin, x+24, y+60);
+        // dibujar ventana de precios
+        int indiceitem = getitemindexonslot(jugadorranuracol, jugadorranurafila);
+        if(indiceitem < gp.jugador.inventario.size()){
+            x = (int)(gp.tileSize * 15.5);
+            y = (int)(gp.tileSize * 5.5);
+            width = (int)(gp.tileSize * 2.5);
+            height = gp.tileSize;
+            dibujarpestana(x, y, width, height);
+            g2.drawImage(coin, x+10, y+8, 32, 32, null);
+            int precio = gp.jugador.inventario.get(indiceitem).precio/2;
+            String texto = "" + precio;
+            x = getxforAligntorighttext(texto, gp.tileSize * 18 - 20);
+            g2.drawString(texto, x, y+34);
+            // vender item
+            if(gp.keyH.enterp == true){
+                if(gp.jugador.inventario.get(indiceitem) == gp.jugador.actualarma ||
+                gp.jugador.inventario.get(indiceitem) == gp.jugador.actualescudo){
+                    numerodecomando = 0;
+                    substate =0;
+                    gp.estadodeljuego = gp.dialogo;
+                    dialogoactual = "No puedes vender un item equipado";
+                }else{
+                    gp.jugador.inventario.remove(indiceitem);
+                    gp.jugador.coin += precio;
+                }
+            }
+        }
     }
     public int getitemindexonslot(int ranuracol, int ranurafila){
         int indiceitem = ranuracol + (ranurafila*5);

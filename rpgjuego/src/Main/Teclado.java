@@ -239,6 +239,12 @@ public class Teclado implements KeyListener {
                 gp.ui.substate = 0;
             }
         }
+        if(gp.ui.substate == 2){
+            inventariojugador(codigo);
+            if(codigo == KeyEvent.VK_ESCAPE){
+                gp.ui.substate = 0;
+            }
+        }
     }
     public void inventariojugador(int codigo){
         if(codigo == KeyEvent.VK_W){
