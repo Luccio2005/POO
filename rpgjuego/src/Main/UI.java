@@ -24,6 +24,7 @@ public class UI {
     public int ranuracol = 0;
     public int ranurafila = 0;
     int substate = 0;
+    int contador = 0;
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
@@ -77,6 +78,9 @@ public class UI {
         // estado de gameover
         if(gp.estadodeljuego == gp.estadogameover){
             dibujarpantallagameover();
+        }
+        if(gp.estadodeljuego == gp.estadotransicion){
+            dibujartransicion();
         }
     }
     public void dibujarvidajugador(){
@@ -581,6 +585,21 @@ public class UI {
                 substate = 0;
                 numerodecomando = 4;
             }
+        }
+    }
+    public void dibujartransicion(){
+        contador++;
+        g2.setColor(new Color(0, 0, 0, contador*5));
+        g2.fillRect(0, 0, gp.anchoPantalla, gp.altoPantalla);
+
+        if(contador == 50){
+            contador = 0;
+            gp.estadodeljuego = gp.reanudar;
+            gp.actualmapa = gp.evento.tempmap;
+            gp.jugador.mundox = gp.tileSize * gp.evento.tempcol;
+            gp.jugador.mundoy = gp.tileSize * gp.evento.tempfila;
+            gp.evento.anterioreventox = gp.jugador.mundox;
+            gp.evento.anterioreventoy = gp.jugador.mundoy;
         }
     }
     public int getitemindexonslot(){

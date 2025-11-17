@@ -7,6 +7,7 @@ public class Eventos {
     EventoRect eventoRect[][][];
     int anterioreventox, anterioreventoy;
     boolean cantouchevent = true;
+    int tempmap, tempcol, tempfila;
     public Eventos(Panel_de_Juego gp){
         this.gp = gp;
         eventoRect = new EventoRect[gp.maxmap][gp.maxWorldCol][gp.maxWorldRow];
@@ -97,11 +98,12 @@ public class Eventos {
         }
     }
     public void teleport(int map, int col, int fila){
+        gp.estadodeljuego = gp.estadotransicion;
+        tempmap = map;
+        tempcol = col;
+        tempfila = fila;
         gp.actualmapa = map;
-        gp.jugador.mundox = gp.tileSize * col;
-        gp.jugador.mundoy = gp.tileSize * fila;
-        anterioreventox = gp.jugador.mundox;
-        anterioreventoy = gp.jugador.mundoy;
+
         cantouchevent = false;
         gp.playSE(13);
     }

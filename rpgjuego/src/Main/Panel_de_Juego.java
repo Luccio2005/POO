@@ -62,11 +62,12 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public int estadodeljuego;
     public final int pantalladeinicio =0;
     public final int reanudar = 1;
-    public final int pausar =2;
+    public final int pausar = 2;
     public final int dialogo = 3;
     public final int estadodepersonaje = 4;
     public final int estadodeopciones = 5;
     public final int estadogameover = 6;
+    public final int estadotransicion = 7;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
