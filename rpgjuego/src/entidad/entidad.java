@@ -64,6 +64,7 @@ public class entidad {
     public int valordedef;
     public String descripcion = "";
     public int usecost;
+    public int precio;
     //tipo
     public int tipo;
     public final int tipo_jugador = 0;

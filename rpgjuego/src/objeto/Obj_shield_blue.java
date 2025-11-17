@@ -10,5 +10,6 @@ public class Obj_shield_blue extends entidad{
         down1 = setup("/objetos/shield_blue", gp.tileSize, gp.tileSize);
         valordedef =2;
         descripcion = "[" +nombre+"]\nun brillante escudo \nazul";
+        precio = 250;
     }
 }

@@ -129,33 +129,10 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_C){
             gp.estadodeljuego = gp.reanudar;
         }
-        if(codigo == KeyEvent.VK_W){
-            if(gp.ui.ranurafila !=0){
-                gp.ui.ranurafila--;
-                gp.playSE(9);
-            }
-        }
-        if(codigo == KeyEvent.VK_A){
-            if(gp.ui.ranuracol !=0){
-                gp.ui.ranuracol--;
-                gp.playSE(9);
-            }
-        }
-        if(codigo == KeyEvent.VK_S){
-            if(gp.ui.ranurafila !=3){
-                gp.ui.ranurafila++;
-                gp.playSE(9);
-            }
-        }
-        if(codigo == KeyEvent.VK_D){
-            if(gp.ui.ranuracol !=4){
-                gp.ui.ranuracol++;
-                gp.playSE(9);
-            }
-        }
         if(codigo == KeyEvent.VK_ENTER){
             gp.jugador.seleccionaritem();
         }
+        inventariojugador(codigo);
     }
     public void estadodeopciones(int codigo){
         if(codigo == KeyEvent.VK_ESCAPE){
@@ -253,6 +230,64 @@ public class Teclado implements KeyListener {
                 if(gp.ui.numerodecomando > 2){
                     gp.ui.numerodecomando = 0;
                 }
+                gp.playSE(9);
+            }
+        }
+        if(gp.ui.substate == 1){
+            inventarionpc(codigo);
+            if(codigo == KeyEvent.VK_ESCAPE){
+                gp.ui.substate = 0;
+            }
+        }
+    }
+    public void inventariojugador(int codigo){
+        if(codigo == KeyEvent.VK_W){
+            if(gp.ui.jugadorranurafila !=0){
+                gp.ui.jugadorranurafila--;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_A){
+            if(gp.ui.jugadorranuracol !=0){
+                gp.ui.jugadorranuracol--;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_S){
+            if(gp.ui.jugadorranurafila !=3){
+                gp.ui.jugadorranurafila++;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_D){
+            if(gp.ui.jugadorranuracol !=4){
+                gp.ui.jugadorranuracol++;
+                gp.playSE(9);
+            }
+        }
+    }
+    public void inventarionpc(int codigo){
+        if(codigo == KeyEvent.VK_W){
+            if(gp.ui.npcranurafila !=0){
+                gp.ui.npcranurafila--;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_A){
+            if(gp.ui.npcranuracol !=0){
+                gp.ui.npcranuracol--;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_S){
+            if(gp.ui.npcranurafila !=3){
+                gp.ui.npcranurafila++;
+                gp.playSE(9);
+            }
+        }
+        if(codigo == KeyEvent.VK_D){
+            if(gp.ui.npcranuracol !=4){
+                gp.ui.npcranuracol++;
                 gp.playSE(9);
             }
         }

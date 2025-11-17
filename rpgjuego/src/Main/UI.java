@@ -1,6 +1,7 @@
 package Main;
 
 import entidad.entidad;
+import objeto.Obj_coin_bronce;
 import objeto.Obj_heart;
 import objeto.Obj_manacrystal;
 
@@ -12,7 +13,7 @@ public class UI {
     Panel_de_Juego gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
-    BufferedImage heart_full, heart_half, heart_blank, crystal_full,crystal_blank;
+    BufferedImage heart_full, heart_half, heart_blank, crystal_full,crystal_blank, coin;
     public boolean mensajeOn= false;
     //public String mensaje = "";
     //int mensajeContador = 0;
@@ -21,8 +22,10 @@ public class UI {
     public boolean juegoterminado = false;
     public String dialogoactual = "";
     public int numerodecomando = 0;
-    public int ranuracol = 0;
-    public int ranurafila = 0;
+    public int jugadorranuracol = 0;
+    public int jugadorranurafila = 0;
+    public int npcranuracol = 0;
+    public int npcranurafila = 0;
     int substate = 0;
     int contador = 0;
     public entidad npc;
@@ -39,6 +42,8 @@ public class UI {
         entidad crystal = new Obj_manacrystal(gp);
         crystal_full = crystal.imagen;
         crystal_blank = crystal.imagen2;
+        entidad broncecoin = new Obj_coin_bronce(gp);
+        coin = broncecoin.down1;
     }
     public void anadirmensaje(String texto){
         mensaje.add(texto);
@@ -70,7 +75,7 @@ public class UI {
         // estado de personaje
         if(gp.estadodeljuego == gp.estadodepersonaje){
             dibujarpantalladepersonaje();
-            dibujarinventario();
+            dibujarinventario(gp.jugador, true);
         }
         // estado de opciones
         if(gp.estadodeljuego == gp.estadodeopciones){
@@ -313,12 +318,29 @@ public class UI {
         textoy += gp.tileSize;
         g2.drawImage(gp.jugador.actualescudo.down1, tailx - gp.tileSize,textoy-24,null);
     }
-    public void dibujarinventario(){
+    public void dibujarinventario(entidad entidad, boolean cursor){
+        int framex = 0;
+        int framey = 0;
+        int frameancho = 0;
+        int framealto = 0;
+        int ranuracol = 0;
+        int ranurafila = 0;
+        if(entidad == gp.jugador){
+            framex = gp.tileSize * 12;
+            framey = gp.tileSize;
+            frameancho = gp.tileSize * 6;
+            framealto = gp.tileSize * 5;
+            ranuracol = jugadorranuracol;
+            ranurafila = jugadorranurafila;
+        }else{
+            framex = gp.tileSize * 2;
+            framey = gp.tileSize;
+            frameancho = gp.tileSize * 6;
+            framealto = gp.tileSize * 5;
+            ranuracol = npcranuracol;
+            ranurafila = npcranurafila;
+        }
         //frame
-        int framex = gp.tileSize*12;
-        int framey = gp.tileSize;
-        int frameancho = gp.tileSize*6;
-        int framealto = gp.tileSize*5;
         dibujarpestana(framex, framey, frameancho, framealto);
         // slot
         final int ranuraxstart = framex +20;
@@ -327,14 +349,14 @@ public class UI {
         int ranuray = ranuraystart;
         int tamanoranura = gp.tileSize+3;
         // dibujar items
-        for(int i = 0; i< gp.jugador.inventario.size();i++){
+        for(int i = 0; i< entidad.inventario.size();i++){
             //equipar cursos
-            if(gp.jugador.inventario.get(i) == gp.jugador.actualarma ||
-            gp.jugador.inventario.get(i) == gp.jugador.actualescudo){
+            if(entidad.inventario.get(i) == entidad.actualarma ||
+            entidad.inventario.get(i) == entidad.actualescudo){
                 g2.setColor(new Color(240,190,90));
                 g2.fillRoundRect(ranurax, ranuray, gp.tileSize, gp.tileSize, 10, 10);
             }
-            g2.drawImage(gp.jugador.inventario.get(i).down1,ranurax,ranuray,null);
+            g2.drawImage(entidad.inventario.get(i).down1,ranurax,ranuray,null);
             ranurax += tamanoranura;
             if(i==4 || i==9 || i==14){
                 ranurax = ranuraxstart;
@@ -342,29 +364,31 @@ public class UI {
             }
         }
         //cursor
-        int cursorx = ranuraxstart + (tamanoranura * ranuracol);
-        int cursory = ranuraystart + (tamanoranura * ranurafila);
-        int anchocursor = gp.tileSize;
-        int altocursor = gp.tileSize;
-        //dibujar cursor
-        g2.setColor(Color.white);
-        g2.setStroke(new BasicStroke(3));
-        g2.drawRoundRect(cursorx, cursory, anchocursor, altocursor,10, 10);
-        // descripcion ventana
-        int dframex = framex;
-        int dframey = framey + framealto;
-        int dframeancho = frameancho;
-        int dframealto = gp.tileSize*3;
-        // dibujar texto de descripcion
-        int textox = dframex +20;
-        int textoy = dframey +gp.tileSize;
-        g2.setFont(g2.getFont().deriveFont(28F));
-        int indiceitem = getitemindexonslot();
-        if(indiceitem < gp.jugador.inventario.size()){
-            dibujarpestana(dframex,dframey,dframeancho,dframealto);
-            for(String linea: gp.jugador.inventario.get(indiceitem).descripcion.split("\n")){
-                g2.drawString(linea,textox,textoy);
-                textoy +=32;
+        if(cursor == true){
+            int cursorx = ranuraxstart + (tamanoranura * ranuracol);
+            int cursory = ranuraystart + (tamanoranura * ranurafila);
+            int anchocursor = gp.tileSize;
+            int altocursor = gp.tileSize;
+            //dibujar cursor
+            g2.setColor(Color.white);
+            g2.setStroke(new BasicStroke(3));
+            g2.drawRoundRect(cursorx, cursory, anchocursor, altocursor,10, 10);
+            // descripcion ventana
+            int dframex = framex;
+            int dframey = framey + framealto;
+            int dframeancho = frameancho;
+            int dframealto = gp.tileSize*3;
+            // dibujar texto de descripcion
+            int textox = dframex +20;
+            int textoy = dframey +gp.tileSize;
+            g2.setFont(g2.getFont().deriveFont(28F));
+            int indiceitem = getitemindexonslot(ranuracol, ranurafila);
+            if(indiceitem < entidad.inventario.size()){
+                dibujarpestana(dframex,dframey,dframeancho,dframealto);
+                for(String linea: entidad.inventario.get(indiceitem).descripcion.split("\n")){
+                    g2.drawString(linea,textox,textoy);
+                    textoy +=32;
+                }
             }
         }
     }
@@ -656,12 +680,60 @@ public class UI {
         }
     }
     public void comprar_intercambio(){
-
+        // dibujar inventario jugador
+        dibujarinventario(gp.jugador, false);
+        // dibujar npc inventario
+        dibujarinventario(npc, true);
+        // dibujar ventana hint
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize * 9;
+        int width = gp.tileSize * 6;
+        int height = gp.tileSize * 2;
+        dibujarpestana(x, y, width, height);
+        g2.drawString("[ESC] Atras", x+24, y+60);
+        // dibujar pestana de monedas
+        x = gp.tileSize * 12;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        dibujarpestana(x, y, width, height);
+        g2.drawString("Tus monedas: "+ gp.jugador.coin, x+24, y+60);
+        // dibujar ventana de precios
+        int indiceitem = getitemindexonslot(npcranuracol, npcranurafila);
+        if(indiceitem < npc.inventario.size()){
+            x = (int)(gp.tileSize * 5.5);
+            y = (int)(gp.tileSize * 5.5);
+            width = (int)(gp.tileSize * 2.5);
+            height = gp.tileSize;
+            dibujarpestana(x, y, width, height);
+            g2.drawImage(coin, x+10, y+8, 32, 32, null);
+            int precio = npc.inventario.get(indiceitem).precio;
+            String texto = "" + precio;
+            x = getxforAligntorighttext(texto, gp.tileSize * 8 - 20);
+            g2.drawString(texto, x, y+34);
+            // comprar item
+            if(gp.keyH.enterp == true){
+                if(npc.inventario.get(indiceitem).precio > gp.jugador.coin){
+                    substate = 0;
+                    gp.estadodeljuego = gp.dialogo;
+                    dialogoactual = "Necesitas mas monedas para comprar eso!";
+                    dibujarpantalladedialogo();
+                }
+                else if(gp.jugador.inventario.size() == gp.jugador.maxtamanoinventario){
+                    substate = 0;
+                    gp.estadodeljuego = gp.dialogo;
+                    dialogoactual = "No puedes llevar nada mas";
+                } else {
+                    gp.jugador.coin -= npc.inventario.get(indiceitem).precio;
+                    gp.jugador.inventario.add(npc.inventario.get(indiceitem));
+                }
+            }
+        }
     }
     public void vender_intercambio(){
 
     }
-    public int getitemindexonslot(){
+    public int getitemindexonslot(int ranuracol, int ranurafila){
         int indiceitem = ranuracol + (ranurafila*5);
         return indiceitem;
     }

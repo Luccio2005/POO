@@ -13,6 +13,7 @@ public class Obj_sword_normal extends entidad{
         areadeataque.width = 20;
         areadeataque.height = 20;
         descripcion = "[" +nombre+"]\nuna vieja espada";
+        precio = 20;
 
     }
 }

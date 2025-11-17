@@ -10,5 +10,6 @@ public class Obj_shield_wood extends entidad{
         down1 = setup("/objetos/shield_wood", gp.tileSize, gp.tileSize);
         valordedef =1;
         descripcion = "[" +nombre+"]\nhecho de madera";
+        precio = 35;
     }
 }

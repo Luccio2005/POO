@@ -12,5 +12,6 @@ public class Obj_axe extends entidad{
         areadeataque.width = 17;
         areadeataque.height = 17;
         descripcion = "[" +nombre+"]\noxidada pero mas\npotente";
+        precio = 75;
     }
 }

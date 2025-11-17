@@ -58,7 +58,7 @@ public class jugador extends entidad{
         dex = 1; // mas dex menos dano recibe
         exp = 0;
         nextlvlexp = 5;
-        coin = 0;
+        coin = 500;
         actualarma = new Obj_sword_normal(gp);
         actualescudo = new Obj_shield_wood(gp);
         proyectiles = new Obj_fireball(gp);
@@ -359,7 +359,7 @@ public class jugador extends entidad{
         }
     }
     public  void seleccionaritem(){
-        int indiceitem = gp.ui.getitemindexonslot();
+        int indiceitem = gp.ui.getitemindexonslot(gp.ui.jugadorranuracol, gp.ui.jugadorranurafila);
         if(indiceitem < inventario.size()){
             entidad itemseleccionado = inventario.get(indiceitem);
             if(itemseleccionado.tipo == tipo_espada || itemseleccionado.tipo == tipo_hacha){

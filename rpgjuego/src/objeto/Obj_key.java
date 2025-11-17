@@ -9,7 +9,6 @@ public class Obj_key extends entidad{
         nombre="llave";
         down1 = setup("/objetos/key", gp.tileSize, gp.tileSize);
         descripcion = "[" +nombre+"]\nabre una puerta";
-
+        precio = 100;
     }
-
 }
