@@ -35,4 +35,9 @@ public class npc_mercader extends entidad{
         inventario.add(new Obj_shield_wood(gp));
         inventario.add(new Obj_shield_blue(gp));
     }
+    public void hablar(){
+        super.hablar();
+        gp.estadodeljuego = gp.estadointercambio;
+        gp.ui.npc = this;
+    }
 }

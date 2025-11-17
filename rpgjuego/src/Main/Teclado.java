@@ -49,6 +49,10 @@ public class Teclado implements KeyListener {
         else if(gp.estadodeljuego == gp.estadogameover){
             estadogameover(codigo);
         }
+        // estado intercambio
+        else if(gp.estadodeljuego == gp.estadointercambio){
+            estadointercambio(codigo);
+        }
     }
     public void pantalladeinicio(int codigo){
         if(codigo == KeyEvent.VK_W){
@@ -229,6 +233,27 @@ public class Teclado implements KeyListener {
             else if(gp.ui.numerodecomando == 1){
                 gp.estadodeljuego = gp.pantalladeinicio;
                 gp.restart();
+            }
+        }
+    }
+    public void estadointercambio(int codigo){
+        if(codigo == KeyEvent.VK_ENTER){
+            enterp = true;
+        }
+        if(gp.ui.substate == 0){
+            if(codigo == KeyEvent.VK_W){
+                gp.ui.numerodecomando--;
+                if(gp.ui.numerodecomando < 0){
+                    gp.ui.numerodecomando = 2;
+                }
+                gp.playSE(9);
+            }
+            if(codigo == KeyEvent.VK_S){
+                gp.ui.numerodecomando++;
+                if(gp.ui.numerodecomando > 2){
+                    gp.ui.numerodecomando = 0;
+                }
+                gp.playSE(9);
             }
         }
     }

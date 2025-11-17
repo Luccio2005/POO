@@ -25,6 +25,7 @@ public class UI {
     public int ranurafila = 0;
     int substate = 0;
     int contador = 0;
+    public entidad npc;
 
     public UI(Panel_de_Juego gp){
         this.gp= gp;
@@ -79,8 +80,13 @@ public class UI {
         if(gp.estadodeljuego == gp.estadogameover){
             dibujarpantallagameover();
         }
+        // estado transicion
         if(gp.estadodeljuego == gp.estadotransicion){
             dibujartransicion();
+        }
+        // estado intercambio
+        if(gp.estadodeljuego == gp.estadointercambio){
+            dibujarpantalladeintercambio();
         }
     }
     public void dibujarvidajugador(){
@@ -200,9 +206,9 @@ public class UI {
     }
     public void dibujarpantalladedialogo(){
         //pestana
-        int x = gp.tileSize*2;
+        int x = gp.tileSize*3;
         int y = gp.tileSize/2;
-        int ancho = gp.anchoPantalla - (gp.tileSize*4);
+        int ancho = gp.anchoPantalla - (gp.tileSize*6);
         int alto = gp.tileSize*4;
         dibujarpestana(x,y,ancho,alto);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
@@ -601,6 +607,59 @@ public class UI {
             gp.evento.anterioreventox = gp.jugador.mundox;
             gp.evento.anterioreventoy = gp.jugador.mundoy;
         }
+    }
+    public void dibujarpantalladeintercambio(){
+        switch (substate){
+            case 0: seleccionar_intercambio(); break;
+            case 1: comprar_intercambio(); break;
+            case 2: vender_intercambio(); break;
+        }
+        gp.keyH.enterp = false;
+    }
+    public void seleccionar_intercambio(){
+        dibujarpantalladedialogo();
+        // dibujar pestana
+        int x = gp.tileSize * 15;
+        int y = gp.tileSize * 4;
+        int width = gp.tileSize * 3;
+        int height = (int)(gp.tileSize * 3.5);
+        dibujarpestana(x, y, width, height);
+        // dibujar textos
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString("Buy", x, y);
+        if(numerodecomando == 0){
+            g2.drawString(">", x-24, y);
+            if(gp.keyH.enterp == true){
+                substate = 1;
+            }
+        }
+        y += gp.tileSize;
+
+        g2.drawString("Sell", x, y);
+        if(numerodecomando == 1){
+            g2.drawString(">", x-24, y);
+            if(gp.keyH.enterp == true){
+                substate = 2;
+            }
+        }
+        y += gp.tileSize;
+
+        g2.drawString("Leave", x, y);
+        if(numerodecomando == 2){
+            g2.drawString(">", x-24, y);
+            if(gp.keyH.enterp == true){
+                numerodecomando = 0;
+                gp.estadodeljuego = gp.dialogo;
+                dialogoactual = "Vuelve pronto!";
+            }
+        }
+    }
+    public void comprar_intercambio(){
+
+    }
+    public void vender_intercambio(){
+
     }
     public int getitemindexonslot(){
         int indiceitem = ranuracol + (ranurafila*5);

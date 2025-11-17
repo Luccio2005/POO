@@ -1,5 +1,7 @@
 package Main;
 
+import entidad.entidad;
+
 import java.awt.*;
 
 public class Eventos {
@@ -56,6 +58,9 @@ public class Eventos {
             else if (hit(1, 12, 13, "any") == true){
                 teleport(0,10,39);
             }
+            else if(hit(1, 12, 9, "up") == true){
+                hablar(gp.npc[1][0]);
+            }
         }
     }
     public boolean hit(int map, int col, int fila, String reqDireccion){
@@ -106,5 +111,12 @@ public class Eventos {
 
         cantouchevent = false;
         gp.playSE(13);
+    }
+    public void hablar(entidad entidad){
+        if(gp.keyH.enterp == true){
+            gp.estadodeljuego = gp.dialogo;
+            gp.jugador.cancelaratq = true;
+            entidad.hablar();
+        }
     }
 }
