@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class entidad {
     Panel_de_Juego gp;
@@ -56,6 +57,8 @@ public class entidad {
     public entidad actualescudo;
     public proyectiles proyectiles;
     //atributos de los items
+    public ArrayList<entidad> inventario = new ArrayList<>();
+    public final int maxtamanoinventario = 20;
     public int valor;
     public int valordeatq;
     public int valordedef;
@@ -172,7 +175,7 @@ public class entidad {
             }
         }
         contadorSprite++;
-        if(contadorSprite>12){
+        if(contadorSprite>24){
             if(numeroSprite ==1){
                 numeroSprite = 2;}
             else if(numeroSprite ==2){

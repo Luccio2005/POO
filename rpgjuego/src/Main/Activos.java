@@ -1,6 +1,7 @@
 package Main;
 
 import enemigos.slime;
+import entidad.npc_mercader;
 import entidad.npc_oldman;
 import objeto.*;
 import suelo.interactivo.arbolmarchito;
@@ -55,7 +56,8 @@ public class Activos {
         i++;
         //mapa1
         mapNum = 1;
-        gp.npc[mapNum][i]= new npc_oldman(gp);
+        i=0;
+        gp.npc[mapNum][i]= new npc_mercader(gp);
         gp.npc[mapNum][i].mundox = gp.tileSize*12;
         gp.npc[mapNum][i].mundoy = gp.tileSize*7;
         i++;
