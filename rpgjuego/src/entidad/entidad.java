@@ -30,6 +30,7 @@ public class entidad {
     public boolean vivo = true;
     public boolean muriendo = false;
     boolean barrahpon = false;
+    public boolean onpath = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
