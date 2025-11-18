@@ -43,31 +43,41 @@ public class slime extends entidad{
         right2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
     }
     public void  setaction(){
-        bloqueodeaccion ++;
-        if(bloqueodeaccion ==120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1;
-            if(i<=25){
-                direccion = "up";
-            } if(i>25 && i<=50){
-                direccion = "down";
-            } if(i>50 && i <=75){
-                direccion = "left";
-            } if(i>75 && i <=100){
-                direccion = "right";
+        if(onpath == true){
+            //int metacol = 12;
+            //int metafila = 9;
+            int metacol = (gp.jugador.mundox + gp.jugador.areadecolision.x)/gp.tileSize;
+            int metafila = (gp.jugador.mundoy + gp.jugador.areadecolision.y)/gp.tileSize;
+            buscarcamino(metacol, metafila);
+
+            int i = new Random().nextInt(100)+1;
+            if(i > 197 && proyectiles.vivo == false && contadordisparodisponible == 30){
+                proyectiles.set(mundox, mundoy, direccion, true, this);
+                gp.listaproyectil.add(proyectiles);
+                contadordisparodisponible = 0;
             }
-            bloqueodeaccion = 0;
-        }
-        int i = new Random().nextInt(100)+1;
-        if(i > 99 && proyectiles.vivo == false && contadordisparodisponible == 30){
-            proyectiles.set(mundox, mundoy, direccion, true, this);
-            gp.listaproyectil.add(proyectiles);
-            contadordisparodisponible = 0;
+        }else{
+            bloqueodeaccion ++;
+            if(bloqueodeaccion ==120){
+                Random random = new Random();
+                int i = random.nextInt(100)+1;
+                if(i<=25){
+                    direccion = "up";
+                } if(i>25 && i<=50){
+                    direccion = "down";
+                } if(i>50 && i <=75){
+                    direccion = "left";
+                } if(i>75 && i<=100){
+                    direccion = "right";
+                }
+                bloqueodeaccion = 0;
+            }
         }
     }
     public void reaccionaldamage(){
         bloqueodeaccion = 0;
-        direccion = gp.jugador.direccion;
+        //direccion = gp.jugador.direccion;
+        onpath = true;
     }
     public void checkdrop(){
         // cast a die
