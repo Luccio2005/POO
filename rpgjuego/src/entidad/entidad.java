@@ -381,11 +381,11 @@ public class entidad {
                     direccion = "right";
                 }
             }
-            int nextcol = gp.pfinder.caminolista.get(0).col;
-            int nextfila = gp.pfinder.caminolista.get(0).fila;
-            if(nextcol == metacol && nextfila == metafila){
-                onpath = false;
-            }
+            //int nextcol = gp.pfinder.caminolista.get(0).col;
+           // int nextfila = gp.pfinder.caminolista.get(0).fila;
+            //if(nextcol == metacol && nextfila == metafila){
+           //     onpath = false;
+           // }
         }
     }
 }

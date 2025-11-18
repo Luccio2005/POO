@@ -13,6 +13,7 @@ public class administradordesuelo {
     Panel_de_Juego gp;
     public suelo[] suelo;
     public int mapaNum[][][];
+    boolean dibujarcamino = true;
 
     public administradordesuelo(Panel_de_Juego gp){
         this.gp = gp;
@@ -138,8 +139,16 @@ public class administradordesuelo {
                 filamundo++;
             }
         }
+        if(dibujarcamino == true){
+            g2.setColor(new Color(255, 0, 0, 70));
 
-
+            for(int i=0; i< gp.pfinder.caminolista.size(); i++){
+                int mundox = gp.pfinder.caminolista.get(i).col * gp.tileSize;
+                int mundoy = gp.pfinder.caminolista.get(i).fila * gp.tileSize;
+                int pantallax = mundox - gp.jugador.mundox + gp.jugador.pantallax;
+                int pantallay = mundoy - gp.jugador.mundoy + gp.jugador.pantallay;
+                g2.fillRect(pantallax, pantallay, gp.tileSize, gp.tileSize);
+            }
+        }
     }
-
 }

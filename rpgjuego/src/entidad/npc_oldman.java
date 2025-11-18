@@ -35,8 +35,10 @@ public class npc_oldman extends entidad{
     }
     public void setaction(){
         if(onpath == true){
-            int metacol = 12;
-            int metafila = 9;
+            //int metacol = 12;
+            //int metafila = 9;
+            int metacol = (gp.jugador.mundox + gp.jugador.areadecolision.x)/gp.tileSize;
+            int metafila = (gp.jugador.mundoy + gp.jugador.areadecolision.y)/gp.tileSize;
             buscarcamino(metacol, metafila);
         }else{
             bloqueodeaccion ++;
