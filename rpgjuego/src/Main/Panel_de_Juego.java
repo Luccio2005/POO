@@ -1,5 +1,6 @@
 package Main;
 
+import ai.Encontrarcamino;
 import entidad.entidad;
 import entidad.jugador;
 import suelo.administradordesuelo;
@@ -46,6 +47,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public UI ui= new UI(this);
     public Eventos evento = new Eventos(this);
     public config config = new config(this);
+    public Encontrarcamino pfinder = new Encontrarcamino(this);
     Thread gameThread;
 
     //entidad y objetos

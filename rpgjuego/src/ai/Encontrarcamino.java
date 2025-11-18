@@ -95,6 +95,7 @@ public class Encontrarcamino {
         // h cost
         distanciax = Math.abs(node.col - goalnode.col);
         distanciay = Math.abs(node.fila - goalnode.fila);
+        node.hcost = distanciax + distanciay;
         // f cost
         node.fcost = node.gcost + node.hcost;
     }
@@ -118,7 +119,7 @@ public class Encontrarcamino {
                 opennode(node[col][fila+1]);
             }
             // open the right node
-            if(fila + 1 < gp.maxWorldCol){
+            if(col + 1 < gp.maxWorldCol){
                 opennode(node[col+1][fila]);
             }
             // encontrar el mejor camino

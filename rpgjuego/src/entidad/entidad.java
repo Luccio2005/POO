@@ -147,8 +147,7 @@ public class entidad {
         gp.listaparticula.add(p3);
         gp.listaparticula.add(p4);
     }
-    public void actualizar(){
-        setaction();
+    public void comprobarcolision(){
         colision = false;
         gp.comprobar.comprobarsuelo(this);
         gp.comprobar.comprobarobjeto(this, false);
@@ -160,6 +159,10 @@ public class entidad {
         if(this.tipo == tipo_enemigos && contactojugador == true){
             damageplayer(atq);
         }
+    }
+    public void actualizar(){
+        setaction();
+        comprobarcolision();
         if(colision == false){
             switch (direccion){
                 case "up":
@@ -315,5 +318,74 @@ public class entidad {
             e.printStackTrace();
         }
         return imagen;
+    }
+    public void buscarcamino(int metacol, int metafila){
+        int startcol = (mundox + areadecolision.x)/gp.tileSize;
+        int startfila = (mundoy + areadecolision.y)/gp.tileSize;
+        gp.pfinder.setnode(startcol, startfila, metacol, metafila, this);
+
+        if(gp.pfinder.buscar() == true){
+            //next mundox & mundoy
+            int sgtex = gp.pfinder.caminolista.get(0).col * gp.tileSize;
+            int sgtey = gp.pfinder.caminolista.get(0).fila * gp.tileSize;
+            // entidad area de colision posiciones
+            int enizqx = mundox + areadecolision.x;
+            int enderx = mundox + areadecolision.x + areadecolision.width;
+            int entopy = mundoy + areadecolision.y;
+            int enbottomy = mundoy + areadecolision.y + areadecolision.height;
+
+            if(entopy > sgtey && enizqx >= sgtex && enderx < sgtex + gp.tileSize){
+                direccion = "up";
+            }
+            else if(entopy < sgtey && enizqx >= sgtex && enderx < sgtex + gp.tileSize){
+                direccion = "down";
+            }
+            else if(entopy >= sgtey && enbottomy < sgtey + gp.tileSize){
+                // izq or der
+                if(enizqx > sgtex){
+                    direccion = "left";
+                }
+                if(enizqx < sgtex){
+                    direccion = "right";
+                }
+            }
+            else if(entopy > sgtey && enizqx > sgtex){
+                // up or left
+                direccion = "up";
+                comprobarcolision();
+                if(colision == true){
+                    direccion = "left";
+                }
+            }
+            else if(entopy > sgtey && enizqx < sgtex){
+                // up or right
+                direccion = "up";
+                comprobarcolision();
+                if(colision == true){
+                    direccion = "right";
+                }
+            }
+            else if(entopy < sgtey && enizqx > sgtex){
+                // down or left
+                direccion = "down";
+                comprobarcolision();
+                if(colision == true){
+                    direccion = "left";
+                }
+            }
+            else if(entopy < sgtey && enizqx < sgtex){
+                // down or right
+                direccion = "down";
+                comprobarcolision();
+                if(colision == true){
+                    direccion = "right";
+                }
+            }
+            int nextcol = gp.pfinder.caminolista.get(0).col;
+            int nextfila = gp.pfinder.caminolista.get(0).fila;
+            if(nextcol == metacol && nextfila == metafila){
+                onpath = false;
+            }
+        }
     }
 }

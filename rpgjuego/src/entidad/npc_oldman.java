@@ -34,23 +34,31 @@ public class npc_oldman extends entidad{
         dialogos[3]= "asi q buena suerte ";
     }
     public void setaction(){
-        bloqueodeaccion ++;
-        if(bloqueodeaccion ==120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1;
-            if(i<=25){
-                direccion = "up";
-            } if(i>25 && i<=50){
-                direccion = "down";
-            } if(i>50 && i <=75){
-                direccion = "left";
-            } if(i>75 && i<=100){
-                direccion = "right";
+        if(onpath == true){
+            int metacol = 12;
+            int metafila = 9;
+            buscarcamino(metacol, metafila);
+        }else{
+            bloqueodeaccion ++;
+            if(bloqueodeaccion ==120){
+                Random random = new Random();
+                int i = random.nextInt(100)+1;
+                if(i<=25){
+                    direccion = "up";
+                } if(i>25 && i<=50){
+                    direccion = "down";
+                } if(i>50 && i <=75){
+                    direccion = "left";
+                } if(i>75 && i<=100){
+                    direccion = "right";
+                }
+                bloqueodeaccion = 0;
             }
-            bloqueodeaccion = 0;
         }
     }
     public void hablar(){
+
         super.hablar();
+        onpath = true;
     }
 }
