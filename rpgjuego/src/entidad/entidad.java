@@ -24,7 +24,7 @@ public class entidad {
     public String direccion = "down";
     public int numeroSprite=1;
     int indicededialogos = 0;
-
+    public boolean colisioon = false;
     public boolean invencible = false;
     boolean atacando = false;
     public boolean vivo = true;
@@ -148,7 +148,7 @@ public class entidad {
         gp.listaparticula.add(p4);
     }
     public void comprobarcolision(){
-        colision = false;
+        colisioon = false;
         gp.comprobar.comprobarsuelo(this);
         gp.comprobar.comprobarobjeto(this, false);
         gp.comprobar.comprobarentidad(this, gp.npc);
@@ -163,7 +163,7 @@ public class entidad {
     public void actualizar(){
         setaction();
         comprobarcolision();
-        if(colision == false){
+        if(colisioon == false){
             switch (direccion){
                 case "up":
                     mundoy -= velocidad;
@@ -353,7 +353,7 @@ public class entidad {
                 // up or left
                 direccion = "up";
                 comprobarcolision();
-                if(colision == true){
+                if(colisioon == true){
                     direccion = "left";
                 }
             }
@@ -361,7 +361,7 @@ public class entidad {
                 // up or right
                 direccion = "up";
                 comprobarcolision();
-                if(colision == true){
+                if(colisioon == true){
                     direccion = "right";
                 }
             }
@@ -369,7 +369,7 @@ public class entidad {
                 // down or left
                 direccion = "down";
                 comprobarcolision();
-                if(colision == true){
+                if(colisioon == true){
                     direccion = "left";
                 }
             }
@@ -377,7 +377,7 @@ public class entidad {
                 // down or right
                 direccion = "down";
                 comprobarcolision();
-                if(colision == true){
+                if(colisioon == true){
                     direccion = "right";
                 }
             }

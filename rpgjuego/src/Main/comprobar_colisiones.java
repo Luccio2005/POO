@@ -26,28 +26,28 @@ public class comprobar_colisiones {
                 suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadarrfila];
                 suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadarrfila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
-                    entidad.colision = true;
+                    entidad.colisioon = true;
                 } break;
             case "down":
                 entidadabafila = (entidadabamundoy + entidad.velocidad)/gp.tileSize;
                 suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadabafila];
                 suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
-                    entidad.colision = true;
+                    entidad.colisioon = true;
                 } break;
             case "left":
                 entidadizqcolumna = (entidadizqmundox - entidad.velocidad)/gp.tileSize;
                 suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadarrfila];
                 suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
-                    entidad.colision = true;
+                    entidad.colisioon = true;
                 } break;
             case "right":
                 entidaddercolumna = (entidaddermundox + entidad.velocidad)/gp.tileSize;
                 suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadarrfila];
                 suelonum2= gp.sueloM.mapaNum[gp.actualmapa][entidaddercolumna][entidadabafila];
                 if(gp.sueloM.suelo[suelonum1].colision == true || gp.sueloM.suelo[suelonum2].colision == true){
-                    entidad.colision = true;
+                    entidad.colisioon = true;
                 } break;
         }
 
@@ -78,7 +78,7 @@ public class comprobar_colisiones {
                 }
                 if(entidad.areadecolision.intersects(gp.obj[gp.actualmapa][i].areadecolision)){
                     if(gp.obj[gp.actualmapa][i].colision == true){
-                        entidad.colision = true;
+                        entidad.colisioon = true;
                     }
                     if(jugador == true){
                         indice=i;
@@ -119,7 +119,7 @@ public class comprobar_colisiones {
                 }
                 if(entidad.areadecolision.intersects(target[gp.actualmapa][i].areadecolision)){
                     if(target[gp.actualmapa][i] != entidad){
-                        entidad.colision = true;
+                        entidad.colisioon = true;
                         indice=i;
                     }
                 }
@@ -153,7 +153,7 @@ public class comprobar_colisiones {
                 entidad.areadecolision.x += entidad.velocidad;
                 break;
         }if(entidad.areadecolision.intersects(gp.jugador.areadecolision)){
-            entidad.colision = true;
+            entidad.colisioon = true;
             contactojugador = true;
         }
         entidad.areadecolision.x = entidad.areadecolisionx;

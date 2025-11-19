@@ -142,7 +142,7 @@ public class jugador extends entidad{
                 direccion="right";
             }
             // comprobar colosiion de suelos
-            colision = false;
+            colisioon = false;
             gp.comprobar.comprobarsuelo(this);
 
             // comprobar colision de objetos
@@ -163,7 +163,7 @@ public class jugador extends entidad{
             //combrobar evento
             gp.evento.comprobarevento();
 
-            if(colision == false && keyH.enterp == false){
+            if(colisioon == false && keyH.enterp == false){
                 switch (direccion){
                     case "up":
                         mundoy -= velocidad;
