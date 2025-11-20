@@ -4,6 +4,7 @@ import Main.Herramientasdeutilidad;
 import Main.Panel_de_Juego;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
@@ -13,6 +14,13 @@ public class npc_oldman extends entidad{
         super(gp);
         direccion = "down";
         velocidad=1;
+        areadecolision = new Rectangle();
+        areadecolision.x = 8;
+        areadecolision.y = 16;
+        areadecolisionx = areadecolision.x;
+        areadecolisiony = areadecolision.y;
+        areadecolision.width = 30;
+        areadecolision.height = 30;
         getImage();
         setdialogo();
     }

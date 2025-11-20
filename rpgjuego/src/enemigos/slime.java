@@ -42,6 +42,18 @@ public class slime extends entidad{
         right1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
         right2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
     }
+    public void actualizar(){
+        super.actualizar();
+        int distanciax = Math.abs(mundox - gp.jugador.mundox);
+        int distanciay = Math.abs(mundoy - gp.jugador.mundoy);
+        int titulodistancia = (distanciax + distanciay)/gp.tileSize;
+        if(onpath == false && titulodistancia < 5){
+            int i = new Random().nextInt(100)+1;
+            if(i>50){
+                onpath = true;
+            }
+        }
+    }
     public void  setaction(){
         if(onpath == true){
             //int metacol = 12;
@@ -49,8 +61,7 @@ public class slime extends entidad{
             int metacol = (gp.jugador.mundox + gp.jugador.areadecolision.x)/gp.tileSize;
             int metafila = (gp.jugador.mundoy + gp.jugador.areadecolision.y)/gp.tileSize;
             buscarcamino(metacol, metafila);
-
-            int i = new Random().nextInt(100)+1;
+            int i = new Random().nextInt(200)+1;
             if(i > 197 && proyectiles.vivo == false && contadordisparodisponible == 30){
                 proyectiles.set(mundox, mundoy, direccion, true, this);
                 gp.listaproyectil.add(proyectiles);
