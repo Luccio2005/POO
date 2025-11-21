@@ -56,7 +56,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public entidad npc[][] = new entidad[maxmap][10];
     public entidad enemigos[][] = new entidad[maxmap][20];
     public suelointeractivo itile[][] = new suelointeractivo[maxmap][50];
-    public ArrayList<entidad> listaproyectil = new ArrayList<>();
+    public entidad proyectiles[][] = new entidad[maxmap][20];
+    //public ArrayList<entidad> listaproyectil = new ArrayList<>();
     public ArrayList<entidad> listaparticula = new ArrayList<>();
     ArrayList<entidad> listaentidad = new ArrayList<>();
 
@@ -173,13 +174,13 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     }
                 }
             }
-            for(int i=0; i < listaproyectil.size(); i++){
-                if(listaproyectil.get(i) != null){
-                    if(listaproyectil.get(i).vivo == true){
-                        listaproyectil.get(i).actualizar();
+            for(int i=0; i < proyectiles[1].length; i++){
+                if(proyectiles[actualmapa][i] != null){
+                    if(proyectiles[actualmapa][i].vivo == true){
+                        proyectiles[actualmapa][i].actualizar();
                     }
-                    if(listaproyectil.get(i).vivo == false){
-                        listaproyectil.remove(i);
+                    if(proyectiles[actualmapa][i].vivo == false){
+                        proyectiles[actualmapa][i] = null;
                     }
                 }
             }
