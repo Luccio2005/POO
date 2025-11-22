@@ -64,7 +64,13 @@ public class slime extends entidad{
             int i = new Random().nextInt(200)+1;
             if(i > 197 && proyectiles.vivo == false && contadordisparodisponible == 30){
                 proyectiles.set(mundox, mundoy, direccion, true, this);
-                gp.listaproyectil.add(proyectiles);
+                //gp.listaproyectil.add(proyectiles);
+                for(int ii = 0; ii< gp.proyectiles[1].length; ii++){
+                    if(gp.proyectiles[gp.actualmapa][ii] == null){
+                        gp.proyectiles[gp.actualmapa][ii] = proyectiles;
+                        break;
+                    }
+                }
                 contadordisparodisponible = 0;
             }
         }else{

@@ -203,7 +203,13 @@ public class jugador extends entidad{
             //subtract the cost(mana, ammo, etc)
             proyectiles.subtractresource(this);
             // add it to the list
-            gp.listaproyectil.add(proyectiles);
+
+            for(int i = 0; i < gp.proyectiles[1].length; i++){
+                if(gp.proyectiles[gp.actualmapa][i] == null){
+                    gp.proyectiles[gp.actualmapa][i] = proyectiles;
+                    break;
+                }
+            }
             contadordisparodisponible =0;
             gp.playSE(10);
         }
@@ -255,6 +261,9 @@ public class jugador extends entidad{
 
             int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
             damagesuelointeractivo(indiceitile);
+
+            int indiceproyectil = gp.comprobar.comprobarentidad(this, gp.proyectiles);
+            damageproyectil(indiceproyectil);
 
             mundox = actualmundox;
             mundoy = actualmundoy;
@@ -342,6 +351,13 @@ public class jugador extends entidad{
             if(gp.itile[gp.actualmapa][i].vida == 0){
                 gp.itile[gp.actualmapa][i] = gp.itile[gp.actualmapa][i].getformadestruida();
             }
+        }
+    }
+    public void damageproyectil(int i){
+        if(i != 999){
+            entidad proyectiles = gp.proyectiles[gp.actualmapa][i];
+            proyectiles.vivo = false;
+            generadorparticula(proyectiles,proyectiles);
         }
     }
     public void comprobarlvlup(){

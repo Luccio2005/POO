@@ -235,9 +235,9 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     listaentidad.add(enemigos[actualmapa][i]);
                 }
             }
-            for(int i=0; i< listaproyectil.size(); i++){
-                if(listaproyectil.get(i) != null){
-                    listaentidad.add(listaproyectil.get(i));
+            for(int i=0; i< proyectiles[1].length; i++){
+                if(proyectiles[actualmapa][i] != null){
+                    listaentidad.add(proyectiles[actualmapa][i]);
                 }
             }
             for(int i=0; i< listaparticula.size(); i++){
