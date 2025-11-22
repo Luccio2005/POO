@@ -45,7 +45,8 @@ public class jugador extends entidad{
     public void valorespredeterminados(){
         mundox= gp.tileSize * 23;
         mundoy= gp.tileSize * 21;
-        velocidad= 4;
+        defaultspeed =4;
+        velocidad= defaultspeed;
         direccion= "down";
         //estado jugador
         lvl = 1;
@@ -322,6 +323,7 @@ public class jugador extends entidad{
         if(i != 999){
             if(gp.enemigos[gp.actualmapa][i].invencible == false){
                 gp.playSE(5);
+                knockback(gp.enemigos[gp.actualmapa][i]);
                 int damage = atq - gp.enemigos[gp.actualmapa][i].def;
                 if(damage<0){
                     damage = 0;
@@ -339,6 +341,11 @@ public class jugador extends entidad{
                 }
             }
         }
+    }
+    public void knockback(entidad entidad){
+        entidad.direccion = direccion;
+        entidad.velocidad += 10;
+        entidad.knockback = true;
     }
     public void damagesuelointeractivo(int i){
         if(i != 999 && gp.itile[gp.actualmapa][i].destructible == true

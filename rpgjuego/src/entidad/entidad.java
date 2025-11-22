@@ -31,6 +31,7 @@ public class entidad {
     public boolean muriendo = false;
     boolean barrahpon = false;
     public boolean onpath = false;
+    public boolean knockback = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
@@ -38,8 +39,10 @@ public class entidad {
     public int contadordisparodisponible = 0;
     int contadormuerte = 0;
     int contadorbarrahp = 0;
+    int contadorknockback = 0;
     // ATRIBUTOS DE LOS PERSONAJES
     public String nombre;
+    public int defaultspeed;
     public int velocidad;
     public int vidamax;
     public int vida;
@@ -161,22 +164,38 @@ public class entidad {
         }
     }
     public void actualizar(){
-        setaction();
-        comprobarcolision();
-        if(colisioon == false){
-            switch (direccion){
-                case "up":
-                    mundoy -= velocidad;
-                    break;
-                case "down":
-                    mundoy += velocidad;
-                    break;
-                case "left":
-                    mundox -= velocidad;
-                    break;
-                case "right":
-                    mundox += velocidad;
-                    break;
+        if(knockback == true){
+            comprobarcolision();
+            if(colisioon == true){
+                contadorknockback = 0;
+                knockback = false;
+                velocidad = defaultspeed;
+            }else if(colisioon == false){
+                switch (gp.jugador.direccion){
+                    case "up": mundoy -= velocidad; break;
+                    case "down": mundoy += velocidad; break;
+                    case "left": mundox -= velocidad; break;
+                    case "right": mundox += velocidad; break;
+                }
+            }
+        }else{
+            setaction();
+            comprobarcolision();
+            if(colisioon == false){
+                switch (direccion){
+                    case "up":
+                        mundoy -= velocidad;
+                        break;
+                    case "down":
+                        mundoy += velocidad;
+                        break;
+                    case "left":
+                        mundox -= velocidad;
+                        break;
+                    case "right":
+                        mundox += velocidad;
+                        break;
+                }
             }
         }
         contadorSprite++;

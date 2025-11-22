@@ -16,7 +16,8 @@ public class slime extends entidad{
         this.gp = gp;
         tipo = tipo_enemigos;
         nombre = "slime";
-        velocidad =1;
+        defaultspeed = 1;
+        velocidad = defaultspeed;
         vidamax = 4;
         vida= vidamax;
         atq = 5;
