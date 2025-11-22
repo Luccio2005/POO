@@ -14,6 +14,6 @@ public class Obj_sword_normal extends entidad{
         areadeataque.height = 20;
         descripcion = "[" +nombre+"]\nuna vieja espada";
         precio = 20;
-
+        knockbackpower = 2;
     }
 }

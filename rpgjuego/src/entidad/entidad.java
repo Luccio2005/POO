@@ -69,6 +69,7 @@ public class entidad {
     public String descripcion = "";
     public int usecost;
     public int precio;
+    public int knockbackpower = 0;
     //tipo
     public int tipo;
     public final int tipo_jugador = 0;

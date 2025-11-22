@@ -258,7 +258,7 @@ public class jugador extends entidad{
             areadecolision.height = areadeataque.height;
 
             int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
-            damageenemigo(indiceenemigo, atq);
+            damageenemigo(indiceenemigo, atq, actualarma.knockbackpower);
 
             int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
             damagesuelointeractivo(indiceitile);
@@ -319,11 +319,14 @@ public class jugador extends entidad{
             }
         }
     }
-    public void damageenemigo(int i, int atq){
+    public void damageenemigo(int i, int atq, int knockbackpower){
         if(i != 999){
             if(gp.enemigos[gp.actualmapa][i].invencible == false){
                 gp.playSE(5);
-                knockback(gp.enemigos[gp.actualmapa][i]);
+                if(knockbackpower > 0){
+                    knockback(gp.enemigos[gp.actualmapa][i], knockbackpower);
+                }
+
                 int damage = atq - gp.enemigos[gp.actualmapa][i].def;
                 if(damage<0){
                     damage = 0;
@@ -342,9 +345,9 @@ public class jugador extends entidad{
             }
         }
     }
-    public void knockback(entidad entidad){
+    public void knockback(entidad entidad, int knockbackpower){
         entidad.direccion = direccion;
-        entidad.velocidad += 10;
+        entidad.velocidad += knockbackpower;
         entidad.knockback = true;
     }
     public void damagesuelointeractivo(int i){
