@@ -16,15 +16,17 @@ public class Obj_key extends entidad{
         descripcion = "[" +nombre+"]\nabre una puerta";
         precio = 100;
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
         gp.estadodeljuego = gp.dialogo;
         int indiceobj = getdetected(entidad, gp.obj, "puerta");
         if(indiceobj != 999){
             gp.ui.dialogoactual = "Abriste la puerta";
             gp.playSE(3);
             gp.obj[gp.actualmapa][indiceobj] = null;
+            return true;
         }else{
             gp.ui.dialogoactual = "Que haces?";
+            return false;
         }
     }
 }

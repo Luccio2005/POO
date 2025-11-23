@@ -14,10 +14,11 @@ public class Obj_potion extends entidad{
         descripcion = "[Pocion Roja]\n Cura tu vida por "+valor+".";
         precio = 25;
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
         gp.estadodeljuego = gp.dialogo;
         gp.ui.dialogoactual = "Tomas la "+nombre+"!\n"+"tu vida es recuperada en "+valor+".";
         entidad.vida += valor;
         gp.playSE(2);
+        return true;
     }
 }

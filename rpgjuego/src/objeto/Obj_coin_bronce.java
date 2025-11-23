@@ -14,9 +14,10 @@ public class Obj_coin_bronce extends entidad{
         valor = 1;
         down1 = setup("/objetos/coin_bronze", gp.tileSize, gp.tileSize);
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
         gp.playSE(1);
         gp.ui.anadirmensaje("coin +" + valor);
         gp.jugador.coin += valor;
+        return true;
     }
 }

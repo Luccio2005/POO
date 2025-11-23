@@ -18,9 +18,10 @@ public class Obj_heart extends entidad{
         imagen2 = setup("/objetos/heart_half", gp.tileSize, gp.tileSize);
         imagen3 = setup("/objetos/heart_blank", gp.tileSize, gp.tileSize);
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
         gp.playSE(2);
         gp.ui.anadirmensaje("vida +"+ valor);
         entidad.vida += valor;
+        return true;
     }
 }

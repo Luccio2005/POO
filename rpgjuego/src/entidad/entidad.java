@@ -127,7 +127,8 @@ public class entidad {
     }
     public void interactuar(){
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
+        return false;
     }
     public void checkdrop(){
     }

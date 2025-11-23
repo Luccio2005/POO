@@ -15,9 +15,10 @@ public class Obj_manacrystal extends entidad{
         imagen = setup("/objetos/manacrystal_full", gp.tileSize, gp.tileSize);
         imagen2 = setup("/objetos/manacrystal_blank", gp.tileSize, gp.tileSize);
     }
-    public void usar(entidad entidad){
+    public boolean usar(entidad entidad){
         gp.playSE(2);
         gp.ui.anadirmensaje("mana +"+ valor);
         entidad.mana += valor;
+        return true;
     }
 }
