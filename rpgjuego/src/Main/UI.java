@@ -349,13 +349,29 @@ public class UI {
         int tamanoranura = gp.tileSize+3;
         // dibujar items
         for(int i = 0; i< entidad.inventario.size();i++){
-            //equipar cursos
+            //equipar cursor
             if(entidad.inventario.get(i) == entidad.actualarma ||
             entidad.inventario.get(i) == entidad.actualescudo){
                 g2.setColor(new Color(240,190,90));
                 g2.fillRoundRect(ranurax, ranuray, gp.tileSize, gp.tileSize, 10, 10);
             }
             g2.drawImage(entidad.inventario.get(i).down1,ranurax,ranuray,null);
+            // display amount
+            if(entidad.inventario.get(i).amount > 1){
+                g2.setFont(g2.getFont().deriveFont(32f));
+                int amountx;
+                int amounty;
+
+                String s = "" + entidad.inventario.get(i).amount;
+                amountx = getxforAligntorighttext(s, ranurax + 44);
+                amounty = ranuray + gp.tileSize;
+                // sombra
+                g2.setColor(new Color(60,60,60));
+                g2.drawString(s, amountx -3, amounty-3);
+                //numero
+                g2.setColor(Color.white);
+                g2.drawString(s, amountx -3, amounty -3);
+            }
             ranurax += tamanoranura;
             if(i==4 || i==9 || i==14){
                 ranurax = ranuraxstart;

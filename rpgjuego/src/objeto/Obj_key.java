@@ -15,6 +15,7 @@ public class Obj_key extends entidad{
         down1 = setup("/objetos/key", gp.tileSize, gp.tileSize);
         descripcion = "[" +nombre+"]\nabre una puerta";
         precio = 100;
+        stackable = true;
     }
     public boolean usar(entidad entidad){
         gp.estadodeljuego = gp.dialogo;

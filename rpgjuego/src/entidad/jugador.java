@@ -293,8 +293,7 @@ public class jugador extends entidad{
             }
             else{
                 String texto;
-                if(inventario.size() != maxtamanoinventario){
-                    inventario.add(gp.obj[gp.actualmapa][i]);
+                if(canobtainitem(gp.obj[gp.actualmapa][i]) == true ){
                     gp.playSE(1);
                     texto = "Conseguiste una " + gp.obj[gp.actualmapa][i].nombre + "!";
                 }else{
@@ -411,6 +410,38 @@ public class jugador extends entidad{
                 }
             }
         }
+    }
+    public int buscaritemeninventario(String nombreitem){
+        int indiceitem = 999;
+        for(int i = 0; i < inventario.size(); i++){
+            if(inventario.get(i).nombre.equals(nombreitem)){
+                indiceitem = i;
+                break;
+            }
+        }
+        return indiceitem;
+    }
+    public boolean canobtainitem(entidad item){
+        boolean canobtain = false;
+        // comprobar si es stackable
+        if(item.stackable == true){
+            int indice = buscaritemeninventario(item.nombre);
+            if(indice != 999){
+                inventario.get(indice).amount++;
+                canobtain = true;
+            } else{
+                if(inventario.size() != maxtamanoinventario){
+                    inventario.add(item);
+                    canobtain = true;
+                }
+            }
+        } else{
+            if(inventario.size() != maxtamanoinventario){
+                inventario.add(item);
+                canobtain = true;
+            }
+        }
+        return canobtain;
     }
     public void dibujar(Graphics2D g2){
        // g2.setColor(Color.white);

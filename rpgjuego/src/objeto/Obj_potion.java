@@ -13,6 +13,7 @@ public class Obj_potion extends entidad{
         down1 = setup("/objetos/potion_red",gp.tileSize, gp.tileSize);
         descripcion = "[Pocion Roja]\n Cura tu vida por "+valor+".";
         precio = 25;
+        stackable = true;
     }
     public boolean usar(entidad entidad){
         gp.estadodeljuego = gp.dialogo;

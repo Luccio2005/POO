@@ -35,11 +35,10 @@ public class Obj_chest extends entidad{
 
             StringBuilder sb = new StringBuilder();
             sb.append("Encontraste una"+ loot.nombre + "!");
-            if(gp.jugador.inventario.size() == gp.jugador.maxtamanoinventario){
+            if(gp.jugador.canobtainitem(loot) == false){
                 sb.append("\n...Pero no puedes llevar nada mas");
             }else{
                 sb.append("\n Obtienes la " + loot.nombre + "!");
-                gp.jugador.inventario.add(loot);
                 down1 = imagen2;
                 opened = true;
             }

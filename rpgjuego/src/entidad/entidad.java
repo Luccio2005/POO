@@ -70,6 +70,8 @@ public class entidad {
     public int usecost;
     public int precio;
     public int knockbackpower = 0;
+    public boolean stackable = false;
+    public int amount = 1;
     //tipo
     public int tipo;
     public final int tipo_jugador = 0;
