@@ -357,7 +357,7 @@ public class UI {
             }
             g2.drawImage(entidad.inventario.get(i).down1,ranurax,ranuray,null);
             // display amount
-            if(entidad.inventario.get(i).amount > 1){
+            if(entidad == gp.jugador && entidad.inventario.get(i).amount > 1){
                 g2.setFont(g2.getFont().deriveFont(32f));
                 int amountx;
                 int amounty;
@@ -733,14 +733,14 @@ public class UI {
                     gp.estadodeljuego = gp.dialogo;
                     dialogoactual = "Necesitas mas monedas para comprar eso!";
                     dibujarpantalladedialogo();
-                }
-                else if(gp.jugador.inventario.size() == gp.jugador.maxtamanoinventario){
-                    substate = 0;
-                    gp.estadodeljuego = gp.dialogo;
-                    dialogoactual = "No puedes llevar nada mas";
-                } else {
-                    gp.jugador.coin -= npc.inventario.get(indiceitem).precio;
-                    gp.jugador.inventario.add(npc.inventario.get(indiceitem));
+                }else{
+                    if(gp.jugador.canobtainitem(npc.inventario.get(indiceitem)) == true){
+                        gp.jugador.coin -= npc.inventario.get(indiceitem).precio;
+                    } else{
+                        substate = 0;
+                        gp.estadodeljuego = gp.dialogo;
+                        dialogoactual = "No puedes llevar nada mas";
+                    }
                 }
             }
         }
@@ -789,7 +789,11 @@ public class UI {
                     gp.estadodeljuego = gp.dialogo;
                     dialogoactual = "No puedes vender un item equipado";
                 }else{
-                    gp.jugador.inventario.remove(indiceitem);
+                    if(gp.jugador.inventario.get(indiceitem).amount > 1){
+                        gp.jugador.inventario.get(indiceitem).amount--;
+                    }else{
+                        gp.jugador.inventario.remove(indiceitem);
+                    }
                     gp.jugador.coin += precio;
                 }
             }
