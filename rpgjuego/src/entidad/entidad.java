@@ -80,9 +80,28 @@ public class entidad {
     public final int tipo_escudo = 5;
     public final int tipo_consumible = 6;
     public final int tipo_agarrarsolo = 7;
+    public final int tipo_obstaculo = 8;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
+    }
+    public int getizqx(){
+        return mundox + areadecolision.x;
+    }
+    public int getderx(){
+        return mundox + areadecolision.x + areadecolision.width;
+    }
+    public int gettopy(){
+        return mundoy + areadecolision.y;
+    }
+    public int getbottomy(){
+        return mundoy + areadecolision.y + areadecolision.height;
+    }
+    public int getcol(){
+        return (mundox + areadecolision.x)/gp.tileSize;
+    }
+    public int getfila(){
+        return (mundoy + areadecolision.y)/gp.tileSize;
     }
     public void setaction(){
     }
@@ -105,6 +124,8 @@ public class entidad {
             case "right":
                 direccion = "left"; break;
         }
+    }
+    public void interactuar(){
     }
     public void usar(entidad entidad){
     }
@@ -407,5 +428,32 @@ public class entidad {
            //     onpath = false;
            // }
         }
+    }
+    public int getdetected(entidad usuario, entidad target[][], String targetname){
+        int indice = 999;
+
+        int nextmundox = usuario.getizqx();
+        int nextmundoy = usuario.gettopy();
+
+        switch (usuario.direccion){
+            case "up": nextmundoy = usuario.gettopy()-1; break;
+            case "down": nextmundoy = usuario.getbottomy()-1; break;
+            case "left": nextmundox = usuario.getizqx()-1; break;
+            case "right": nextmundox = usuario.getderx()-1; break;
+        }
+        int col = nextmundox/gp.tileSize;
+        int fila = nextmundoy/gp.tileSize;
+
+        for(int i = 0; i < target[1].length; i++){
+            if(target[gp.actualmapa][i] != null){
+                if(target[gp.actualmapa][i].getcol() == col &&
+                target[gp.actualmapa][i].getfila() == fila &&
+                target[gp.actualmapa][i].nombre.equals(targetname)){
+                    indice = i;
+                    break;
+                }
+            }
+        }
+        return indice;
     }
 }

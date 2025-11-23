@@ -283,7 +283,15 @@ public class jugador extends entidad{
             if(gp.obj[gp.actualmapa][i].tipo == tipo_agarrarsolo){
                 gp.obj[gp.actualmapa][i].usar(this);
                 gp.obj[gp.actualmapa][i] = null;
-            }else{
+            }
+            //obstaculo
+            else if(gp.obj[gp.actualmapa][i].tipo == tipo_obstaculo){
+                if(keyH.enterp == true){
+                    cancelaratq = true;
+                    gp.obj[gp.actualmapa][i].interactuar();
+                }
+            }
+            else{
                 String texto;
                 if(inventario.size() != maxtamanoinventario){
                     inventario.add(gp.obj[gp.actualmapa][i]);
