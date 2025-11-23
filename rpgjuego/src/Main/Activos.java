@@ -22,10 +22,6 @@ public class Activos {
         gp.obj[mapNum][i].mundox = gp.tileSize*21;
         gp.obj[mapNum][i].mundoy = gp.tileSize*19;
         i++;
-        gp.obj[mapNum][i] = new Obj_key(gp);
-        gp.obj[mapNum][i].mundox = gp.tileSize*26;
-        gp.obj[mapNum][i].mundoy = gp.tileSize*21;
-        i++;
         gp.obj[mapNum][i] = new Obj_axe(gp);
         gp.obj[mapNum][i].mundox = gp.tileSize*33;
         gp.obj[mapNum][i].mundoy = gp.tileSize*21;
@@ -53,6 +49,10 @@ public class Activos {
         gp.obj[mapNum][i] = new Obj_Door(gp);
         gp.obj[mapNum][i].mundox = gp.tileSize*12;
         gp.obj[mapNum][i].mundoy = gp.tileSize*12;
+        i++;
+        gp.obj[mapNum][i] = new Obj_chest(gp, new Obj_key(gp));
+        gp.obj[mapNum][i].mundox = gp.tileSize*26;
+        gp.obj[mapNum][i].mundoy = gp.tileSize*21;
         i++;
     }
     public void setnpc(){
