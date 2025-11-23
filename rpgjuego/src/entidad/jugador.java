@@ -406,7 +406,11 @@ public class jugador extends entidad{
             }
             if(itemseleccionado.tipo == tipo_consumible){
                 if(itemseleccionado.usar(this) == true){
-                    inventario.remove(indiceitem);
+                    if(itemseleccionado.amount > 1){
+                        itemseleccionado.amount--;
+                    }else{
+                        inventario.remove(indiceitem);
+                    }
                 }
             }
         }
