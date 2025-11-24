@@ -12,7 +12,7 @@ public class ambientemanager {
         this.gp = gp;
     }
     public void setup(){
-        iluminacion = new iluminacion(gp, 350);
+        iluminacion = new iluminacion(gp, 500);
     }
     public void dibujar(Graphics2D g2){
         iluminacion.dibujar(g2);
