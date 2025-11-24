@@ -30,8 +30,28 @@ public class iluminacion {
         Area areadelaluz = new Area(formacirculo);
         // subtract the light circle from the screen rectangle
         pantallaarea.subtract(areadelaluz);
+        // crear una degradaccion de colores
+        Color color[] = new Color[5];
+        float fraccion[] = new float[5];
+
+        color[0] = new Color(0,0,0,0f);
+        color[1] = new Color(0,0,0,0.25f);
+        color[2] = new Color(0,0,0,0.5f);
+        color[3] = new Color(0,0,0,0.75f);
+        color[4] = new Color(0,0,0,0.98f);
+
+        fraccion[0] = 0f;
+        fraccion[1] = 0.25f;
+        fraccion[2] = 0.5f;
+        fraccion[3] = 0.75f;
+        fraccion[4] = 1f;
+
+        RadialGradientPaint gpaint = new RadialGradientPaint(centrox, centroy, (tamanocirculo/2), fraccion, color);
+        g2.setPaint(gpaint);
+        g2.fill(areadelaluz);
+
         // set a color to draw to rectangle
-        g2.setColor(new Color(0,0,0,0.95f));
+        //g2.setColor(new Color(0,0,0,0.95f));
         // draw the screen rectangle whitout the light circle re
         g2.fill(pantallaarea);
         g2.dispose();
