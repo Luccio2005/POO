@@ -1,6 +1,7 @@
 package Main;
 
 import ai.Encontrarcamino;
+import ambiente.ambientemanager;
 import entidad.entidad;
 import entidad.jugador;
 import suelo.administradordesuelo;
@@ -48,6 +49,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public Eventos evento = new Eventos(this);
     public config config = new config(this);
     public Encontrarcamino pfinder = new Encontrarcamino(this);
+    ambientemanager emanager = new ambientemanager(this);
     Thread gameThread;
 
     //entidad y objetos
@@ -86,6 +88,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         aSetter.setnpc();
         aSetter.setenemigos();
         aSetter.setsuelointeractivo();
+        emanager.setup();
         //playMusic(0);
         estadodeljuego = pantalladeinicio;
         temppantalla = new BufferedImage(anchoPantalla, altoPantalla, BufferedImage.TYPE_INT_ARGB);
@@ -259,6 +262,8 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             }
             // vaciar lista entidad
             listaentidad.clear();
+            // ambiente
+            emanager.dibujar(g2);
 
             ui.dibujar(g2);
         }
