@@ -26,6 +26,10 @@ public class Activos {
         gp.obj[mapNum][i].mundox = gp.tileSize*33;
         gp.obj[mapNum][i].mundoy = gp.tileSize*21;
         i++;
+        gp.obj[mapNum][i] = new Obj_lampara(gp);
+        gp.obj[mapNum][i].mundox = gp.tileSize*18;
+        gp.obj[mapNum][i].mundoy = gp.tileSize*20;
+        i++;
         gp.obj[mapNum][i] = new Obj_shield_blue(gp);
         gp.obj[mapNum][i].mundox = gp.tileSize*35;
         gp.obj[mapNum][i].mundoy = gp.tileSize*21;

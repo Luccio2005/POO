@@ -59,6 +59,7 @@ public class entidad {
     public int coin;
     public entidad actualarma;
     public entidad actualescudo;
+    public entidad actualluz;
     public proyectiles proyectiles;
     //atributos de los items
     public ArrayList<entidad> inventario = new ArrayList<>();
@@ -72,6 +73,7 @@ public class entidad {
     public int knockbackpower = 0;
     public boolean stackable = false;
     public int amount = 1;
+    public int radiosdeluz;
     //tipo
     public int tipo;
     public final int tipo_jugador = 0;
@@ -83,6 +85,7 @@ public class entidad {
     public final int tipo_consumible = 6;
     public final int tipo_agarrarsolo = 7;
     public final int tipo_obstaculo = 8;
+    public final int tipo_luz = 9;
 
     public entidad(Panel_de_Juego gp){
         this.gp = gp;
