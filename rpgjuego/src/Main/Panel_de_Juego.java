@@ -202,6 +202,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
                     itile[actualmapa][i].actualizar();
                 }
             }
+            emanager.actualizar();
         }
         if(estadodeljuego == pausar){
 
