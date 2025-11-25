@@ -18,6 +18,7 @@ public class jugador extends entidad{
     public final int pantallay;
     //public int tenerllave =0;
     public boolean cancelaratq = false;
+    public boolean luzactualizada = false;
 
     public jugador(Panel_de_Juego gp, Teclado keyH){
         super(gp);
@@ -403,6 +404,14 @@ public class jugador extends entidad{
             if(itemseleccionado.tipo == tipo_escudo){
                 actualescudo = itemseleccionado;
                 def = getDefense();
+            }
+            if(itemseleccionado.tipo == tipo_luz){
+                if(actualluz == itemseleccionado){
+                    actualluz = null;
+                }else{
+                    actualluz = itemseleccionado;
+                }
+                luzactualizada = true;
             }
             if(itemseleccionado.tipo == tipo_consumible){
                 if(itemseleccionado.usar(this) == true){

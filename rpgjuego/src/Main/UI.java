@@ -351,7 +351,8 @@ public class UI {
         for(int i = 0; i< entidad.inventario.size();i++){
             //equipar cursor
             if(entidad.inventario.get(i) == entidad.actualarma ||
-            entidad.inventario.get(i) == entidad.actualescudo){
+            entidad.inventario.get(i) == entidad.actualescudo ||
+            entidad.inventario.get(i) == entidad.actualluz){
                 g2.setColor(new Color(240,190,90));
                 g2.fillRoundRect(ranurax, ranuray, gp.tileSize, gp.tileSize, 10, 10);
             }
