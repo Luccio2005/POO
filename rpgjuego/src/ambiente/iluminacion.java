@@ -79,7 +79,7 @@ public class iluminacion {
         // comprobar el estado del dia
         if(estadodia == dia){
             contadordia++;
-            if(contadordia > 600){
+            if(contadordia > 3600){
                 estadodia = anochecer;
                 contadordia = 0;
             }
@@ -93,7 +93,7 @@ public class iluminacion {
         }
         if(estadodia == noche){
             contadordia++;
-            if(contadordia > 600){
+            if(contadordia > 3600){
                 estadodia = amanecer;
                 contadordia = 0;
             }
