@@ -92,7 +92,6 @@ public class jugador extends entidad{
         return def = dex*actualescudo.valordedef;
     }
     public void getPlayerImage(){
-
         up1= setup("/jugador/Arriba1-1", gp.tileSize, gp.tileSize);
         up2= setup("/jugador/Arriba1-2", gp.tileSize, gp.tileSize);
         down1= setup("/jugador/Abajo1-1", gp.tileSize, gp.tileSize);
@@ -101,6 +100,16 @@ public class jugador extends entidad{
         left2= setup("/jugador/Izquierda1-2", gp.tileSize, gp.tileSize);
         right1= setup("/jugador/Derecha1-1", gp.tileSize, gp.tileSize);
         right2= setup("/jugador/Derecha1-2", gp.tileSize, gp.tileSize);
+    }
+    public void getsleepingimage(BufferedImage image){
+        up1= image;
+        up2= image;
+        down1= image;
+        down2= image;
+        left1= image;
+        left2= image;
+        right1= image;
+        right2= image;
     }
     public void getPlayerAttackImage(){
         if(actualarma.tipo == tipo_espada){

@@ -21,6 +21,7 @@ public class Obj_tienda extends entidad{
         gp.playSE(14);
         gp.jugador.vida = gp.jugador.vidamax;
         gp.jugador.mana = gp.jugador.manamaximo;
+        gp.jugador.getsleepingimage(down1);
         return true;
     }
 }

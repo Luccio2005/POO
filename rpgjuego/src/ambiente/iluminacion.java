@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class iluminacion {
     Panel_de_Juego gp;
     BufferedImage filtrodeoscuridad;
-    int contadordia;
+    public int contadordia;
     public float filtroalfa = 0f;
 
     public final int dia = 0;

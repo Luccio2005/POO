@@ -819,7 +819,9 @@ public class UI {
                 gp.emanager.iluminacion.filtroalfa = 0f;
                 contador = 0;
                 gp.emanager.iluminacion.estadodia = gp.emanager.iluminacion.dia;
+                gp.emanager.iluminacion.contadordia = 0;
                 gp.estadodeljuego = gp.reanudar;
+                gp.jugador.getPlayerImage();
             }
         }
     }
