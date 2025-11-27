@@ -12,13 +12,13 @@ public class iluminacion {
     Panel_de_Juego gp;
     BufferedImage filtrodeoscuridad;
     int contadordia;
-    float filtroalfa = 0f;
+    public float filtroalfa = 0f;
 
-    final int dia = 0;
-    final int anochecer = 1;
-    final int noche = 2;
-    final int amanecer = 3;
-    int estadodia = dia;
+    public final int dia = 0;
+    public final int anochecer = 1;
+    public final int noche = 2;
+    public final int amanecer = 3;
+    public int estadodia = dia;
 
     public iluminacion(Panel_de_Juego gp){
         this.gp = gp;

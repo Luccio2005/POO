@@ -74,6 +74,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public final int estadogameover = 6;
     public final int estadotransicion = 7;
     public final int estadointercambio = 8;
+    public final int estadodormir = 9;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));

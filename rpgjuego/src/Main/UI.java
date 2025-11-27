@@ -89,6 +89,10 @@ public class UI {
             dibujartransicion();
         }
         // estado intercambio
+        if(gp.estadodeljuego == gp.estadodormir){
+            dibujarpantalladedormir();
+        }
+        // estado de dormir
         if(gp.estadodeljuego == gp.estadointercambio){
             dibujarpantalladeintercambio();
         }
@@ -797,6 +801,25 @@ public class UI {
                     }
                     gp.jugador.coin += precio;
                 }
+            }
+        }
+    }
+    public void dibujarpantalladedormir(){
+        contador++;
+
+        if(contador < 120){
+            gp.emanager.iluminacion.filtroalfa += 0.01f;
+            if(gp.emanager.iluminacion.filtroalfa > 1f){
+                gp.emanager.iluminacion.filtroalfa = 1f;
+            }
+        }
+        if(contador >= 120){
+            gp.emanager.iluminacion.filtroalfa -= 0.01f;
+            if(gp.emanager.iluminacion.filtroalfa <= 0f){
+                gp.emanager.iluminacion.filtroalfa = 0f;
+                contador = 0;
+                gp.emanager.iluminacion.estadodia = gp.emanager.iluminacion.dia;
+                gp.estadodeljuego = gp.reanudar;
             }
         }
     }

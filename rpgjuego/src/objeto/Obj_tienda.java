@@ -17,6 +17,10 @@ public class Obj_tienda extends entidad{
         stackable = true;
     }
     public boolean usar(entidad entidad){
-
+        gp.estadodeljuego = gp.estadodormir;
+        gp.playSE(14);
+        gp.jugador.vida = gp.jugador.vidamax;
+        gp.jugador.mana = gp.jugador.manamaximo;
+        return true;
     }
 }
