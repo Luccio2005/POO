@@ -53,6 +53,10 @@ public class Teclado implements KeyListener {
         else if(gp.estadodeljuego == gp.estadointercambio){
             estadointercambio(codigo);
         }
+        // estado de mapa
+        else if(gp.estadodeljuego == gp.estadomapa){
+            estadomapa(codigo);
+        }
     }
     public void pantalladeinicio(int codigo){
         if(codigo == KeyEvent.VK_W){
@@ -107,6 +111,9 @@ public class Teclado implements KeyListener {
         }
         if(codigo == KeyEvent.VK_ESCAPE){
             gp.estadodeljuego = gp.estadodeopciones;
+        }
+        if(codigo == KeyEvent.VK_M){
+            gp.estadodeljuego = gp.estadomapa;
         }
         if(codigo == KeyEvent.VK_R){
             switch (gp.actualmapa){
@@ -244,6 +251,11 @@ public class Teclado implements KeyListener {
             if(codigo == KeyEvent.VK_ESCAPE){
                 gp.ui.substate = 0;
             }
+        }
+    }
+    public void estadomapa(int codigo){
+        if(codigo == KeyEvent.VK_M){
+            gp.estadodeljuego = gp.reanudar;
         }
     }
     public void inventariojugador(int codigo){

@@ -6,17 +6,37 @@ import Main.Panel_de_Juego;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class administradordesuelo {
     Panel_de_Juego gp;
     public suelo[] suelo;
     public int mapaNum[][][];
     boolean dibujarcamino = true;
+    //ArrayList<String> nombredoc = new ArrayList<>();
+    //ArrayList<String> estatusdecolison = new ArrayList<>();
 
     public administradordesuelo(Panel_de_Juego gp){
         this.gp = gp;
+        //leer doc
+        //InputStream is = getClass().getResourceAsStream("/mapas/merry_christmas.txt");
+        //BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        // getting tile names and colision info from the file
+        //String linea;
+        //try{
+            //while ((linea = br.readLine()) != null){
+                //nombredoc.add(linea);
+                //estatusdecolison.add(br.readLine());
+            //}
+            //br.close();
+        //} catch (IOException e){
+            //e.printStackTrace();
+        //}
+        //suelo = new suelo[nombredoc.size()];
+       // getTileImage();
 
         suelo = new suelo[50];
         mapaNum = new int[gp.maxmap][gp.maxWorldCol][gp.maxWorldRow];

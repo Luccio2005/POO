@@ -6,6 +6,7 @@ import entidad.entidad;
 import entidad.jugador;
 import suelo.administradordesuelo;
 import suelo.interactivo.suelointeractivo;
+import suelo.mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,6 +51,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public config config = new config(this);
     public Encontrarcamino pfinder = new Encontrarcamino(this);
     ambientemanager emanager = new ambientemanager(this);
+    mapa mapa = new mapa(this);
     Thread gameThread;
 
     //entidad y objetos
@@ -75,6 +77,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public final int estadotransicion = 7;
     public final int estadointercambio = 8;
     public final int estadodormir = 9;
+    public final int estadomapa = 10;
 
     public Panel_de_Juego(){
         this.setPreferredSize(new Dimension(anchoPantalla, altoPantalla));
@@ -213,7 +216,10 @@ public class Panel_de_Juego extends JPanel implements Runnable{
         //pantalla de inicio
         if(estadodeljuego == pantalladeinicio){
             ui.dibujar(g2);
-
+        }
+        //pantalla mapa
+        else if(estadodeljuego == estadomapa){
+            mapa.dibujarfullpantallademapa(g2);
         }
         else{
             sueloM.dibujar(g2);
