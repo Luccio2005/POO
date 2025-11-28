@@ -115,6 +115,13 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_M){
             gp.estadodeljuego = gp.estadomapa;
         }
+        if(codigo == KeyEvent.VK_X){
+            if(gp.mapa.minimapaon == false){
+                gp.mapa.minimapaon = true;
+            }else{
+                gp.mapa.minimapaon = false;
+            }
+        }
         if(codigo == KeyEvent.VK_R){
             switch (gp.actualmapa){
                 case 0: gp.sueloM.cargarMapa("/mapas/worldV2.txt", 0); break;

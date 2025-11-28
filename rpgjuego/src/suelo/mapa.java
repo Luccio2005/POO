@@ -52,11 +52,29 @@ public class mapa extends administradordesuelo{
         double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
         int jugadorx = (int) (x + gp.jugador.mundox/escala);
         int jugadory = (int) (y + gp.jugador.mundoy/escala);
-        int jugadortamano = (int) (gp.tileSize/escala);
+        int jugadortamano = (int) (gp.tileSize/3);
         g2.drawImage(gp.jugador.down1, jugadorx, jugadory, jugadortamano, jugadortamano, null);
         // hint
         g2.setFont(gp.ui.arial_80B.deriveFont(32f));
         g2.setColor(Color.white);
         g2.drawString("Presiona M", 750,  550);
+    }
+    public void dibujarminimapa(Graphics2D g2){
+        if(minimapaon == true){
+            // dibujar mapa
+            int ancho = 200;
+            int alto = 200;
+            int x = gp.anchoPantalla - ancho - 50;
+            int y = 50;
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+            g2.drawImage(mundomapa[gp.actualmapa], x, y, ancho, alto, null);
+            // dibujar jugador
+            double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+            int jugadorx = (int) (x + gp.jugador.mundox/escala);
+            int jugadory = (int) (y + gp.jugador.mundoy/escala);
+            int jugadortamano = (int) (gp.tileSize);
+            g2.drawImage(gp.jugador.down1, jugadorx-6, jugadory-6, jugadortamano, jugadortamano, null);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        }
     }
 }

@@ -272,7 +272,9 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             listaentidad.clear();
             // ambiente
             emanager.dibujar(g2);
-
+            // minimap
+            mapa.dibujarminimapa(g2);
+            // ui
             ui.dibujar(g2);
         }
     }
