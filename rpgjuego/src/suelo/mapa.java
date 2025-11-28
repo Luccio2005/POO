@@ -48,5 +48,15 @@ public class mapa extends administradordesuelo{
         int x = gp.anchoPantalla/2 - ancho/2;
         int y = gp.altoPantalla/2 - alto/2;
         g2.drawImage(mundomapa[gp.actualmapa], x, y, ancho, alto, null);
+        // dibujar jugador
+        double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+        int jugadorx = (int) (x + gp.jugador.mundox/escala);
+        int jugadory = (int) (y + gp.jugador.mundoy/escala);
+        int jugadortamano = (int) (gp.tileSize/escala);
+        g2.drawImage(gp.jugador.down1, jugadorx, jugadory, jugadortamano, jugadortamano, null);
+        // hint
+        g2.setFont(gp.ui.arial_80B.deriveFont(32f));
+        g2.setColor(Color.white);
+        g2.drawString("Presiona M", 750,  550);
     }
 }

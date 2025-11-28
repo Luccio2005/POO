@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class UI {
     Panel_de_Juego gp;
     Graphics2D g2;
-    Font arial_40, arial_80B;
+    public Font arial_40, arial_80B;
     BufferedImage heart_full, heart_half, heart_blank, crystal_full,crystal_blank, coin;
     public boolean mensajeOn= false;
     //public String mensaje = "";
