@@ -43,53 +43,18 @@ public class slime extends entidad{
         right1 = setup("/enemigos/greenslime_down_1", gp.tileSize, gp.tileSize);
         right2 = setup("/enemigos/greenslime_down_2", gp.tileSize, gp.tileSize);
     }
-    public void actualizar(){
-        super.actualizar();
-        int distanciax = Math.abs(mundox - gp.jugador.mundox);
-        int distanciay = Math.abs(mundoy - gp.jugador.mundoy);
-        int titulodistancia = (distanciax + distanciay)/gp.tileSize;
-        if(onpath == false && titulodistancia < 5){
-            int i = new Random().nextInt(100)+1;
-            if(i>50){
-                onpath = true;
-            }
-        }
-    }
     public void  setaction(){
         if(onpath == true){
-            //int metacol = 12;
-            //int metafila = 9;
-            int metacol = (gp.jugador.mundox + gp.jugador.areadecolision.x)/gp.tileSize;
-            int metafila = (gp.jugador.mundoy + gp.jugador.areadecolision.y)/gp.tileSize;
-            buscarcamino(metacol, metafila);
-            int i = new Random().nextInt(200)+1;
-            if(i > 197 && proyectiles.vivo == false && contadordisparodisponible == 30){
-                proyectiles.set(mundox, mundoy, direccion, true, this);
-                //gp.listaproyectil.add(proyectiles);
-                for(int ii = 0; ii< gp.proyectiles[1].length; ii++){
-                    if(gp.proyectiles[gp.actualmapa][ii] == null){
-                        gp.proyectiles[gp.actualmapa][ii] = proyectiles;
-                        break;
-                    }
-                }
-                contadordisparodisponible = 0;
-            }
+            //check if it stops chasing
+            checkstopchasingornot(gp.jugador, 15, 100);
+            // search the direction to go
+            buscarcamino(getmetacol(gp.jugador), getmetafila(gp.jugador));
+            // check if it shoots a proyectiles
+            checkshootornot(200, 30);
         }else{
-            bloqueodeaccion ++;
-            if(bloqueodeaccion ==120){
-                Random random = new Random();
-                int i = random.nextInt(100)+1;
-                if(i<=25){
-                    direccion = "up";
-                } if(i>25 && i<=50){
-                    direccion = "down";
-                } if(i>50 && i <=75){
-                    direccion = "left";
-                } if(i>75 && i<=100){
-                    direccion = "right";
-                }
-                bloqueodeaccion = 0;
-            }
+            checkstartchasingornot(gp.jugador, 5,100);
+
+            getrandomdireccion();
         }
     }
     public void reaccionaldamage(){

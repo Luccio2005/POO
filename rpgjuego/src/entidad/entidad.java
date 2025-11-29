@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class entidad {
     Panel_de_Juego gp;
@@ -107,6 +108,26 @@ public class entidad {
     }
     public int getfila(){
         return (mundoy + areadecolision.y)/gp.tileSize;
+    }
+    public int getdistanciax(entidad target){
+        int distanciax = Math.abs(mundox - target.mundox);
+        return distanciax;
+    }
+    public int getdistanciay(entidad target){
+        int distanciay = Math.abs(mundoy - target.mundoy);
+        return distanciay;
+    }
+    public int gettitulodistancia(entidad target){
+        int titulodistancia = (getdistanciax(target) + getdistanciay(target));
+        return titulodistancia;
+    }
+    public int getmetacol(entidad target){
+        int metacol = (target.mundox + target.areadecolision.x)/gp.tileSize;
+        return metacol;
+    }
+    public int getmetafila(entidad target){
+        int metafila = (target.mundoy + target.areadecolision.y)/gp.tileSize;
+        return metafila;
     }
     public void setaction(){
     }
@@ -244,6 +265,54 @@ public class entidad {
         }
         if(contadordisparodisponible < 30){
             contadordisparodisponible++;
+        }
+    }
+    public void checkshootornot(int tasa, int intervalodisparo){
+        int i = new Random().nextInt(tasa);
+        if(i == 0 && proyectiles.vivo == false && contadordisparodisponible == intervalodisparo){
+            proyectiles.set(mundox, mundoy, direccion, true, this);
+            //gp.listaproyectil.add(proyectiles);
+            for(int ii = 0; ii< gp.proyectiles[1].length; ii++){
+                if(gp.proyectiles[gp.actualmapa][ii] == null){
+                    gp.proyectiles[gp.actualmapa][ii] = proyectiles;
+                    break;
+                }
+            }
+            contadordisparodisponible = 0;
+        }
+    }
+    public void checkstartchasingornot(entidad target, int distancia, int tasa){
+        if(gettitulodistancia(target) < distancia){
+            int i= new Random().nextInt(tasa);
+            if(i == 0){
+                onpath = true;
+            }
+        }
+    }
+    public void checkstopchasingornot(entidad target, int distancia, int tasa){
+        if(gettitulodistancia(target) > distancia){
+            int i= new Random().nextInt(tasa);
+            if(i == 0){
+                onpath = false;
+            }
+        }
+    }
+    public void getrandomdireccion(){
+        bloqueodeaccion ++;
+
+        if(bloqueodeaccion ==120){
+            Random random = new Random();
+            int i = random.nextInt(100)+1;
+            if(i<=25){
+                direccion = "up";
+            } if(i>25 && i<=50){
+                direccion = "down";
+            } if(i>50 && i <=75){
+                direccion = "left";
+            } if(i>75 && i<=100){
+                direccion = "right";
+            }
+            bloqueodeaccion = 0;
         }
     }
     public void damageplayer(int atq){

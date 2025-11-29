@@ -1,7 +1,6 @@
 package suelo;
 
 import Main.Panel_de_Juego;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -36,6 +35,7 @@ public class mapa extends administradordesuelo{
                     fila++;
                 }
             }
+            g2.dispose();
         }
     }
     public void dibujarfullpantallademapa(Graphics2D g2){

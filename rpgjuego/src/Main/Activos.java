@@ -1,5 +1,6 @@
 package Main;
 
+import enemigos.orco;
 import enemigos.slime;
 import entidad.npc_mercader;
 import entidad.npc_oldman;
@@ -100,6 +101,10 @@ public class Activos {
         gp.enemigos[mapNum][i] = new slime(gp);
         gp.enemigos[mapNum][i].mundox = gp.tileSize*38;
         gp.enemigos[mapNum][i].mundoy = gp.tileSize*42;
+        i++;
+        gp.enemigos[mapNum][i] = new orco(gp);
+        gp.enemigos[mapNum][i].mundox = gp.tileSize*12;
+        gp.enemigos[mapNum][i].mundoy = gp.tileSize*33;
         i++;
     }
     public void setsuelointeractivo(){
