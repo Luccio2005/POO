@@ -341,7 +341,7 @@ public class jugador extends entidad{
             if(gp.enemigos[gp.actualmapa][i].invencible == false){
                 gp.playSE(5);
                 if(knockbackpower > 0){
-                    knockback(gp.enemigos[gp.actualmapa][i], knockbackpower);
+                    setknockback(gp.enemigos[gp.actualmapa][i], knockbackpower);
                 }
 
                 int damage = atq - gp.enemigos[gp.actualmapa][i].def;
@@ -361,11 +361,6 @@ public class jugador extends entidad{
                 }
             }
         }
-    }
-    public void knockback(entidad entidad, int knockbackpower){
-        entidad.direccion = direccion;
-        entidad.velocidad += knockbackpower;
-        entidad.knockback = true;
     }
     public void damagesuelointeractivo(int i){
         if(i != 999 && gp.itile[gp.actualmapa][i].destructible == true

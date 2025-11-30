@@ -16,7 +16,7 @@ public class Obj_fireball extends proyectiles {
         vidamax = 80;
         vida = vidamax;
         atq = 2;
-        knockbackpower = 0;
+        knockbackpower = 5;
         usecost = 1;
         vivo = false;
         getImage();

@@ -20,6 +20,11 @@ public class comprobar_colisiones {
 
         int suelonum1, suelonum2;
 
+        String direccion = entidad.direccion;
+        if(entidad.knockback == true){
+
+        }
+
         switch (entidad.direccion){
             case "up":
                 entidadarrfila = (entidadarrmundoy - entidad.velocidad)/gp.tileSize;

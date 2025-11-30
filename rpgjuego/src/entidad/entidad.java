@@ -20,6 +20,7 @@ public class entidad {
     public int areadecolisionx, areadecolisiony;
     public boolean colision = false;
     String dialogos[]= new String[20];
+    public entidad attacker;
     //STATE
     public int mundox,mundoy;
     public String direccion = "down";
@@ -33,6 +34,7 @@ public class entidad {
     boolean barrahpon = false;
     public boolean onpath = false;
     public boolean knockback = false;
+    public String knockbackdireccion;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
@@ -118,7 +120,7 @@ public class entidad {
         return distanciay;
     }
     public int gettitulodistancia(entidad target){
-        int titulodistancia = (getdistanciax(target) + getdistanciay(target));
+        int titulodistancia = (getdistanciax(target) + getdistanciay(target))/gp.tileSize;
         return titulodistancia;
     }
     public int getmetacol(entidad target){
@@ -325,6 +327,10 @@ public class entidad {
             gp.jugador.vida -= damage;
             gp.jugador.invencible = true;
         }
+    }
+    public void setknockback(entidad entidad, int knockbackpower){
+        entidad.velocidad += knockbackpower;
+        entidad.knockback = true;
     }
     public void dibujar(Graphics2D g2){
         BufferedImage imagen=null;
