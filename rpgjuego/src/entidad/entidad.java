@@ -216,18 +216,19 @@ public class entidad {
     }
     public void actualizar(){
         if(knockback == true){
-            comprobarcolision();
-            if(colisioon == true){
+            contadorknockback++;
+            switch (knockbackdireccion){
+                case "up": mundoy -= velocidad; break;
+                case "down": mundoy += velocidad; break;
+                case "left": mundox -= velocidad; break;
+                case "right": mundox += velocidad; break;
+            }
+            if(colisioon == true || contadorknockback>10){
                 contadorknockback = 0;
                 knockback = false;
                 velocidad = defaultspeed;
             }else if(colisioon == false){
-                switch (knockbackdireccion){
-                    case "up": mundoy -= velocidad; break;
-                    case "down": mundoy += velocidad; break;
-                    case "left": mundox -= velocidad; break;
-                    case "right": mundox += velocidad; break;
-                }
+
             }
         }else{
             setaction();
@@ -331,7 +332,7 @@ public class entidad {
     public void setknockback(entidad target, entidad attacker, int knockbackpower){
         this.attacker = attacker;
         target.knockbackdireccion = attacker.direccion;
-        target.velocidad += knockbackpower;
+        target.velocidad = target.defaultspeed + knockbackpower;
         target.knockback = true;
     }
     public void dibujar(Graphics2D g2){
