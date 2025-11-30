@@ -222,7 +222,7 @@ public class entidad {
                 knockback = false;
                 velocidad = defaultspeed;
             }else if(colisioon == false){
-                switch (gp.jugador.direccion){
+                switch (knockbackdireccion){
                     case "up": mundoy -= velocidad; break;
                     case "down": mundoy += velocidad; break;
                     case "left": mundox -= velocidad; break;
@@ -328,9 +328,11 @@ public class entidad {
             gp.jugador.invencible = true;
         }
     }
-    public void setknockback(entidad entidad, int knockbackpower){
-        entidad.velocidad += knockbackpower;
-        entidad.knockback = true;
+    public void setknockback(entidad target, entidad attacker, int knockbackpower){
+        this.attacker = attacker;
+        target.knockbackdireccion = attacker.direccion;
+        target.velocidad += knockbackpower;
+        target.knockback = true;
     }
     public void dibujar(Graphics2D g2){
         BufferedImage imagen=null;

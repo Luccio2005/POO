@@ -22,10 +22,10 @@ public class comprobar_colisiones {
 
         String direccion = entidad.direccion;
         if(entidad.knockback == true){
-
+            direccion = entidad.knockbackdireccion;
         }
 
-        switch (entidad.direccion){
+        switch (direccion){
             case "up":
                 entidadarrfila = (entidadarrmundoy - entidad.velocidad)/gp.tileSize;
                 suelonum1= gp.sueloM.mapaNum[gp.actualmapa][entidadizqcolumna][entidadarrfila];
@@ -100,6 +100,10 @@ public class comprobar_colisiones {
     // npc o monstruo colision
     public int comprobarentidad(entidad entidad, entidad[][] target){
         int indice = 999;
+        String direccion = entidad.direccion;
+        if(entidad.knockback == true){
+            direccion = entidad.knockbackdireccion;
+        }
         for(int i =0;i< target[1].length;i++){
             if(target[gp.actualmapa][i] !=null){
                 entidad.areadecolision.x = entidad.mundox + entidad.areadecolision.x;
@@ -108,7 +112,7 @@ public class comprobar_colisiones {
                 target[gp.actualmapa][i].areadecolision.x =  target[gp.actualmapa][i].mundox + target[gp.actualmapa][i].areadecolision.x;
                 target[gp.actualmapa][i].areadecolision.y =  target[gp.actualmapa][i].mundoy + target[gp.actualmapa][i].areadecolision.y;
 
-                switch (entidad.direccion){
+                switch (direccion){
                     case "up":
                         entidad.areadecolision.y -= entidad.velocidad;
                         break;
