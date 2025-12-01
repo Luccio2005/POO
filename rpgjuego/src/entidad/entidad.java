@@ -28,7 +28,7 @@ public class entidad {
     int indicededialogos = 0;
     public boolean colisioon = false;
     public boolean invencible = false;
-    boolean atacando = false;
+    public boolean atacando = false;
     public boolean vivo = true;
     public boolean muriendo = false;
     boolean barrahpon = false;
@@ -60,6 +60,8 @@ public class entidad {
     public int exp;
     public int nextlvlexp;
     public int coin;
+    public int motion1_duracion;
+    public int motion2_duracion;
     public entidad actualarma;
     public entidad actualescudo;
     public entidad actualluz;
@@ -230,6 +232,9 @@ public class entidad {
             }else if(colisioon == false){
 
             }
+            else if(atacando == true){
+                atacando();
+            }
         }else{
             setaction();
             comprobarcolision();
@@ -249,15 +254,15 @@ public class entidad {
                         break;
                 }
             }
-        }
-        contadorSprite++;
-        if(contadorSprite>24){
-            if(numeroSprite ==1){
-                numeroSprite = 2;}
-            else if(numeroSprite ==2){
-                numeroSprite=1;
+            contadorSprite++;
+            if(contadorSprite>24){
+                if(numeroSprite ==1){
+                    numeroSprite = 2;}
+                else if(numeroSprite ==2){
+                    numeroSprite=1;
+                }
+                contadorSprite=0;
             }
-            contadorSprite=0;
         }
         if(invencible == true){
             contadorinvencible ++;
@@ -268,6 +273,38 @@ public class entidad {
         }
         if(contadordisparodisponible < 30){
             contadordisparodisponible++;
+        }
+    }
+    public void checkattackornot(int tasa, int straight, int horizontal){
+        boolean targetenrango = false;
+        int disx = getdistanciax(gp.jugador);
+        int disy = getdistanciay(gp.jugador);
+        switch (direccion){
+            case "up":
+                if(gp.jugador.mundoy < mundoy && disy < straight && disx < horizontal){
+                    targetenrango = true;
+                } break;
+            case "down":
+                if(gp.jugador.mundoy > mundoy && disy < straight && disx < horizontal){
+                    targetenrango = true;
+                } break;
+            case "left":
+                if(gp.jugador.mundox < mundox && disx < straight && disy < horizontal){
+                    targetenrango = true;
+                } break;
+            case "right":
+                if(gp.jugador.mundox > mundox && disx < straight && disy < horizontal){
+                    targetenrango = true;
+                } break;
+        }
+        if(targetenrango == true){
+            int i = new Random().nextInt(tasa);
+            if(i == 0){
+                atacando = true;
+                numeroSprite = 1;
+                contadorSprite = 0;
+                contadordisparodisponible = 0;
+            }
         }
     }
     public void checkshootornot(int tasa, int intervalodisparo){
@@ -318,6 +355,50 @@ public class entidad {
             bloqueodeaccion = 0;
         }
     }
+    public void atacando(){
+        contadorSprite++;
+        if(contadorSprite <=motion1_duracion){
+            numeroSprite = 1;
+        }if(contadorSprite >motion1_duracion && contadorSprite <=motion2_duracion){
+            numeroSprite = 2;
+            int actualmundox = mundox;
+            int actualmundoy = mundoy;
+            int areadecolisionancho = areadecolision.width;
+            int areadecolisionalto = areadecolision.height;
+
+            switch (direccion){
+                case "up": mundoy -= areadeataque.height; break;
+                case "down": mundoy += areadeataque.height; break;
+                case "left": mundox -= areadeataque.width; break;
+                case "right": mundox += areadeataque.width; break;
+            }
+            areadecolision.width = areadeataque.width;
+            areadecolision.height = areadeataque.height;
+            if(tipo == tipo_enemigos){
+                if(gp.comprobar.comprobarjugador(this) == true){
+                    damageplayer(atq);
+                }
+            }else{
+                int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
+                gp.jugador.damageenemigo(indiceenemigo, this, atq, actualarma.knockbackpower);
+
+                int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
+                gp.jugador.damagesuelointeractivo(indiceitile);
+
+                int indiceproyectil = gp.comprobar.comprobarentidad(this, gp.proyectiles);
+                gp.jugador.damageproyectil(indiceproyectil);
+            }
+            mundox = actualmundox;
+            mundoy = actualmundoy;
+            areadecolision.width = areadecolisionancho;
+            areadecolision.height = areadecolisionalto;
+
+        }if(contadorSprite > motion2_duracion){
+            numeroSprite =1;
+            contadorSprite = 0;
+            atacando = false;
+        }
+    }
     public void damageplayer(int atq){
         if(gp.jugador.invencible == false){
             gp.playSE(6);
@@ -344,32 +425,69 @@ public class entidad {
                 mundox - gp.tileSize < gp.jugador.mundox + gp.jugador.pantallax &&
                 mundoy + gp.tileSize > gp.jugador.mundoy - gp.jugador.pantallay &&
                 mundoy - gp.tileSize < gp.jugador.mundoy + gp.jugador.pantallay){
+            int temppantallax = pantallax;
+            int temppantallay = pantallay;
             switch (direccion){
                 case "up":
+                    if(atacando == false){
+                        if(numeroSprite ==1){
+                            imagen = up1;
+                        }if(numeroSprite ==2){
+                            imagen = up2;
+                        }
+                    }if(atacando == true){
                     if(numeroSprite ==1){
-                        imagen = up1;
+                        imagen = atqarriba1;
                     }if(numeroSprite ==2){
-                    imagen = up2;
+                        imagen = atqarriba2;
+                    }
                 }
                     break;
                 case "down":
+                    if(atacando == false){
+                        if(numeroSprite ==1){
+                            imagen = down1;
+                        }if(numeroSprite ==2){
+                            imagen = down2;
+                        }
+                    }if(atacando == true){
                     if(numeroSprite ==1){
-                        imagen = down1;
+                        imagen = atqabajo1;
                     }if(numeroSprite ==2){
-                    imagen = down2;
-                } break;
+                        imagen = atqabajo2;
+                    }
+                }
+                    break;
                 case "left":
+                    if(atacando == false){
+                        if(numeroSprite ==1){
+                            imagen = left1;
+                        }if(numeroSprite ==2){
+                            imagen = left2;
+                        }
+                    }if(atacando == true){
                     if(numeroSprite ==1){
-                        imagen = left1;
+                        imagen = atqizq1;
                     }if(numeroSprite ==2){
-                    imagen = left2;
-                } break;
+                        imagen = atqizq2;
+                    }
+                }
+                    break;
                 case "right":
+                    if(atacando == false){
+                        if(numeroSprite ==1){
+                            imagen = right1;
+                        }if(numeroSprite ==2){
+                            imagen = right2;
+                        }
+                    }if(atacando == true){
                     if(numeroSprite ==1){
-                        imagen = right1;
+                        imagen = atqder1;
                     }if(numeroSprite ==2){
-                    imagen = right2;
-                } break;
+                        imagen = atqder2;
+                    }
+                }
+                    break;
             }
             // barra de vida de enemigos
             if(tipo == 2 && barrahpon == true){
@@ -394,8 +512,7 @@ public class entidad {
             if(muriendo == true){
                 animacionmuerte(g2);
             }
-            g2.drawImage(imagen, pantallax, pantallay,null);
-
+            g2.drawImage(imagen, temppantallax, temppantallay,null);
             changealpha(g2,1F);
         }
     }

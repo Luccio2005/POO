@@ -14,5 +14,7 @@ public class Obj_axe extends entidad{
         descripcion = "[" +nombre+"]\noxidada pero mas\npotente";
         precio = 75;
         knockbackpower = 10;
+        motion1_duracion = 20;
+        motion2_duracion = 40;
     }
 }

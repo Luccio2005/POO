@@ -15,5 +15,7 @@ public class Obj_sword_normal extends entidad{
         descripcion = "[" +nombre+"]\nuna vieja espada";
         precio = 20;
         knockbackpower = 2;
+        motion1_duracion = 5;
+        motion2_duracion = 25;
     }
 }

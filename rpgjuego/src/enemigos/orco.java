@@ -32,6 +32,8 @@ public class orco extends entidad {
         areadecolisiony = areadecolision.y;
         areadeataque.width = 48;
         areadeataque.height = 48;
+        motion1_duracion = 40;
+        motion2_duracion = 85;
 
         getImage();
         getatqImage();
@@ -66,6 +68,9 @@ public class orco extends entidad {
             checkstartchasingornot(gp.jugador, 5,100);
 
             getrandomdireccion();
+        }
+        if(atacando == false){
+            checkattackornot(30, gp.tileSize*4, gp.tileSize);
         }
     }
     public void reaccionaldamage(){

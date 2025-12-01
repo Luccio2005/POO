@@ -86,6 +86,8 @@ public class jugador extends entidad{
     }
     public int getAttack(){
         areadeataque = actualarma.areadeataque;
+        motion1_duracion = actualarma.motion1_duracion;
+        motion2_duracion = actualarma.motion2_duracion;
         return atq = str*actualarma.valordeatq;
     }
     public int getDefense(){
@@ -131,8 +133,6 @@ public class jugador extends entidad{
             atqder1 = setup("/jugador/hachader-1", gp.tileSize, gp.tileSize);
             atqder2 = setup("/jugador/hachader-2", gp.tileSize, gp.tileSize);
         }
-
-
     }
     public void actualizar(){
         if(atacando == true){
@@ -245,46 +245,6 @@ public class jugador extends entidad{
             gp.ui.numerodecomando = -1;
             gp.stopMusic();;
             gp.playSE(12);
-        }
-    }
-    public void atacando(){
-        contadorSprite++;
-        if(contadorSprite <=5){
-            numeroSprite = 1;
-        }if(contadorSprite >5 && contadorSprite <=25){
-            numeroSprite = 2;
-            int actualmundox = mundox;
-            int actualmundoy = mundoy;
-            int areadecolisionancho = areadecolision.width;
-            int areadecolisionalto = areadecolision.height;
-
-            switch (direccion){
-                case "up": mundoy -= areadeataque.height; break;
-                case "down": mundoy += areadeataque.height; break;
-                case "left": mundox -= areadeataque.width; break;
-                case "right": mundox += areadeataque.width; break;
-            }
-            areadecolision.width = areadeataque.width;
-            areadecolision.height = areadeataque.height;
-
-            int indiceenemigo = gp.comprobar.comprobarentidad(this, gp.enemigos);
-            damageenemigo(indiceenemigo, this, atq, actualarma.knockbackpower);
-
-            int indiceitile = gp.comprobar.comprobarentidad(this, gp.itile);
-            damagesuelointeractivo(indiceitile);
-
-            int indiceproyectil = gp.comprobar.comprobarentidad(this, gp.proyectiles);
-            damageproyectil(indiceproyectil);
-
-            mundox = actualmundox;
-            mundoy = actualmundoy;
-            areadecolision.width = areadecolisionancho;
-            areadecolision.height = areadecolisionalto;
-
-        }if(contadorSprite > 25){
-            numeroSprite =1;
-            contadorSprite = 0;
-            atacando = false;
         }
     }
     public void recogerobjeto (int i){
