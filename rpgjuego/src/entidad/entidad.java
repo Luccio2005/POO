@@ -38,6 +38,7 @@ public class entidad {
     public String knockbackdireccion;
     public boolean guarding = false;
     public boolean transparente = false;
+    public boolean offbalance = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
@@ -46,6 +47,8 @@ public class entidad {
     int contadormuerte = 0;
     int contadorbarrahp = 0;
     int contadorknockback = 0;
+    public int contadorguard = 0;
+    int offbalancecontador = 0;
     // ATRIBUTOS DE LOS PERSONAJES
     public String nombre;
     public int defaultspeed;
@@ -277,6 +280,13 @@ public class entidad {
         if(contadordisparodisponible < 30){
             contadordisparodisponible++;
         }
+        if(offbalance == true){
+            offbalancecontador++;
+            if(offbalancecontador > 60){
+                offbalance = false;
+                offbalancecontador = 0;
+            }
+        }
     }
     public void checkattackornot(int tasa, int straight, int horizontal){
         boolean targetenrango = false;
@@ -417,6 +427,14 @@ public class entidad {
             int damage = atq - gp.jugador.def;
             String canguardireccion = getoppositedireccion(direccion);
             if(gp.jugador.guarding == true && gp.jugador.direccion.equals(canguardireccion)){
+                //parry
+                if(gp.jugador.contadorguard < 10){
+                    damage = 0;
+                    gp.playSE(16);
+                    setknockback(this, gp.jugador, knockbackpower);
+                    offbalance = true;
+                    contadorSprite =- 60;
+                }
                 damage /= 3;
                 gp.playSE(15);
             }else{

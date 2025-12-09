@@ -78,6 +78,7 @@ public class jugador extends entidad{
         vida = vidamax;
         mana = manamaximo;
         invencible = false;
+        transparente = false;
     }
     public void setItems(){
         inventario.clear();
@@ -147,6 +148,7 @@ public class jugador extends entidad{
         }
         else if(keyH.spacep == true){
             guarding = true;
+            contadorguard++;
         }
         else if(keyH.arribap == true || keyH.abajop ==true
                 || keyH.izquierdap == true || keyH.derechap == true ||keyH.enterp == true){
@@ -208,6 +210,7 @@ public class jugador extends entidad{
             cancelaratq = false;
             gp.keyH.enterp = false;
             guarding = false;
+            contadorguard = 0;
             contadorSprite++;
             if(contadorSprite>12){
                 if(numeroSprite ==1){
@@ -318,7 +321,9 @@ public class jugador extends entidad{
                 if(knockbackpower > 0){
                     setknockback(gp.enemigos[gp.actualmapa][i], attacker, knockbackpower);
                 }
-
+                if(gp.enemigos[gp.actualmapa][i].offbalance == true){
+                    atq *= 5;
+                }
                 int damage = atq - gp.enemigos[gp.actualmapa][i].def;
                 if(damage<0){
                     damage = 0;
