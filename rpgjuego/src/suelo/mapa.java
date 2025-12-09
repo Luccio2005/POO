@@ -89,27 +89,45 @@ public class mapa extends administradordesuelo{
     }
     public void dibujarminimapa(Graphics2D g2){
         if(minimapaon == true){
-            // dibujar mapa
+
+            // dimensiones en pantalla del minimapa
             int ancho = 200;
             int alto = 200;
             int x = gp.anchoPantalla - ancho - 50;
             int y = 50;
+
+            // usar el minimapa precargado del mundo actual
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
             g2.drawImage(mundomapa[gp.actualmapa], x, y, ancho, alto, null);
-            // dibujar jugador
-            //double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
-            int mundoAncho = gp.maxWorldCol * gp.tileSize;
-            int mundoAlto  = gp.maxWorldRow * gp.tileSize;
 
+            // ---------------------------------------------
+            // OBTENER TAMAÑO REAL DEL MAPA ACTUAL DINÁMICO
+            // ---------------------------------------------
+            int cols = gp.sueloM.mapaNum[gp.actualmapa].length;
+            int rows = gp.sueloM.mapaNum[gp.actualmapa][0].length;
+
+            int mundoAncho = cols * gp.tileSize;
+            int mundoAlto  = rows * gp.tileSize;
+
+            // ---------------------------------------------
+            // CÁLCULO DE ESCALA
+            // ---------------------------------------------
             double escalaX = (double) mundoAncho / ancho;
             double escalaY = (double) mundoAlto  / alto;
             double escala = Math.max(escalaX, escalaY);
 
-            int jugadorx = (int) (x + gp.jugador.mundox/escala);
-            int jugadory = (int) (y + gp.jugador.mundoy/escala);
-            int jugadortamano = (int) (gp.tileSize);
-            g2.drawImage(gp.jugador.down1, jugadorx-6, jugadory-6, jugadortamano, jugadortamano, null);
+            // ---------------------------------------------
+            // POSICIÓN DEL JUGADOR EN EL MINIMAPA
+            // ---------------------------------------------
+            int jugadorx = (int) (x + gp.jugador.mundox / escala);
+            int jugadory = (int) (y + gp.jugador.mundoy / escala);
+
+            int jugadortamano = (int) (gp.tileSize / escala * 3); // ajustado para verse bien
+
+            g2.drawImage(gp.jugador.down1, jugadorx - 6, jugadory - 6, jugadortamano, jugadortamano, null);
+
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
+
 }

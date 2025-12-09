@@ -61,6 +61,9 @@ public class Eventos {
             else if(hit(1, 12, 9, "up") == true){
                 hablar(gp.npc[1][0]);
             }
+            else if(hit(0,12,9,"any")==true){
+                teleport(2,5,10);
+            }
         }
     }
     public boolean hit(int map, int col, int fila, String reqDireccion){
@@ -110,6 +113,25 @@ public class Eventos {
         tempcol = col;
         tempfila = fila;
         gp.actualmapa = map;
+        if(map == 0){
+            gp.maxWorldCol = 50;
+            gp.maxWorldRow = 50;
+            gp.sueloM.cargarMapa("/mapas/worldV3.txt",0);
+        }
+        if(map == 1){
+            gp.maxWorldCol = 50;
+            gp.maxWorldRow = 50;
+            gp.sueloM.cargarMapa("/mapas/interior01.txt",1);
+        }
+        if(map ==2){
+            gp.maxWorldCol =155;
+            gp.maxWorldRow =155;
+            gp.sueloM.cargarMapa("/mapas/cyclopolis.txt",2);
+        }
+        // Mover jugador
+        gp.jugador.mundox = col * gp.tileSize;
+        gp.jugador.mundoy = fila * gp.tileSize;
+
 
         cantouchevent = false;
         gp.playSE(13);

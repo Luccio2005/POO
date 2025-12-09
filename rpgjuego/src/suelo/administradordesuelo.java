@@ -39,7 +39,9 @@ public class administradordesuelo {
        // getTileImage();
 
         suelo = new suelo[50];
-        mapaNum = new int[gp.maxmap][gp.maxWorldCol][gp.maxWorldRow];
+        //mapaNum = new int[gp.maxmap][gp.maxWorldCol][gp.maxWorldRow];
+        mapaNum = new int[gp.maxmap][][];
+
         getTileImage();
         cargarMapa("/mapas/worldV3.txt",0);
         cargarMapa("/mapas/interior01.txt",1);
@@ -94,6 +96,7 @@ public class administradordesuelo {
             setup(42,"hut",false);
             setup(43,"floor01",false);
             setup(44,"table01",true);
+            setup(45, "hole",false);
     }
     public void setup(int indice, String nombreimagen, boolean colision){
         Herramientasdeutilidad Herramienta = new Herramientasdeutilidad();
@@ -113,26 +116,29 @@ public class administradordesuelo {
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-            int columna=0;
-            int fila=0;
-            while (columna< gp.maxWorldCol && fila < gp.maxWorldRow){
-                String linea = br.readLine();
-                while (columna < gp.maxWorldCol){
-                    String numeros[] = linea.split(" ");
-                    int num = Integer.parseInt(numeros[columna]);
-                    mapaNum[map][columna][fila]=num;
-                    columna++;
-                }
-                if(columna == gp.maxWorldCol){
-                    columna=0;
-                    fila++;
-                }
-            }
-            br.close();;
-        }catch (Exception e){
+            // 🟢 1. Crear matriz con el tamaño ACTUAL del mapa
+            mapaNum[map] = new int[gp.maxWorldCol][gp.maxWorldRow];
 
+            int col = 0;
+            int fila = 0;
+
+            while (fila < gp.maxWorldRow){
+                String linea = br.readLine();
+                String numeros[] = linea.split(" ");
+
+                for(col = 0; col < gp.maxWorldCol; col++){
+                    mapaNum[map][col][fila] = Integer.parseInt(numeros[col]);
+                }
+                fila++;
+            }
+
+            br.close();
+
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
+
     public void dibujar(Graphics2D g2){
         int columnammundo=0;
         int filamundo=0;
