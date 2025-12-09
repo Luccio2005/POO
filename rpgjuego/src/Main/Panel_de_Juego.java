@@ -2,6 +2,7 @@ package Main;
 
 import ai.Encontrarcamino;
 import ambiente.ambientemanager;
+import data.guardarcarga;
 import entidad.entidad;
 import entidad.jugador;
 import suelo.administradordesuelo;
@@ -52,6 +53,7 @@ public class Panel_de_Juego extends JPanel implements Runnable{
     public Encontrarcamino pfinder = new Encontrarcamino(this);
     ambientemanager emanager = new ambientemanager(this);
     mapa mapa = new mapa(this);
+    guardarcarga guardarcarga = new guardarcarga(this);
     Thread gameThread;
 
     //entidad y objetos

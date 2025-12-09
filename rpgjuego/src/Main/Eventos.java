@@ -96,10 +96,12 @@ public class Eventos {
             gp.estadodeljuego = estadodeljuego;
             gp.jugador.cancelaratq = true;
             gp.playSE(2);
-            gp.ui.dialogoactual = "tomas agua del lago \ntu vida y mana se lleno";
+            gp.ui.dialogoactual = "tomas agua del lago \ntu vida y mana se lleno\n"
+                    +"tu progreso ha sido guardado";
             gp.jugador.vida = gp.jugador.vidamax;
             gp.jugador.mana = gp.jugador.manamaximo;
             gp.aSetter.setenemigos();
+            gp.guardarcarga.guardar();
         }
     }
     public void teleport(int map, int col, int fila){

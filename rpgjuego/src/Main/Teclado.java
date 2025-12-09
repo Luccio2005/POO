@@ -77,7 +77,9 @@ public class Teclado implements KeyListener {
                 gp.playMusic(0);
             }
             if(gp.ui.numerodecomando ==1){
-
+                gp.guardarcarga.cargar();
+                gp.estadodeljuego = gp.reanudar;
+                gp.playMusic(0);
             }
             if(gp.ui.numerodecomando ==2){
                 System.exit(0);
