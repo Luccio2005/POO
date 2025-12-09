@@ -28,7 +28,7 @@ public class proyectiles extends entidad{
             boolean contactojugador = gp.comprobar.comprobarjugador(this);
             if(gp.jugador.invencible == false && contactojugador == true){
                 damageplayer(atq);
-                generadorparticula(usuario.proyectiles,gp.jugador);
+                generadorparticula(usuario.proyectiles,usuario.proyectiles);
                 vivo = false;
             }
         }

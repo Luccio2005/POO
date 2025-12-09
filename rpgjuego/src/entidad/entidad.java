@@ -357,6 +357,16 @@ public class entidad {
             bloqueodeaccion = 0;
         }
     }
+    public String getoppositedireccion(String direccion){
+        String oppositedireccion = "";
+        switch (direccion){
+            case "up": oppositedireccion = "down"; break;
+            case "down": oppositedireccion = "up"; break;
+            case "left": oppositedireccion = "right"; break;
+            case "right": oppositedireccion = "left"; break;
+        }
+        return oppositedireccion;
+    }
     public void atacando(){
         contadorSprite++;
         if(contadorSprite <=motion1_duracion){
@@ -403,10 +413,16 @@ public class entidad {
     }
     public void damageplayer(int atq){
         if(gp.jugador.invencible == false){
-            gp.playSE(6);
             int damage = atq - gp.jugador.def;
-            if(damage<0){
-                damage = 0;
+            String canguardireccion = getoppositedireccion(direccion);
+            if(gp.jugador.guarding == true && gp.jugador.direccion.equals(canguardireccion)){
+                damage /= 3;
+                gp.playSE(15);
+            }else{
+                gp.playSE(6);
+                if(damage<1){
+                    damage = 1;
+                }
             }
             gp.jugador.vida -= damage;
             gp.jugador.invencible = true;
