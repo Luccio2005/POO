@@ -240,6 +240,7 @@ public class jugador extends entidad{
             contadorinvencible ++;
             if(contadorinvencible > 60){
                 invencible = false;
+                transparente = false;
                 contadorinvencible = 0;
             }
         }
@@ -259,6 +260,7 @@ public class jugador extends entidad{
             gp.playSE(12);
         }
     }
+
     public void recogerobjeto (int i){
         if(i != 999){
             // recoger solo items
@@ -300,11 +302,12 @@ public class jugador extends entidad{
             if(invencible == false && gp.enemigos[gp.actualmapa][i].muriendo == false){
                 gp.playSE(6);
                 int damage = gp.enemigos[gp.actualmapa][i].atq - def;
-                if(damage<0){
-                    damage = 0;
+                if(damage<1){
+                    damage = 1;
                 }
                 vida -= damage;
                 invencible = true;
+                transparente = true;
             }
         }
     }
@@ -504,7 +507,7 @@ public class jugador extends entidad{
             }
                  break;
         }
-        if(invencible == true){
+        if(transparente == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
         g2.drawImage(imagen,pantallax,pantallay, null);

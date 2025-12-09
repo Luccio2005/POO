@@ -37,6 +37,7 @@ public class entidad {
     public boolean knockback = false;
     public String knockbackdireccion;
     public boolean guarding = false;
+    public boolean transparente = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
@@ -423,6 +424,9 @@ public class entidad {
                 if(damage<1){
                     damage = 1;
                 }
+            }
+            if(damage != 0){
+                gp.jugador.transparente = true;
             }
             gp.jugador.vida -= damage;
             gp.jugador.invencible = true;
