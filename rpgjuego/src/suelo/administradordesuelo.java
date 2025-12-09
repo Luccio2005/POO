@@ -55,7 +55,7 @@ public class administradordesuelo {
             setup(4,"tree",true);
             setup(5,"road00",false);
             setup(6,"fueramundo",true);
-            setup(7,"wall05",false );
+            setup(7,"wall05",true );
             setup(8,"suelo05",false);
             setup(9,"Lava",true);
 

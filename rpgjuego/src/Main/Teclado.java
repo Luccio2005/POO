@@ -128,6 +128,7 @@ public class Teclado implements KeyListener {
             switch (gp.actualmapa){
                 case 0: gp.sueloM.cargarMapa("/mapas/worldV2.txt", 0); break;
                 case 1: gp.sueloM.cargarMapa("/mapas/interior01.txt", 1); break;
+                case 2: gp.sueloM.cargarMapa("/mapas/cyclopolis.txt",2); break;
             }
         }
         if(codigo == KeyEvent.VK_SPACE){

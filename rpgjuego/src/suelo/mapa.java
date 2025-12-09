@@ -15,28 +15,47 @@ public class mapa extends administradordesuelo{
         crearmapamundo();
     }
     public void crearmapamundo(){
+        //mundomapa = new BufferedImage[gp.maxmap];
         mundomapa = new BufferedImage[gp.maxmap];
         int mapamundoancho = gp.tileSize * gp.maxWorldCol;
         int mapamundoalto = gp.tileSize * gp.maxWorldRow;
 
-        for(int i = 0; i < gp.maxmap; i++){
-            mundomapa[i] = new BufferedImage(mapamundoancho, mapamundoalto, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2 = (Graphics2D) mundomapa[i].createGraphics();
-            int col = 0;
-            int fila = 0;
-            while (col < gp.maxWorldCol && fila < gp.maxWorldRow){
+        int i = gp.actualmapa;
+        mundomapa[i] = new BufferedImage(mapamundoancho, mapamundoalto, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2 = mundomapa[i].createGraphics();
+// dibuja SOLO el mapa actual
+        for (int col = 0; col < gp.maxWorldCol; col++) {
+            for (int fila = 0; fila < gp.maxWorldRow; fila++) {
                 int suelonum = mapaNum[i][col][fila];
                 int x = gp.tileSize * col;
                 int y = gp.tileSize * fila;
                 g2.drawImage(suelo[suelonum].imagen, x, y, null);
-                col++;
-                if(col == gp.maxWorldCol){
-                    col = 0;
-                    fila++;
-                }
             }
-            g2.dispose();
         }
+        g2.dispose();
+
+        //int mapamundoancho = gp.tileSize * gp.maxWorldCol;
+        //int mapamundoalto = gp.tileSize * gp.maxWorldRow;
+
+       // for(int i = 0; i < gp.maxmap; i++){
+           // mundomapa[i] = new BufferedImage(mapamundoancho, mapamundoalto, BufferedImage.TYPE_INT_ARGB);
+           // Graphics2D g2 = (Graphics2D) mundomapa[i].createGraphics();
+           // int col = 0;
+           // int fila = 0;
+          //  while (col < gp.maxWorldCol && fila < gp.maxWorldRow){
+             //   int suelonum = mapaNum[i][col][fila];
+            //    int x = gp.tileSize * col;
+            //    int y = gp.tileSize * fila;
+             //   g2.drawImage(suelo[suelonum].imagen, x, y, null);
+             //   col++;
+              //  if(col == gp.maxWorldCol){
+             //       col = 0;
+              //      fila++;
+              //  }
+         //   }
+         //   g2.dispose();
+
     }
     public void dibujarfullpantallademapa(Graphics2D g2){
         // background color
@@ -49,7 +68,16 @@ public class mapa extends administradordesuelo{
         int y = gp.altoPantalla/2 - alto/2;
         g2.drawImage(mundomapa[gp.actualmapa], x, y, ancho, alto, null);
         // dibujar jugador
-        double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+        //double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+        int mundoAncho = gp.maxWorldCol * gp.tileSize;
+        int mundoAlto  = gp.maxWorldRow * gp.tileSize;
+
+        double escalaX = (double) mundoAncho / ancho;
+        double escalaY = (double) mundoAlto  / alto;
+
+// en mapas cuadrados son iguales, pero lo dejamos correcto por si acaso
+        double escala = Math.max(escalaX, escalaY);
+
         int jugadorx = (int) (x + gp.jugador.mundox/escala);
         int jugadory = (int) (y + gp.jugador.mundoy/escala);
         int jugadortamano = (int) (gp.tileSize/3);
@@ -69,7 +97,14 @@ public class mapa extends administradordesuelo{
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
             g2.drawImage(mundomapa[gp.actualmapa], x, y, ancho, alto, null);
             // dibujar jugador
-            double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+            //double escala = (double) (gp.tileSize + gp.maxWorldCol)/ancho;
+            int mundoAncho = gp.maxWorldCol * gp.tileSize;
+            int mundoAlto  = gp.maxWorldRow * gp.tileSize;
+
+            double escalaX = (double) mundoAncho / ancho;
+            double escalaY = (double) mundoAlto  / alto;
+            double escala = Math.max(escalaX, escalaY);
+
             int jugadorx = (int) (x + gp.jugador.mundox/escala);
             int jugadory = (int) (y + gp.jugador.mundoy/escala);
             int jugadortamano = (int) (gp.tileSize);

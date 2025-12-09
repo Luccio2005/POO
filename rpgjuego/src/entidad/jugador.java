@@ -42,7 +42,7 @@ public class jugador extends entidad{
     }
     public void valorespredeterminados(){
         mundox= gp.tileSize * 23;
-        mundoy= gp.tileSize * 21;
+        mundoy= gp.tileSize * 19;
         defaultspeed =4;
         velocidad= defaultspeed;
         direccion= "down";
