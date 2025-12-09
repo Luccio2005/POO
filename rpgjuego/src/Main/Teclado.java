@@ -221,12 +221,12 @@ public class Teclado implements KeyListener {
         if(codigo == KeyEvent.VK_ENTER){
             if(gp.ui.numerodecomando == 0){
                 gp.estadodeljuego = gp.reanudar;
-                gp.retry();
+                gp.resetgame(false);
                 gp.playMusic(0);
             }
             else if(gp.ui.numerodecomando == 1){
                 gp.estadodeljuego = gp.pantalladeinicio;
-                gp.restart();
+                gp.resetgame(true);
             }
         }
     }

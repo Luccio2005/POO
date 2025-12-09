@@ -101,21 +101,17 @@ public class Panel_de_Juego extends JPanel implements Runnable{
             setFullScreen();
         }
     }
-    public void retry(){
+    public void resetgame(boolean restart){
         jugador.setdefaultpositions();
         jugador.restaurarvidaymana();
         aSetter.setnpc();
         aSetter.setenemigos();
-    }
-    public void restart(){
-        jugador.valorespredeterminados();
-        jugador.setdefaultpositions();
-        jugador.restaurarvidaymana();
-        jugador.setItems();
-        aSetter.setObject();
-        aSetter.setnpc();
-        aSetter.setenemigos();
-        aSetter.setsuelointeractivo();
+        if(restart == true){
+            jugador.valorespredeterminados();
+            aSetter.setObject();
+            aSetter.setsuelointeractivo();
+            emanager.iluminacion.resetdia();
+        }
     }
     public void setFullScreen(){
         // get local screen device

@@ -71,6 +71,10 @@ public class iluminacion {
         g2.fillRect(0, 0, gp.anchoPantalla, gp.altoPantalla);
         g2.dispose();
     }
+    public void resetdia(){
+        estadodia = dia;
+        filtroalfa = 0f;
+    }
     public void actualizar(){
         if(gp.jugador.luzactualizada == true){
             setlightsource();

@@ -434,9 +434,10 @@ public class entidad {
                     setknockback(this, gp.jugador, knockbackpower);
                     offbalance = true;
                     contadorSprite =- 60;
+                }else{
+                    damage /= 3;
+                    gp.playSE(15);
                 }
-                damage /= 3;
-                gp.playSE(15);
             }else{
                 gp.playSE(6);
                 if(damage<1){
@@ -677,10 +678,10 @@ public class entidad {
         int nextmundoy = usuario.gettopy();
 
         switch (usuario.direccion){
-            case "up": nextmundoy = usuario.gettopy()-1; break;
-            case "down": nextmundoy = usuario.getbottomy()-1; break;
-            case "left": nextmundox = usuario.getizqx()-1; break;
-            case "right": nextmundox = usuario.getderx()-1; break;
+            case "up": nextmundoy = usuario.gettopy()-gp.jugador.velocidad; break;
+            case "down": nextmundoy = usuario.getbottomy()+gp.jugador.velocidad; break;
+            case "left": nextmundox = usuario.getizqx()-gp.jugador.velocidad; break;
+            case "right": nextmundox = usuario.getderx()+gp.jugador.velocidad; break;
         }
         int col = nextmundox/gp.tileSize;
         int fila = nextmundoy/gp.tileSize;

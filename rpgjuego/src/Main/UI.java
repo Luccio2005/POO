@@ -622,6 +622,7 @@ public class UI {
             if(gp.keyH.enterp == true){
                 substate = 0;
                 gp.estadodeljuego = gp.pantalladeinicio;
+                gp.resetgame(true);
             }
         }
         //no

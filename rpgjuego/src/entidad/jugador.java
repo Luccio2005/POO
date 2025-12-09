@@ -39,10 +39,6 @@ public class jugador extends entidad{
         //areadeataque.height = 20;
 
         valorespredeterminados();
-        getPlayerImage();
-        getPlayerAttackImage();
-        getguardimage();
-        setItems();
     }
     public void valorespredeterminados(){
         mundox= gp.tileSize * 23;
@@ -64,10 +60,16 @@ public class jugador extends entidad{
         coin = 500;
         actualarma = new Obj_sword_normal(gp);
         actualescudo = new Obj_shield_wood(gp);
+        actualluz = null;
         proyectiles = new Obj_fireball(gp);
         //proyectiles = new Obj_rock(gp);
         atq = getAttack(); // el valor de atq es decidido por str con elarma
         def = getDefense(); // el valor de def es decidido por dex con el escudo
+
+        getPlayerImage();
+        getPlayerAttackImage();
+        getguardimage();
+        setItems();
     }
     public void setdefaultpositions(){
         mundox= gp.tileSize * 23;
@@ -79,6 +81,10 @@ public class jugador extends entidad{
         mana = manamaximo;
         invencible = false;
         transparente = false;
+        atacando = false;
+        guarding = false;
+        knockback = false;
+        luzactualizada = true;
     }
     public void setItems(){
         inventario.clear();
