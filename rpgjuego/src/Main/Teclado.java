@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Teclado implements KeyListener {
 
     Panel_de_Juego gp;
-    public boolean arribap, abajop, izquierdap, derechap, enterp, disparop;
+    public boolean arribap, abajop, izquierdap, derechap, enterp, disparop, spacep;
     boolean checkDrawTime = false;
 
     public Teclado(Panel_de_Juego gp){
@@ -127,6 +127,9 @@ public class Teclado implements KeyListener {
                 case 0: gp.sueloM.cargarMapa("/mapas/worldV2.txt", 0); break;
                 case 1: gp.sueloM.cargarMapa("/mapas/interior01.txt", 1); break;
             }
+        }
+        if(codigo == KeyEvent.VK_SPACE){
+            spacep = true;
         }
     }
     public void pausar(int codigo){
@@ -334,6 +337,12 @@ public class Teclado implements KeyListener {
         }
         if(codigo == KeyEvent.VK_F){
             disparop = false;
+        }
+        if(codigo == KeyEvent.VK_ENTER){
+            enterp = false;
+        }
+        if(codigo == KeyEvent.VK_SPACE){
+            spacep = false;
         }
 
     }

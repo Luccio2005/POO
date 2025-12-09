@@ -41,6 +41,7 @@ public class jugador extends entidad{
         valorespredeterminados();
         getPlayerImage();
         getPlayerAttackImage();
+        getguardimage();
         setItems();
     }
     public void valorespredeterminados(){
@@ -134,9 +135,18 @@ public class jugador extends entidad{
             atqder2 = setup("/jugador/hachader-2", gp.tileSize, gp.tileSize);
         }
     }
+    public void getguardimage(){
+        guardiaarriba = setup("/jugador/Guardia_arriba",gp.tileSize, gp.tileSize);
+        guardiaabajo = setup("/jugador/Guardia_abajo",gp.tileSize, gp.tileSize);
+        guardiaizq = setup("/jugador/Guardia_izq",gp.tileSize, gp.tileSize);
+        guardiader = setup("/jugador/Guardia_der",gp.tileSize, gp.tileSize);
+    }
     public void actualizar(){
         if(atacando == true){
             atacando();
+        }
+        else if(keyH.spacep == true){
+            guarding = true;
         }
         else if(keyH.arribap == true || keyH.abajop ==true
                 || keyH.izquierdap == true || keyH.derechap == true ||keyH.enterp == true){
@@ -197,6 +207,7 @@ public class jugador extends entidad{
             }
             cancelaratq = false;
             gp.keyH.enterp = false;
+            guarding = false;
             contadorSprite++;
             if(contadorSprite>12){
                 if(numeroSprite ==1){
@@ -205,6 +216,7 @@ public class jugador extends entidad{
                     numeroSprite=1;
                 }
                 contadorSprite=0;
+
             }
         }
         if(gp.keyH.disparop == true && proyectiles.vivo == false
@@ -421,8 +433,6 @@ public class jugador extends entidad{
         return canobtain;
     }
     public void dibujar(Graphics2D g2){
-       // g2.setColor(Color.white);
-        //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
         BufferedImage imagen=null;
         switch (direccion){
             case "up":
@@ -438,6 +448,8 @@ public class jugador extends entidad{
                 }if(numeroSprite ==2){
                     imagen = atqarriba2;
                 }
+            }if(guarding == true){
+                    imagen = guardiaarriba;
             }
                  break;
             case "down":
@@ -453,6 +465,8 @@ public class jugador extends entidad{
                 }if(numeroSprite ==2){
                     imagen = atqabajo2;
                 }
+            }if(guarding == true){
+                imagen = guardiaabajo;
             }
                  break;
             case "left":
@@ -468,6 +482,8 @@ public class jugador extends entidad{
                 }if(numeroSprite ==2){
                     imagen = atqizq2;
                 }
+            }if(guarding == true){
+                imagen = guardiaizq;
             }
                  break;
             case "right":
@@ -483,6 +499,8 @@ public class jugador extends entidad{
                 }if(numeroSprite ==2){
                     imagen = atqder2;
                 }
+            }if(guarding == true){
+                imagen = guardiader;
             }
                  break;
         }

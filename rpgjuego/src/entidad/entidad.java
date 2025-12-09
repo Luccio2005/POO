@@ -13,7 +13,8 @@ import java.util.Random;
 public class entidad {
     Panel_de_Juego gp;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public BufferedImage atqarriba1, atqarriba2, atqabajo1, atqabajo2, atqizq1,atqizq2, atqder1, atqder2;
+    public BufferedImage atqarriba1, atqarriba2, atqabajo1, atqabajo2, atqizq1,atqizq2, atqder1, atqder2,
+    guardiaarriba, guardiaabajo, guardiaizq, guardiader;
     public BufferedImage imagen, imagen2, imagen3;
     public Rectangle areadecolision = new Rectangle(0,0,48,48);
     public Rectangle areadeataque = new Rectangle(0,0,0,0);
@@ -35,6 +36,7 @@ public class entidad {
     public boolean onpath = false;
     public boolean knockback = false;
     public String knockbackdireccion;
+    public boolean guarding = false;
     //CONTADOR
     public int contadorSprite=0;
     public int bloqueodeaccion =0;
