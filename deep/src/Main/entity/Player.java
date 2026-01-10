@@ -23,12 +23,12 @@ public class Player extends Entity{
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.x = 10;
+        solidArea.y = 20;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.width = 28;
+        solidArea.height = 25;
         setDefaultValues();
         getPlayerImage();
     }
@@ -103,16 +103,24 @@ public class Player extends Entity{
             String objectName = gp.obj[i].name;
             switch (objectName){
                 case "Key":
+                    gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key:"+hasKey);
                     break;
                 case "Door":
                     if(hasKey > 0){
+                        gp.playSE(3);
                         gp.obj[i] = null;
                         hasKey--;
                     }
                     System.out.println("Key:"+hasKey);
+                    break;
+                case "Boots":
+                    gp.playSE(2);
+                    speed += 2;
+                    gp.obj[i] = null;
+                    break;
             }
         }
     }
