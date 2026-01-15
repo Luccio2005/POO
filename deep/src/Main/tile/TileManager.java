@@ -20,7 +20,7 @@ public class TileManager {
         tile = new Tile[50];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/maps/world01.txt");
+        loadMap("/maps/worldV2.txt");
     }
 
     public void getTileImage(){
@@ -30,6 +30,43 @@ public class TileManager {
         setup(3,"017",false);
         setup(4,"016",true);
         setup(5,"003",false);
+        setup(6,"002",false);
+        setup(7,"032",true);
+        setup(8,"019",true);
+        setup(9,"017",false);
+
+        setup(10,"001",false);
+        setup(11,"002",false);
+        setup(12,"018",true);
+        setup(13,"019",true);
+        setup(14,"020",true);
+        setup(15,"021",true);
+        setup(16,"022",true);
+        setup(17,"023",true);
+        setup(18,"024",true);
+        setup(19,"025",true);
+        setup(20,"026",true);
+        setup(21,"027",true);
+        setup(22,"028",true);
+        setup(23,"029",true);
+        setup(24,"030",true);
+        setup(25,"031",true);
+        setup(26,"003",false);
+        setup(27,"004",false);
+        setup(28,"005",false);
+        setup(29,"006",false);
+        setup(30,"007",false);
+        setup(31,"008",false);
+        setup(32,"009",false);
+        setup(33,"010",false);
+        setup(34,"011",false);
+        setup(35,"012",false);
+        setup(36,"013",false);
+        setup(37,"014",false);
+        setup(38,"015",false);
+        setup(39,"017",false);
+        setup(40,"032",true);
+        setup(41,"016",true);
     }
     public void setup(int index, String imageName, boolean collision){
         UtilityTool uTool = new UtilityTool();
