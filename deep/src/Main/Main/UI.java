@@ -15,6 +15,7 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public int commandNum = 0;
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -31,6 +32,10 @@ public class UI {
         this.g2 = g2;
         g2.setFont(arial_40);
         g2.setColor(Color.white);
+        //title state
+        if(gp.gameState == gp.titleState){
+            drawTitleScreen();
+        }
         // play state
         if(gp.gameState == gp.playState){
 
@@ -42,6 +47,51 @@ public class UI {
         // dialogue state
         if(gp.gameState == gp.dialogueState){
             drawDialogueScreen();
+        }
+    }
+    public void drawTitleScreen(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth, gp.screenHeight);
+        // title name
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "DEEP";
+        int x = getXforCenteredText(text);
+        int y = gp.tileSize*3;
+        // shadow
+        g2.setColor(Color.gray);
+        g2.drawString(text, x+5, y+5);
+        // main color
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+        // image
+        x = gp.screenWidth/2 - (gp.tileSize)/2;
+        y += gp.tileSize*2;
+        g2.drawImage(gp.player.down1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+        //menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+
+        text = "Nuevo Juego";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*3.5;
+        g2.drawString(text, x ,y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.tileSize, y);
+        }
+
+        text = "Continuar";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x ,y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.tileSize, y);
+        }
+
+        text = "Salir";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x ,y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.tileSize, y);
         }
     }
     public void drawDialogueScreen(){
