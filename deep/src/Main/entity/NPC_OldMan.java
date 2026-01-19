@@ -16,6 +16,7 @@ public class NPC_OldMan extends Entity{
         direction = "down";
         speed = 1;
         getImage();
+        setDialogue();
     }
     public void getImage(){
         up1 = setup("/npc/oldman_up_1");
@@ -26,6 +27,15 @@ public class NPC_OldMan extends Entity{
         left2 = setup("/npc/oldman_left_2");
         right1 = setup("/npc/oldman_right_1");
         right2 = setup("/npc/oldman_right_2");
+    }
+    public void setDialogue(){
+        dialogues[0] = "Bienvenido aventurero!!!";
+        dialogues[1] = "Esta Isla posee uno de los \ntesoros mas grandes";
+        dialogues[2] = "Pero para obtenerlo, debe \nadentrarse a lo mas profundo";
+        dialogues[3] = "Vencer sus miedos, obstaculos \ny enemigos que habitan";
+        dialogues[4] = "Mientras mas profundo vaya, \nmas dificil sera todo";
+        dialogues[5] = "Pero si es valiente y perseverante, \npodra obtener riquezas";
+        dialogues[6] = "Asi que preparate bien!!!";
     }
     public void setAction(){
         actionLockCounter++;
@@ -47,5 +57,8 @@ public class NPC_OldMan extends Entity{
             }
             actionLockCounter = 0;
         }
+    }
+    public void speak(){
+        super.speak();
     }
 }
