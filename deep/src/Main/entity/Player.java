@@ -75,6 +75,9 @@ public class Player extends Entity{
             // check nc colision
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
+            // check monster olision
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+            contactMonster(monsterIndex);
             //check event
             gp.eHandler.checkEvent();
 
@@ -110,6 +113,14 @@ public class Player extends Entity{
             if(standCounter == 20){
                 spriteNum = 1;
                 standCounter =0;
+            }
+        }
+        // thos need t be oputside
+        if(invincible == true){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
             }
         }
     }
@@ -150,6 +161,14 @@ public class Player extends Entity{
             }
         }
     }
+    public void contactMonster(int i){
+        if(i != 999){
+            if(invincible == false){
+                life -= 1;
+                invincible = true;
+            }
+        }
+    }
     public void draw(Graphics2D g2){
         BufferedImage image = null;
         switch (direction){
@@ -182,7 +201,15 @@ public class Player extends Entity{
             }
                 break;
         }
+        if(invincible == true){
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
         g2.drawImage(image, screenX, screenY, null);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        //debug
+        //g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        //g2.setColor(Color.white);
+        //g2.drawString("Invencible:" +invincibleCounter,10,400);
         //lineas de colision
         //g2.setColor(Color.red);
         //g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
