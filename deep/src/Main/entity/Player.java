@@ -3,6 +3,8 @@ package entity;
 import Main.GamePanel;
 import Main.KeyHandler;
 import Main.UtilityTool;
+import object.OBJ_Shield_Wood;
+import object.OBJ_Sword_Normal;
 
 import javax.imageio.ImageIO;
 import javax.swing.plaf.PanelUI;
@@ -17,6 +19,7 @@ public class Player extends Entity{
     public final int screenY;
     public int hasKey = 0;
     int standCounter = 0;
+    public boolean attackCanceled = false;
 
     public Player(GamePanel gp, KeyHandler keyH){
         super(gp);
@@ -46,8 +49,24 @@ public class Player extends Entity{
         speed = 6;
         direction = "down";
         //player status
+        level = 1;
         maxlife = 6;
         life = maxlife;
+        strength = 1; // mas strenght mas damage
+        dexterity = 1; // mas destreza menos damage recibe
+        exp = 0;
+        nextLevelExp = 5;
+        coin = 0;
+        currentWeapon = new OBJ_Sword_Normal(gp);
+        currentShield = new OBJ_Shield_Wood(gp);
+        attack = getAttack();
+        defense = getDefense();
+    }
+    public int getAttack(){
+        return attack = strength * currentWeapon.attackValue;
+    }
+    public int getDefense(){
+        return defense = dexterity * currentShield.defenseValue;
     }
     public void getPlayerImage(){
         up1 = setup("/player/up1", gp.tileSize, gp.tileSize);
@@ -115,6 +134,12 @@ public class Player extends Entity{
                         break;
                 }
             }
+            if(keyH.enterPressed == true && attackCanceled == false){
+                gp.playSE(7);
+                attacking = true;
+                spriteCounter = 0;
+            }
+            attackCanceled = false;
             gp.keyH.enterPressed = false;
             spriteCounter++;
             if(spriteCounter > 12){
@@ -206,11 +231,9 @@ public class Player extends Entity{
     public void interactNPC(int i){
         if(gp.keyH.enterPressed == true){
             if(i !=999){
+                attackCanceled = true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
-            } else{
-                gp.playSE(7);
-                attacking = true;
             }
         }
     }
