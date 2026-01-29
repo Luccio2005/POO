@@ -12,10 +12,13 @@ public class MON_GreenSlime extends Entity {
         this.gp = gp;
 
         type = 2;
-        name = "Green Slime";
+        name = "Slime";
         speed = 1;
         maxlife = 4;
         life = maxlife;
+        attack = 2;
+        defense = 0;
+        exp = 1;
 
         solidArea.x = 3;
         solidArea.y = 18;

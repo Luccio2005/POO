@@ -81,6 +81,8 @@ public class EventHandler {
             gp.playSE(2);
             gp.ui.currentDialogue = "Tomaste agua del lago. \ntu vida se recupera!!";
             gp.player.life = gp.player.maxlife;
+            //reiniciar monstruos
+            gp.aSetter.setMonster();
         }
     }
     public void teleport(int col, int row, int gameState){
