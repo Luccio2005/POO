@@ -6,7 +6,7 @@ import entity.Entity;
 public class OBJ_Door extends Entity {
     public OBJ_Door(GamePanel gp){
         super(gp);
-        name = "Door";
+        name = "Puerta";
         down1 = setup("/objects/door", gp.tileSize, gp.tileSize);
         collision = true;
 
