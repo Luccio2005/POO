@@ -121,7 +121,7 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         // debug
         long drawStart = 0;
-        if(keyH.checkDrawTime == true){
+        if(keyH.showDebugText == true){
             drawStart = System.nanoTime();
         }
         // title screen
@@ -167,14 +167,21 @@ public class GamePanel extends JPanel implements Runnable{
             ui.draw(g2);
         }
         //debug
-        if(keyH.checkDrawTime == true){
+        if(keyH.showDebugText == true){
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
+            g2.setFont(new Font("Arial",Font.PLAIN,20));
             g2.setColor(Color.white);
-            g2.drawString("Tiempo Dibujo: "+passed,10, 400);
-            System.out.println(("Tiempo Dibujo: "+passed));
-        }
+            int x = 10;
+            int y = 400;
+            int lineHeight = 20;
 
+            g2.drawString("MundoX" + player.worldX, x, y); y+= lineHeight;
+            g2.drawString("MundoY" + player.worldY, x, y); y+= lineHeight;
+            g2.drawString("Col" + (player.worldX + player.solidArea.x)/tileSize, x, y); y+= lineHeight;
+            g2.drawString("Fila" + (player.worldY + player.solidArea.y)/tileSize, x, y); y+= lineHeight;
+            g2.drawString("Tiempo Dibujo: "+passed,x, y);
+        }
         g2.dispose();
     }
     public void playMusic(int i){
