@@ -200,6 +200,11 @@ public class Player extends Entity{
         if(shotAvailableCounter < 30){
             shotAvailableCounter++;
         }
+        if(life > maxlife){
+            life = maxlife;
+        }if(mana > maxMana){
+            mana = maxMana;
+        }
     }
     public void attacking(){
         spriteCounter++;
@@ -236,41 +241,22 @@ public class Player extends Entity{
     }
     public void pickUpObject(int i){
         if(i != 999){
-            String text;
-            if(inventory.size() != maxInventorySize){
-                inventory.add(gp.obj[i]);
-                gp.playSE(1);
-                text = "Conseguiste una " + gp.obj[i].name + "!";
-            } else{
-                text = "No puedes agarrar nada mas";
-            }
-            gp.ui.addMessage(text);
-            gp.obj[i] = null;
-            /*String objectName = gp.obj[i].name;
-            switch (objectName){
-                case "Key":
+            //pickup only items
+            if(gp.obj[i].type == type_pickupOnly){
+                gp.obj[i].use(this);
+                gp.obj[i] = null;
+            }else {
+                String text;
+                if(inventory.size() != maxInventorySize){
+                    inventory.add(gp.obj[i]);
                     gp.playSE(1);
-                    hasKey++;
-                    gp.obj[i] = null;
-                    gp.ui.addMessage("Conseguiste una llave!");
-                    break;
-                case "Door":
-                    if(hasKey > 0){
-                        gp.playSE(3);
-                        gp.obj[i] = null;
-                        hasKey--;
-                        gp.ui.addMessage("Abriste la puerta!");
-                    }else{
-                        gp.ui.addMessage("Necesitas una llave!");
-                    }
-                    break;
-                case "Boots":
-                    gp.playSE(2);
-                    speed += 2;
-                    gp.obj[i] = null;
-                    gp.ui.addMessage("Incremento velocidad!");
-                    break;
-            }*/
+                    text = "Conseguiste una " + gp.obj[i].name + "!";
+                } else{
+                    text = "No puedes agarrar nada mas";
+                }
+                gp.ui.addMessage(text);
+                gp.obj[i] = null;
+            }
         }
     }
     public void interactNPC(int i){
