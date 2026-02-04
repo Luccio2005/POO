@@ -79,8 +79,9 @@ public class EventHandler {
             gp.gameState = gameState;
             gp.player.attackCanceled = true;
             gp.playSE(2);
-            gp.ui.currentDialogue = "Tomaste agua del lago. \ntu vida se recupera!!";
+            gp.ui.currentDialogue = "Tomaste agua del lago. \ntu vida y mana se recupera!!";
             gp.player.life = gp.player.maxlife;
+            gp.player.mana = gp.player.maxMana;
             //reiniciar monstruos
             gp.aSetter.setMonster();
         }
