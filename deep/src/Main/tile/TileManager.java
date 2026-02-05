@@ -67,6 +67,7 @@ public class TileManager {
         setup(39,"017",false);
         setup(40,"032",true);
         setup(41,"016",true);
+        //setup(42,"trunk",true);
     }
     public void setup(int index, String imageName, boolean collision){
         UtilityTool uTool = new UtilityTool();
