@@ -7,6 +7,7 @@ import tile_interactive.InteractiveTile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,13 +17,18 @@ public class GamePanel extends JPanel implements Runnable{
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale;
-    public final int maxScreenCol = 16;
+    public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
     //world settings
     public final int maxWorldCol = 50; //despues cambiar por 155
     public final int maxWorldRow = 50; // despues cambiar por 155
+    // full screen
+    int screenWidth2 = screenWidth;
+    int screenHeight2 = screenHeight;
+    BufferedImage tempScreen;
+    Graphics2D g2;
 
     // fps
     int FPS = 60;
@@ -68,6 +74,18 @@ public class GamePanel extends JPanel implements Runnable{
         //playMusic(0);
         //stopMusic();
         gameState = titleState;
+        tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
+        g2 = (Graphics2D)tempScreen.getGraphics();
+        // full pantall
+        //setFullScreen();
+    }
+    public void setFullScreen(){
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        gd.setFullScreenWindow(Main.window);
+        // get full screen
+        screenWidth2 = Main.window.getWidth();
+        screenHeight2  = Main.window.getHeight();
     }
     public void startGameThread(){
         gameThread = new Thread(this);
@@ -82,7 +100,8 @@ public class GamePanel extends JPanel implements Runnable{
 
             update();
 
-            repaint();
+            drawToTempScreen();
+            drawToScreen();
 
             try {
                 double remainingTime = nextDrawTime - System.nanoTime();
@@ -144,9 +163,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
     }
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
+    public void drawToTempScreen(){
         // debug
         long drawStart = 0;
         if(keyH.showDebugText == true){
@@ -225,7 +242,11 @@ public class GamePanel extends JPanel implements Runnable{
             g2.drawString("Fila" + (player.worldY + player.solidArea.y)/tileSize, x, y); y+= lineHeight;
             g2.drawString("Tiempo Dibujo: "+passed,x, y);
         }
-        g2.dispose();
+    }
+    public void drawToScreen(){
+        Graphics g = getGraphics();
+        g.drawImage(tempScreen, 0, 0, screenWidth2, screenHeight2, null);
+        g.dispose();
     }
     public void playMusic(int i){
         music.setFile(i);
