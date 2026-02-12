@@ -14,6 +14,7 @@ public class OBJ_Boots extends Entity {
         name = "Botas";
         down1 = setup("/objects/boots", gp.tileSize, gp.tileSize);
         description = "["+name+"]\nte hace mas veloz";
+        price = 10;
     }
     public void use_boots(Entity entity){
         gp.gameState = gp.dialogueState;
