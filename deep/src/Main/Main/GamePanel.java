@@ -1,5 +1,6 @@
 package Main;
 
+import ai.Pathfinder;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -35,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     // fps
     int FPS = 60;
     //System
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
     Config config = new Config(this);
+    public Pathfinder pFinder = new Pathfinder(this);
     Thread gameThread;
     //entity and object
     public Player player = new Player(this,  keyH);
