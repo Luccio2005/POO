@@ -367,11 +367,12 @@ public class Entity {
                     direction = "right";
                 }
             }
-            int nextCol = gp.pFinder.pathList.get(0).col;
+            // si encuentra su objetivo deja de buscar
+            /*int nextCol = gp.pFinder.pathList.get(0).col;
             int nextRow = gp.pFinder.pathList.get(0).row;
             if(nextCol == goalCol && nextRow == goalRow){
                 onPath = false;
-            }
+            }*/
         }
     }
 }
