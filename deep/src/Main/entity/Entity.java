@@ -32,6 +32,7 @@ public class Entity {
     public boolean dying = false;
     boolean hpBarOn = false;
     public boolean onPath = false;
+    public boolean knockBack = false;
     // counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
@@ -39,8 +40,10 @@ public class Entity {
     public int shotAvailableCounter = 0;
     int dyingCounter = 0;
     int hpBarCounter = 0;
+    int knockBackCounter = 0;
     // character atributes
     public String name;
+    public int defaultSpeed;
     public int speed;
     public int maxlife;
     public int life;
@@ -67,6 +70,7 @@ public class Entity {
     public String description = "";
     public int useCost;
     public int price;
+    public int knockBackPower = 0;
     // type
     public int type; // 0 player, 1 npc 2 monster
     public final int type_player = 0;
@@ -160,23 +164,53 @@ public class Entity {
         }
     }
     public void update(){
-        setAction();
-        checkCollision();
-        // if collisiom is alse
-        if(collisionOn == false){
-            switch (direction){
-                case "up":
-                    worldY -= speed;
-                    break;
-                case "down":
-                    worldY += speed;
-                    break;
-                case "left":
-                    worldX -= speed;
-                    break;
-                case "right":
-                    worldX += speed;
-                    break;
+        if(knockBack == true){
+            checkCollision();
+            if(collisionOn == true){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            } else if(collisionOn == false){
+                switch (gp.player.direction){
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+            knockBackCounter++;
+            if(knockBackCounter == 10){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        }else {
+            setAction();
+            checkCollision();
+            // if collisiom is alse
+            if(collisionOn == false){
+                switch (direction){
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
             }
         }
         spriteCounter++;
