@@ -51,7 +51,7 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = 22 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 27 * gp.tileSize;
         i++;
-        gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+        gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
         gp.obj[mapNum][i].worldX = 25 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 23 * gp.tileSize;
         i++;

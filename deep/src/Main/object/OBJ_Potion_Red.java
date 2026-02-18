@@ -15,6 +15,7 @@ public class OBJ_Potion_Red extends Entity{
         down1 = setup("/objects/potion_red",gp.tileSize, gp.tileSize);
         description = "["+name+"]\nrecuperas tu vida en\n" +value+ ".";
         price = 5;
+        stackable = true;
     }
     public boolean use(Entity entity){
         gp.gameState = gp.dialogueState;
