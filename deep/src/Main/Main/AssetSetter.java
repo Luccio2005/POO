@@ -63,6 +63,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = 22 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 31 * gp.tileSize;
         i++;
+        gp.obj[mapNum][i] = new OBJ_Lantern(gp);
+        gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 20 * gp.tileSize;
+        i++;
     }
     public void setNPC(){
         int mapNum = 0;
