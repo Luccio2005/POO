@@ -49,7 +49,7 @@ public class EventHandler {
             if(hit(0,27,16,"right") == true){
                 damagePit(gp.dialogueState);
             }
-            else if(hit(0,23,12,"up") == true){
+            else if(hit(0,125,127,"up") == true){
                 healingPool(gp.dialogueState);
             }
             else if(hit(0,10,39,"any") == true){
