@@ -24,6 +24,7 @@ public class MON_Orc extends Entity {
         attack = 8;
         defense = 2;
         exp = 5;
+        knockBackPower = 3;
         //projectile = new OBJ_Rock(gp);
 
         solidArea.x = 4;

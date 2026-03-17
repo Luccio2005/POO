@@ -44,6 +44,7 @@ public class Player extends Entity{
         setDefaultValues();
         getPlayerImage();
         getPlayerAttackImage();
+        getGuardImage();
         setItems();
     }
     public void setDefaultValues(){
@@ -80,6 +81,7 @@ public class Player extends Entity{
         life = maxlife;
         mana = maxMana;
         invincible = false;
+        transparent = false;
     }
     public void setItems(){
         inventory.clear();
@@ -137,9 +139,53 @@ public class Player extends Entity{
             attackRight2 = setup("/player/axe_right", gp.tileSize*23/16, gp.tileSize*23/16);
         }
     }
+    public void getGuardImage(){
+        guardUp = setup("/player/guardup", gp.tileSize*23/16, gp.tileSize*23/16);
+        guardDown = setup("/player/guarddown", gp.tileSize*23/16, gp.tileSize*23/16);
+        guardLeft = setup("/player/guardleft", gp.tileSize*23/16, gp.tileSize*23/16);
+        guardRight = setup("/player/guardright", gp.tileSize*23/16, gp.tileSize*23/16);
+    }
     public void update(){
-        if (attacking == true){
+        if(knockBack == true){
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+            gp.cChecker.checkObject(this, true);
+            gp.cChecker.checkEntity(this, gp.npc);
+            gp.cChecker.checkEntity(this, gp.monster);
+            gp.cChecker.checkEntity(this,gp.iTile);
+            if(collisionOn == true){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            } else if(collisionOn == false){
+                switch (knockBackDirection){
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+            knockBackCounter++;
+            if(knockBackCounter == 10){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        }
+        else if (attacking == true){
             attacking();
+        }
+        else if(keyH.spacePressed == true){
+            guarding = true;
+            guardCounter++;
         }
         else if(keyH.upPressed == true || keyH.downPressed == true ||
                 keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true){
@@ -192,6 +238,9 @@ public class Player extends Entity{
             }
             attackCanceled = false;
             gp.keyH.enterPressed = false;
+            guarding = false;
+            guardCounter = 0;
+
             spriteCounter++;
             if(spriteCounter > 12){
                 if(spriteNum == 1){
@@ -207,6 +256,8 @@ public class Player extends Entity{
                 spriteNum = 1;
                 standCounter =0;
             }
+            guarding = false;
+            guardCounter = 0;
         }
         if(gp.keyH.shotKeyPressed == true && projectile.alive == false
                 && shotAvailableCounter == 30 && projectile.haveResource(this) == true){
@@ -226,6 +277,7 @@ public class Player extends Entity{
             invincibleCounter++;
             if(invincibleCounter > 60){
                 invincible = false;
+                transparent = false;
                 invincibleCounter = 0;
             }
         }
@@ -285,11 +337,12 @@ public class Player extends Entity{
             if(invincible == false && gp.monster[gp.currentMap][i].dying == false){
                 gp.playSE(6);
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
-                if(damage < 0){
-                    damage = 0;
+                if(damage < 1){
+                    damage = 1;
                 }
                 life -= damage;
                 invincible = true;
+                transparent = true;
             }
         }
     }
@@ -299,6 +352,9 @@ public class Player extends Entity{
                 gp.playSE(5);
                 if(knockBackPower > 0){
                     setKnockBack(gp.monster[gp.currentMap][i], attacker, knockBackPower);
+                }
+                if(gp.monster[gp.currentMap][i].offBalance == true){
+                    attack *=5;
                 }
                 int damage = attack - gp.monster[gp.currentMap][i].defense;
                 if(damage < 0){
@@ -444,6 +500,9 @@ public class Player extends Entity{
                         image = attackUp2;
                     }
                 }
+                if(guarding == true){
+                    image = guardUp;
+                }
                 break;
             case "down":
                 if(attacking == false){
@@ -459,6 +518,9 @@ public class Player extends Entity{
                     }if(spriteNum == 2){
                         image = attackDown2;
                     }
+                }
+                if(guarding == true){
+                    image = guardDown;
                 }
                 break;
             case "left":
@@ -476,6 +538,9 @@ public class Player extends Entity{
                         image = attackLeft2;
                     }
                 }
+                if(guarding == true){
+                    image = guardLeft;
+                }
                 break;
             case "right":
                 if(attacking == false){
@@ -492,9 +557,12 @@ public class Player extends Entity{
                         image = attackRight2;
                     }
                 }
+                if(guarding == true){
+                    image = guardRight;
+                }
                 break;
         }
-        if(invincible == true){
+        if(transparent == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
         g2.drawImage(image, screenX, screenY, null);
