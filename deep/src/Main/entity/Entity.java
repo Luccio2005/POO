@@ -40,6 +40,8 @@ public class Entity {
     public boolean guarding = false;
     public boolean transparent = false;
     public boolean offBalance = false;
+    public Entity loot;
+    public boolean opened = false;
     // counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
@@ -140,6 +142,8 @@ public class Entity {
     public int getGoalRow(Entity target){
         int goalRow = (target.worldY + target.solidArea.y)/gp.tileSize;
         return goalRow;
+    }
+    public void setLoot(Entity loot){
     }
     public void setAction(){
     }
@@ -449,9 +453,10 @@ public class Entity {
                     setKnockBack(this, gp.player, knockBackPower);
                     offBalance = true;
                     spriteCounter =-60;
+                }else{
+                    damage /= 3;
+                    gp.playSE(15);
                 }
-                damage /= 3;
-                gp.playSE(15);
             }else{
                 gp.playSE(6);
                 if(damage < 1){

@@ -1,6 +1,7 @@
 package Main;
 
 import ai.Pathfinder;
+import data.SaveLoad;
 import entity.Entity;
 import entity.Player;
 import environment.EnvironmentManager;
@@ -50,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Pathfinder pFinder = new Pathfinder(this);
     EnvironmentManager eManager = new EnvironmentManager(this);
     Map map = new Map(this);
+    SaveLoad saveLoad = new SaveLoad(this);
     Thread gameThread;
     //entity and object
     public Player player = new Player(this,  keyH);
@@ -98,21 +100,17 @@ public class GamePanel extends JPanel implements Runnable{
             setFullScreen();
         }
     }
-    public void retry(){
+    public void resetGame(boolean restart){
         player.setDefaultPositions();
-        player.restoreLifeAndMana();
+        player.restoreStatus();
         aSetter.setNPC();
         aSetter.setMonster();
-    }
-    public void restart(){
-        player.setDefaultValues();
-        player.setDefaultPositions();
-        player.restoreLifeAndMana();
-        player.setItems();
-        aSetter.setNPC();
-        aSetter.setObject();
-        aSetter.setMonster();
-        aSetter.setInteractiveTile();
+        if(restart == true){
+            player.setDefaultValues();
+            aSetter.setObject();
+            aSetter.setInteractiveTile();
+            eManager.lighting.resetDay();
+        }
     }
     public void setFullScreen(){
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

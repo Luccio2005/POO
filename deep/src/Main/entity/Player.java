@@ -42,10 +42,6 @@ public class Player extends Entity{
         //attackArea.height = 36;
 
         setDefaultValues();
-        getPlayerImage();
-        getPlayerAttackImage();
-        getGuardImage();
-        setItems();
     }
     public void setDefaultValues(){
         //worldX = gp.tileSize * 12;
@@ -68,20 +64,30 @@ public class Player extends Entity{
         coin = 0;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
+        currentLight = null;
         projectile = new OBJ_Fireball(gp);
         attack = getAttack();
         defense = getDefense();
+
+        getPlayerImage();
+        getPlayerAttackImage();
+        getGuardImage();
+        setItems();
     }
     public void setDefaultPositions(){
         worldX = gp.tileSize * 125;
         worldY = gp.tileSize * 134;
         direction = "down";
     }
-    public void restoreLifeAndMana(){
+    public void restoreStatus(){
         life = maxlife;
         mana = maxMana;
         invincible = false;
         transparent = false;
+        attacking = false;
+        guarding = false;
+        knockBack = false;
+        lightUpdated = true;
     }
     public void setItems(){
         inventory.clear();
@@ -96,6 +102,24 @@ public class Player extends Entity{
     }
     public int getDefense(){
         return defense = dexterity * currentShield.defenseValue;
+    }
+    public int getCurrentWeaponSlot(){
+        int currentWeaponSlot = 0;
+        for(int i = 0; i < inventory.size(); i++){
+            if(inventory.get(i) == currentWeapon){
+                currentWeaponSlot = i;
+            }
+        }
+        return currentWeaponSlot;
+    }
+    public int getCurrentShieldSlot(){
+        int currentShieldSlot = 0;
+        for(int i = 0; i < inventory.size(); i++){
+            if(inventory.get(i) == currentShield){
+                currentShieldSlot = i;
+            }
+        }
+        return currentShieldSlot;
     }
     public void getPlayerImage(){
         up1 = setup("/player/up1", gp.tileSize, gp.tileSize);

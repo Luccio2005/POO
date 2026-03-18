@@ -98,11 +98,13 @@ public class EventHandler {
             gp.gameState = gameState;
             gp.player.attackCanceled = true;
             gp.playSE(2);
-            gp.ui.currentDialogue = "Tomaste agua del lago. \ntu vida y mana se recupera!!";
+            gp.ui.currentDialogue = "Tomaste agua del lago. \ntu vida y mana se recupera!!\n " +
+                    "(El progreso ha sido guardado)";
             gp.player.life = gp.player.maxlife;
             gp.player.mana = gp.player.maxMana;
             //reiniciar monstruos
             gp.aSetter.setMonster();
+            gp.saveLoad.save();
         }
     }
     public void teleport(int map, int col, int row){

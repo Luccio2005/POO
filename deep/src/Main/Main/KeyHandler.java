@@ -73,7 +73,9 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
                 gp.playMusic(0);
             }if(gp.ui.commandNum == 1){
-
+                gp.saveLoad.load();
+                gp.gameState = gp.playState;
+                gp.playSE(0);
             }if(gp.ui.commandNum == 2){
                 System.exit(0);
             }
@@ -225,12 +227,12 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_ENTER){
             if(gp.ui.commandNum == 0){
                 gp.gameState = gp.playState;
-                gp.retry();
+                gp.resetGame(false);
                 gp.playMusic(0);
             }
             else if(gp.ui.commandNum == 1){
                 gp.gameState = gp.titleState;
-                gp.restart();
+                gp.resetGame(true);
             }
         }
     }
