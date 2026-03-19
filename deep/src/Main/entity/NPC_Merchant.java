@@ -33,8 +33,11 @@ public class NPC_Merchant extends Entity{
         right2 = setup("/npc/merchant_down_2", gp.tileSize, gp.tileSize);
     }
     public void setDialogue(){
-        dialogues[0] = "Me encontraste!!! \nVendo items muy interesantes\nQuieres intercambiar?";
-
+        dialogues[0][0] = "Me encontraste!!! \nVendo items muy interesantes\nQuieres intercambiar?";
+        dialogues[1][0] = "Vuelve pronto!";
+        dialogues[2][0] = "Necesitas mas monedas para comprar eso!";
+        dialogues[3][0] = "No puedes cargar nada mas!";
+        dialogues[4][0] = "No puedes vender ese item";
     }
     public void setItems(){
         inventory.add(new OBJ_Potion_Red(gp));
@@ -43,7 +46,7 @@ public class NPC_Merchant extends Entity{
         inventory.add(new OBJ_Tent(gp));
     }
     public void speak(){
-        super.speak();
+        facePlayer();
         gp.gameState = gp.tradeState;
         gp.ui.npc = this;
     }

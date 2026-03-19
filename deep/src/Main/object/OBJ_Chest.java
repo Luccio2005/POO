@@ -26,25 +26,25 @@ public class OBJ_Chest extends Entity {
     }
     public void setLoot(Entity loot){
         this.loot = loot;
+        setDialogue();
+    }
+    public void setDialogue(){
+        dialogues[0][0] = "Abriste el cofre y encontraste una "+loot.name+"!" + "\n...Pero no puedes llevar nada mas!";
+        dialogues[1][0] = "Abriste el cofre y encontraste una "+loot.name+"!" + "\nObtienes una "+loot.name+"!";
+        dialogues[2][0] = "Esta vacio";
     }
     public void interact(){
-        gp.gameState = gp.dialogueState;
         if(opened == false){
             gp.playSE(3);
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("Abriste el cofre y encontraste una "+loot.name+"!");
-
             if(gp.player.canObtainItem(loot) == false){
-                sb.append("\n...Pero no puedes llevar nada mas!");
+                startDialogue(this,0);
             }else{
-                sb.append("\nObtienes una "+loot.name+"!");
+                startDialogue(this, 1);
                 down1 = image2;
                 opened = true;
             }
-            gp.ui.currentDialogue = sb.toString();
         }else{
-            gp.ui.currentDialogue = "Esta vacio";
+            startDialogue(this,2);
         }
     }
 }

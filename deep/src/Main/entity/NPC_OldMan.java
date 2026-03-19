@@ -23,6 +23,9 @@ public class NPC_OldMan extends Entity{
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
         solidArea.height = 32;
+
+        dialogueSet = -1;
+
         getImage();
         setDialogue();
     }
@@ -37,13 +40,13 @@ public class NPC_OldMan extends Entity{
         right2 = setup("/npc/oldman_right_2", gp.tileSize, gp.tileSize);
     }
     public void setDialogue(){
-        dialogues[0] = "Bienvenido aventurero!!!";
-        dialogues[1] = "Esta Isla posee uno de los \ntesoros mas grandes";
-        dialogues[2] = "Pero para obtenerlo, debe \nadentrarse a lo mas profundo";
-        dialogues[3] = "Vencer sus miedos, obstaculos \ny enemigos que habitan";
-        dialogues[4] = "Mientras mas profundo vaya, \nmas dificil sera todo";
-        dialogues[5] = "Pero si es valiente y perseverante, \npodra obtener riquezas";
-        dialogues[6] = "Asi que preparate bien!!!";
+        dialogues[0][0] = "Bienvenido aventurero!!!";
+        dialogues[0][1] = "Esta Isla posee uno de los \ntesoros mas grandes";
+        dialogues[0][2] = "Pero para obtenerlo, debe \nadentrarse a lo mas profundo";
+        dialogues[0][3] = "Vencer sus miedos, obstaculos \ny enemigos que habitan";
+        dialogues[0][4] = "Mientras mas profundo vaya, \nmas dificil sera todo";
+        dialogues[0][5] = "Pero si es valiente y perseverante, \npodra obtener riquezas";
+        dialogues[0][6] = "Asi que preparate bien!!!";
     }
     public void setAction(){
         if(onPath == true){
@@ -77,7 +80,12 @@ public class NPC_OldMan extends Entity{
         }
     }
     public void speak(){
-        super.speak();
+        facePlayer();
+        startDialogue(this, dialogueSet);
+        dialogueSet++;
+        if(dialogues[dialogueSet][0] == null){
+            dialogueSet--;
+        }
         //onPath = true;
     }
 

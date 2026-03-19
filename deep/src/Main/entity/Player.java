@@ -73,15 +73,20 @@ public class Player extends Entity{
         getPlayerAttackImage();
         getGuardImage();
         setItems();
+        setDialogue();
     }
     public void setDefaultPositions(){
         worldX = gp.tileSize * 125;
         worldY = gp.tileSize * 134;
         direction = "down";
     }
+    public void setDialogue(){
+        dialogues[0][0] = "Eres nivel " + level + "!";
+    }
     public void restoreStatus(){
         life = maxlife;
         mana = maxMana;
+        speed = defaultSpeed;
         invincible = false;
         transparent = false;
         attacking = false;
@@ -351,7 +356,6 @@ public class Player extends Entity{
         if(gp.keyH.enterPressed == true){
             if(i !=999){
                 attackCanceled = true;
-                gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();
             }
         }
@@ -434,7 +438,7 @@ public class Player extends Entity{
 
             gp.playSE(8);
             gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = "Eres nivel " + level + "!";
+            startDialogue(this,0);
         }
     }
     public void selectItem(){
