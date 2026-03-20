@@ -4,11 +4,12 @@ import Main.GamePanel;
 import entity.Entity;
 
 public class OBJ_Shield_Wood extends Entity {
+    public static final String objName = "Escudo de madera";
     public OBJ_Shield_Wood(GamePanel gp){
         super(gp);
 
         type = type_shield;
-        name = "Escudo de madera";
+        name = objName;
         down1 = setup("/objects/shield_wood",gp.tileSize,gp.tileSize);
         defenseValue = 1;
         description = "["+name+"]\nhecho de madera";

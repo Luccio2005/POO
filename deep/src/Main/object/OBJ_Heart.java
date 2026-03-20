@@ -5,12 +5,14 @@ import entity.Entity;
 
 public class OBJ_Heart extends Entity {
     GamePanel gp;
+    public static final String objName = "Corazon";
+
     public OBJ_Heart(GamePanel gp){
         super(gp);
         this.gp = gp;
 
         type = type_pickupOnly;
-        name = "Corazon";
+        name = objName;
         value = 2;
         down1 = setup("/objects/heart_full", gp.tileSize, gp.tileSize);
         image = setup("/objects/heart_full", gp.tileSize, gp.tileSize);

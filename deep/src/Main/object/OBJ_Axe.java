@@ -4,11 +4,13 @@ import Main.GamePanel;
 import entity.Entity;
 
 public class OBJ_Axe extends Entity {
+    public static final String objName = "Hacha de madera";
+
     public OBJ_Axe(GamePanel gp){
         super(gp);
 
         type = type_axe;
-        name = "Hacha de madera";
+        name = objName;
         down1 = setup("/objects/axe", gp.tileSize, gp.tileSize);
         attackValue = 2;
         attackArea.width = 30;

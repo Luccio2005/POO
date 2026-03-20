@@ -5,12 +5,14 @@ import entity.Entity;
 
 public class OBJ_Tent extends Entity {
     GamePanel gp;
+    public static final String objName = "Carpa";
+
     public OBJ_Tent(GamePanel gp){
         super(gp);
         this.gp = gp;
 
         type = type_consumable;
-        name = "Carpa";
+        name = objName;
         down1 = setup("/objects/tent", gp.tileSize, gp.tileSize);
         description = "["+name+"]\npuedes dormir y se\nhara de dia";
         price = 10;

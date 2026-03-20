@@ -6,12 +6,14 @@ import entity.Entity;
 public class OBJ_Boots extends Entity {
     GamePanel gp;
     int value= 2;
+    public static final String objName = "Botas";
+
     public OBJ_Boots(GamePanel gp){
         super(gp);
         this.gp = gp;
 
         type = type_boots;
-        name = "Botas";
+        name = objName;
         down1 = setup("/objects/boots", gp.tileSize, gp.tileSize);
         description = "["+name+"]\nte hace mas veloz";
         price = 10;
