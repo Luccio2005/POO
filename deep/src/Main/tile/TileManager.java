@@ -51,6 +51,7 @@ public class TileManager {
             System.out.println("Excepcion!");
         }
         loadMap("/maps/deep1.txt",0);
+        loadMap("/maps/deep2.txt",1);
 
         //loadMap("/maps/worldV3.txt", 0);
         //loadMap("/maps/interior01.txt", 1);
