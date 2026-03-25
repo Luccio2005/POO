@@ -167,6 +167,16 @@ public class Player extends Entity{
             attackRight1 = setup("/player/right1", gp.tileSize, gp.tileSize);
             attackRight2 = setup("/player/axe_right", gp.tileSize*23/16, gp.tileSize*23/16);
         }
+        if(currentWeapon.type == type_pickaxe){
+            attackUp1 = setup("/player/pickup1",gp.tileSize*23/16, gp.tileSize*23/16);
+            attackUp2 = setup("/player/pickup2", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackDown1 = setup("/player/pickdown1", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackDown2 = setup("/player/pickdown2", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackLeft1 = setup("/player/pickleft1", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackLeft2 = setup("/player/pickleft2", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackRight1 = setup("/player/pickright1", gp.tileSize*23/16, gp.tileSize*23/16);
+            attackRight2 = setup("/player/pickright2", gp.tileSize*23/16, gp.tileSize*23/16);
+        }
     }
     public void getGuardImage(){
         guardUp = setup("/player/guardup", gp.tileSize*23/16, gp.tileSize*23/16);
@@ -353,11 +363,12 @@ public class Player extends Entity{
         }
     }
     public void interactNPC(int i){
-        if(gp.keyH.enterPressed == true){
-            if(i !=999){
+        if(i !=999){
+            if(gp.keyH.enterPressed == true){
                 attackCanceled = true;
                 gp.npc[gp.currentMap][i].speak();
             }
+            gp.npc[gp.currentMap][i].move(direction);
         }
     }
     public void contactMonster(int i){
@@ -415,6 +426,7 @@ public class Player extends Entity{
             generateParticle(gp.iTile[gp.currentMap][i], gp.iTile[gp.currentMap][i]);
 
             if(gp.iTile[gp.currentMap][i].life == 0){
+                gp.iTile[gp.currentMap][i].checkDrop();
                 gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm();
             }
         }
@@ -447,7 +459,7 @@ public class Player extends Entity{
 
         if(itemIndex < inventory.size()){
             Entity selectedItem = inventory.get(itemIndex);
-            if(selectedItem.type == type_sword || selectedItem.type == type_axe){
+            if(selectedItem.type == type_sword || selectedItem.type == type_axe || selectedItem.type == type_pickaxe){
                 currentWeapon = selectedItem;
                 attack = getAttack();
                 getPlayerAttackImage();

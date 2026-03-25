@@ -73,7 +73,7 @@ public class EventHandler {
                 teleport(1,82,50, gp.dungeon);
             }
             else if(hit(1,82,50,"any") == true){
-                teleport(0,162,17, gp.outside);
+                teleport(0,162,177, gp.outside);
             }
         }
 
