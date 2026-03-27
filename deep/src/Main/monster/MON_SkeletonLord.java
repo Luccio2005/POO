@@ -27,15 +27,15 @@ public class MON_SkeletonLord extends Entity {
         knockBackPower = 5;
         //projectile = new OBJ_Rock(gp);
 
-        int size = gp.tileSize*5;
-        solidArea.x = 48;
-        solidArea.y = 48;
-        solidArea.width = size - 48*2;
-        solidArea.height = size - 48;
+        int size = gp.tileSize*2;
+        solidArea.x = size/4;
+        solidArea.y = size/4;
+        solidArea.width = size/2;
+        solidArea.height = size/2;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackArea.width = 170;
-        attackArea.height = 170;
+        attackArea.width = gp.tileSize*2;
+        attackArea.height = gp.tileSize*2;
         motion1_duration = 25;
         motion2_duration = 50;
 
@@ -43,7 +43,7 @@ public class MON_SkeletonLord extends Entity {
         getAttackImage();
     }
     public void getImage(){
-        int i = 5;
+        int i = 2;
         if(inRage == false){
             up1 = setup("/monster/skeletonlord_up_1", gp.tileSize*i, gp.tileSize*i);
             up2 = setup("/monster/skeletonlord_up_2", gp.tileSize*i, gp.tileSize*i);
@@ -65,7 +65,7 @@ public class MON_SkeletonLord extends Entity {
         }
     }
     public void getAttackImage(){
-        int i = 5;
+        int i = 2;
         if(inRage == false){
             attackUp1 = setup("/monster/skeletonlord_attack_up_1", gp.tileSize*i, gp.tileSize*i*2);
             attackUp2 = setup("/monster/skeletonlord_attack_up_2", gp.tileSize*i, gp.tileSize*i*2);
@@ -102,7 +102,7 @@ public class MON_SkeletonLord extends Entity {
         }
         // check if it attack
         if(attacking == false){
-            checkAttackOrNot(60, gp.tileSize*7, gp.tileSize*5);
+            checkAttackOrNot(60, gp.tileSize*4, gp.tileSize*3);
         }
     }
     public void damageReaction(){
