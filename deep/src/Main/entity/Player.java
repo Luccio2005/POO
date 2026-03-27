@@ -76,6 +76,7 @@ public class Player extends Entity{
         setDialogue();
     }
     public void setDefaultPositions(){
+        gp.currentMap = 0;
         worldX = gp.tileSize * 125;
         worldY = gp.tileSize * 134;
         direction = "down";

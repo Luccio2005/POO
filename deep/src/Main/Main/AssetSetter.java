@@ -5,6 +5,7 @@ import entity.NPC_Merchant;
 import entity.NPC_OldMan;
 import monster.MON_GreenSlime;
 import monster.MON_Orc;
+import monster.MON_SkeletonLord;
 import object.*;
 import tile_interactive.IT_DestructibleWall;
 import tile_interactive.IT_DryTree;
@@ -137,6 +138,10 @@ public class AssetSetter {
         gp.monster[mapNum][i] = new MON_Orc(gp);
         gp.monster[mapNum][i].worldX = gp.tileSize * 159;
         gp.monster[mapNum][i].worldY = gp.tileSize * 216;
+        i++;
+        gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 129;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 145;
         i++;
         mapNum = 1;
         i = 0;

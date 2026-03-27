@@ -9,27 +9,26 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class MON_GreenSlime extends Entity {
+public class MON_Bat extends Entity {
     GamePanel gp;
-    public MON_GreenSlime(GamePanel gp){
+    public MON_Bat(GamePanel gp){
         super(gp);
         this.gp = gp;
 
         type = type_monster;
-        name = "Slime";
-        defaultSpeed = 1;
+        name = "Murcielago";
+        defaultSpeed = 4;
         speed = defaultSpeed;
-        maxlife = 4;
+        maxlife = 2;
         life = maxlife;
-        attack = 2;
+        attack = 1;
         defense = 0;
         exp = 1;
-        projectile = new OBJ_Rock(gp);
 
         solidArea.x = 3;
-        solidArea.y = 18;
+        solidArea.y = 15;
         solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.height = 21;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         motion1_duration = 5;
@@ -38,32 +37,32 @@ public class MON_GreenSlime extends Entity {
         getImage();
     }
     public void getImage(){
-        up1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/monster/bat_down_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/monster/bat_down_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/monster/bat_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/monster/bat_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/monster/bat_down_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/monster/bat_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/monster/bat_down_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/monster/bat_down_2", gp.tileSize, gp.tileSize);
     }
     public void setAction(){
         if(onPath == true){
             // check if it stops chasing
-            checkStopChasingOrNot(gp.player, 10, 100);
+            //checkStopChasingOrNot(gp.player, 10, 100);
             // me sigue busca la direccion para ir
-            searchPath(getGoalCol(gp.player), getGoalRow(gp.player));
+            //searchPath(getGoalCol(gp.player), getGoalRow(gp.player));
             //check if itshoot a projectile
-            checkShootOrNot(200, 30);
+            //checkShootOrNot(200, 30);
         }else{
-            checkStartChasingOrNot(gp.player, 5, 100);
-            getRandoDirection(120);
+            //checkStartChasingOrNot(gp.player, 5, 100);
+            getRandoDirection(60);
         }
     }
     public void damageReaction(){
         actionLockCounter = 0;
         //direction = gp.player.direction;
-        onPath = true;
+        //onPath = true;
     }
     public void checkDrop(){
         // cast a die

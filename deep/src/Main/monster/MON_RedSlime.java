@@ -57,7 +57,7 @@ public class MON_RedSlime extends Entity {
             checkShootOrNot(200, 30);
         }else{
             checkStartChasingOrNot(gp.player, 5, 100);
-            getRandoDirection();
+            getRandoDirection(120);
         }
     }
     public void damageReaction(){
