@@ -53,11 +53,11 @@ public class Player extends Entity{
         direction = "down";
         //player status
         level = 1;
-        maxlife = 6;
+        maxlife = 28;
         life = maxlife;
-        maxMana = 4;
+        maxMana = 10;
         mana = maxMana;
-        strength = 1; // mas strenght mas damage
+        strength = 10; // mas strenght mas damage
         dexterity = 1; // mas destreza menos damage recibe
         exp = 0;
         nextLevelExp = 5;
@@ -609,7 +609,9 @@ public class Player extends Entity{
         if(transparent == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
-        g2.drawImage(image, screenX, screenY, null);
+        if(drawing == true){
+            g2.drawImage(image, screenX, screenY, null);
+        }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         //debug
         //g2.setFont(new Font("Arial", Font.PLAIN, 26));

@@ -89,6 +89,21 @@ public class AssetSetter {
         gp.obj[mapNum][i].setLoot(new OBJ_Pickaxe(gp));
         gp.obj[mapNum][i].worldX = gp.tileSize * 210;
         gp.obj[mapNum][i].worldY = gp.tileSize * 205;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*126;
+        gp.obj[mapNum][i].worldY = gp.tileSize*137;
+        i++;
+        mapNum = 1;
+        i = 0;
+        gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*27;
+        gp.obj[mapNum][i].worldY = gp.tileSize*18;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*27;
+        gp.obj[mapNum][i].worldY = gp.tileSize*19;
+        i++;
     }
     public void setNPC(){
         int mapNum = 0;
@@ -142,16 +157,6 @@ public class AssetSetter {
         gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
         gp.monster[mapNum][i].worldX = gp.tileSize * 129;
         gp.monster[mapNum][i].worldY = gp.tileSize * 145;
-        i++;
-        mapNum = 1;
-        i = 0;
-        gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize*27;
-        gp.obj[mapNum][i].worldY = gp.tileSize*18;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize*27;
-        gp.obj[mapNum][i].worldY = gp.tileSize*19;
         i++;
     }
     public void setInteractiveTile(){

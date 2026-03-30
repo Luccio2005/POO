@@ -1,5 +1,6 @@
 package Main;
 
+import data.Progress;
 import entity.Entity;
 
 import java.awt.*;
@@ -75,6 +76,9 @@ public class EventHandler {
             else if(hit(1,82,50,"any") == true){
                 teleport(0,162,177, gp.outside);
             }
+            else if(hit(0, 125,140, "any") == true){
+                Lord();
+            }
         }
 
     }
@@ -135,6 +139,12 @@ public class EventHandler {
             gp.gameState = gp.dialogueState;
             gp.player.attackCanceled = true;
             entity.speak();
+        }
+    }
+    public void Lord(){
+        if(gp.bossBattleOn == false && Progress.LordDefeated == false){
+            gp.gameState = gp.cutsceneState;
+            gp.csManager.sceneNum = gp.csManager.Lord;
         }
     }
 }

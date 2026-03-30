@@ -1,8 +1,10 @@
 package monster;
 
 import Main.GamePanel;
+import data.Progress;
 import entity.Entity;
 import object.OBJ_Coin_Bronze;
+import object.OBJ_Door_Iron;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 
@@ -26,6 +28,8 @@ public class MON_SkeletonLord extends Entity {
         defense = 3;
         exp = 20;
         knockBackPower = 5;
+        //solo para boss
+        sleep = true;
         //projectile = new OBJ_Rock(gp);
 
         int size = gp.tileSize*2;
@@ -42,6 +46,8 @@ public class MON_SkeletonLord extends Entity {
 
         getImage();
         getAttackImage();
+        //solo para boss
+        setDialogue();;
     }
     public void getImage(){
         int i = 2;
@@ -87,6 +93,12 @@ public class MON_SkeletonLord extends Entity {
             attackRight2 = setup("/monster/skeletonlord_phase2_attack_right_2", gp.tileSize*i*2, gp.tileSize*i);
         }
     }
+    //dialogo de boss
+    public void setDialogue(){
+        dialogues[0][0] = "No robaras mi tesoro!!";
+        dialogues[0][1] = "Moriras aqui!!";
+        dialogues[0][2] = "BIENVENIDO A TU INFIERNO!";
+    }
     public void setAction(){
         if(inRage == false && life < maxlife/2){
             inRage = true;
@@ -110,6 +122,18 @@ public class MON_SkeletonLord extends Entity {
         actionLockCounter = 0;
     }
     public void checkDrop(){
+        //para el boss
+        gp.bossBattleOn = false;
+        Progress.LordDefeated = true;
+        gp.stopMusic();
+        gp.playMusic(19);
+        //remover las puerta de hierro
+        for(int i = 0;i < gp.obj[1].length; i++){
+            if(gp.obj[gp.currentMap][i] != null && gp.obj[gp.currentMap][i].name.equals(OBJ_Door_Iron.objName)){
+                gp.playSE(21);
+                gp.obj[gp.currentMap][i] = null;
+            }
+        }
         // cast a die
         int i = new Random().nextInt(100)+1;
         //set the monster drop
