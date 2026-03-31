@@ -1,5 +1,6 @@
 package Main;
 
+import data.Progress;
 import entity.NPC_BigRock;
 import entity.NPC_Merchant;
 import entity.NPC_OldMan;
@@ -94,6 +95,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = gp.tileSize*126;
         gp.obj[mapNum][i].worldY = gp.tileSize*137;
         i++;
+        gp.obj[mapNum][i] = new OBJ_BlueHeart(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*126;
+        gp.obj[mapNum][i].worldY = gp.tileSize*142;
+        i++;
         mapNum = 1;
         i = 0;
         gp.obj[mapNum][i] = new OBJ_Door_Iron(gp);
@@ -154,10 +159,12 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldX = gp.tileSize * 159;
         gp.monster[mapNum][i].worldY = gp.tileSize * 216;
         i++;
-        gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize * 129;
-        gp.monster[mapNum][i].worldY = gp.tileSize * 145;
-        i++;
+        if(Progress.LordDefeated == false){
+            gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
+            gp.monster[mapNum][i].worldX = gp.tileSize * 129;
+            gp.monster[mapNum][i].worldY = gp.tileSize * 145;
+            i++;
+        }
     }
     public void setInteractiveTile(){
         int mapNum = 0;

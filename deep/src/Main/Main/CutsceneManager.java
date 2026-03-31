@@ -2,6 +2,7 @@ package Main;
 
 import entity.PlayerDummy;
 import monster.MON_SkeletonLord;
+import object.OBJ_BlueHeart;
 import object.OBJ_Door_Iron;
 
 import java.awt.*;
@@ -11,17 +12,27 @@ public class CutsceneManager {
     Graphics2D g2;
     public int sceneNum;
     public int scenePhase;
+    int counter = 0;
+    float alpha = 0f;
+    int y;
+    String endCredit;
     //Scene Number
     public final int NA = 0;
     public final int Lord = 1;
+    public final int ending = 2;
 
     public CutsceneManager(GamePanel gp){
         this.gp = gp;
+        endCredit = "Programacion/Art\n"
+                + "Luccio"
+                + "\n\n\n\n\n\n\n\n"
+                + "Gracias por jugar";
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
         switch (sceneNum){
             case Lord: scene_Lord(); break;
+            case ending: scene_ending(); break;
         }
     }
     public void scene_Lord(){
@@ -93,5 +104,95 @@ public class CutsceneManager {
             gp.stopMusic();
             gp.playMusic(22);
         }
+    }
+    public void scene_ending(){
+        if(scenePhase == 0){
+            gp.stopMusic();;
+            gp.ui.npc = new OBJ_BlueHeart(gp);
+            scenePhase++;
+        }
+        if(scenePhase == 1){
+            gp.ui.drawDialogueScreen();
+        }
+        if(scenePhase == 2){
+            gp.playSE(4);
+            scenePhase++;
+        }
+        if(scenePhase == 3){
+            if(counterReached(300) == true){
+                scenePhase++;
+            }
+        }
+        if(scenePhase == 4){
+            alpha += 0.005f;
+            if(alpha > 1f){
+                alpha = 1f;
+            }
+            drawBlackBackground(alpha);
+
+            if(alpha == 1f){
+                alpha = 0;
+                scenePhase++;
+            }
+        }
+        if(scenePhase == 5){
+            drawBlackBackground(1f);
+            alpha += 0.005f;
+            if(alpha > 1f){
+                alpha = 1f;
+            }
+            String text = "Despues de la dificil batalla contra el demonio\n"
+                    + "El heroe finalmente pudo vencerlo y conseguir el tesoro\n"
+                    + "Pero este no es el final de su camino\n"
+                    + "Porque debe seguir firme hasta el final de sus dias";
+            drawString(alpha, 38f, 200, text, 70);
+            if(counterReached(600) == true){
+                scenePhase++;
+            }
+        }
+        if(scenePhase == 6){
+            drawBlackBackground(1f);
+            drawString(1f, 120f, gp.screenHeight/2, "DEEP", 40);
+            if(counterReached(480) == true){
+                scenePhase++;
+            }
+        }
+        if(scenePhase == 7){
+            drawBlackBackground(1f);
+            drawString(1f, 38f, gp.screenHeight/2, endCredit, 40);
+            if(counterReached(480) == true){
+                scenePhase++;
+            }
+        }
+        if(scenePhase == 8){
+            gp.gameState = gp.titleState;
+        }
+    }
+    public boolean counterReached(int target){
+        boolean counterReached = false;
+        counter++;
+        if(counter > target){
+            counterReached = true;
+            counter = 0;
+        }
+        return counterReached;
+    }
+    public void drawBlackBackground(float alpha){
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.setColor(Color.black);
+        g2.fillRect(0,0, gp.screenWidth, gp.screenHeight);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+    }
+    public void drawString(float alpha, float fontSize, int y, String text, int lineHeight){
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(fontSize));
+
+        for(String line: text.split("\n")){
+            int x = gp.ui.getXforCenteredText(line);
+            g2.drawString(line, x, y);
+            y += lineHeight;
+        }
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
 }
