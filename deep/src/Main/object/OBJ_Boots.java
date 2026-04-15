@@ -18,9 +18,11 @@ public class OBJ_Boots extends Entity {
         description = "["+name+"]\nte hace mas veloz";
         price = 10;
     }
+    public void setDialogue(){
+        dialogues[0][0] = "Tu velocidad aumenta en "+value;
+    }
     public void use_boots(Entity entity){
-        gp.gameState = gp.dialogueState;
-        gp.ui.currentDialogue = "Tu velocidad aumenta en "+value;
+        startDialogue(this, 0);
         entity.speed += value;
         gp.playSE(2);
     }

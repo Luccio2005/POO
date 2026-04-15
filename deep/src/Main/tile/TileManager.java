@@ -38,7 +38,7 @@ public class TileManager {
         tile = new Tile[fileNames.size()];
         getTileImage();
         // get the maxxworldcol & row
-        is = getClass().getResourceAsStream("/maps/deep1.txt");
+        is = getClass().getResourceAsStream("/maps/deep01.txt");
         br = new BufferedReader(new InputStreamReader(is));
         try {
             String line2 = br.readLine();
@@ -50,8 +50,9 @@ public class TileManager {
         }catch (IOException e){
             System.out.println("Excepcion!");
         }
-        loadMap("/maps/deep1.txt",0);
-        loadMap("/maps/deep2.txt",1);
+        loadMap("/maps/deep01.txt",0);
+        loadMap("/maps/deep02.txt",1);
+        loadMap("/maps/deep2.txt",2);
 
         //loadMap("/maps/worldV3.txt", 0);
         //loadMap("/maps/interior01.txt", 1);

@@ -58,27 +58,87 @@ public class EventHandler {
             if(hit(0,27,16,"right") == true){
                 damagePit(gp.dialogueState);
             }
-            else if(hit(0,125,127,"up") == true){
+            else if(hit(0,50,52,"up") == true){
                 healingPool(gp.dialogueState);
             }
-            else if(hit(0,76,143,"any") == true){
-                teleport(1,124,11, gp.indoor);
+            else if(hit(0,39,44,"any") == true){
+                teleport(1,4,6, gp.indoor);
             }
-            else if(hit(1,124,11,"any") == true){
-                teleport(0,76,143, gp.outside);
+            else if(hit(1,4,6,"any") == true){
+                teleport(0,39,44, gp.outside);
             }
-            else if(hit(1,124,8,"up") == true){
+            else if(hit(1,2,2,"any") == true){
+                teleport(1,49,11, gp.dungeon);
+            }
+            else if(hit(1,49,11,"any") == true){
+                teleport(1,2,2, gp.indoor);
+            }
+            else if(hit(0,44,39,"any") == true){
+                teleport(1,12,6, gp.indoor);
+            }
+            else if(hit(1,12,6,"any") == true){
+                teleport(0,44,39, gp.outside);
+            }
+            else if(hit(0,56,39,"any") == true){
+                teleport(1,20,6, gp.indoor);
+            }
+            else if(hit(1,20,6,"any") == true){
+                teleport(0,56,39, gp.outside);
+            }
+            else if(hit(0,61,43,"any") == true){
+                teleport(1,28,6, gp.indoor);
+            }
+            else if(hit(1,28,6,"any") == true){
+                teleport(0,61,43, gp.outside);
+            }
+            else if(hit(0,61,56,"any") == true){
+                teleport(1,28,14, gp.indoor);
+            }
+            else if(hit(1,28,14,"any") == true){
+                teleport(0,61,56, gp.outside);
+            }
+            else if(hit(0,57,61,"any") == true){
+                teleport(1,20,14, gp.indoor);
+            }
+            else if(hit(1,20,14,"any") == true){
+                teleport(0,57,61, gp.outside);
+            }
+            else if(hit(0,44,61,"any") == true){
+                teleport(1,12,14, gp.indoor);
+            }
+            else if(hit(1,12,14,"any") == true){
+                teleport(0,44,61, gp.outside);
+            }
+            else if(hit(0,39,57,"any") == true){
+                teleport(1,4,14, gp.indoor);
+            }
+            else if(hit(1,4,14,"any") == true){
+                teleport(0,39,57, gp.outside);
+            }
+            else if(hit(0,76,17,"any") == true){
+                teleport(1,40,11, gp.indoor);
+            }
+            else if(hit(1,40,11,"any") == true){
+                teleport(0,76,17, gp.outside);
+            }
+            else if(hit(0,20,49,"any") == true){
+                teleport(1,51,7, gp.indoor);
+            }
+            else if(hit(1,51,7,"any") == true){
+                teleport(0,20,49, gp.outside);
+            }
+            else if(hit(1,51,4,"up") == true){
                 speak(gp.npc[1][0]);
             }
-            else if(hit(0,162,177,"any") == true){
-                teleport(1,82,50, gp.dungeon);
+            else if(hit(0,75,66,"any") == true){
+                teleport(2,82,50, gp.dungeon);
             }
-            else if(hit(1,82,50,"any") == true){
-                teleport(0,162,177, gp.outside);
+            else if(hit(2,82,50,"any") == true){
+                teleport(0,75,66, gp.outside);
             }
-            else if(hit(0, 125,140, "any") == true){
+            /*else if(hit(0, 125,140, "any") == true){
                 Lord();
-            }
+            }*/
         }
 
     }
@@ -121,7 +181,7 @@ public class EventHandler {
             gp.player.life = gp.player.maxlife;
             gp.player.mana = gp.player.maxMana;
             //reiniciar monstruos
-            gp.aSetter.setMonster();
+            //gp.aSetter.setMonster();
             gp.saveLoad.save();
         }
     }
