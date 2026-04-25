@@ -18,7 +18,6 @@ public class TileManager {
     boolean drawPath = true;
     ArrayList<String> fileNames = new ArrayList<>();
     ArrayList<String> collisionStatus = new ArrayList<>();
-
     public TileManager(GamePanel gp){
         this.gp = gp;
         // READ TILE DATA FILE
@@ -52,7 +51,12 @@ public class TileManager {
         }
         loadMap("/maps/deep01.txt",0);
         loadMap("/maps/deep02.txt",1);
-        loadMap("/maps/deep2.txt",2);
+        loadMap("/maps/deep03.txt",2);
+        loadMap("/maps/deep04.txt",3);
+        loadMap("/maps/deep05.txt",4);
+        loadMap("/maps/deep06.txt",5);
+        loadMap("/maps/deep07.txt",6);
+        loadMap("/maps/deep08.txt",7);
 
         //loadMap("/maps/worldV3.txt", 0);
         //loadMap("/maps/interior01.txt", 1);
@@ -153,7 +157,6 @@ public class TileManager {
             }
             br.close();
         }catch (Exception e){
-
         }
     }
     public void draw(Graphics2D g2){
