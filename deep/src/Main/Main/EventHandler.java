@@ -208,6 +208,48 @@ public class EventHandler {
             else if(hit(7,50,96,"any") == true){
                 teleport(6,23,75, gp.dungeon);
             }
+            else if(hit(0,55,71,"any") == true){
+                teleport(1,3,19, gp.dungeon);
+            }
+            else if(hit(1,3,19,"any") == true){
+                teleport(0,55,71, gp.outside);
+            }
+            else if(hit(0,61,71,"any") == true){
+                teleport(1,9,19, gp.dungeon);
+            }
+            else if(hit(1,9,19,"any") == true){
+                teleport(0,61,71, gp.outside);
+            }
+            else if(hit(0,55,75,"any") == true){
+                teleport(1,3,23, gp.dungeon);
+            }
+            else if(hit(1,3,23,"any") == true){
+                teleport(0,55,75, gp.outside);
+            }
+            else if(hit(0,61,75,"any") == true){
+                teleport(1,9,23, gp.dungeon);
+            }
+            else if(hit(1,9,23,"any") == true){
+                teleport(0,61,75, gp.outside);
+            }
+            else if(hit(0,55,79,"any") == true){
+                teleport(1,3,27, gp.dungeon);
+            }
+            else if(hit(1,3,27,"any") == true){
+                teleport(0,55,79, gp.outside);
+            }
+            else if(hit(0,73,78,"any") == true){
+                teleport(2,13,69, gp.dungeon);
+            }
+            else if(hit(2,13,69,"any") == true){
+                teleport(0,73,78, gp.outside);
+            }
+            else if(hit(0,83,81,"any") == true){
+                teleport(2,51,68, gp.dungeon);
+            }
+            else if(hit(2,51,68,"any") == true){
+                teleport(0,83,81, gp.outside);
+            }
             /*else if(hit(0, 125,140, "any") == true){
                 Lord();
             }*/
